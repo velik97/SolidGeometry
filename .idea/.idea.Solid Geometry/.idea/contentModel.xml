@@ -1,0 +1,42 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="ContentModelStore">
+    <e p="$USER_HOME$/Library/Caches/Rider2019.2/extResources" t="IncludeRecursive" />
+    <e p="$USER_HOME$/Library/Caches/Rider2019.2/resharper-host/local/Transient/ReSharperHost/v192/SolutionCaches/_Solid Geometry.1756892261.00" t="ExcludeRecursive" />
+    <e p="$APPLICATION_CONFIG_DIR$/extensions" t="IncludeRecursive" />
+    <e p="$PROJECT_DIR$" t="IncludeRecursive">
+      <e p="Assembly-CSharp.csproj" t="IncludeRecursive" />
+      <e p="Assets" t="Include">
+        <e p="Scripts" t="Include">
+          <e p="Shapes" t="Include">
+            <e p="Blueprint" t="Include">
+              <e p="PointBlueprint.cs" t="Include" />
+              <e p="ShapeBlueprint.cs" t="Include" />
+            </e>
+            <e p="Data" t="Include">
+              <e p="CompositeShapeData.cs" t="Include" />
+              <e p="ConditionalPointData.cs" t="Include" />
+              <e p="LineData.cs" t="Include" />
+              <e p="PointData.cs" t="Include" />
+              <e p="PolygonData.cs" t="Include" />
+              <e p="ShapeData.cs" t="Include" />
+              <e p="ShapeDataFactory.cs" t="Include" />
+            </e>
+            <e p="View" t="Include">
+              <e p="CompositeShapeView.cs" t="Include" />
+              <e p="IShapeView.cs" t="Include" />
+              <e p="LineView.cs" t="Include" />
+              <e p="PointView.cs" t="Include" />
+              <e p="PolygonView.cs" t="Include" />
+              <e p="ShapeViewFactory.cs" t="Include" />
+            </e>
+          </e>
+        </e>
+      </e>
+      <e p="obj" t="ExcludeRecursive" />
+      <e p="Packages" t="ExcludeRecursive" />
+      <e p="Solid Geometry.sln" t="IncludeFlat" />
+      <e p="Temp/bin" t="ExcludeRecursive" />
+    </e>
+  </component>
+</project>
