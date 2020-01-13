@@ -9,10 +9,5 @@ namespace Shapes.Data
 
         public override Vector3 Position => m_PositionFunc();
 
-        public ConditionalPointData(Func<Vector3> positionFunc, string pointName, bool isAccessoryPoint)
-            : base(pointName, isAccessoryPoint)
-        {
-            m_PositionFunc = positionFunc;
-        }
     }
 }

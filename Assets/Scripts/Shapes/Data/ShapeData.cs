@@ -5,9 +5,9 @@ namespace Shapes.Data
 {
     public abstract class ShapeData
     {
-        public ShapeBlueprint SourceBlueprint;
-
         public IShapeView View { get; private set; }
+        
+        public ShapeBlueprint SourceBlueprint;
 
         public void AttachView(IShapeView view)
         {

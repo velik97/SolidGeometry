@@ -13,10 +13,6 @@ namespace Shapes.Data
         private readonly List<PolygonData> m_PolygonDatas = new List<PolygonData>();
         private readonly List<CompositeShapeData> m_CompositeShapeDatas = new List<CompositeShapeData>();
 
-        private readonly HashSet<string> m_PointsHashset = new HashSet<string>();
-        private readonly HashSet<string[]> m_LinesHasSet = new HashSet<string[]>(new NonPositionalArrayEqualityComparer());
-        private readonly HashSet<string[]> m_PolygonsHashSet = new HashSet<string[]>(new NonPositionalArrayEqualityComparer());
-
         private ShapeViewFactory m_ShapeViewFactory;
 
         public ShapeDataFactory(ShapeViewFactory shapeViewFactory)
@@ -24,23 +20,21 @@ namespace Shapes.Data
             m_ShapeViewFactory = shapeViewFactory;
         }
 
-        public PointData CreatePointData(Vector3 position, string pointName, bool isAccessoryPoint)
+        public PointData CreatePointData()
         {
-            PointData pointData = new PointData(position, pointName, isAccessoryPoint);
+            PointData pointData = new PointData();
             pointData.AttachView(m_ShapeViewFactory.RequestPointView(pointData));
             
             m_PointDatas.Add(pointData);
-            m_PointsHashset.Add(pointData.PointName);
             return pointData;
         }
         
-        public PointData CreatePointData(Func<Vector3> positionFunc, string pointName, bool isAccessoryPoint)
+        public PointData CreateConditionalPointData()
         {
-            PointData pointData = new ConditionalPointData(positionFunc, pointName, isAccessoryPoint);
+            PointData pointData = new ConditionalPointData();
             pointData.AttachView(m_ShapeViewFactory.RequestPointView(pointData));
             
             m_PointDatas.Add(pointData);
-            m_PointsHashset.Add(pointData.PointName);
             return pointData;
         }
 
@@ -50,7 +44,6 @@ namespace Shapes.Data
             lineData.AttachView(m_ShapeViewFactory.RequestLineView(lineData));
             
             m_LinetDatas.Add(lineData);
-            m_LinesHasSet.Add(new []{startPoint.PointName, endPoint.PointName});
             return lineData;
         }
 
@@ -60,7 +53,6 @@ namespace Shapes.Data
             polygonData.AttachView(m_ShapeViewFactory.RequestPolygonView(polygonData));
             
             m_PolygonDatas.Add(polygonData);
-            m_PolygonsHashSet.Add(pointDatas.Select(p => p.PointName).ToArray());
             return polygonData;
         }
 
@@ -83,35 +75,17 @@ namespace Shapes.Data
             {
                 case PointData pointData:
                     m_PointDatas.Remove(pointData);
-                    m_PointsHashset.Remove(pointData.PointName);
                     break;
                 case LineData lineData:
                     m_LinetDatas.Remove(lineData);
-                    m_LinesHasSet.Remove(new[] {lineData.StartPoint.PointName, lineData.EndPoint.PointName});
                     break;
                 case PolygonData polygonData:
                     m_PolygonDatas.Remove(polygonData);
-                    m_LinesHasSet.Remove(polygonData.Points.Select(p => p.PointName).ToArray());
                     break;
                 case CompositeShapeData compositeShapeData:
                     m_CompositeShapeDatas.Remove(compositeShapeData);
                     break;
             }
-        }
-
-        public bool ContainsPointName(string pointName)
-        {
-            return m_PointsHashset.Contains(pointName);
-        }
-
-        public bool ContainsLine(string startPoint, string endPoint)
-        {
-            return m_LinesHasSet.Contains(new[] {startPoint, endPoint});
-        }
-
-        public bool ContainsPolygon(string[] pointNames)
-        {
-            return m_PolygonsHashSet.Contains(pointNames);
         }
         
         private class NonPositionalArrayEqualityComparer : IEqualityComparer<string[]>

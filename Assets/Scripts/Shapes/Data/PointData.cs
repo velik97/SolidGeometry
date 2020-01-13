@@ -1,4 +1,5 @@
 using Shapes.View;
+using UniRx;
 using UnityEngine;
 
 namespace Shapes.Data
@@ -8,21 +9,30 @@ namespace Shapes.Data
         public PointView PointView => View as PointView;
         
         public virtual Vector3 Position => m_Position;
-        public readonly string PointName;
-        public readonly bool IsAccessoryPoint;
+        public string PointName => m_PointName;
+        public bool IsAccessoryPoint => m_IsAccessoryPoint;
 
-        private readonly Vector3 m_Position;
+        protected Vector3 m_Position;
+        private string m_PointName;
+        private bool m_IsAccessoryPoint;
+        
+        public PointData()
+        {
+        }
 
-        public PointData(Vector3 position, string pointName, bool isAccessoryPoint)
-            : this(pointName, isAccessoryPoint)
+        public void SetName(string pointName)
+        {
+            m_PointName = pointName;
+        }
+
+        public virtual void SetPosition(Vector3 position)
         {
             m_Position = position;
         }
-        
-        protected PointData(string pointName, bool isAccessoryPoint)
+
+        public void SetIsAccessory(bool isAccessory)
         {
-            PointName = pointName;
-            IsAccessoryPoint = isAccessoryPoint;
+            m_IsAccessoryPoint = isAccessory;
         }
 
         public override string ToString()

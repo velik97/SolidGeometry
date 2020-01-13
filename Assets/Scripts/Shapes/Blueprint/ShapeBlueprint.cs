@@ -25,9 +25,7 @@ namespace Shapes.Blueprint
         {
             DataFactory = dataFactory;
         }
-
-        public abstract bool IsValid(out string notValidMessage);
-
+        
         public abstract void Create();
 
         public void Destroy()
@@ -54,5 +52,6 @@ namespace Shapes.Blueprint
         {
             m_DependentOnMeShapes.Remove(blueprint);
         }
+        
     }
 }
