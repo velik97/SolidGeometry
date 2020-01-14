@@ -13,17 +13,9 @@ namespace Shapes.Data
         private readonly List<PolygonData> m_PolygonDatas = new List<PolygonData>();
         private readonly List<CompositeShapeData> m_CompositeShapeDatas = new List<CompositeShapeData>();
 
-        private ShapeViewFactory m_ShapeViewFactory;
-
-        public ShapeDataFactory(ShapeViewFactory shapeViewFactory)
-        {
-            m_ShapeViewFactory = shapeViewFactory;
-        }
-
         public PointData CreatePointData()
         {
             PointData pointData = new PointData();
-            pointData.AttachView(m_ShapeViewFactory.RequestPointView(pointData));
             
             m_PointDatas.Add(pointData);
             return pointData;
@@ -32,16 +24,14 @@ namespace Shapes.Data
         public PointData CreateConditionalPointData()
         {
             PointData pointData = new ConditionalPointData();
-            pointData.AttachView(m_ShapeViewFactory.RequestPointView(pointData));
             
             m_PointDatas.Add(pointData);
             return pointData;
         }
 
-        public LineData CreateLineData(PointData startPoint, PointData endPoint)
+        public LineData CreateLineData()
         {
-            LineData lineData = new LineData(startPoint, endPoint);
-            lineData.AttachView(m_ShapeViewFactory.RequestLineView(lineData));
+            LineData lineData = new LineData();
             
             m_LinetDatas.Add(lineData);
             return lineData;
@@ -50,7 +40,6 @@ namespace Shapes.Data
         public PolygonData CreatePolygonData(params PointData[] pointDatas)
         {
             PolygonData polygonData = new PolygonData(pointDatas);
-            polygonData.AttachView(m_ShapeViewFactory.RequestPolygonView(polygonData));
             
             m_PolygonDatas.Add(polygonData);
             return polygonData;
@@ -63,7 +52,6 @@ namespace Shapes.Data
             string shapeName)
         {
             CompositeShapeData compositeShapeData = new CompositeShapeData(pointDatas, lineDatas, polygonDatas, shapeName);
-            compositeShapeData.AttachView(m_ShapeViewFactory.RequestCompositeShapeView(compositeShapeData));
             
             m_CompositeShapeDatas.Add(compositeShapeData);
             return compositeShapeData;

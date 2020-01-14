@@ -24,7 +24,7 @@ namespace Shapes.Data
 
         public override string ToString()
         {
-            return $"m_ShapeName {string.Join("", Points.Select(p => p.PointName))}";
+            return $"{m_ShapeName} {string.Join("", Points.Select(p => p.PointName))}";
         }
     }
 }

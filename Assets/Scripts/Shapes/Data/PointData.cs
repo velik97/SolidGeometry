@@ -15,10 +15,6 @@ namespace Shapes.Data
         protected Vector3 m_Position;
         private string m_PointName;
         private bool m_IsAccessoryPoint;
-        
-        public PointData()
-        {
-        }
 
         public void SetName(string pointName)
         {
@@ -37,7 +33,7 @@ namespace Shapes.Data
 
         public override string ToString()
         {
-            return $"Point: {PointName}";
+            return $"Point {PointName}";
         }
     }
 }

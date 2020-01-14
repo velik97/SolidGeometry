@@ -8,6 +8,5 @@ namespace Shapes.Data
         private readonly Func<Vector3> m_PositionFunc;
 
         public override Vector3 Position => m_PositionFunc();
-
     }
 }

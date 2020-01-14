@@ -18,6 +18,8 @@ namespace Shapes.Blueprint
         protected readonly List<ShapeData> MyShapeDatas = new List<ShapeData>();
         
         public bool HaveDependences => m_DependentOnMeShapes.Count > 0;
+        
+        public abstract ShapeData MainShapeData { get; }
 
         protected ShapeDataFactory DataFactory;
 
@@ -26,8 +28,6 @@ namespace Shapes.Blueprint
             DataFactory = dataFactory;
         }
         
-        public abstract void Create();
-
         public void Destroy()
         {
             foreach (ShapeBlueprint d in m_DependencesOnOtherShapes)
@@ -52,6 +52,5 @@ namespace Shapes.Blueprint
         {
             m_DependentOnMeShapes.Remove(blueprint);
         }
-        
     }
 }

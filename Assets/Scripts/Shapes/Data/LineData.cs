@@ -6,18 +6,22 @@ namespace Shapes.Data
     {
         public LineView LineView => View as LineView;
         
-        public readonly PointData StartPoint;
-        public readonly PointData EndPoint;
+        public PointData StartPoint;
+        public PointData EndPoint;
 
-        public LineData(PointData startPoint, PointData endPoint)
+        public void SetStartPoint(PointData pointData)
         {
-            StartPoint = startPoint;
-            EndPoint = endPoint;
+            StartPoint = pointData;
+        }
+        
+        public void SetEndPoint(PointData pointData)
+        {
+            EndPoint = pointData;
         }
 
         public override string ToString()
         {
-            return $"Line: {StartPoint.PointName}{EndPoint.PointName}";
+            return $"Line {StartPoint.PointName}{EndPoint.PointName}";
         }
     }
 }

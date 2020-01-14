@@ -1,22 +1,19 @@
 using Shapes.Data;
+using UnityEngine;
 
 namespace Shapes.Blueprint
 {
     [System.Serializable]
     public class PointBlueprint : ShapeBlueprint
     {
-        private PointData m_PointData;
-        
+        public readonly PointData PointData;
+
+        public override ShapeData MainShapeData => PointData;
+
         public PointBlueprint(ShapeDataFactory dataFactory) : base(dataFactory)
         {
+            PointData = DataFactory.CreatePointData();
+            MyShapeDatas.Add(PointData);
         }
-
-        public override void Create()
-        {
-            m_PointData = DataFactory.CreatePointData();
-            MyShapeDatas.Add(m_PointData);
-        }
-        
-        
     }
 }

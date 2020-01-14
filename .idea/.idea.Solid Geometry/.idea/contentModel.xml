@@ -5,6 +5,7 @@
     <e p="$USER_HOME$/Library/Caches/Rider2019.2/resharper-host/local/Transient/ReSharperHost/v192/SolutionCaches/_Solid Geometry.1756892261.00" t="ExcludeRecursive" />
     <e p="$APPLICATION_CONFIG_DIR$/extensions" t="IncludeRecursive" />
     <e p="$PROJECT_DIR$" t="IncludeRecursive">
+      <e p="Assembly-CSharp-Editor.csproj" t="IncludeRecursive" />
       <e p="Assembly-CSharp.csproj" t="IncludeRecursive" />
       <e p="Assets" t="Include">
         <e p="Plugins" t="Include">
@@ -272,10 +273,23 @@
           </e>
         </e>
         <e p="Scripts" t="Include">
+          <e p="Editor" t="Include">
+            <e p="Lesson" t="Include">
+              <e p="LessonBlueprintEditor.cs" t="Include" />
+            </e>
+            <e p="Shapes" t="Include">
+              <e p="LineBlueprintEditor.cs" t="Include" />
+              <e p="PointBlueprintEditor.cs" t="Include" />
+              <e p="ShapeBlueprintEditor.cs" t="Include" />
+              <e p="ShapeBlueprintEditorsFactory.cs" t="Include" />
+            </e>
+          </e>
           <e p="Shapes" t="Include">
             <e p="Blueprint" t="Include">
+              <e p="LineBlueprint.cs" t="Include" />
               <e p="PointBlueprint.cs" t="Include" />
               <e p="ShapeBlueprint.cs" t="Include" />
+              <e p="ShapeBlueprintFactory.cs" t="Include" />
             </e>
             <e p="Data" t="Include">
               <e p="CompositeShapeData.cs" t="Include" />
@@ -285,6 +299,9 @@
               <e p="PolygonData.cs" t="Include" />
               <e p="ShapeData.cs" t="Include" />
               <e p="ShapeDataFactory.cs" t="Include" />
+            </e>
+            <e p="Lesson" t="Include">
+              <e p="LessonBlueprint.cs" t="Include" />
             </e>
             <e p="View" t="Include">
               <e p="CompositeShapeView.cs" t="Include" />
