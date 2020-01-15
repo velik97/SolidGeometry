@@ -10,7 +10,7 @@ namespace Editor.Shapes
     {
         private Label m_StartPointLabel;
         private Label m_EndPointLabel;
-        
+
         private ToolbarMenu m_StartPointChoose;
         private ToolbarMenu m_EndPointChoose;
         
@@ -52,13 +52,49 @@ namespace Editor.Shapes
             {
                 m_StartPointChoose.menu.AppendAction(
                     pointData.ToString(), 
-                    menuAction => Blueprint.LineData.SetStartPoint(pointData),
+                    menuAction => SetStartPoint(pointData),
                     DropdownMenuAction.AlwaysEnabled);
                 
                 m_EndPointChoose.menu.AppendAction(
                     pointData.ToString(), 
-                    menuAction => Blueprint.LineData.SetEndPoint(pointData),
+                    menuAction => SetEndPoint(pointData),
                     DropdownMenuAction.AlwaysEnabled);
+            }
+        }
+
+        private void SetStartPoint(PointData pointData)
+        {
+            if (Blueprint.LineData.StartPoint == pointData)
+            {
+                return;
+            }
+            if (Blueprint.LineData.StartPoint != null)
+            {
+                Blueprint.RemoveDependenceOn(Blueprint.LineData.StartPoint);
+            }
+            Blueprint.LineData.SetStartPoint(pointData);
+            
+            if (Blueprint.LineData.StartPoint != null)
+            {
+                Blueprint.CreateDependenceOn(pointData);
+            }
+        }
+        
+        private void SetEndPoint(PointData pointData)
+        {
+            if (Blueprint.LineData.EndPoint == pointData)
+            {
+                return;
+            }
+            if (Blueprint.LineData.EndPoint != null)
+            {
+                Blueprint.RemoveDependenceOn(Blueprint.LineData.EndPoint);
+            }
+            Blueprint.LineData.SetEndPoint(pointData);
+            
+            if (Blueprint.LineData.EndPoint != null)
+            {
+                Blueprint.CreateDependenceOn(pointData);
             }
         }
     }

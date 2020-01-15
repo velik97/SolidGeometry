@@ -10,6 +10,7 @@ namespace Editor.Shapes
         private readonly Action<ShapeBlueprint, VisualElement> m_DeleteAction;
 
         private Foldout m_NameElement;
+        private Button m_DeleteButton;
 
         protected ShapeBlueprintEditor(TBlueprint blueprint, Action<ShapeBlueprint, VisualElement> deleteAction)
         {
@@ -17,6 +18,7 @@ namespace Editor.Shapes
             m_DeleteAction = deleteAction;
 
             Blueprint.NameUpdated += UpdateContent;
+            Blueprint.DependencesUpdated += UpdateDeleteButton;
         }
 
         public VisualElement GetVisualElement()
@@ -28,16 +30,23 @@ namespace Editor.Shapes
             
             SetBaseVisualElement(visualElement);
             
-            Button deleteButton = new Button(() => m_DeleteAction(Blueprint, m_NameElement)) {text = "Delete"};
-            visualElement.Add(deleteButton);
+            m_DeleteButton = new Button(() => m_DeleteAction(Blueprint, m_NameElement));
+            visualElement.Add(m_DeleteButton);
 
             UpdateContent();
+            UpdateDeleteButton();
             return m_NameElement;
         }
 
         protected virtual void UpdateContent()
         {
             m_NameElement.text = Blueprint.MainShapeData.ToString();
+        }
+
+        private void UpdateDeleteButton()
+        {
+            m_DeleteButton.text = Blueprint.HaveDependences ? "Can't delete" : "Delete";
+            m_DeleteButton.SetEnabled(!Blueprint.HaveDependences);
         }
 
         protected abstract void SetBaseVisualElement(VisualElement visualElement);

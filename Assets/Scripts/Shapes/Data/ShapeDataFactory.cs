@@ -1,6 +1,7 @@
 using System;
 using System.Collections.Generic;
 using System.Linq;
+using Shapes.Data.Uniqueness;
 using Shapes.View;
 using UnityEngine;
 
@@ -13,6 +14,11 @@ namespace Shapes.Data
         [SerializeField] private readonly List<LineData> m_LinetDatas = new List<LineData>();
         [SerializeField] private readonly List<PolygonData> m_PolygonDatas = new List<PolygonData>();
         [SerializeField] private readonly List<CompositeShapeData> m_CompositeShapeDatas = new List<CompositeShapeData>();
+
+        private readonly UniquenessValidator<PointData.PointNameUniquenessValidatable> m_PointsByNameUniquenessValidator =
+            new UniquenessValidator<PointData.PointNameUniquenessValidatable>(256);
+        private readonly UniquenessValidator<PointData.PointPositionUniquenessValidatable> m_PointsByPositionUniquenessValidator =
+            new UniquenessValidator<PointData.PointPositionUniquenessValidatable>(256);
 
         public event Action ShapesListUpdated;
 
@@ -30,6 +36,8 @@ namespace Shapes.Data
             PointData pointData = new PointData();
             
             m_PointDatas.Add(pointData);
+            m_PointsByNameUniquenessValidator.AddValidatable(pointData.NameUniquenessValidatable);
+            m_PointsByPositionUniquenessValidator.AddValidatable(pointData.PositionUniquenessValidatable);
             ShapesListUpdated?.Invoke();
             pointData.NameUpdated += OnPointsListUpdated;
             return pointData;
@@ -40,6 +48,8 @@ namespace Shapes.Data
             PointData pointData = new ConditionalPointData();
             
             m_PointDatas.Add(pointData);
+            m_PointsByNameUniquenessValidator.AddValidatable(pointData.NameUniquenessValidatable);
+            m_PointsByPositionUniquenessValidator.AddValidatable(pointData.PositionUniquenessValidatable);
             ShapesListUpdated?.Invoke();
             pointData.NameUpdated += OnPointsListUpdated;
             return pointData;
@@ -86,6 +96,8 @@ namespace Shapes.Data
             {
                 case PointData pointData:
                     m_PointDatas.Remove(pointData);
+                    m_PointsByNameUniquenessValidator.RemoveValidatable(pointData.NameUniquenessValidatable);
+                    m_PointsByPositionUniquenessValidator.RemoveValidatable(pointData.PositionUniquenessValidatable);
                     break;
                 case LineData lineData:
                     m_LinetDatas.Remove(lineData);
@@ -98,37 +110,6 @@ namespace Shapes.Data
                     break;
             }
             ShapesListUpdated?.Invoke();
-        }
-        
-        private class NonPositionalArrayEqualityComparer : IEqualityComparer<string[]>
-        {
-            public bool Equals(string[] x, string[] y)
-            {
-                if (x == null && y == null)
-                {
-                    return true;
-                }
-                if (x == null ^ y == null)
-                {
-                    return false;
-                }
-                if (x == y)
-                {
-                    return true;
-                }
-                return GetHashCode(x) == GetHashCode(y);
-            }
-
-            public int GetHashCode(string[] obj)
-            {
-                int hash = 0;
-                foreach (string s in obj)
-                {
-                    hash ^= s.GetHashCode();
-                }
-
-                return hash;
-            }
         }
 
         private void OnPointsListUpdated()

@@ -11,6 +11,7 @@ namespace Shapes.Blueprint
         public LineBlueprint(ShapeDataFactory dataFactory) : base(dataFactory)
         {
             LineData = dataFactory.CreateLineData();
+            LineData.SourceBlueprint = this;
             MyShapeDatas.Add(LineData);
 
             LineData.NameUpdated += OnNameUpdated;

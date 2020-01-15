@@ -7,6 +7,7 @@ namespace Shapes.Blueprint
     public abstract class ShapeBlueprint
     {
         public event Action NameUpdated;
+        public event Action DependencesUpdated;
         
         /// <summary>
         /// List of shapes, that depend on me
@@ -49,14 +50,28 @@ namespace Shapes.Blueprint
             MyShapeDatas.Clear();
         }
 
+        public void CreateDependenceOn(ShapeData shapeData)
+        {
+            m_DependencesOnOtherShapes.Add(shapeData.SourceBlueprint);
+            shapeData.SourceBlueprint.AddDependence(this);
+        }
+
+        public void RemoveDependenceOn(ShapeData shapeData)
+        {
+            m_DependencesOnOtherShapes.Remove(shapeData.SourceBlueprint);
+            shapeData.SourceBlueprint.RemoveDependence(this);
+        }
+
         protected void AddDependence(ShapeBlueprint blueprint)
         {
             m_DependentOnMeShapes.Add(blueprint);
+            DependencesUpdated?.Invoke();
         }
         
         private void RemoveDependence(ShapeBlueprint blueprint)
         {
             m_DependentOnMeShapes.Remove(blueprint);
+            DependencesUpdated?.Invoke();
         }
 
         protected void OnNameUpdated()

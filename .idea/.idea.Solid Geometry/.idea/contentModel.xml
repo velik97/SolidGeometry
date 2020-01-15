@@ -299,6 +299,10 @@
               <e p="PolygonData.cs" t="Include" />
               <e p="ShapeData.cs" t="Include" />
               <e p="ShapeDataFactory.cs" t="Include" />
+              <e p="Uniqueness" t="Include">
+                <e p="IUniquenessValidatable.cs" t="Include" />
+                <e p="UniquenessValidator.cs" t="Include" />
+              </e>
             </e>
             <e p="Lesson" t="Include">
               <e p="LessonBlueprint.cs" t="Include" />

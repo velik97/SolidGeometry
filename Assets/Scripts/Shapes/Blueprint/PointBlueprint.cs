@@ -13,6 +13,7 @@ namespace Shapes.Blueprint
         public PointBlueprint(ShapeDataFactory dataFactory) : base(dataFactory)
         {
             PointData = DataFactory.CreatePointData();
+            PointData.SourceBlueprint = this;
             MyShapeDatas.Add(PointData);
 
             PointData.NameUpdated += OnNameUpdated;
