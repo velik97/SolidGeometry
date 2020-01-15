@@ -1,17 +1,18 @@
+using System;
 using System.Linq;
 using Shapes.View;
 
 namespace Shapes.Data
 {
+    [Serializable]
     public class PolygonData : ShapeData
     {
         public PolygonView PolygonView => View as PolygonView;
         
-        public readonly PointData[] Points;
+        public PointData[] Points;
 
-        public PolygonData(params PointData[] points)
+        public PolygonData()
         {
-            Points = points;
         }
 
         public override string ToString()

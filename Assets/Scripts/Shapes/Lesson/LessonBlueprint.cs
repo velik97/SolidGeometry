@@ -9,11 +9,11 @@ namespace Shapes.Lesson
     public class LessonBlueprint : ScriptableObject
     {
         public readonly List<ShapeBlueprint> ShapeBlueprints = new List<ShapeBlueprint>();
-        private readonly ShapeDataFactory m_ShapeDataFactory = new ShapeDataFactory();
+        public readonly ShapeDataFactory ShapeDataFactory = new ShapeDataFactory();
         private ShapeBlueprintFactory m_ShapeBlueprintFactory;
 
         private ShapeBlueprintFactory ShapeBlueprintFactory =>
-            m_ShapeBlueprintFactory ?? (m_ShapeBlueprintFactory = new ShapeBlueprintFactory(m_ShapeDataFactory));
+            m_ShapeBlueprintFactory ?? (m_ShapeBlueprintFactory = new ShapeBlueprintFactory(ShapeDataFactory));
 
         public ShapeBlueprint AddBlueprint(ShapeBlueprintFactory.ShapeBlueprintType blueprintType)
         {
@@ -24,6 +24,7 @@ namespace Shapes.Lesson
 
         public void DeleteBlueprint(ShapeBlueprint blueprint)
         {
+            blueprint.Destroy();
             ShapeBlueprints.Remove(blueprint);
         }
     }

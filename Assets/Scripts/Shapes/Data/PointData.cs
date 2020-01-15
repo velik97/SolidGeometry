@@ -1,9 +1,11 @@
+using System;
 using Shapes.View;
 using UniRx;
 using UnityEngine;
 
 namespace Shapes.Data
 {
+    [Serializable]
     public class PointData : ShapeData
     {
         public PointView PointView => View as PointView;
@@ -19,11 +21,13 @@ namespace Shapes.Data
         public void SetName(string pointName)
         {
             m_PointName = pointName;
+            OnNameUpdated();
         }
 
         public virtual void SetPosition(Vector3 position)
         {
             m_Position = position;
+            OnGeometryUpdated();
         }
 
         public void SetIsAccessory(bool isAccessory)

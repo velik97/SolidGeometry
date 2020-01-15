@@ -2,11 +2,11 @@ using System;
 using System.Linq;
 using Editor.Shapes;
 using Shapes.Blueprint;
+using Shapes.Data;
 using Shapes.Lesson;
 using UnityEditor;
 using UnityEditor.UIElements;
 using UnityEngine.UIElements;
-using PopupWindow = UnityEngine.UIElements.PopupWindow;
 
 namespace Editor.Lesson
 {
@@ -20,6 +20,8 @@ namespace Editor.Lesson
         private VisualElement m_TopVisualElement;
         private VisualElement m_BaseVisualElement;
         private VisualElement m_BottomVisualElement;
+
+        private Foldout m_DebugElement;
 
         private void OnEnable()
         {
@@ -57,14 +59,14 @@ namespace Editor.Lesson
         private VisualElement GetBottomVisualElement()
         {
             VisualElement visualElement = new VisualElement();
-            
-            ToolbarMenu blueprintsList = new ToolbarMenu();
-            blueprintsList.text = "Create";
-            blueprintsList.variant = ToolbarMenu.Variant.Default;
-            
-            CreateDropdown(blueprintsList.menu);
 
+            ToolbarMenu blueprintsList = new ToolbarMenu {text = "Create"};
+            CreateDropdown(blueprintsList.menu);
             visualElement.Add(blueprintsList);
+            
+            m_DebugElement = new Foldout {text = "All Datas"};
+            m_Target.ShapeDataFactory.ShapesListUpdated += UpdateDebug;
+            visualElement.Add(m_DebugElement);
             return visualElement;
         }
 
@@ -78,6 +80,16 @@ namespace Editor.Lesson
                     shapeType.ToString(), 
                     menuAction => CreateBlueprint(shapeType),
                     DropdownMenuAction.AlwaysEnabled);
+            }
+        }
+
+        private void UpdateDebug()
+        {
+            m_DebugElement.Clear();
+            int i = 0;
+            foreach (ShapeData shapeData in m_Target.ShapeDataFactory.AllDatas)
+            {
+                m_DebugElement.Insert(i++, new Label(shapeData.ToString()));
             }
         }
 

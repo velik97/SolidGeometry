@@ -1,8 +1,10 @@
+using System;
 using System.Linq;
 using Shapes.View;
 
 namespace Shapes.Data
 {
+    [Serializable]
     public class CompositeShapeData : ShapeData
     {
         CompositeShapeView CompositeShapeView => View as CompositeShapeView;

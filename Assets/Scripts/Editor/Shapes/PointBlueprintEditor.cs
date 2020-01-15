@@ -7,6 +7,8 @@ namespace UnityEngine.UIElements
 {
     public class PointBlueprintEditor : ShapeBlueprintEditor<PointBlueprint>
     {
+        private TextField m_NameField;
+        
         public PointBlueprintEditor(PointBlueprint blueprint, Action<ShapeBlueprint, VisualElement> deleteAction) : base(blueprint, deleteAction)
         {
         }
@@ -25,5 +27,6 @@ namespace UnityEngine.UIElements
             visualElement.Add(positionField);
             visualElement.Add(isAccessoryField);
         }
+
     }
 }

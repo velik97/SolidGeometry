@@ -11,6 +11,10 @@ namespace Shapes.Blueprint
         public LineBlueprint(ShapeDataFactory dataFactory) : base(dataFactory)
         {
             LineData = dataFactory.CreateLineData();
+            MyShapeDatas.Add(LineData);
+
+            LineData.NameUpdated += OnNameUpdated;
+            DataFactory.ShapesListUpdated += OnNameUpdated;
         }
     }
 }

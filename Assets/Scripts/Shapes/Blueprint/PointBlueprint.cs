@@ -14,6 +14,8 @@ namespace Shapes.Blueprint
         {
             PointData = DataFactory.CreatePointData();
             MyShapeDatas.Add(PointData);
+
+            PointData.NameUpdated += OnNameUpdated;
         }
     }
 }

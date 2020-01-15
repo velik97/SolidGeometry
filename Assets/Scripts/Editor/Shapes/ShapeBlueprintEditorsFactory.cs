@@ -12,10 +12,9 @@ namespace Editor.Shapes
             switch (blueprint)
             {
                 case PointBlueprint pointBlueprint:
-                    return (new PointBlueprintEditor(pointBlueprint, deleteAction)).GetVisualElement();
+                    return new PointBlueprintEditor(pointBlueprint, deleteAction).GetVisualElement();
                 case LineBlueprint lineBlueprint:
-                    return (new LineBlueprintEditor(lineBlueprint, deleteAction)).GetVisualElement();
-                
+                    return new LineBlueprintEditor(lineBlueprint, deleteAction).GetVisualElement();
             }
 
             return null;

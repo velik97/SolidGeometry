@@ -1,3 +1,4 @@
+using System;
 using System.Collections.Generic;
 using Shapes.Data;
 
@@ -5,6 +6,8 @@ namespace Shapes.Blueprint
 {
     public abstract class ShapeBlueprint
     {
+        public event Action NameUpdated;
+        
         /// <summary>
         /// List of shapes, that depend on me
         /// </summary>
@@ -21,7 +24,10 @@ namespace Shapes.Blueprint
         
         public abstract ShapeData MainShapeData { get; }
 
-        protected ShapeDataFactory DataFactory;
+        protected readonly ShapeDataFactory DataFactory;
+
+        public IReadOnlyCollection<PointData> PointDatas => DataFactory.PointDatas;
+
 
         protected ShapeBlueprint(ShapeDataFactory dataFactory)
         {
@@ -51,6 +57,11 @@ namespace Shapes.Blueprint
         private void RemoveDependence(ShapeBlueprint blueprint)
         {
             m_DependentOnMeShapes.Remove(blueprint);
+        }
+
+        protected void OnNameUpdated()
+        {
+            NameUpdated?.Invoke();
         }
     }
 }
