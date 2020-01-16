@@ -1,0 +1,53 @@
+using Shapes.Data;
+using Shapes.Validators.Line;
+using Shapes.Validators.Point;
+
+namespace Shapes.Validators.Uniqueness
+{
+    public class ShapeDatasUniquenessValidators
+    {
+        private readonly UniquenessValidatorsSolver<PointNameUniquenessValidator> m_PointsByNameUniquenessValidatorsSolver =
+            new UniquenessValidatorsSolver<PointNameUniquenessValidator>(256);
+        private readonly UniquenessValidatorsSolver<PointPositionUniquenessValidator> m_PointsByPositionUniquenessValidatorsSolver =
+            new UniquenessValidatorsSolver<PointPositionUniquenessValidator>(256);
+
+        private readonly UniquenessValidatorsSolver<LineUniquenessValidator> m_LinesUniquenessValidatorsSolver =
+            new UniquenessValidatorsSolver<LineUniquenessValidator>(256);
+
+        public void AddShapeData(ShapeData shapeData)
+        {
+            switch (shapeData)
+            {
+                case PointData pointData:
+                    m_PointsByNameUniquenessValidatorsSolver.AddValidatable(pointData.NameUniquenessValidator);
+                    m_PointsByPositionUniquenessValidatorsSolver.AddValidatable(pointData.PositionUniquenessValidator);
+                    break;
+                case LineData lineData:
+                    m_LinesUniquenessValidatorsSolver.AddValidatable(lineData.UniquenessValidator);
+                    break;
+                case PolygonData polygonData:
+                    break;
+                case CompositeShapeData compositeShapeData:
+                    break;
+            }
+        }
+
+        public void RemoveShapeData(ShapeData shapeData)
+        {
+            switch (shapeData)
+            {
+                case PointData pointData:
+                    m_PointsByNameUniquenessValidatorsSolver.RemoveValidatable(pointData.NameUniquenessValidator);
+                    m_PointsByPositionUniquenessValidatorsSolver.RemoveValidatable(pointData.PositionUniquenessValidator);
+                    break;
+                case LineData lineData:
+                    m_LinesUniquenessValidatorsSolver.RemoveValidatable(lineData.UniquenessValidator);
+                    break;
+                case PolygonData polygonData:
+                    break;
+                case CompositeShapeData compositeShapeData:
+                    break;
+            }
+        }
+    }
+}

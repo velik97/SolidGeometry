@@ -45,7 +45,7 @@ namespace Editor.Shapes
 
         private void UpdateDeleteButton()
         {
-            m_DeleteButton.text = Blueprint.HaveDependences ? "Can't delete" : "Delete";
+            m_DeleteButton.text = Blueprint.HaveDependences ? "Can't delete, have dependences" : "Delete";
             m_DeleteButton.SetEnabled(!Blueprint.HaveDependences);
         }
 

@@ -283,6 +283,9 @@
               <e p="ShapeBlueprintEditor.cs" t="Include" />
               <e p="ShapeBlueprintEditorsFactory.cs" t="Include" />
             </e>
+            <e p="VisualElementsExtensions" t="Include">
+              <e p="ValidatorField.cs" t="Include" />
+            </e>
           </e>
           <e p="Shapes" t="Include">
             <e p="Blueprint" t="Include">
@@ -293,19 +296,32 @@
             </e>
             <e p="Data" t="Include">
               <e p="CompositeShapeData.cs" t="Include" />
-              <e p="ConditionalPointData.cs" t="Include" />
               <e p="LineData.cs" t="Include" />
               <e p="PointData.cs" t="Include" />
               <e p="PolygonData.cs" t="Include" />
               <e p="ShapeData.cs" t="Include" />
               <e p="ShapeDataFactory.cs" t="Include" />
-              <e p="Uniqueness" t="Include">
-                <e p="IUniquenessValidatable.cs" t="Include" />
-                <e p="UniquenessValidator.cs" t="Include" />
-              </e>
             </e>
             <e p="Lesson" t="Include">
               <e p="LessonBlueprint.cs" t="Include" />
+            </e>
+            <e p="Validators" t="Include">
+              <e p="IValidator.cs" t="Include" />
+              <e p="Line" t="Include">
+                <e p="LinePointsNotSameValidator.cs" t="Include" />
+                <e p="LineUniquenessValidator.cs" t="Include" />
+              </e>
+              <e p="Point" t="Include">
+                <e p="PointNameNotEmptyValidator.cs" t="Include" />
+                <e p="PointNameUniquenessValidator.cs" t="Include" />
+                <e p="PointPositionUniquenessValidator.cs" t="Include" />
+              </e>
+              <e p="PointNotEmptyValidator.cs" t="Include" />
+              <e p="Uniqueness" t="Include">
+                <e p="IUniquenessValidator.cs" t="Include" />
+                <e p="ShapeDatasUniquenessValidators.cs" t="Include" />
+                <e p="UniquenessValidatorsSolver.cs" t="Include" />
+              </e>
             </e>
             <e p="View" t="Include">
               <e p="CompositeShapeView.cs" t="Include" />

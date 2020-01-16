@@ -1,5 +1,6 @@
 using System;
-using Shapes.Data.Uniqueness;
+using Shapes.Validators.Point;
+using Shapes.Validators.Uniqueness;
 using Shapes.View;
 using UniRx;
 using UnityEngine;
@@ -15,8 +16,10 @@ namespace Shapes.Data
         public string PointName => m_PointName;
         public bool IsAccessoryPoint => m_IsAccessoryPoint;
 
-        public PointNameUniquenessValidatable NameUniquenessValidatable;
-        public PointPositionUniquenessValidatable PositionUniquenessValidatable;
+        public PointNameUniquenessValidator NameUniquenessValidator;
+        public PointNameNotEmptyValidator NameNotEmptyValidator;
+        
+        public PointPositionUniquenessValidator PositionUniquenessValidator;
 
         protected Vector3 m_Position = Vector3.zero;
         private string m_PointName = string.Empty;
@@ -24,8 +27,9 @@ namespace Shapes.Data
 
         public PointData()
         {
-            NameUniquenessValidatable = new PointNameUniquenessValidatable(this);
-            PositionUniquenessValidatable = new PointPositionUniquenessValidatable(this);
+            NameUniquenessValidator = new PointNameUniquenessValidator(this);
+            PositionUniquenessValidator = new PointPositionUniquenessValidator(this);
+            NameNotEmptyValidator = new PointNameNotEmptyValidator(this);
         }
 
         public void SetName(string pointName)
@@ -38,7 +42,7 @@ namespace Shapes.Data
             OnNameUpdated();
         }
 
-        public virtual void SetPosition(Vector3 position)
+        public void SetPosition(Vector3 position)
         {
             if (position == m_Position)
             {
@@ -56,98 +60,6 @@ namespace Shapes.Data
         public override string ToString()
         {
             return $"Point {PointName}";
-        }
-        
-        public class PointNameUniquenessValidatable : IUniquenessValidatable<PointNameUniquenessValidatable>
-        {
-            public event Action UniqueDeterminingPropertyUpdated;
-            public event Action UniquenessUpdated;
-
-            private PointData m_PointData;
-            
-            private bool m_IsUnique;
-
-            public bool IsUnique => m_IsUnique;
-
-            public string PointName => m_PointData.PointName;
-
-            public PointNameUniquenessValidatable(PointData pointData)
-            {
-                m_PointData = pointData;
-                m_PointData.NameUpdated += OnUniqueDeterminingPropertyUpdated;
-            }
-            
-            private void OnUniqueDeterminingPropertyUpdated()
-            {
-                UniqueDeterminingPropertyUpdated?.Invoke();
-            }
-
-            public void SetIsUnique(bool unique)
-            {
-                if (unique == m_IsUnique)
-                {
-                    return;
-                }
-
-                m_IsUnique = unique;
-                UniquenessUpdated?.Invoke();
-            }
-
-            public int GetUniqueHashCode()
-            {
-                return PointName.GetHashCode();
-            }
-
-            public bool UniqueEquals(PointNameUniquenessValidatable validatable)
-            {
-                return PointName == validatable.PointName;
-            }
-        }
-        
-        public class PointPositionUniquenessValidatable : IUniquenessValidatable<PointPositionUniquenessValidatable>
-        {
-            public event Action UniqueDeterminingPropertyUpdated;
-            public event Action UniquenessUpdated;
-
-            private PointData m_PointData;
-            
-            private bool m_IsUnique;
-
-            public bool IsUnique => m_IsUnique;
-
-            public Vector3 Position => m_PointData.Position;
-
-            public PointPositionUniquenessValidatable(PointData pointData)
-            {
-                m_PointData = pointData;
-                m_PointData.GeometryUpdated += OnUniqueDeterminingPropertyUpdated;
-            }
-            
-            private void OnUniqueDeterminingPropertyUpdated()
-            {
-                UniqueDeterminingPropertyUpdated?.Invoke();
-            }
-
-            public void SetIsUnique(bool unique)
-            {
-                if (unique == m_IsUnique)
-                {
-                    return;
-                }
-
-                m_IsUnique = unique;
-                UniquenessUpdated?.Invoke();
-            }
-
-            public int GetUniqueHashCode()
-            {
-                return Position.GetHashCode();
-            }
-
-            public bool UniqueEquals(PointPositionUniquenessValidatable validatable)
-            {
-                return Position == validatable.Position;
-            }
         }
     }
 }

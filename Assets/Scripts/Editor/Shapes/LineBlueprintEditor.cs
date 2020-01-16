@@ -1,6 +1,8 @@
 using System;
+using Editor.VisualElementsExtensions;
 using Shapes.Blueprint;
 using Shapes.Data;
+using Shapes.Validators.Line;
 using UnityEditor.UIElements;
 using UnityEngine.UIElements;
 
@@ -35,7 +37,17 @@ namespace Editor.Shapes
             endPointScope.Add(m_EndPointChoose);
 
             visualElement.Add(startPointScope);
+            PointNotEmptyValidator startPointNotEmptyValidator = new PointNotEmptyValidator(
+                () => Blueprint.LineData.StartPoint, action => Blueprint.LineData.NameUpdated += action);
+            visualElement.Add(new ValidatorField(startPointNotEmptyValidator));
+
             visualElement.Add(endPointScope);
+            PointNotEmptyValidator endPointNotEmptyValidator = new PointNotEmptyValidator(
+                () => Blueprint.LineData.EndPoint, action => Blueprint.LineData.NameUpdated += action);
+            visualElement.Add(new ValidatorField(endPointNotEmptyValidator));
+            
+            visualElement.Add(new ValidatorField(Blueprint.LineData.m_PointsNotSameValidator));
+            visualElement.Add(new ValidatorField(Blueprint.LineData.UniquenessValidator));
         }
 
         protected override void UpdateContent()

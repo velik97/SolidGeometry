@@ -1,12 +1,11 @@
 using System;
 
-namespace Shapes.Data.Uniqueness
+namespace Shapes.Validators.Uniqueness
 {
-    public interface IUniquenessValidatable<in TValidatable>
+    public interface IUniquenessValidator<in TValidatable>
     {
         event Action UniqueDeterminingPropertyUpdated;
-        event Action UniquenessUpdated;
-
+        
         void SetIsUnique(bool unique);
 
         int GetUniqueHashCode();

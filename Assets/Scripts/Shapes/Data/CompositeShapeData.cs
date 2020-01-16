@@ -9,19 +9,14 @@ namespace Shapes.Data
     {
         CompositeShapeView CompositeShapeView => View as CompositeShapeView;
         
-        public readonly PointData[] Points;
-        public readonly LineData[] Lines;
-        public readonly PolygonData[] Polygons;
+        public PointData[] Points;
+        public LineData[] Lines;
+        public PolygonData[] Polygons;
 
         private string m_ShapeName;
 
-        public CompositeShapeData(PointData[] points, LineData[] lines, PolygonData[] polygons, string shapeName)
+        public CompositeShapeData()
         {
-            Points = points;
-            Lines = lines;
-            Polygons = polygons;
-
-            m_ShapeName = shapeName;
         }
 
         public override string ToString()

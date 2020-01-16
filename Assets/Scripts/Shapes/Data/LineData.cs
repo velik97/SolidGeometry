@@ -1,4 +1,6 @@
 using System;
+using Shapes.Validators.Line;
+using Shapes.Validators.Point;
 using Shapes.View;
 
 namespace Shapes.Data
@@ -10,6 +12,15 @@ namespace Shapes.Data
         
         public PointData StartPoint;
         public PointData EndPoint;
+
+        public LineUniquenessValidator UniquenessValidator;
+        public LinePointsNotSameValidator m_PointsNotSameValidator;
+
+        public LineData()
+        {
+            UniquenessValidator = new LineUniquenessValidator(this);
+            m_PointsNotSameValidator = new LinePointsNotSameValidator(this);
+        }
 
         public void SetStartPoint(PointData pointData)
         {
