@@ -1,9 +1,9 @@
 using System;
 using System.Linq;
 using Editor.Shapes;
+using Lesson;
 using Shapes.Blueprint;
 using Shapes.Data;
-using Shapes.Lesson;
 using UnityEditor;
 using UnityEditor.UIElements;
 using UnityEngine.UIElements;

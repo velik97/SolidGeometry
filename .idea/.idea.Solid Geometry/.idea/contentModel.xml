@@ -284,8 +284,12 @@
               <e p="ShapeBlueprintEditorsFactory.cs" t="Include" />
             </e>
             <e p="VisualElementsExtensions" t="Include">
+              <e p="ChoosePointField.cs" t="Include" />
               <e p="ValidatorField.cs" t="Include" />
             </e>
+          </e>
+          <e p="Lesson" t="Include">
+            <e p="LessonBlueprint.cs" t="Include" />
           </e>
           <e p="Shapes" t="Include">
             <e p="Blueprint" t="Include">
@@ -302,9 +306,6 @@
               <e p="ShapeData.cs" t="Include" />
               <e p="ShapeDataFactory.cs" t="Include" />
             </e>
-            <e p="Lesson" t="Include">
-              <e p="LessonBlueprint.cs" t="Include" />
-            </e>
             <e p="Validators" t="Include">
               <e p="IValidator.cs" t="Include" />
               <e p="Line" t="Include">
@@ -317,11 +318,18 @@
                 <e p="PointPositionUniquenessValidator.cs" t="Include" />
               </e>
               <e p="PointNotEmptyValidator.cs" t="Include" />
+              <e p="Polygon" t="Include">
+                <e p="PolygonPointsAreInOnePlaneValidator.cs" t="Include" />
+                <e p="PolygonPointsNotSameValidator.cs" t="Include" />
+                <e p="PolygonUniquenessValidator.cs" t="Include" />
+              </e>
               <e p="Uniqueness" t="Include">
                 <e p="IUniquenessValidator.cs" t="Include" />
                 <e p="ShapeDatasUniquenessValidators.cs" t="Include" />
+                <e p="UniquenessValidator.cs" t="Include" />
                 <e p="UniquenessValidatorsSolver.cs" t="Include" />
               </e>
+              <e p="Validator.cs" t="Include" />
             </e>
             <e p="View" t="Include">
               <e p="CompositeShapeView.cs" t="Include" />
@@ -331,6 +339,9 @@
               <e p="PolygonView.cs" t="Include" />
               <e p="ShapeViewFactory.cs" t="Include" />
             </e>
+          </e>
+          <e p="Util" t="Include">
+            <e p="Extensions.cs" t="Include" />
           </e>
         </e>
       </e>

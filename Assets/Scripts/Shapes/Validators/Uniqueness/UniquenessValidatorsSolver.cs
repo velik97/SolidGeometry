@@ -128,7 +128,7 @@ namespace Shapes.Validators.Uniqueness
 
             public void UpdateHashCode()
             {
-                m_HashCode = Validator.GetUniqueHashCode() % m_ValidatorsSolver.m_Capacity;
+                m_HashCode = (Validator.GetUniqueHashCode() & 0xfffffff) % m_ValidatorsSolver.m_Capacity;
             }
         }
     }

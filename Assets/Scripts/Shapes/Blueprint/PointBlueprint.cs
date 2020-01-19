@@ -1,9 +1,10 @@
+using System;
 using Shapes.Data;
 using UnityEngine;
 
 namespace Shapes.Blueprint
 {
-    [System.Serializable]
+    [Serializable]
     public class PointBlueprint : ShapeBlueprint
     {
         public readonly PointData PointData;

@@ -12,7 +12,7 @@ namespace Shapes.Data
     {
         public PointView PointView => View as PointView;
         
-        public virtual Vector3 Position => m_Position;
+        public Vector3 Position => m_Position;
         public string PointName => m_PointName;
         public bool IsAccessoryPoint => m_IsAccessoryPoint;
 
@@ -21,7 +21,7 @@ namespace Shapes.Data
         
         public PointPositionUniquenessValidator PositionUniquenessValidator;
 
-        protected Vector3 m_Position = Vector3.zero;
+        private Vector3 m_Position = Vector3.zero;
         private string m_PointName = string.Empty;
         private bool m_IsAccessoryPoint = false;
 

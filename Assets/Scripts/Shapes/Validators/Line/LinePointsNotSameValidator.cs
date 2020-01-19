@@ -3,37 +3,22 @@ using Shapes.Data;
 
 namespace Shapes.Validators.Line
 {
-    public class LinePointsNotSameValidator : IValidator
+    public class LinePointsNotSameValidator : Validator
     {
-        private readonly LineData m_LineData; 
-            
-        private bool m_AreNotSame;
-        
-        public event Action ValidStateChanged;
-        
+        private readonly LineData m_LineData;
+
         public LinePointsNotSameValidator(LineData lineData)
         {
             m_LineData = lineData;
-            m_LineData.NameUpdated += CheckIfPointsAreSame;
-        }
-            
-        private void CheckIfPointsAreSame()
-        {
-            bool notSame = m_LineData.StartPoint != m_LineData.EndPoint;
-            if (notSame == m_AreNotSame)
-            {
-                return;
-            }
-            m_AreNotSame = notSame;
-            ValidStateChanged?.Invoke();
+            m_LineData.NameUpdated += UpdateValidState;
         }
         
-        public bool IsValid()
+        protected override bool CheckIsValid()
         {
-            return m_AreNotSame;
+            return m_LineData.StartPoint != m_LineData.EndPoint;
         }
 
-        public string GetNotValidMessage()
+        public override string GetNotValidMessage()
         {
             return "Points should be distinct";
         }

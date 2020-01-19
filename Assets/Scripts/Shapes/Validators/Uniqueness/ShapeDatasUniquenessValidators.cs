@@ -1,6 +1,7 @@
 using Shapes.Data;
 using Shapes.Validators.Line;
 using Shapes.Validators.Point;
+using Shapes.Validators.Polygon;
 
 namespace Shapes.Validators.Uniqueness
 {
@@ -13,6 +14,9 @@ namespace Shapes.Validators.Uniqueness
 
         private readonly UniquenessValidatorsSolver<LineUniquenessValidator> m_LinesUniquenessValidatorsSolver =
             new UniquenessValidatorsSolver<LineUniquenessValidator>(256);
+
+        private readonly UniquenessValidatorsSolver<PolygonUniquenessValidator> m_PolygonUniquenessValidatorsSolver =
+            new UniquenessValidatorsSolver<PolygonUniquenessValidator>(256);
 
         public void AddShapeData(ShapeData shapeData)
         {

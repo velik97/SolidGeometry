@@ -4,52 +4,27 @@ using Shapes.Validators.Uniqueness;
 
 namespace Shapes.Validators.Line
 {
-    public class LineUniquenessValidator : IUniquenessValidator<LineUniquenessValidator>, IValidator
+    public class LineUniquenessValidator : UniquenessValidator<LineUniquenessValidator>
     {
-        public event Action UniqueDeterminingPropertyUpdated;
-        public event Action ValidStateChanged;
-
         private readonly LineData m_LineData;
-            
-        private bool m_IsUnique;
         
         public LineUniquenessValidator(LineData lineData)
         {
             m_LineData = lineData;
             m_LineData.NameUpdated += OnUniqueDeterminingPropertyUpdated;
         }
-            
-        private void OnUniqueDeterminingPropertyUpdated()
+
+        public override string GetNotValidMessage()
         {
-            UniqueDeterminingPropertyUpdated?.Invoke();
+            return $"{m_LineData} is not unique";
         }
 
-        public bool IsValid()
+        public override int GetUniqueHashCode()
         {
-            return m_IsUnique;
+            return (m_LineData.StartPoint?.GetHashCode() ?? 0) ^ (m_LineData.EndPoint?.GetHashCode() ?? 0);
         }
 
-        public string GetNotValidMessage()
-        {
-            return $"Line '{m_LineData.StartPoint?.PointName}{m_LineData.EndPoint?.PointName}' is not unique";
-        }
-
-        public void SetIsUnique(bool unique)
-        {
-            if (unique == m_IsUnique)
-            {
-                return;
-            }
-            m_IsUnique = unique;
-            ValidStateChanged?.Invoke();
-        }
-
-        public int GetUniqueHashCode()
-        {
-            return ((m_LineData.StartPoint?.GetHashCode() ?? 0) ^ (m_LineData.EndPoint?.GetHashCode() ?? 0)) & 0xfffffff;
-        }
-
-        public bool UniqueEquals(LineUniquenessValidator validator)
+        public override bool UniqueEquals(LineUniquenessValidator validator)
         {
             return (m_LineData.StartPoint == validator.m_LineData.StartPoint &&
                    m_LineData.EndPoint == validator.m_LineData.EndPoint)

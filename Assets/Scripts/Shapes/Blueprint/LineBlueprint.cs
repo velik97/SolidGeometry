@@ -1,7 +1,9 @@
+using System;
 using Shapes.Data;
 
 namespace Shapes.Blueprint
 {
+    [Serializable]
     public class LineBlueprint : ShapeBlueprint
     {
         public readonly LineData LineData;

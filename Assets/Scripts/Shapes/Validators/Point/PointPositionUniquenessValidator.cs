@@ -5,59 +5,29 @@ using UnityEngine;
 
 namespace Shapes.Validators.Point
 {
-    public class PointPositionUniquenessValidator : IUniquenessValidator<PointPositionUniquenessValidator>, IValidator
+    public class PointPositionUniquenessValidator : UniquenessValidator<PointPositionUniquenessValidator>
     {
-        public event Action UniqueDeterminingPropertyUpdated;
-        public event Action ValidStateChanged;
-
         private readonly PointData m_PointData;
-            
-        private bool m_IsUnique;
-
-        public bool IsUnique => m_IsUnique;
-
-        public Vector3 Position => m_PointData.Position;
-
-        public bool IsValid()
-        {
-            return m_IsUnique;
-        }
-
-        public string GetNotValidMessage()
-        {
-            return $"Position '{Position}' is already taken";
-        }
 
         public PointPositionUniquenessValidator(PointData pointData)
         {
             m_PointData = pointData;
             m_PointData.GeometryUpdated += OnUniqueDeterminingPropertyUpdated;
         }
-            
-        private void OnUniqueDeterminingPropertyUpdated()
+        
+        public override string GetNotValidMessage()
         {
-            UniqueDeterminingPropertyUpdated?.Invoke();
+            return $"Position '{m_PointData.Position}' is already taken";
         }
 
-        public void SetIsUnique(bool unique)
+        public override int GetUniqueHashCode()
         {
-            if (unique == m_IsUnique)
-            {
-                return;
-            }
-
-            m_IsUnique = unique;
-            ValidStateChanged?.Invoke();
+            return m_PointData.Position.GetHashCode();
         }
 
-        public int GetUniqueHashCode()
+        public override bool UniqueEquals(PointPositionUniquenessValidator validator)
         {
-            return Position.GetHashCode() & 0xfffffff;
-        }
-
-        public bool UniqueEquals(PointPositionUniquenessValidator validator)
-        {
-            return Position == validator.Position;
+            return m_PointData.Position == validator.m_PointData.Position;
         }
     }
 }

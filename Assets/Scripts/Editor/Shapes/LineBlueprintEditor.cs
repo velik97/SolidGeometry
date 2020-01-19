@@ -22,56 +22,23 @@ namespace Editor.Shapes
 
         protected override void SetBaseVisualElement(VisualElement visualElement)
         {
-            m_StartPointChoose = new ToolbarMenu {text = "Change"};
-            m_EndPointChoose = new ToolbarMenu {text = "Change"};
-
-            m_StartPointLabel = new Label();
-            m_EndPointLabel = new Label();
+            ChoosePointField chooseStartPointField = new ChoosePointField(
+                Blueprint.DataFactory,
+                "Start Point",
+                () => Blueprint.LineData.StartPoint,
+                SetStartPoint);
             
-            VisualElement startPointScope = new VisualElement {style = {flexDirection = FlexDirection.Row}};
-            startPointScope.Add(m_StartPointLabel);
-            startPointScope.Add(m_StartPointChoose);
-            
-            VisualElement endPointScope = new VisualElement {style = {flexDirection = FlexDirection.Row}};
-            endPointScope.Add(m_EndPointLabel);
-            endPointScope.Add(m_EndPointChoose);
+            ChoosePointField chooseEndPointField = new ChoosePointField(
+                Blueprint.DataFactory,
+                "End Point",
+                () => Blueprint.LineData.EndPoint,
+                SetEndPoint);
 
-            visualElement.Add(startPointScope);
-            PointNotEmptyValidator startPointNotEmptyValidator = new PointNotEmptyValidator(
-                () => Blueprint.LineData.StartPoint, action => Blueprint.LineData.NameUpdated += action);
-            visualElement.Add(new ValidatorField(startPointNotEmptyValidator));
-
-            visualElement.Add(endPointScope);
-            PointNotEmptyValidator endPointNotEmptyValidator = new PointNotEmptyValidator(
-                () => Blueprint.LineData.EndPoint, action => Blueprint.LineData.NameUpdated += action);
-            visualElement.Add(new ValidatorField(endPointNotEmptyValidator));
+            visualElement.Add(chooseStartPointField);
+            visualElement.Add(chooseEndPointField);
             
             visualElement.Add(new ValidatorField(Blueprint.LineData.m_PointsNotSameValidator));
             visualElement.Add(new ValidatorField(Blueprint.LineData.UniquenessValidator));
-        }
-
-        protected override void UpdateContent()
-        {
-            base.UpdateContent();
-            
-            m_StartPointChoose.menu.MenuItems().Clear();
-            m_EndPointChoose.menu.MenuItems().Clear();
-
-            m_StartPointLabel.text = $"Start point: {Blueprint.LineData.StartPoint?.PointName}";
-            m_EndPointLabel.text = $"End point: {Blueprint.LineData.EndPoint?.PointName}";
-            
-            foreach (PointData pointData in Blueprint.PointDatas)
-            {
-                m_StartPointChoose.menu.AppendAction(
-                    pointData.ToString(), 
-                    menuAction => SetStartPoint(pointData),
-                    DropdownMenuAction.AlwaysEnabled);
-                
-                m_EndPointChoose.menu.AppendAction(
-                    pointData.ToString(), 
-                    menuAction => SetEndPoint(pointData),
-                    DropdownMenuAction.AlwaysEnabled);
-            }
         }
 
         private void SetStartPoint(PointData pointData)

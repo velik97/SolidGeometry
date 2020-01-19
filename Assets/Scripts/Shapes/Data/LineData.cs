@@ -10,11 +10,14 @@ namespace Shapes.Data
     {
         public LineView LineView => View as LineView;
         
-        public PointData StartPoint;
-        public PointData EndPoint;
+        public PointData StartPoint => m_StartPoint;
+        public PointData EndPoint => m_EndPoint;
 
         public LineUniquenessValidator UniquenessValidator;
         public LinePointsNotSameValidator m_PointsNotSameValidator;
+        
+        private PointData m_StartPoint;
+        private PointData m_EndPoint;
 
         public LineData()
         {
@@ -24,20 +27,20 @@ namespace Shapes.Data
 
         public void SetStartPoint(PointData pointData)
         {
-            if (StartPoint == pointData)
+            if (m_StartPoint == pointData)
             {
                 return;
             }
-            if (StartPoint != null)
+            if (m_StartPoint != null)
             {
-                StartPoint.NameUpdated -= OnNameUpdated;
-                StartPoint.GeometryUpdated -= OnGeometryUpdated;
+                m_StartPoint.NameUpdated -= OnNameUpdated;
+                m_StartPoint.GeometryUpdated -= OnGeometryUpdated;
             }
-            StartPoint = pointData;
-            if (StartPoint != null)
+            m_StartPoint = pointData;
+            if (m_StartPoint != null)
             {
-                StartPoint.NameUpdated += OnNameUpdated;
-                StartPoint.GeometryUpdated += OnGeometryUpdated;
+                m_StartPoint.NameUpdated += OnNameUpdated;
+                m_StartPoint.GeometryUpdated += OnGeometryUpdated;
             }
             OnNameUpdated();
             OnGeometryUpdated();
@@ -45,20 +48,20 @@ namespace Shapes.Data
         
         public void SetEndPoint(PointData pointData)
         {
-            if (EndPoint == pointData)
+            if (m_EndPoint == pointData)
             {
                 return;
             }
-            if (EndPoint != null)
+            if (m_EndPoint != null)
             {
-                EndPoint.NameUpdated -= OnNameUpdated;
-                EndPoint.GeometryUpdated -= OnGeometryUpdated;
+                m_EndPoint.NameUpdated -= OnNameUpdated;
+                m_EndPoint.GeometryUpdated -= OnGeometryUpdated;
             }
-            EndPoint = pointData;
-            if (EndPoint != null)
+            m_EndPoint = pointData;
+            if (m_EndPoint != null)
             {
-                EndPoint.NameUpdated += OnNameUpdated;
-                EndPoint.GeometryUpdated += OnGeometryUpdated;
+                m_EndPoint.NameUpdated += OnNameUpdated;
+                m_EndPoint.GeometryUpdated += OnGeometryUpdated;
             }
             OnNameUpdated();
             OnGeometryUpdated();
@@ -66,7 +69,7 @@ namespace Shapes.Data
 
         public override string ToString()
         {
-            return $"Line {StartPoint?.PointName}{EndPoint?.PointName}";
+            return $"Line {m_StartPoint?.PointName}{m_EndPoint?.PointName}";
         }
     }
 }

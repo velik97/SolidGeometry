@@ -25,10 +25,7 @@ namespace Shapes.Blueprint
         
         public abstract ShapeData MainShapeData { get; }
 
-        protected readonly ShapeDataFactory DataFactory;
-
-        public IReadOnlyCollection<PointData> PointDatas => DataFactory.PointDatas;
-
+        public readonly ShapeDataFactory DataFactory;
 
         protected ShapeBlueprint(ShapeDataFactory dataFactory)
         {
