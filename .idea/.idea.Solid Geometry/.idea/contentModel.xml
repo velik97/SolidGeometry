@@ -320,6 +320,7 @@
               <e p="PointNotEmptyValidator.cs" t="Include" />
               <e p="Polygon" t="Include">
                 <e p="PolygonPointsAreInOnePlaneValidator.cs" t="Include" />
+                <e p="PolygonPointsAreOnSameLineValidator.cs" t="Include" />
                 <e p="PolygonPointsNotSameValidator.cs" t="Include" />
                 <e p="PolygonUniquenessValidator.cs" t="Include" />
               </e>
