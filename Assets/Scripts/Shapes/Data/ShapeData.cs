@@ -17,6 +17,26 @@ namespace Shapes.Data
         {
             View = view;
         }
+        
+        protected void SubscribeOnPoint(PointData pointData)
+        {
+            if (pointData != null)
+            {
+                pointData.NameUpdated += OnNameUpdated;
+                pointData.GeometryUpdated += OnGeometryUpdated;
+            }
+            OnNameUpdated();
+            OnGeometryUpdated();
+        }
+
+        protected void UnsubscribeFromPoint(PointData pointData)
+        {
+            if (pointData != null)
+            {
+                pointData.NameUpdated -= OnNameUpdated;
+                pointData.GeometryUpdated -= OnGeometryUpdated;
+            }
+        }
 
         protected void OnNameUpdated()
         {

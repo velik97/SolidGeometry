@@ -13,8 +13,8 @@ namespace Shapes.Data
         public PointData StartPoint => m_StartPoint;
         public PointData EndPoint => m_EndPoint;
 
-        public LineUniquenessValidator UniquenessValidator;
-        public LinePointsNotSameValidator m_PointsNotSameValidator;
+        public readonly LineUniquenessValidator UniquenessValidator;
+        public readonly LinePointsNotSameValidator PointsNotSameValidator;
         
         private PointData m_StartPoint;
         private PointData m_EndPoint;
@@ -22,7 +22,7 @@ namespace Shapes.Data
         public LineData()
         {
             UniquenessValidator = new LineUniquenessValidator(this);
-            m_PointsNotSameValidator = new LinePointsNotSameValidator(this);
+            PointsNotSameValidator = new LinePointsNotSameValidator(this);
         }
 
         public void SetStartPoint(PointData pointData)
@@ -31,19 +31,9 @@ namespace Shapes.Data
             {
                 return;
             }
-            if (m_StartPoint != null)
-            {
-                m_StartPoint.NameUpdated -= OnNameUpdated;
-                m_StartPoint.GeometryUpdated -= OnGeometryUpdated;
-            }
+            UnsubscribeFromPoint(m_StartPoint);
             m_StartPoint = pointData;
-            if (m_StartPoint != null)
-            {
-                m_StartPoint.NameUpdated += OnNameUpdated;
-                m_StartPoint.GeometryUpdated += OnGeometryUpdated;
-            }
-            OnNameUpdated();
-            OnGeometryUpdated();
+            SubscribeOnPoint(m_StartPoint);
         }
         
         public void SetEndPoint(PointData pointData)
@@ -52,19 +42,9 @@ namespace Shapes.Data
             {
                 return;
             }
-            if (m_EndPoint != null)
-            {
-                m_EndPoint.NameUpdated -= OnNameUpdated;
-                m_EndPoint.GeometryUpdated -= OnGeometryUpdated;
-            }
+            UnsubscribeFromPoint(m_EndPoint);
             m_EndPoint = pointData;
-            if (m_EndPoint != null)
-            {
-                m_EndPoint.NameUpdated += OnNameUpdated;
-                m_EndPoint.GeometryUpdated += OnGeometryUpdated;
-            }
-            OnNameUpdated();
-            OnGeometryUpdated();
+            SubscribeOnPoint(EndPoint);
         }
 
         public override string ToString()

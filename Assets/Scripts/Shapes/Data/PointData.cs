@@ -18,7 +18,6 @@ namespace Shapes.Data
 
         public PointNameUniquenessValidator NameUniquenessValidator;
         public PointNameNotEmptyValidator NameNotEmptyValidator;
-        
         public PointPositionUniquenessValidator PositionUniquenessValidator;
 
         private Vector3 m_Position = Vector3.zero;

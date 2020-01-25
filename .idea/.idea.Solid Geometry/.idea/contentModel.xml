@@ -280,6 +280,7 @@
             <e p="Shapes" t="Include">
               <e p="LineBlueprintEditor.cs" t="Include" />
               <e p="PointBlueprintEditor.cs" t="Include" />
+              <e p="PolygonBlueprintEditor.cs" t="Include" />
               <e p="ShapeBlueprintEditor.cs" t="Include" />
               <e p="ShapeBlueprintEditorsFactory.cs" t="Include" />
             </e>
@@ -295,6 +296,7 @@
             <e p="Blueprint" t="Include">
               <e p="LineBlueprint.cs" t="Include" />
               <e p="PointBlueprint.cs" t="Include" />
+              <e p="PolygonBlueprint.cs" t="Include" />
               <e p="ShapeBlueprint.cs" t="Include" />
               <e p="ShapeBlueprintFactory.cs" t="Include" />
             </e>
@@ -343,6 +345,7 @@
           </e>
           <e p="Util" t="Include">
             <e p="Extensions.cs" t="Include" />
+            <e p="StringExtensions.cs" t="Include" />
           </e>
         </e>
       </e>

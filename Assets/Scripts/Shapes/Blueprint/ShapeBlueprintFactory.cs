@@ -21,6 +21,8 @@ namespace Shapes.Blueprint
                     return new PointBlueprint(m_ShapeDataFactory);
                 case ShapeBlueprintType.Line:
                     return new LineBlueprint(m_ShapeDataFactory);
+                case ShapeBlueprintType.Polygon:
+                    return new PolygonBlueprint(m_ShapeDataFactory);
             }
 
             return null;
@@ -29,7 +31,8 @@ namespace Shapes.Blueprint
         public enum ShapeBlueprintType
         {
             Point,
-            Line
+            Line,
+            Polygon
         }
     }
 }

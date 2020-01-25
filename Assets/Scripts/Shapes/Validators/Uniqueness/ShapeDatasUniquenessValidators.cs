@@ -30,6 +30,7 @@ namespace Shapes.Validators.Uniqueness
                     m_LinesUniquenessValidatorsSolver.AddValidatable(lineData.UniquenessValidator);
                     break;
                 case PolygonData polygonData:
+                    m_PolygonUniquenessValidatorsSolver.AddValidatable(polygonData.PolygonUniquenessValidator);
                     break;
                 case CompositeShapeData compositeShapeData:
                     break;
@@ -48,6 +49,7 @@ namespace Shapes.Validators.Uniqueness
                     m_LinesUniquenessValidatorsSolver.RemoveValidatable(lineData.UniquenessValidator);
                     break;
                 case PolygonData polygonData:
+                    m_PolygonUniquenessValidatorsSolver.RemoveValidatable(polygonData.PolygonUniquenessValidator);
                     break;
                 case CompositeShapeData compositeShapeData:
                     break;

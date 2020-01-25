@@ -23,58 +23,22 @@ namespace Editor.Shapes
         protected override void SetBaseVisualElement(VisualElement visualElement)
         {
             ChoosePointField chooseStartPointField = new ChoosePointField(
-                Blueprint.DataFactory,
+                Blueprint,
                 "Start Point",
                 () => Blueprint.LineData.StartPoint,
-                SetStartPoint);
+                Blueprint.LineData.SetStartPoint);
             
             ChoosePointField chooseEndPointField = new ChoosePointField(
-                Blueprint.DataFactory,
+                Blueprint,
                 "End Point",
                 () => Blueprint.LineData.EndPoint,
-                SetEndPoint);
+                Blueprint.LineData.SetEndPoint);
 
             visualElement.Add(chooseStartPointField);
             visualElement.Add(chooseEndPointField);
             
-            visualElement.Add(new ValidatorField(Blueprint.LineData.m_PointsNotSameValidator));
+            visualElement.Add(new ValidatorField(Blueprint.LineData.PointsNotSameValidator));
             visualElement.Add(new ValidatorField(Blueprint.LineData.UniquenessValidator));
-        }
-
-        private void SetStartPoint(PointData pointData)
-        {
-            if (Blueprint.LineData.StartPoint == pointData)
-            {
-                return;
-            }
-            if (Blueprint.LineData.StartPoint != null)
-            {
-                Blueprint.RemoveDependenceOn(Blueprint.LineData.StartPoint);
-            }
-            Blueprint.LineData.SetStartPoint(pointData);
-            
-            if (Blueprint.LineData.StartPoint != null)
-            {
-                Blueprint.CreateDependenceOn(pointData);
-            }
-        }
-        
-        private void SetEndPoint(PointData pointData)
-        {
-            if (Blueprint.LineData.EndPoint == pointData)
-            {
-                return;
-            }
-            if (Blueprint.LineData.EndPoint != null)
-            {
-                Blueprint.RemoveDependenceOn(Blueprint.LineData.EndPoint);
-            }
-            Blueprint.LineData.SetEndPoint(pointData);
-            
-            if (Blueprint.LineData.EndPoint != null)
-            {
-                Blueprint.CreateDependenceOn(pointData);
-            }
         }
     }
 }

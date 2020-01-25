@@ -15,6 +15,8 @@ namespace Editor.Shapes
                     return new PointBlueprintEditor(pointBlueprint, deleteAction).GetVisualElement();
                 case LineBlueprint lineBlueprint:
                     return new LineBlueprintEditor(lineBlueprint, deleteAction).GetVisualElement();
+                case PolygonBlueprint polygonBlueprint:
+                    return new PolygonBlueprintEditor(polygonBlueprint, deleteAction).GetVisualElement();
             }
 
             return null;

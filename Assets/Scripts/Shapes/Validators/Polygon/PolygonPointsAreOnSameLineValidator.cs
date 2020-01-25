@@ -1,3 +1,4 @@
+using System.Linq;
 using Shapes.Data;
 using UnityEngine;
 
@@ -16,6 +17,11 @@ namespace Shapes.Validators.Polygon
         protected override bool CheckIsValid()
         {
             if (m_PolygonData.Points.Count <= 2)
+            {
+                return true;
+            }
+            
+            if (m_PolygonData.Points.Any(point => point == null))
             {
                 return true;
             }

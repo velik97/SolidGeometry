@@ -17,7 +17,7 @@ namespace Editor.Shapes
             Blueprint = blueprint;
             m_DeleteAction = deleteAction;
 
-            Blueprint.NameUpdated += UpdateContent;
+            Blueprint.NameUpdated += UpdateName;
             Blueprint.DependencesUpdated += UpdateDeleteButton;
         }
 
@@ -33,12 +33,12 @@ namespace Editor.Shapes
             m_DeleteButton = new Button(() => m_DeleteAction(Blueprint, m_NameElement));
             visualElement.Add(m_DeleteButton);
 
-            UpdateContent();
+            UpdateName();
             UpdateDeleteButton();
             return m_NameElement;
         }
 
-        protected virtual void UpdateContent()
+        private void UpdateName()
         {
             m_NameElement.text = Blueprint.MainShapeData.ToString();
         }

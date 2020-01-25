@@ -1,7 +1,9 @@
 using System;
 using System.Collections.Generic;
 using System.Linq;
+using Shapes.Validators.Polygon;
 using Shapes.View;
+using UnityEngine;
 
 namespace Shapes.Data
 {
@@ -12,7 +14,15 @@ namespace Shapes.Data
 
         public IReadOnlyList<PointData> Points => m_Points;
         
-        private List<PointData> m_Points;
+        private readonly List<PointData> m_Points = new List<PointData>();
+        
+        public bool CanRemovePoints => m_Points.Count > 3;
+
+        public readonly PolygonPointsAreInOnePlaneValidator PointsAreInOnePlaneValidator;
+        public readonly PolygonPointsAreOnSameLineValidator PointsAreOnSameLineValidator;
+        public readonly PolygonPointsNotSameValidator PointsNotSameValidator;
+
+        public readonly PolygonUniquenessValidator PolygonUniquenessValidator;
 
         public PolygonData()
         {
@@ -20,6 +30,12 @@ namespace Shapes.Data
             m_Points.Add(null);
             m_Points.Add(null);
             m_Points.Add(null);
+
+            PointsAreInOnePlaneValidator = new PolygonPointsAreInOnePlaneValidator(this);
+            PointsAreOnSameLineValidator = new PolygonPointsAreOnSameLineValidator(this);
+            PointsNotSameValidator = new PolygonPointsNotSameValidator(this);
+
+            PolygonUniquenessValidator = new PolygonUniquenessValidator(this);
         }
 
         public void AddPoint()
@@ -27,7 +43,7 @@ namespace Shapes.Data
             m_Points.Add(null);
         }
 
-        public void RemoveLastPoint()
+        public void RemovePoint(int index)
         {
             if (m_Points.Count <= 3)
             {
@@ -35,24 +51,32 @@ namespace Shapes.Data
                 return;
             }
 
-            m_Points.RemoveAt(m_Points.Count - 1);
+            if (m_Points.Count <= index)
+            {
+                Debug.LogError("Index out of array");
+                return;
+            }
+            
+            UnsubscribeFromPoint(m_Points[index]);
+            m_Points.RemoveAt(index);
         }
 
         public void SetPoint(int index, PointData pointData)
         {
-            // Надо настроить подписки
-            жфвла вдафвраы 
             if (m_Points.Count <= index)
             {
+                Debug.LogError("Index out of array");
                 return;
             }
 
+            UnsubscribeFromPoint(m_Points[index]);
             m_Points[index] = pointData;
+            SubscribeOnPoint(m_Points[index]);
         }
 
         public override string ToString()
         {
-            return $"Polygon {string.Join("", m_Points.Select(p => p.PointName))}";
+            return $"Polygon {string.Join("", m_Points.Select(p => p?.PointName))}";
         }
     }
 }

@@ -25,7 +25,7 @@ namespace Shapes.Validators.Polygon
 
         public override int GetUniqueHashCode()
         {
-            return m_PolygonData.Points.Aggregate(0, (current, pointData) => current ^ pointData.GetHashCode());
+            return m_PolygonData.Points.Aggregate(0, (current, pointData) => current ^ (pointData?.GetHashCode() ?? 0));
         }
 
         public override bool UniqueEquals(PolygonUniquenessValidator validator)

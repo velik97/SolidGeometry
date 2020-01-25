@@ -9,22 +9,40 @@ namespace Util
         public static bool HasSameItems<T>([NotNull] this IEnumerable<T> enumerable1, IEnumerable<T> enumerable2)
         {
             Dictionary<T, int> occurrences = new Dictionary<T, int>();
-            foreach (T s in enumerable1) {
-                if (occurrences.ContainsKey(s)) {
+            int nullsCount = 0;
+            foreach (T s in enumerable1)
+            {
+                if (s == null)
+                {
+                    nullsCount++;
+                }
+                else if (occurrences.ContainsKey(s))
+                {
                     occurrences[s]++;
-                } else {
+                }
+                else
+                {
                     occurrences.Add(s, 1);
                 }
             }
-            foreach (T s in enumerable2) {
-                if (occurrences.ContainsKey(s)) {
+            
+            foreach (T s in enumerable2)
+            {
+                if (s == null)
+                {
+                    nullsCount--;
+                }
+                else if (occurrences.ContainsKey(s))
+                {
                     occurrences[s]--;
-                } else {
+                }
+                else
+                {
                     return false;
                 }
             }
             
-            return occurrences.Values.All(c => c == 0);
+            return nullsCount == 0 && occurrences.Values.All(c => c == 0);
         }
     }
 }

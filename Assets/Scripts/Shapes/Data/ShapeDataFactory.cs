@@ -76,7 +76,7 @@ namespace Shapes.Data
             m_UniquenessValidators.AddShapeData(compositeShapeData);
             return compositeShapeData;
         }
-        
+
         public void RemoveShapeData(ShapeData data)
         {
             data.NameUpdated -= OnPointsListUpdated;

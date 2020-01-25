@@ -17,7 +17,7 @@ namespace Shapes.Validators.Polygon
 
         protected override bool CheckIsValid()
         {
-            return m_PolygonData.Points.OrderBy(point => point).Distinct().Count() == m_PolygonData.Points.Count;
+            return m_PolygonData.Points.OrderBy(point => point?.GetHashCode() ?? 0).Distinct().Count() == m_PolygonData.Points.Count;
         }
 
         public override string GetNotValidMessage()

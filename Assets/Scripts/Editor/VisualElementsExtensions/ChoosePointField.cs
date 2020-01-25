@@ -1,4 +1,6 @@
 using System;
+using JetBrains.Annotations;
+using Shapes.Blueprint;
 using Shapes.Data;
 using Shapes.Validators;
 using Shapes.Validators.Line;
@@ -10,20 +12,23 @@ namespace Editor.VisualElementsExtensions
     public class ChoosePointField : VisualElement
     {
         private readonly ShapeDataFactory m_DataFactory;
+        private readonly ShapeBlueprint m_Blueprint;
 
         private readonly string m_FieldName;
         
-        private readonly Func<PointData> m_GetPointFunc;
-        private readonly Action<PointData> m_SetPointFunc;
+        [NotNull] private readonly Func<PointData> m_GetPointFunc;
+        [NotNull] private readonly Action<PointData> m_SetPointFunc;
 
         private readonly Label m_Label;
         private readonly ToolbarMenu m_ToolbarMenu;
 
         private Action m_UpdateValidatorAction;
-        
-        public ChoosePointField(ShapeDataFactory dataFactory, string fieldName, Func<PointData> getPointFunc, Action<PointData> setPointFunc)
+
+        public ChoosePointField(ShapeBlueprint blueprint, string fieldName,
+            Func<PointData> getPointFunc, Action<PointData> setPointFunc)
         {
-            m_DataFactory = dataFactory;
+            m_DataFactory = blueprint.DataFactory;
+            m_Blueprint = blueprint;
             m_FieldName = fieldName;
             m_GetPointFunc = getPointFunc;
             m_SetPointFunc = setPointFunc;
@@ -38,8 +43,8 @@ namespace Editor.VisualElementsExtensions
             VisualElement validatorField = new ValidatorField(pointNotEmptyValidator);
             Add(validatorField);
 
-            dataFactory.ShapesListUpdated += UpdateList;
-            
+            m_DataFactory.ShapesListUpdated += UpdateList;
+
             UpdateList();
             UpdateName();
             m_UpdateValidatorAction?.Invoke();
@@ -65,7 +70,20 @@ namespace Editor.VisualElementsExtensions
 
         private void SetPoint(PointData pointData)
         {
-            m_SetPointFunc?.Invoke(pointData);
+            PointData previousPointData = m_GetPointFunc();
+            if (pointData == previousPointData)
+            {
+                return;
+            }
+            if (previousPointData != null)
+            {
+                m_Blueprint.RemoveDependenceOn(previousPointData);
+            }
+            m_SetPointFunc.Invoke(pointData);
+            if (pointData != null)
+            {
+                m_Blueprint.CreateDependenceOn(pointData);
+            }
             UpdateName();
             m_UpdateValidatorAction?.Invoke();
         }
