@@ -2,7 +2,7 @@ using System;
 using Shapes.Blueprint;
 using UnityEngine.UIElements;
 
-namespace Editor.Shapes
+namespace Editor.Blueprints
 {
     public abstract class ShapeBlueprintEditor<TBlueprint> where TBlueprint : ShapeBlueprint
     {

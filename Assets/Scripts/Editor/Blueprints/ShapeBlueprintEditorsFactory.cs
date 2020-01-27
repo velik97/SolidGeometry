@@ -2,7 +2,7 @@ using System;
 using Shapes.Blueprint;
 using UnityEngine.UIElements;
 
-namespace Editor.Shapes
+namespace Editor.Blueprints
 {
     public static class ShapeBlueprintEditorsFactory
     {
@@ -17,6 +17,8 @@ namespace Editor.Shapes
                     return new LineBlueprintEditor(lineBlueprint, deleteAction).GetVisualElement();
                 case PolygonBlueprint polygonBlueprint:
                     return new PolygonBlueprintEditor(polygonBlueprint, deleteAction).GetVisualElement();
+                case ParallelepipedBlueprint parallelepipedBlueprint:
+                    return new ParallelepipedBlueprintEditor(parallelepipedBlueprint, deleteAction).GetVisualElement(); 
             }
 
             return null;

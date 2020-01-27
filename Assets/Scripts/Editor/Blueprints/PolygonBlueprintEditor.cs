@@ -1,12 +1,10 @@
 using System;
-using System.Collections.Generic;
 using Editor.VisualElementsExtensions;
 using Shapes.Blueprint;
-using Shapes.Data;
 using UnityEngine.UIElements;
 using Util;
 
-namespace Editor.Shapes
+namespace Editor.Blueprints
 {
     public class PolygonBlueprintEditor : ShapeBlueprintEditor<PolygonBlueprint>
     {
@@ -30,6 +28,7 @@ namespace Editor.Shapes
             visualElement.Add(new ValidatorField(Blueprint.PolygonData.PointsAreInOnePlaneValidator));
             visualElement.Add(new ValidatorField(Blueprint.PolygonData.PointsAreOnSameLineValidator));
             visualElement.Add(new ValidatorField(Blueprint.PolygonData.PointsNotSameValidator));
+            visualElement.Add(new ValidatorField(Blueprint.PolygonData.LinesDontIntersectValidator));
             visualElement.Add(new ValidatorField(Blueprint.PolygonData.PolygonUniquenessValidator));
 
             VisualElement buttonsScope = new VisualElement {style = {flexDirection = FlexDirection.Row}};

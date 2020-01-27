@@ -1,12 +1,10 @@
 using System;
 using Editor.VisualElementsExtensions;
 using Shapes.Blueprint;
-using Shapes.Data;
-using Shapes.Validators.Line;
 using UnityEditor.UIElements;
 using UnityEngine.UIElements;
 
-namespace Editor.Shapes
+namespace Editor.Blueprints
 {
     public class LineBlueprintEditor : ShapeBlueprintEditor<LineBlueprint>
     {

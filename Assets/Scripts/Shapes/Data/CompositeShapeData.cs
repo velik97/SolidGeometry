@@ -19,9 +19,32 @@ namespace Shapes.Data
         {
         }
 
+        public void SetShapeName(string shapeName)
+        {
+            m_ShapeName = shapeName;
+            OnNameUpdated();
+        }
+
+        public void SetPoints(PointData[] points)
+        {
+            Points = points;
+            OnNameUpdated();
+        }
+
+        public void SetLines(LineData[] lines)
+        {
+            Lines = lines;
+        }
+
+        public void SetPolygons(PolygonData[] polygons)
+        {
+            Polygons = polygons;
+        }
+
         public override string ToString()
         {
-            return $"{m_ShapeName} {string.Join("", Points.Select(p => p.PointName))}";
+            return (m_ShapeName ?? "") + 
+                   (Points != null ? string.Join("", Points.Select(p => p?.PointName)) : "");
         }
     }
 }

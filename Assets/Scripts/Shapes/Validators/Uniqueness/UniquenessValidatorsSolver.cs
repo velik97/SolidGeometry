@@ -84,7 +84,7 @@ namespace Shapes.Validators.Uniqueness
 
         private ValidatorNode FindNode(TValidator validator)
         {
-            int hash = validator.GetUniqueHashCode() % m_Capacity;
+            int hash = (validator.GetUniqueHashCode() & 0xfffffff) % m_Capacity;
             if (m_HashTable[hash] == null)
             {
                 Debug.LogError("Can't find node");

@@ -21,6 +21,7 @@ namespace Shapes.Data
         public readonly PolygonPointsAreInOnePlaneValidator PointsAreInOnePlaneValidator;
         public readonly PolygonPointsAreOnSameLineValidator PointsAreOnSameLineValidator;
         public readonly PolygonPointsNotSameValidator PointsNotSameValidator;
+        public readonly PolygonLinesDontIntersectValidator LinesDontIntersectValidator;
 
         public readonly PolygonUniquenessValidator PolygonUniquenessValidator;
 
@@ -34,6 +35,7 @@ namespace Shapes.Data
             PointsAreInOnePlaneValidator = new PolygonPointsAreInOnePlaneValidator(this);
             PointsAreOnSameLineValidator = new PolygonPointsAreOnSameLineValidator(this);
             PointsNotSameValidator = new PolygonPointsNotSameValidator(this);
+            LinesDontIntersectValidator = new PolygonLinesDontIntersectValidator(this);
 
             PolygonUniquenessValidator = new PolygonUniquenessValidator(this);
         }

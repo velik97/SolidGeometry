@@ -1,6 +1,6 @@
 using System;
 using System.Linq;
-using Editor.Shapes;
+using Editor.Blueprints;
 using Lesson;
 using Shapes.Blueprint;
 using Shapes.Data;

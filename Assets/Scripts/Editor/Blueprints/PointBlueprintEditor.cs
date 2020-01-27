@@ -1,10 +1,11 @@
 using System;
-using Editor.Shapes;
 using Editor.VisualElementsExtensions;
 using Shapes.Blueprint;
 using UnityEditor.UIElements;
+using UnityEngine;
+using UnityEngine.UIElements;
 
-namespace UnityEngine.UIElements
+namespace Editor.Blueprints
 {
     public class PointBlueprintEditor : ShapeBlueprintEditor<PointBlueprint>
     {

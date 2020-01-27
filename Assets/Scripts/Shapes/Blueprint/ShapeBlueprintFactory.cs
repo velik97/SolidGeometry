@@ -23,6 +23,8 @@ namespace Shapes.Blueprint
                     return new LineBlueprint(m_ShapeDataFactory);
                 case ShapeBlueprintType.Polygon:
                     return new PolygonBlueprint(m_ShapeDataFactory);
+                case ShapeBlueprintType.Parallelepiped:
+                    return new ParallelepipedBlueprint(m_ShapeDataFactory);
             }
 
             return null;
@@ -32,7 +34,8 @@ namespace Shapes.Blueprint
         {
             Point,
             Line,
-            Polygon
+            Polygon,
+            Parallelepiped
         }
     }
 }
