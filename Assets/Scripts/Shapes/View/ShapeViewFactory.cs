@@ -1,36 +1,58 @@
 using System.Linq;
 using Shapes.Data;
+using UnityEngine;
 
 namespace Shapes.View
 {
-    public class ShapeViewFactory
+    public class ShapeViewFactory : MonoBehaviour
     {
-        public PointView RequestPointView(PointData data)
+        [SerializeField] private PointView m_PointPrefab;
+        [SerializeField] private LineView m_LinePrefab;
+        [SerializeField] private PolygonView m_PolygonPrefab;
+
+        public IShapeView RequestShapeView(ShapeData data)
         {
+            switch (data)
+            {
+                case PointData pointData:
+                    return CreatePointView(pointData);
+                case LineData lineData:
+                    return CreateLineView(lineData);
+                case PolygonData polygonData:
+                    return CreatePolygonView(polygonData);
+                case CompositeShapeData compositeShapeData:
+                    return CreateCompositeShapeView(compositeShapeData);
+            }
             return null;
         }
         
-        public LineView RequestLineView(LineData data)
+        private PointView CreatePointView(PointData data)
         {
-            return null;
+            PointView pointView = Instantiate(m_PointPrefab, transform, false);
+            pointView.SetShapeData(data);
+            return pointView;
         }
         
-        public PolygonView RequestPolygonView(PolygonData data)
+        private LineView CreateLineView(LineData data)
+        {
+            LineView lineView = Instantiate(m_LinePrefab, transform, false);
+            lineView.SetShapeData(data);
+            return lineView;
+        }
+        
+        private PolygonView CreatePolygonView(PolygonData data)
         {
             return null;
         }
 
-        public void ReturnView(IShapeView view)
+        public CompositeShapeView CreateCompositeShapeView(CompositeShapeData data)
         {
-            
+            return new CompositeShapeView(data);
         }
-
-        public CompositeShapeView RequestCompositeShapeView(CompositeShapeData data)
+        
+        public void ReleaseView(IShapeView view)
         {
-            return new CompositeShapeView(
-                data.Points.Select(p => p.PointView).ToArray(),
-                data.Lines.Select(l => l.LineView).ToArray(),
-                data.Polygons.Select(p => p.PolygonView).ToArray());
+            view.Release();
         }
     }
 }

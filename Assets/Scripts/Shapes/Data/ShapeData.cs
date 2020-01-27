@@ -38,6 +38,25 @@ namespace Shapes.Data
             }
         }
 
+        public void DestroyData()
+        {
+            View = null;
+            if (NameUpdated != null)
+            {
+                foreach (var d in NameUpdated.GetInvocationList())
+                {
+                    NameUpdated -= (d as Action);
+                }
+            }
+            if (GeometryUpdated != null)
+            {
+                foreach (var d in GeometryUpdated.GetInvocationList())
+                {
+                    GeometryUpdated -= (d as Action);
+                }
+            }
+        }
+
         protected void OnNameUpdated()
         {
             NameUpdated?.Invoke();

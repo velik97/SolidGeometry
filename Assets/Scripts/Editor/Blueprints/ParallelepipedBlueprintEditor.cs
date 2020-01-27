@@ -30,11 +30,6 @@ namespace Editor.Blueprints
                 visualElement.Add(axisField);
             }
             
-            foreach (PointData point in Blueprint.Points)
-            {
-                visualElement.Add(new ValidatorField(point.PositionUniquenessValidator));
-            }
-            
             for (int i = 0; i < Blueprint.Points.Count; i++)
             {
                 int pointNum = i;
@@ -44,6 +39,7 @@ namespace Editor.Blueprints
                 visualElement.Add(nameField);
                 visualElement.Add(new ValidatorField(Blueprint.Points[i].NameNotEmptyValidator));
                 visualElement.Add(new ValidatorField(Blueprint.Points[i].NameUniquenessValidator));
+                visualElement.Add(new ValidatorField(Blueprint.Points[i].PositionUniquenessValidator));
             }
         }
     }

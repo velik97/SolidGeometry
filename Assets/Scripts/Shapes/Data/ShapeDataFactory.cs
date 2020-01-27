@@ -16,7 +16,9 @@ namespace Shapes.Data
         [SerializeField] private readonly List<PolygonData> m_PolygonDatas = new List<PolygonData>();
         [SerializeField] private readonly List<CompositeShapeData> m_CompositeShapeDatas = new List<CompositeShapeData>();
         
-        private ShapeDatasUniquenessValidators m_UniquenessValidators = new ShapeDatasUniquenessValidators();
+        private readonly ShapeDatasUniquenessValidators m_UniquenessValidators = new ShapeDatasUniquenessValidators();
+
+        private ShapeViewFactory m_ShapeViewFactory;
 
         public event Action ShapesListUpdated;
 
@@ -29,59 +31,59 @@ namespace Shapes.Data
                 .Concat(m_CompositeShapeDatas)
                 .ToList();
 
+        public void SetViewFactory(ShapeViewFactory shapeViewFactory)
+        {
+            m_ShapeViewFactory = shapeViewFactory;
+        }
+        
         public PointData CreatePointData()
         {
             PointData pointData = new PointData();
-            
             m_PointDatas.Add(pointData);
-            ShapesListUpdated?.Invoke();
             pointData.NameUpdated += OnPointsListUpdated;
-            
-            m_UniquenessValidators.AddShapeData(pointData);
+            ProcessNewShapeData(pointData);
             return pointData;
         }
 
         public LineData CreateLineData()
         {
             LineData lineData = new LineData();
-            
             m_LinetDatas.Add(lineData);
-            ShapesListUpdated?.Invoke();
-            lineData.NameUpdated += OnPointsListUpdated;
-            
-            m_UniquenessValidators.AddShapeData(lineData);
+            ProcessNewShapeData(lineData);
             return lineData;
         }
 
         public PolygonData CreatePolygonData()
         {
             PolygonData polygonData = new PolygonData();
-            
             m_PolygonDatas.Add(polygonData);
-            ShapesListUpdated?.Invoke();
-            polygonData.NameUpdated += OnPointsListUpdated;
-            
-            m_UniquenessValidators.AddShapeData(polygonData);
+            ProcessNewShapeData(polygonData);
             return polygonData;
         }
 
         public CompositeShapeData CreateCompositeShapeData()
         {
             CompositeShapeData compositeShapeData = new CompositeShapeData();
-            
             m_CompositeShapeDatas.Add(compositeShapeData);
-            ShapesListUpdated?.Invoke();
-            compositeShapeData.NameUpdated += OnPointsListUpdated;
-            
-            m_UniquenessValidators.AddShapeData(compositeShapeData);
+            ProcessNewShapeData(compositeShapeData);
             return compositeShapeData;
         }
 
-        public void RemoveShapeData(ShapeData data)
+        private void ProcessNewShapeData(ShapeData shapeData)
         {
-            data.NameUpdated -= OnPointsListUpdated;
-            m_UniquenessValidators.RemoveShapeData(data);
-            switch (data)
+            ShapesListUpdated?.Invoke();
+            m_UniquenessValidators.AddShapeData(shapeData);
+            IShapeView view = m_ShapeViewFactory?.RequestShapeView(shapeData);
+            if (view != null)
+            {
+                shapeData.AttachView(view);
+            }
+        }
+
+        public void RemoveShapeData(ShapeData shapeData)
+        {
+            m_UniquenessValidators.RemoveShapeData(shapeData);
+            switch (shapeData)
             {
                 case PointData pointData:
                     m_PointDatas.Remove(pointData);
@@ -96,6 +98,11 @@ namespace Shapes.Data
                     m_CompositeShapeDatas.Remove(compositeShapeData);
                     break;
             }
+            if (shapeData.View != null)
+            {
+                m_ShapeViewFactory?.ReleaseView(shapeData.View);
+            }
+            shapeData.DestroyData();
             ShapesListUpdated?.Invoke();
         }
 

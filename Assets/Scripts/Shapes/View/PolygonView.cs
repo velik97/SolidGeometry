@@ -1,17 +1,17 @@
+using Shapes.Data;
 using UnityEngine;
 
 namespace Shapes.View
 {
-    public class PolygonView : MonoBehaviour, IShapeView
+    public class PolygonView : MonoBehaviourShapeView<PolygonData>
     {
-        public void SetActive(bool value)
-        {
-            gameObject.SetActive(value);
-        }
+        public override void SetHighlight(HighlightType highlightType)
+        { }
 
-        public void SetHighlight(HighlightType highlightType)
-        {
-            return;
-        }
+        public override void UpdateName(PolygonData shapeData)
+        { }
+
+        public override void UpdateGeometry(PolygonData shapeData)
+        { }
     }
 }

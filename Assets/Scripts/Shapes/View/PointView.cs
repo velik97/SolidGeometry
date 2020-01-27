@@ -1,17 +1,25 @@
+using Shapes.Data;
+using TMPro;
 using UnityEngine;
 
 namespace Shapes.View
 {
-    public class PointView : MonoBehaviour, IShapeView
+    public class PointView : MonoBehaviourShapeView<PointData>
     {
-        public void SetActive(bool value)
+        [SerializeField] private GameObject m_Sphere;
+        [SerializeField] private TextMeshProUGUI m_NameLabel;
+
+        public override void SetHighlight(HighlightType highlightType)
+        { }
+
+        public override void UpdateName(PointData shapeData)
         {
-            gameObject.SetActive(value);
+            m_NameLabel.text = shapeData.PointName;
         }
 
-        public void SetHighlight(HighlightType highlightType)
+        public override void UpdateGeometry(PointData shapeData)
         {
-            return;
+            transform.position = shapeData.Position;
         }
     }
 }

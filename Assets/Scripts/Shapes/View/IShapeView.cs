@@ -4,6 +4,7 @@ namespace Shapes.View
     {
         void SetActive(bool value);
         void SetHighlight(HighlightType highlightType);
+        void Release();
     }
 
     public enum HighlightType
