@@ -278,6 +278,7 @@
               <e p="LineBlueprintEditor.cs" t="Include" />
               <e p="ParallelepipedBlueprintEditor.cs" t="Include" />
               <e p="PointBlueprintEditor.cs" t="Include" />
+              <e p="PointOfIntersectionBlueprintEditor.cs" t="Include" />
               <e p="PointProjectionOnLineBlueprintEditor.cs" t="Include" />
               <e p="PolygonBlueprintEditor.cs" t="Include" />
               <e p="ShapeBlueprintEditor.cs" t="Include" />
@@ -303,6 +304,7 @@
                 <e p="PolygonBlueprint.cs" t="Include" />
               </e>
               <e p="DependentShapes" t="Include">
+                <e p="PointOfIntersectionBlueprint.cs" t="Include" />
                 <e p="PointProjectionOnLineBlueprint.cs" t="Include" />
               </e>
               <e p="Figures" t="Include">
@@ -333,6 +335,9 @@
                 <e p="PointPositionUniquenessValidator.cs" t="Include" />
               </e>
               <e p="PointNotEmptyValidator.cs" t="Include" />
+              <e p="PointOfIntersection" t="Include">
+                <e p="LinesIntersectValidator.cs" t="Include" />
+              </e>
               <e p="PointsNotSameValidator.cs" t="Include" />
               <e p="Polygon" t="Include">
                 <e p="PolygonLinesDontIntersectValidator.cs" t="Include" />

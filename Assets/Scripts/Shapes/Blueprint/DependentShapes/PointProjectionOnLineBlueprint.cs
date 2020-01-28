@@ -17,7 +17,7 @@ namespace Shapes.Blueprint.DependentShapes
         public PointData FirstPointOnLine => m_FirstPointOnLine;
         public PointData SecondPointOnLine => m_SecondPointOnLine;
 
-        public PointsNotSameValidator PointsNotSameValidator;
+        public readonly PointsNotSameValidator PointsNotSameValidator;
 
         public override ShapeData MainShapeData => PointData;
         
@@ -96,6 +96,10 @@ namespace Shapes.Blueprint.DependentShapes
         private void UpdatePosition()
         {
             PointsNotSameValidator.Update();
+            if (!PointsNotSameValidator.IsValid())
+            {
+                return;
+            }
             if (m_SourcePointData == null || m_FirstPointOnLine == null || m_SecondPointOnLine == null)
             {
                 return;

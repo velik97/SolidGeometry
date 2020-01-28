@@ -26,6 +26,8 @@ namespace Editor.Blueprints
                     return new ParallelepipedBlueprintEditor(parallelepipedBlueprint, deleteAction).GetVisualElement();
                 case PointProjectionOnLineBlueprint projectionOnLineBlueprint:
                     return new PointProjectionOnLineBlueprintEditor(projectionOnLineBlueprint, deleteAction).GetVisualElement();
+                case PointOfIntersectionBlueprint pointOfIntersectionBlueprint:
+                    return new PointOfIntersectionBlueprintEditor(pointOfIntersectionBlueprint, deleteAction).GetVisualElement();
             }
 
             return null;

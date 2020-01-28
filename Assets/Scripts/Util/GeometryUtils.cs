@@ -60,11 +60,50 @@ namespace Util
             }
             
             Vector3 fromSourceToFirst = source - firstOnLine;
-            Vector3 lineVector = secondOnLine - firstOnLine;
+            Vector3 lineVector = (secondOnLine - firstOnLine).normalized;
 
-            Vector3 projection = lineVector.normalized * Vector3.Dot(lineVector, fromSourceToFirst);
+            Vector3 projection = lineVector * Vector3.Dot(lineVector, fromSourceToFirst);
             
             return firstOnLine + projection;
+        }
+
+        /// <summary>
+        /// Do lines p1p2 and q1q2 intersects
+        /// </summary>
+        public static bool LinesIntersect(Vector3 p1, Vector3 p2, Vector3 q1, Vector3 q2)
+        {
+            Vector3 p1p2 = p2 - p1;
+            Vector3 q1q2 = q2 - q1;
+            Vector3 p1q1 = q1 - p1;
+
+            Vector3 cross = Vector3.Cross(p1p2, q1q2);
+
+            return cross.sqrMagnitude != 0f &&
+                   Vector3.Dot(cross, p1q1) == 0f;
+        }
+
+        /// <summary>
+        /// Returns point of intersection of lines p1p2 and q1q2
+        /// </summary>
+        /// <exception cref="ArgumentException"></exception>
+        public static Vector3 PointOfIntersection(Vector3 p1, Vector3 p2, Vector3 q1, Vector3 q2)
+        {
+            // Solution from here https://math.stackexchange.com/questions/270767/find-intersection-of-two-3d-lines/271366
+            Vector3 e = p2 - p1;
+            Vector3 f = q2 - q1;
+            Vector3 g = q1 - p1;
+            
+            Vector3 h = Vector3.Cross(f, g);
+            Vector3 k = Vector3.Cross(f, e);
+
+            if (k.sqrMagnitude == null)
+            {
+                throw new ArgumentException("lines don't intersect");
+            }
+
+            float sign = Mathf.Sign(Vector3.Dot(h, k));
+
+            return p1 + sign * (h.magnitude / k.magnitude) * e;
         }
     }
 }

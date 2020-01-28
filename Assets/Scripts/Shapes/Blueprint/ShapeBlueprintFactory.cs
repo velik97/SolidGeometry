@@ -30,6 +30,8 @@ namespace Shapes.Blueprint
                     return new ParallelepipedBlueprint(m_ShapeDataFactory);
                 case ShapeBlueprintType.PointProjectionOnLine:
                     return new PointProjectionOnLineBlueprint(m_ShapeDataFactory);
+                case ShapeBlueprintType.PointOfIntersection:
+                    return new PointOfIntersectionBlueprint(m_ShapeDataFactory);
             }
 
             return null;
@@ -41,7 +43,8 @@ namespace Shapes.Blueprint
             Line,
             Polygon,
             Parallelepiped,
-            PointProjectionOnLine
+            PointProjectionOnLine,
+            PointOfIntersection
         }
     }
 }

@@ -2,15 +2,13 @@ using System;
 using Editor.VisualElementsExtensions;
 using Shapes.Blueprint;
 using Shapes.Blueprint.DependentShapes;
-using UnityEditor.UIElements;
-using UnityEngine;
 using UnityEngine.UIElements;
 
 namespace Editor.Blueprints
 {
-    public class PointProjectionOnLineBlueprintEditor : ShapeBlueprintEditor<PointProjectionOnLineBlueprint>
+    public class PointOfIntersectionBlueprintEditor : ShapeBlueprintEditor<PointOfIntersectionBlueprint>
     {
-        public PointProjectionOnLineBlueprintEditor(PointProjectionOnLineBlueprint blueprint, Action<ShapeBlueprint, VisualElement> deleteAction) : base(blueprint, deleteAction)
+        public PointOfIntersectionBlueprintEditor(PointOfIntersectionBlueprint blueprint, Action<ShapeBlueprint, VisualElement> deleteAction) : base(blueprint, deleteAction)
         {
         }
 
@@ -27,23 +25,33 @@ namespace Editor.Blueprints
             visualElement.Add(new ValidatorField(Blueprint.PointData.NameUniquenessValidator));
             visualElement.Add(new ValidatorField(Blueprint.PointData.PositionUniquenessValidator));
             visualElement.Add(isAccessoryField);
-            
-            visualElement.Add(new ChoosePointField(
-                Blueprint,
-                "Source point: ",
-                () => Blueprint.SourcePointData,
-                pointData => Blueprint.SetSourcePoint(pointData)));
-            visualElement.Add(new ChoosePointField(
-                Blueprint,
-                "First point on line: ",
-                () => Blueprint.FirstPointOnLine,
-                pointData => Blueprint.SetFirstPointOnLine(pointData)));
-            visualElement.Add(new ChoosePointField(
-                Blueprint,
-                "Second point on line: ",
-                () => Blueprint.SecondPointOnLine,
-                pointData => Blueprint.SetSecondPointOnLine(pointData)));
+
+            int lineNum;
+            int pointNum;
+            void AddPointEditor()
+            {
+                int lineNumCopy = lineNum;
+                int pointNumCopy = pointNum;
+                visualElement.Add(new ChoosePointField(
+                    Blueprint,
+                    $"Line {lineNumCopy + 1}, Point {pointNumCopy + 1}",
+                    () => Blueprint.PointsOnLines[lineNumCopy][pointNumCopy],
+                    pointData => Blueprint.SetPoint(lineNumCopy, pointNumCopy, pointData)));
+            }
+            lineNum = 0;
+            pointNum = 0;
+            AddPointEditor();
+            lineNum = 0;
+            pointNum = 1;
+            AddPointEditor();
+            lineNum = 1;
+            pointNum = 0;
+            AddPointEditor();
+            lineNum = 1;
+            pointNum = 1;
+            AddPointEditor();
             visualElement.Add(new ValidatorField(Blueprint.PointsNotSameValidator));
+            visualElement.Add(new ValidatorField(Blueprint.LinesIntersectValidator));
         }
     }
 }
