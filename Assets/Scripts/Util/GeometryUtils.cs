@@ -48,5 +48,23 @@ namespace Util
 
             return false;
         }
+
+        /// <summary>
+        /// Return projection of source on line firstOnLine-secondOnLine
+        /// </summary>
+        public static Vector3 ProjectionOnLine(Vector3 source, Vector3 firstOnLine, Vector3 secondOnLine)
+        {
+            if (firstOnLine == secondOnLine)
+            {
+                return firstOnLine;
+            }
+            
+            Vector3 fromSourceToFirst = source - firstOnLine;
+            Vector3 lineVector = secondOnLine - firstOnLine;
+
+            Vector3 projection = lineVector.normalized * Vector3.Dot(lineVector, fromSourceToFirst);
+            
+            return firstOnLine + projection;
+        }
     }
 }

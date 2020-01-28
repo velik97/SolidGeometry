@@ -2,6 +2,9 @@ using System;
 using Editor.Blueprints.BaseShapes;
 using Editor.Blueprints.Figures;
 using Shapes.Blueprint;
+using Shapes.Blueprint.BaseShapes;
+using Shapes.Blueprint.DependentShapes;
+using Shapes.Blueprint.Figures;
 using UnityEngine.UIElements;
 
 namespace Editor.Blueprints
@@ -20,7 +23,9 @@ namespace Editor.Blueprints
                 case PolygonBlueprint polygonBlueprint:
                     return new PolygonBlueprintEditor(polygonBlueprint, deleteAction).GetVisualElement();
                 case ParallelepipedBlueprint parallelepipedBlueprint:
-                    return new ParallelepipedBlueprintEditor(parallelepipedBlueprint, deleteAction).GetVisualElement(); 
+                    return new ParallelepipedBlueprintEditor(parallelepipedBlueprint, deleteAction).GetVisualElement();
+                case PointProjectionOnLineBlueprint projectionOnLineBlueprint:
+                    return new PointProjectionOnLineBlueprintEditor(projectionOnLineBlueprint, deleteAction).GetVisualElement();
             }
 
             return null;

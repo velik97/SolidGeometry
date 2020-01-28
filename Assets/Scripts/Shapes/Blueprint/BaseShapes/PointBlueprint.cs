@@ -1,8 +1,7 @@
 using System;
 using Shapes.Data;
-using UnityEngine;
 
-namespace Shapes.Blueprint
+namespace Shapes.Blueprint.BaseShapes
 {
     [Serializable]
     public class PointBlueprint : ShapeBlueprint

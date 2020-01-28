@@ -5,6 +5,7 @@ using Shapes.Data;
 using Shapes.Validators;
 using Shapes.Validators.Line;
 using UnityEditor.UIElements;
+using UnityEngine;
 using UnityEngine.UIElements;
 
 namespace Editor.VisualElementsExtensions
@@ -75,6 +76,13 @@ namespace Editor.VisualElementsExtensions
             {
                 return;
             }
+
+            if (!ShapeBlueprintDependencesCyclesSolver.CanCreateDependence(m_Blueprint, pointData))
+            {
+                Debug.LogError("Can't chose point because it will create a cycle in dependences");
+                return;
+            }
+            
             if (previousPointData != null)
             {
                 m_Blueprint.RemoveDependenceOn(previousPointData);

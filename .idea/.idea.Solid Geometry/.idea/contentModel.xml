@@ -275,14 +275,11 @@
         <e p="Scripts" t="Include">
           <e p="Editor" t="Include">
             <e p="Blueprints" t="Include">
-              <e p="BaseShapes" t="Include">
-                <e p="LineBlueprintEditor.cs" t="Include" />
-                <e p="PointBlueprintEditor.cs" t="Include" />
-                <e p="PolygonBlueprintEditor.cs" t="Include" />
-              </e>
-              <e p="Figures" t="Include">
-                <e p="ParallelepipedBlueprintEditor.cs" t="Include" />
-              </e>
+              <e p="LineBlueprintEditor.cs" t="Include" />
+              <e p="ParallelepipedBlueprintEditor.cs" t="Include" />
+              <e p="PointBlueprintEditor.cs" t="Include" />
+              <e p="PointProjectionOnLineBlueprintEditor.cs" t="Include" />
+              <e p="PolygonBlueprintEditor.cs" t="Include" />
               <e p="ShapeBlueprintEditor.cs" t="Include" />
               <e p="ShapeBlueprintEditorsFactory.cs" t="Include" />
             </e>
@@ -300,10 +297,17 @@
           </e>
           <e p="Shapes" t="Include">
             <e p="Blueprint" t="Include">
-              <e p="LineBlueprint.cs" t="Include" />
-              <e p="ParallelepipedBlueprint.cs" t="Include" />
-              <e p="PointBlueprint.cs" t="Include" />
-              <e p="PolygonBlueprint.cs" t="Include" />
+              <e p="BaseShapes" t="Include">
+                <e p="LineBlueprint.cs" t="Include" />
+                <e p="PointBlueprint.cs" t="Include" />
+                <e p="PolygonBlueprint.cs" t="Include" />
+              </e>
+              <e p="DependentShapes" t="Include">
+                <e p="PointProjectionOnLineBlueprint.cs" t="Include" />
+              </e>
+              <e p="Figures" t="Include">
+                <e p="ParallelepipedBlueprint.cs" t="Include" />
+              </e>
               <e p="ShapeBlueprint.cs" t="Include" />
               <e p="ShapeBlueprintFactory.cs" t="Include" />
             </e>
@@ -318,7 +322,6 @@
             <e p="Validators" t="Include">
               <e p="IValidator.cs" t="Include" />
               <e p="Line" t="Include">
-                <e p="LinePointsNotSameValidator.cs" t="Include" />
                 <e p="LineUniquenessValidator.cs" t="Include" />
               </e>
               <e p="Parallelepiped" t="Include">
@@ -330,11 +333,11 @@
                 <e p="PointPositionUniquenessValidator.cs" t="Include" />
               </e>
               <e p="PointNotEmptyValidator.cs" t="Include" />
+              <e p="PointsNotSameValidator.cs" t="Include" />
               <e p="Polygon" t="Include">
                 <e p="PolygonLinesDontIntersectValidator.cs" t="Include" />
                 <e p="PolygonPointsAreInOnePlaneValidator.cs" t="Include" />
                 <e p="PolygonPointsAreOnSameLineValidator.cs" t="Include" />
-                <e p="PolygonPointsNotSameValidator.cs" t="Include" />
                 <e p="PolygonUniquenessValidator.cs" t="Include" />
               </e>
               <e p="Uniqueness" t="Include">

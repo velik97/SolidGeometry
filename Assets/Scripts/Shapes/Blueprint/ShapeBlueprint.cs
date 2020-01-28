@@ -19,6 +19,8 @@ namespace Shapes.Blueprint
         /// </summary>
         private readonly List<ShapeBlueprint> m_DependencesOnOtherShapes = new List<ShapeBlueprint>();
 
+        public IReadOnlyList<ShapeBlueprint> DependencesOnOtherShapes => m_DependencesOnOtherShapes;
+
         protected readonly List<ShapeData> MyShapeDatas = new List<ShapeData>();
         
         public bool HaveDependences => m_DependentOnMeShapes.Count > 0;
@@ -74,6 +76,46 @@ namespace Shapes.Blueprint
         protected void OnNameUpdated()
         {
             NameUpdated?.Invoke();
+        }
+    }
+
+    public static class ShapeBlueprintDependencesCyclesSolver
+    {
+        public static bool CanCreateDependence(ShapeBlueprint dependentBlueprint, ShapeData dependsOnData)
+        {
+            return !HasDependenceFromTo(dependsOnData.SourceBlueprint, dependentBlueprint, null);
+        }
+
+        private static bool HasDependenceFromTo(ShapeBlueprint fromBlueprint, ShapeBlueprint toBlueprint,
+            HashSet<ShapeBlueprint> visited)
+        {
+            if (fromBlueprint == toBlueprint)
+            {
+                return true;
+            }
+
+            if (visited == null)
+            {
+                visited = new HashSet<ShapeBlueprint>();
+            }
+
+            foreach (ShapeBlueprint blueprint in fromBlueprint.DependencesOnOtherShapes)
+            {
+                if (visited.Contains(blueprint))
+                {
+                    continue;
+                }
+                visited.Add(blueprint);
+
+                if (blueprint == toBlueprint)
+                {
+                    return true;
+                }
+
+                return HasDependenceFromTo(blueprint, toBlueprint, visited);
+            }
+
+            return false;
         }
     }
 }

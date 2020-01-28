@@ -1,7 +1,7 @@
 using System;
 using Shapes.Data;
 
-namespace Shapes.Blueprint
+namespace Shapes.Blueprint.BaseShapes
 {
     [Serializable]
     public class LineBlueprint : ShapeBlueprint

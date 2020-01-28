@@ -1,4 +1,7 @@
 using System;
+using Shapes.Blueprint.BaseShapes;
+using Shapes.Blueprint.DependentShapes;
+using Shapes.Blueprint.Figures;
 using Shapes.Data;
 using UnityEngine.UIElements;
 
@@ -25,6 +28,8 @@ namespace Shapes.Blueprint
                     return new PolygonBlueprint(m_ShapeDataFactory);
                 case ShapeBlueprintType.Parallelepiped:
                     return new ParallelepipedBlueprint(m_ShapeDataFactory);
+                case ShapeBlueprintType.PointProjectionOnLine:
+                    return new PointProjectionOnLineBlueprint(m_ShapeDataFactory);
             }
 
             return null;
@@ -35,7 +40,8 @@ namespace Shapes.Blueprint
             Point,
             Line,
             Polygon,
-            Parallelepiped
+            Parallelepiped,
+            PointProjectionOnLine
         }
     }
 }

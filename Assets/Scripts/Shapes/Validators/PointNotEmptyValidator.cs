@@ -1,7 +1,7 @@
 using System;
 using Shapes.Data;
 
-namespace Shapes.Validators.Line
+namespace Shapes.Validators
 {
     public class PointNotEmptyValidator : IValidator
     {

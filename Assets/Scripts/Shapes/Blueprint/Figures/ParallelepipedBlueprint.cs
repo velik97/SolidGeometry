@@ -3,7 +3,7 @@ using Shapes.Data;
 using Shapes.Validators.Parallelepiped;
 using UnityEngine;
 
-namespace Shapes.Blueprint
+namespace Shapes.Blueprint.Figures
 {
     public class ParallelepipedBlueprint : ShapeBlueprint
     {

@@ -1,6 +1,7 @@
 using System;
 using Editor.VisualElementsExtensions;
 using Shapes.Blueprint;
+using Shapes.Blueprint.Figures;
 using UnityEditor.UIElements;
 using UnityEngine;
 using UnityEngine.UIElements;

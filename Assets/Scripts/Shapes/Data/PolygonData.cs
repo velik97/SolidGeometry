@@ -1,6 +1,7 @@
 using System;
 using System.Collections.Generic;
 using System.Linq;
+using Shapes.Validators;
 using Shapes.Validators.Polygon;
 using Shapes.View;
 using UnityEngine;
@@ -20,7 +21,7 @@ namespace Shapes.Data
 
         public readonly PolygonPointsAreInOnePlaneValidator PointsAreInOnePlaneValidator;
         public readonly PolygonPointsAreOnSameLineValidator PointsAreOnSameLineValidator;
-        public readonly PolygonPointsNotSameValidator PointsNotSameValidator;
+        public readonly PointsNotSameValidator PointsNotSameValidator;
         public readonly PolygonLinesDontIntersectValidator LinesDontIntersectValidator;
 
         public readonly PolygonUniquenessValidator PolygonUniquenessValidator;
@@ -34,10 +35,19 @@ namespace Shapes.Data
 
             PointsAreInOnePlaneValidator = new PolygonPointsAreInOnePlaneValidator(this);
             PointsAreOnSameLineValidator = new PolygonPointsAreOnSameLineValidator(this);
-            PointsNotSameValidator = new PolygonPointsNotSameValidator(this);
             LinesDontIntersectValidator = new PolygonLinesDontIntersectValidator(this);
-
             PolygonUniquenessValidator = new PolygonUniquenessValidator(this);
+            
+            PointsNotSameValidator = new PointsNotSameValidator(EnumeratePoints());
+            NameUpdated += PointsNotSameValidator.Update;
+        }
+
+        private IEnumerable<PointData> EnumeratePoints()
+        {
+            foreach (PointData pointData in Points)
+            {
+                yield return pointData;
+            }
         }
 
         public void AddPoint()
