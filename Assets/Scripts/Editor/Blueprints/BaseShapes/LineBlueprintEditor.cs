@@ -4,7 +4,7 @@ using Shapes.Blueprint;
 using UnityEditor.UIElements;
 using UnityEngine.UIElements;
 
-namespace Editor.Blueprints
+namespace Editor.Blueprints.BaseShapes
 {
     public class LineBlueprintEditor : ShapeBlueprintEditor<LineBlueprint>
     {

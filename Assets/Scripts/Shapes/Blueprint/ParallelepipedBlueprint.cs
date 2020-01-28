@@ -1,5 +1,6 @@
 using System.Collections.Generic;
 using Shapes.Data;
+using Shapes.Validators.Parallelepiped;
 using UnityEngine;
 
 namespace Shapes.Blueprint
@@ -24,6 +25,8 @@ namespace Shapes.Blueprint
         private readonly CompositeShapeData m_CompositeShapeData;
 
         public override ShapeData MainShapeData => m_CompositeShapeData;
+
+        public NonZeroVolumeValidator NonZeroVolumeValidator;
 
         public ParallelepipedBlueprint(ShapeDataFactory dataFactory) : base(dataFactory)
         {
@@ -59,6 +62,8 @@ namespace Shapes.Blueprint
             m_CompositeShapeData.SetPoints(m_Points);
             m_CompositeShapeData.SetLines(m_Lines);
             m_CompositeShapeData.SetPolygons(m_Polygons);
+
+            NonZeroVolumeValidator = new NonZeroVolumeValidator(m_Axes);
         }
 
         private void ConstructLines()
@@ -133,6 +138,7 @@ namespace Shapes.Blueprint
             }
 
             m_Axes[axisNum] = axis;
+            NonZeroVolumeValidator.Update();
             UpdatePointsPositions();
         }
 

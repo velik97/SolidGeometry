@@ -4,7 +4,7 @@ using Shapes.Blueprint;
 using UnityEngine.UIElements;
 using Util;
 
-namespace Editor.Blueprints
+namespace Editor.Blueprints.BaseShapes
 {
     public class PolygonBlueprintEditor : ShapeBlueprintEditor<PolygonBlueprint>
     {

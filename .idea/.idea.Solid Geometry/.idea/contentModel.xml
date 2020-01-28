@@ -275,10 +275,14 @@
         <e p="Scripts" t="Include">
           <e p="Editor" t="Include">
             <e p="Blueprints" t="Include">
-              <e p="LineBlueprintEditor.cs" t="Include" />
-              <e p="ParallelepipedBlueprintEditor.cs" t="Include" />
-              <e p="PointBlueprintEditor.cs" t="Include" />
-              <e p="PolygonBlueprintEditor.cs" t="Include" />
+              <e p="BaseShapes" t="Include">
+                <e p="LineBlueprintEditor.cs" t="Include" />
+                <e p="PointBlueprintEditor.cs" t="Include" />
+                <e p="PolygonBlueprintEditor.cs" t="Include" />
+              </e>
+              <e p="Figures" t="Include">
+                <e p="ParallelepipedBlueprintEditor.cs" t="Include" />
+              </e>
               <e p="ShapeBlueprintEditor.cs" t="Include" />
               <e p="ShapeBlueprintEditorsFactory.cs" t="Include" />
             </e>
@@ -316,6 +320,9 @@
               <e p="Line" t="Include">
                 <e p="LinePointsNotSameValidator.cs" t="Include" />
                 <e p="LineUniquenessValidator.cs" t="Include" />
+              </e>
+              <e p="Parallelepiped" t="Include">
+                <e p="NonZeroVolumeValidator.cs" t="Include" />
               </e>
               <e p="Point" t="Include">
                 <e p="PointNameNotEmptyValidator.cs" t="Include" />

@@ -1,13 +1,12 @@
 using System;
 using Editor.VisualElementsExtensions;
 using Shapes.Blueprint;
-using Shapes.Data;
 using UnityEditor.UIElements;
 using UnityEngine;
 using UnityEngine.UIElements;
 using Util;
 
-namespace Editor.Blueprints
+namespace Editor.Blueprints.Figures
 {
     public class ParallelepipedBlueprintEditor : ShapeBlueprintEditor<ParallelepipedBlueprint>
     {
@@ -29,6 +28,8 @@ namespace Editor.Blueprints
                 axisField.RegisterCallback<ChangeEvent<Vector3>>(evt => Blueprint.SetAxis(axisNum, evt.newValue));
                 visualElement.Add(axisField);
             }
+            
+            visualElement.Add(new ValidatorField(Blueprint.NonZeroVolumeValidator));
             
             for (int i = 0; i < Blueprint.Points.Count; i++)
             {
