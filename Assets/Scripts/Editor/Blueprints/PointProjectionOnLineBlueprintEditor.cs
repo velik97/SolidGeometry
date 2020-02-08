@@ -2,8 +2,6 @@ using System;
 using Editor.VisualElementsExtensions;
 using Shapes.Blueprint;
 using Shapes.Blueprint.DependentShapes;
-using UnityEditor.UIElements;
-using UnityEngine;
 using UnityEngine.UIElements;
 
 namespace Editor.Blueprints
