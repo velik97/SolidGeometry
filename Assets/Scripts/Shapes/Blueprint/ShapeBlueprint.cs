@@ -1,10 +1,7 @@
 using System;
 using System.Collections.Generic;
-using System.Runtime.Serialization;
-using JetBrains.Annotations;
 using Newtonsoft.Json;
 using Shapes.Data;
-using Shapes.Validators.Point;
 
 namespace Shapes.Blueprint
 {

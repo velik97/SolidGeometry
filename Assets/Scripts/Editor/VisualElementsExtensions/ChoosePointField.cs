@@ -3,7 +3,6 @@ using JetBrains.Annotations;
 using Shapes.Blueprint;
 using Shapes.Data;
 using Shapes.Validators;
-using Shapes.Validators.Line;
 using UnityEditor.UIElements;
 using UnityEngine;
 using UnityEngine.UIElements;
