@@ -288,16 +288,21 @@
               <e p="ShapeBlueprintEditorsFactory.cs" t="Include" />
             </e>
             <e p="Lesson" t="Include">
-              <e p="LessonBlueprintEditor.cs" t="Include" />
+              <e p="FigureSetEditor.cs" t="Include" />
             </e>
             <e p="VisualElementsExtensions" t="Include">
               <e p="ChoosePointField.cs" t="Include" />
+              <e p="ListOfFilesInFolder.cs" t="Include" />
               <e p="ValidatorField.cs" t="Include" />
             </e>
           </e>
           <e p="Lesson" t="Include">
-            <e p="LessonBlueprint.cs" t="Include" />
-            <e p="LessonVisualizer.cs" t="Include" />
+            <e p="FigureSetVisualizer.cs" t="Include" />
+            <e p="FiguresSet.cs" t="Include" />
+          </e>
+          <e p="Serialization" t="Include">
+            <e p="FolderJsonsListSerializer.cs" t="Include" />
+            <e p="StaticPaths.cs" t="Include" />
           </e>
           <e p="Shapes" t="Include">
             <e p="Blueprint" t="Include">
@@ -367,7 +372,7 @@
             </e>
           </e>
           <e p="Test" t="Include">
-            <e p="TestScriptableObject.cs" t="Include" />
+            <e p="TestObject.cs" t="Include" />
           </e>
           <e p="Util" t="Include">
             <e p="Extensions.cs" t="Include" />

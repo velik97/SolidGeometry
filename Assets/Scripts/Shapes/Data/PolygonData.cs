@@ -1,30 +1,35 @@
 using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Runtime.Serialization;
+using JetBrains.Annotations;
+using Newtonsoft.Json;
 using Shapes.Validators;
+using Shapes.Validators.Point;
 using Shapes.Validators.Polygon;
 using Shapes.View;
 using UnityEngine;
 
 namespace Shapes.Data
 {
-    [Serializable]
+    [JsonObject(IsReference = true, MemberSerialization = MemberSerialization.OptIn)]
     public class PolygonData : ShapeData
     {
         public PolygonView PolygonView => View as PolygonView;
 
         public IReadOnlyList<PointData> Points => m_Points;
         
+        [JsonProperty]
         private readonly List<PointData> m_Points = new List<PointData>();
         
         public bool CanRemovePoints => m_Points.Count > 3;
 
-        public readonly PolygonPointsAreInOnePlaneValidator PointsAreInOnePlaneValidator;
-        public readonly PolygonPointsAreOnSameLineValidator PointsAreOnSameLineValidator;
-        public readonly PointsNotSameValidator PointsNotSameValidator;
-        public readonly PolygonLinesDontIntersectValidator LinesDontIntersectValidator;
+        public PolygonPointsAreInOnePlaneValidator PointsAreInOnePlaneValidator;
+        public PolygonPointsAreOnSameLineValidator PointsAreOnSameLineValidator;
+        public PointsNotSameValidator PointsNotSameValidator;
+        public PolygonLinesDontIntersectValidator LinesDontIntersectValidator;
 
-        public readonly PolygonUniquenessValidator PolygonUniquenessValidator;
+        public PolygonUniquenessValidator PolygonUniquenessValidator;
 
         public PolygonData()
         {
@@ -33,6 +38,21 @@ namespace Shapes.Data
             m_Points.Add(null);
             m_Points.Add(null);
 
+            OnDeserialized();
+        }
+        
+        [JsonConstructor]
+        public PolygonData(object _)
+        { }
+        
+        [OnDeserialized, UsedImplicitly]
+        private void OnDeserialized(StreamingContext context)
+        {
+            OnDeserialized();
+        }
+        
+        private void OnDeserialized()
+        {
             PointsAreInOnePlaneValidator = new PolygonPointsAreInOnePlaneValidator(this);
             PointsAreOnSameLineValidator = new PolygonPointsAreOnSameLineValidator(this);
             LinesDontIntersectValidator = new PolygonLinesDontIntersectValidator(this);
@@ -40,6 +60,11 @@ namespace Shapes.Data
             
             PointsNotSameValidator = new PointsNotSameValidator(EnumeratePoints());
             NameUpdated += PointsNotSameValidator.Update;
+            
+            PointsAreInOnePlaneValidator.Update();
+            PointsAreOnSameLineValidator.Update();
+            LinesDontIntersectValidator.Update();
+            PointsNotSameValidator.Update();
         }
 
         private IEnumerable<PointData> EnumeratePoints()

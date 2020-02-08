@@ -1,35 +1,62 @@
 using System.Collections.Generic;
+using System.Runtime.Serialization;
+using JetBrains.Annotations;
+using Newtonsoft.Json;
 using Shapes.Data;
 using Shapes.Validators;
+using Shapes.Validators.PointOfIntersection;
 using Util;
 
 namespace Shapes.Blueprint.DependentShapes
 {
+    [JsonObject(IsReference = true, MemberSerialization = MemberSerialization.OptIn)]
     public class PointProjectionOnLineBlueprint : ShapeBlueprint
     {
+        [JsonProperty]
         public readonly PointData PointData;
 
+        [JsonProperty]
         private PointData m_SourcePointData;
+        [JsonProperty]
         private PointData m_FirstPointOnLine;
+        [JsonProperty]
         private PointData m_SecondPointOnLine;
 
         public PointData SourcePointData => m_SourcePointData;
         public PointData FirstPointOnLine => m_FirstPointOnLine;
         public PointData SecondPointOnLine => m_SecondPointOnLine;
 
-        public readonly PointsNotSameValidator PointsNotSameValidator;
+        public PointsNotSameValidator PointsNotSameValidator;
 
         public override ShapeData MainShapeData => PointData;
         
         public PointProjectionOnLineBlueprint(ShapeDataFactory dataFactory) : base(dataFactory)
         {
             PointData = DataFactory.CreatePointData();
+
+            OnDeserialized();
+        }
+        
+        [JsonConstructor]
+        public PointProjectionOnLineBlueprint(object _)
+        { }
+        
+        [OnDeserialized, UsedImplicitly]
+        private void OnDeserialized(StreamingContext context)
+        {
+            RestoreDependences();
+            OnDeserialized();
+        }
+
+        private void OnDeserialized()
+        {
             PointData.SourceBlueprint = this;
             MyShapeDatas.Add(PointData);
 
+            PointsNotSameValidator = new PointsNotSameValidator(EnumeratePoints());
             PointData.NameUpdated += OnNameUpdated;
             
-            PointsNotSameValidator = new PointsNotSameValidator(EnumeratePoints());
+            UpdatePosition();
         }
         
         private IEnumerable<PointData> EnumeratePoints()

@@ -1,9 +1,11 @@
 using System;
+using Newtonsoft.Json;
 using Shapes.Blueprint;
 using Shapes.View;
 
 namespace Shapes.Data
 {
+    [JsonObject(IsReference = true, MemberSerialization = MemberSerialization.OptIn)]
     public abstract class ShapeData
     {
         public event Action NameUpdated;

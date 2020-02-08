@@ -1,4 +1,7 @@
 using System.Collections.Generic;
+using System.Runtime.Serialization;
+using JetBrains.Annotations;
+using Newtonsoft.Json;
 using Shapes.Data;
 using Shapes.Validators;
 using Shapes.Validators.PointOfIntersection;
@@ -6,32 +9,53 @@ using Util;
 
 namespace Shapes.Blueprint.DependentShapes
 {
+    [JsonObject(IsReference = true, MemberSerialization = MemberSerialization.OptIn)]
     public class PointOfIntersectionBlueprint : ShapeBlueprint
     {
+        [JsonProperty]
         public readonly PointData PointData;
 
+        [JsonProperty]
         private PointData[][] m_PointsOnLines = new PointData[2][]; // m_PointsOnLines[lineNum][pointNum]
 
         public PointData[][] PointsOnLines => m_PointsOnLines;
 
-        public readonly PointsNotSameValidator PointsNotSameValidator;
-        public readonly LinesIntersectValidator LinesIntersectValidator;
+        public PointsNotSameValidator PointsNotSameValidator;
+        public LinesIntersectValidator LinesIntersectValidator;
 
         public override ShapeData MainShapeData => PointData;
 
         public PointOfIntersectionBlueprint(ShapeDataFactory dataFactory) : base(dataFactory)
         {
             PointData = DataFactory.CreatePointData();
+
+            m_PointsOnLines[0] = new PointData[2];
+            m_PointsOnLines[1] = new PointData[2];
+            
+            OnDeserialized();
+        }
+        
+        [JsonConstructor]
+        public PointOfIntersectionBlueprint(object _)
+        { }
+        
+        [OnDeserialized, UsedImplicitly]
+        private void OnDeserialized(StreamingContext context)
+        {
+            RestoreDependences();
+            OnDeserialized();
+        }
+
+        private void OnDeserialized()
+        {
             PointData.SourceBlueprint = this;
             MyShapeDatas.Add(PointData);
 
-            PointData.NameUpdated += OnNameUpdated;
-            
-            m_PointsOnLines[0] = new PointData[2];
-            m_PointsOnLines[1] = new PointData[2];
-
             PointsNotSameValidator = new PointsNotSameValidator(EnumeratePoints());
             LinesIntersectValidator = new LinesIntersectValidator(this);
+            PointData.NameUpdated += OnNameUpdated;
+            
+            UpdatePosition();
         }
 
         private IEnumerable<PointData> EnumeratePoints()

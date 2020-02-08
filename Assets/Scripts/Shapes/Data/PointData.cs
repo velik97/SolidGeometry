@@ -1,4 +1,7 @@
 using System;
+using System.Runtime.Serialization;
+using JetBrains.Annotations;
+using Newtonsoft.Json;
 using Shapes.Validators.Point;
 using Shapes.Validators.Uniqueness;
 using Shapes.View;
@@ -7,7 +10,7 @@ using UnityEngine;
 
 namespace Shapes.Data
 {
-    [Serializable]
+    [JsonObject(IsReference = true, MemberSerialization = MemberSerialization.OptIn)]
     public class PointData : ShapeData
     {
         public PointView PointView => View as PointView;
@@ -20,11 +23,29 @@ namespace Shapes.Data
         public PointNameNotEmptyValidator NameNotEmptyValidator;
         public PointPositionUniquenessValidator PositionUniquenessValidator;
 
+        [JsonProperty]
         private Vector3 m_Position = Vector3.zero;
+        [JsonProperty]
         private string m_PointName = string.Empty;
+        [JsonProperty]
         private bool m_IsAccessoryPoint = false;
 
         public PointData()
+        {
+            OnDeserialized();
+        }
+
+        [JsonConstructor]
+        public PointData(object _)
+        { }
+        
+        [OnDeserialized, UsedImplicitly]
+        private void OnDeserialized(StreamingContext context)
+        {
+            OnDeserialized();
+        }
+        
+        private void OnDeserialized()
         {
             NameUniquenessValidator = new PointNameUniquenessValidator(this);
             PositionUniquenessValidator = new PointPositionUniquenessValidator(this);

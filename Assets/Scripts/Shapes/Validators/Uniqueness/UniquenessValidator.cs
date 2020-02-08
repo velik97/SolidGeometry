@@ -25,7 +25,7 @@ namespace Shapes.Validators.Uniqueness
             ValidStateChanged?.Invoke();
         }
         
-        protected virtual void OnUniqueDeterminingPropertyUpdated()
+        protected void OnUniqueDeterminingPropertyUpdated()
         {
             UniqueDeterminingPropertyUpdated?.Invoke();
         }

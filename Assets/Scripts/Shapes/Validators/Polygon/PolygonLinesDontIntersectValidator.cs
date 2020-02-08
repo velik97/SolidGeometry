@@ -14,6 +14,11 @@ namespace Shapes.Validators.Polygon
             m_PolygonData = polygonData;
             m_PolygonData.GeometryUpdated += UpdateValidState;
         }
+        
+        public void Update()
+        {
+            UpdateValidState();
+        }
 
         protected override bool CheckIsValid()
         {
@@ -42,6 +47,19 @@ namespace Shapes.Validators.Polygon
                     {
                         return false;
                     }
+                }
+            }
+
+            int first = 0;
+            int last = m_PolygonData.Points.Count - 1;
+
+            for (int i = 1; i < m_PolygonData.Points.Count - 2; i++)
+            {
+                if (GeometryUtils.LineSegmentsIntersects(
+                    GetPosition(last), GetPosition(first),
+                    GetPosition(i), GetPosition(i + 1)))
+                {
+                    return false;
                 }
             }
 

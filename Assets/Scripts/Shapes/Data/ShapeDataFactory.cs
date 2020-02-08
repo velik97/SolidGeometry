@@ -1,6 +1,9 @@
 using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Runtime.Serialization;
+using JetBrains.Annotations;
+using Newtonsoft.Json;
 using Shapes.Validators.Point;
 using Shapes.Validators.Uniqueness;
 using Shapes.View;
@@ -8,13 +11,17 @@ using UnityEngine;
 
 namespace Shapes.Data
 {
-    [Serializable]
+    [JsonObject(IsReference = true, MemberSerialization = MemberSerialization.OptIn)]
     public class ShapeDataFactory
     {
-        [SerializeField] private readonly List<PointData> m_PointDatas = new List<PointData>();
-        [SerializeField] private readonly List<LineData> m_LinetDatas = new List<LineData>();
-        [SerializeField] private readonly List<PolygonData> m_PolygonDatas = new List<PolygonData>();
-        [SerializeField] private readonly List<CompositeShapeData> m_CompositeShapeDatas = new List<CompositeShapeData>();
+        [JsonProperty]
+        private readonly List<PointData> m_PointDatas = new List<PointData>();
+        [JsonProperty]
+        private readonly List<LineData> m_LinetDatas = new List<LineData>();
+        [JsonProperty]
+        private readonly List<PolygonData> m_PolygonDatas = new List<PolygonData>();
+        [JsonProperty]
+        private readonly List<CompositeShapeData> m_CompositeShapeDatas = new List<CompositeShapeData>();
         
         private readonly ShapeDatasUniquenessValidators m_UniquenessValidators = new ShapeDatasUniquenessValidators();
 
@@ -31,16 +38,40 @@ namespace Shapes.Data
                 .Concat(m_CompositeShapeDatas)
                 .ToList();
 
+        [OnDeserialized, UsedImplicitly]
+        private void OnDeserialized(StreamingContext context)
+        {
+            foreach (ShapeData shapeData in AllDatas)
+            {
+                ProcessNewShapeData(shapeData);
+            }
+        }
+
+        public void Clear()
+        {
+            foreach (ShapeData shapeData in AllDatas)
+            {
+                RemoveShapeData(shapeData);
+            }
+        }
+
         public void SetViewFactory(ShapeViewFactory shapeViewFactory)
         {
             m_ShapeViewFactory = shapeViewFactory;
+            if (m_ShapeViewFactory == null)
+            {
+                return;
+            }
+            foreach (ShapeData shapeData in AllDatas)
+            {
+                shapeData.AttachView(m_ShapeViewFactory.RequestShapeView(shapeData));
+            }
         }
         
         public PointData CreatePointData()
         {
             PointData pointData = new PointData();
             m_PointDatas.Add(pointData);
-            pointData.NameUpdated += OnPointsListUpdated;
             ProcessNewShapeData(pointData);
             return pointData;
         }
@@ -71,7 +102,8 @@ namespace Shapes.Data
 
         private void ProcessNewShapeData(ShapeData shapeData)
         {
-            ShapesListUpdated?.Invoke();
+            OnShapeListUpdated();
+            shapeData.NameUpdated += OnShapeListUpdated;
             m_UniquenessValidators.AddShapeData(shapeData);
             IShapeView view = m_ShapeViewFactory?.RequestShapeView(shapeData);
             if (view != null)
@@ -103,10 +135,10 @@ namespace Shapes.Data
                 m_ShapeViewFactory?.ReleaseView(shapeData.View);
             }
             shapeData.DestroyData();
-            ShapesListUpdated?.Invoke();
+            OnShapeListUpdated();
         }
 
-        private void OnPointsListUpdated()
+        private void OnShapeListUpdated()
         {
             ShapesListUpdated?.Invoke();
         }

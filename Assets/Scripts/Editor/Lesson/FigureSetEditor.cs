@@ -1,19 +1,22 @@
 using System;
+using System.IO;
 using System.Linq;
 using Editor.Blueprints;
+using Editor.VisualElementsExtensions;
 using Lesson;
+using Serialization;
 using Shapes.Blueprint;
 using Shapes.Data;
 using UnityEditor;
 using UnityEditor.UIElements;
+using UnityEngine;
 using UnityEngine.UIElements;
 
 namespace Editor.Lesson
 {
-    [CustomEditor(typeof(LessonBlueprint))]
-    public class LessonBlueprintEditor : UnityEditor.Editor
+    public class FigureSetEditor : EditorWindow
     {
-        private LessonBlueprint m_Target;
+        private FiguresSet m_Target;
         
         private VisualElement m_RootVisualElement;
         
@@ -23,25 +26,48 @@ namespace Editor.Lesson
 
         private Foldout m_DebugElement;
 
-        private void OnEnable()
+        private string FolderName =>
+            Path.Combine(Application.dataPath, StaticPaths.FILES_FOLDER, StaticPaths.FIGURE_SETS_FOLDER);
+        
+        FolderJsonsListSerializer<FiguresSet> m_Serializer;
+
+
+        [MenuItem("Tools/Figure Set Editor")]
+        public static void ShowWindow()
         {
-            m_Target = target as LessonBlueprint;
-            m_RootVisualElement = new VisualElement();
+            var window = GetWindow<FigureSetEditor>();
+            
+            window.titleContent = new GUIContent("Figure Set Editor");
+            window.minSize = new Vector2(250, 500);
         }
 
-        public override VisualElement CreateInspectorGUI()
+        private void OnEnable()
+        {
+            m_Serializer = new FolderJsonsListSerializer<FiguresSet>(FolderName);
+            m_RootVisualElement = new ScrollView();
+            rootVisualElement.Add(m_RootVisualElement);
+            
+            m_RootVisualElement.Clear();
+            m_TopVisualElement = GetTopVisualElement();
+            m_RootVisualElement.Add(m_TopVisualElement);
+
+            m_Serializer.UpdateList();
+            if (m_Serializer.Names().Count == 0)
+            {
+                OnTargetChosen(new FiguresSet());
+            }
+        }
+
+        private void UpdateCanvas()
         {
             m_RootVisualElement.Clear();
             
-            m_TopVisualElement = new VisualElement();
             m_BaseVisualElement = GetBaseVisualElement();
             m_BottomVisualElement = GetBottomVisualElement();
             
             m_RootVisualElement.Add(m_TopVisualElement);
             m_RootVisualElement.Add(m_BaseVisualElement);
             m_RootVisualElement.Add(m_BottomVisualElement);
-
-            return m_RootVisualElement;
         }
 
         private VisualElement GetBaseVisualElement()
@@ -56,6 +82,22 @@ namespace Editor.Lesson
             return visualElement;
         }
 
+        private VisualElement GetTopVisualElement()
+        {
+            VisualElement visualElement = new VisualElement();
+            
+            VisualElement serializerFoldout = new Foldout {text = "All Files"};
+            serializerFoldout.Add(new ListOfFilesInFolder<FiguresSet>(m_Serializer, OnTargetChosen));
+
+            TextField saveName = new TextField("Save Name");
+            Button saveButton = new Button(() => SaveCurrentFigureSet(saveName.value)) {text = "Save"};
+            serializerFoldout.Add(saveName);
+            serializerFoldout.Add(saveButton);
+            
+            visualElement.Add(serializerFoldout);
+            return visualElement;
+        }
+
         private VisualElement GetBottomVisualElement()
         {
             VisualElement visualElement = new VisualElement();
@@ -67,7 +109,20 @@ namespace Editor.Lesson
             m_DebugElement = new Foldout {text = "All Datas"};
             m_Target.ShapeDataFactory.ShapesListUpdated += UpdateDebug;
             visualElement.Add(m_DebugElement);
+            UpdateDebug();
             return visualElement;
+        }
+
+        private void SaveCurrentFigureSet(string fileName)
+        {
+            m_Serializer.SaveObject(m_Target, fileName);
+        }
+
+        private void OnTargetChosen(FiguresSet target)
+        {
+            m_Target?.Clear();
+            m_Target = target;
+            UpdateCanvas();
         }
 
         private void CreateDropdown(DropdownMenu menu)

@@ -1,11 +1,14 @@
-using System;
+using System.Runtime.Serialization;
+using JetBrains.Annotations;
+using Newtonsoft.Json;
 using Shapes.Data;
 
 namespace Shapes.Blueprint.BaseShapes
 {
-    [Serializable]
+    [JsonObject(IsReference = true, MemberSerialization = MemberSerialization.OptIn)]
     public class PointBlueprint : ShapeBlueprint
     {
+        [JsonProperty]
         public readonly PointData PointData;
 
         public override ShapeData MainShapeData => PointData;
@@ -13,6 +16,22 @@ namespace Shapes.Blueprint.BaseShapes
         public PointBlueprint(ShapeDataFactory dataFactory) : base(dataFactory)
         {
             PointData = DataFactory.CreatePointData();
+            OnDeserialized();
+        }
+        
+        [JsonConstructor]
+        public PointBlueprint(object _)
+        { }
+        
+        [OnDeserialized, UsedImplicitly]
+        private void OnDeserialized(StreamingContext context)
+        {
+            RestoreDependences();
+            OnDeserialized();
+        }
+
+        private void OnDeserialized()
+        {
             PointData.SourceBlueprint = this;
             MyShapeDatas.Add(PointData);
 

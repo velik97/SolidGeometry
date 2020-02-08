@@ -115,7 +115,7 @@ namespace Shapes.Validators.Uniqueness
             {
                 Validator = validator;
                 m_ValidatorsSolver = validatorsSolver;
-                m_HashCode = validator.GetUniqueHashCode() % m_ValidatorsSolver.m_Capacity;
+                UpdateHashCode();
             }
 
             public void UpdateNodeInTable()

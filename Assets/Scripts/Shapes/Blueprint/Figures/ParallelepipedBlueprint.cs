@@ -1,19 +1,31 @@
 using System.Collections.Generic;
+using System.Linq;
+using System.Runtime.Serialization;
+using JetBrains.Annotations;
+using Newtonsoft.Json;
 using Shapes.Data;
 using Shapes.Validators.Parallelepiped;
 using UnityEngine;
 
 namespace Shapes.Blueprint.Figures
 {
+    [JsonObject(IsReference = true, MemberSerialization = MemberSerialization.OptIn)]
     public class ParallelepipedBlueprint : ShapeBlueprint
     {
+        [JsonProperty]
         private Vector3 m_Origin;
 
+        [JsonProperty]
         private readonly Vector3[] m_Axes = new Vector3[3];
 
+        [JsonProperty]
         private readonly PointData[] m_Points = new PointData[8];
+        [JsonProperty]
         private readonly LineData[] m_Lines = new LineData[12];
+        [JsonProperty]
         private readonly PolygonData[] m_Polygons = new PolygonData[6];
+        [JsonProperty]
+        private readonly CompositeShapeData m_CompositeShapeData;
 
         public Vector3 Origin => m_Origin;
         public IReadOnlyList<Vector3> Axes => m_Axes;
@@ -21,9 +33,7 @@ namespace Shapes.Blueprint.Figures
         public IReadOnlyList<PointData> Points => m_Points;
         public IReadOnlyList<LineData> Lines => m_Lines;
         public IReadOnlyList<PolygonData> Polygons => m_Polygons;
-
-        private readonly CompositeShapeData m_CompositeShapeData;
-
+        
         public override ShapeData MainShapeData => m_CompositeShapeData;
 
         public NonZeroVolumeValidator NonZeroVolumeValidator;
@@ -34,36 +44,55 @@ namespace Shapes.Blueprint.Figures
             {
                 m_Points[i] = dataFactory.CreatePointData();
                 m_Points[i].NameUpdated += OnNameUpdated;
-                m_Points[i].SourceBlueprint = this;
-                MyShapeDatas.Add(m_Points[i]);
             }
             for (int i = 0; i < m_Lines.Length; i++)
             {
                 m_Lines[i] = dataFactory.CreateLineData();
-                m_Lines[i].SourceBlueprint = this;
-                MyShapeDatas.Add(m_Lines[i]);
             }
-            for (var i = 0; i < m_Polygons.Length; i++)
+            for (int i = 0; i < m_Polygons.Length; i++)
             {
                 m_Polygons[i] = dataFactory.CreatePolygonData();
-                m_Polygons[i].SourceBlueprint = this;
                 m_Polygons[i].AddPoint(); // By default polygon has 3 points, we need 4
-                MyShapeDatas.Add(m_Polygons[i]);
             }
 
             ConstructLines();
             ConstructPolygons();
 
             m_CompositeShapeData = dataFactory.CreateCompositeShapeData();
-            m_CompositeShapeData.SourceBlueprint = this;
-            MyShapeDatas.Add(m_CompositeShapeData);
             
             m_CompositeShapeData.SetShapeName("Parallelepiped");
             m_CompositeShapeData.SetPoints(m_Points);
             m_CompositeShapeData.SetLines(m_Lines);
             m_CompositeShapeData.SetPolygons(m_Polygons);
+            
+            OnDeserialized();
+        }
+        
+        [JsonConstructor]
+        public ParallelepipedBlueprint(object _)
+        { }
+        
+        [OnDeserialized, UsedImplicitly]
+        private void OnDeserialized(StreamingContext context)
+        {
+            OnDeserialized();
+        }
 
+        private void OnDeserialized()
+        {
             NonZeroVolumeValidator = new NonZeroVolumeValidator(m_Axes);
+            NonZeroVolumeValidator.Update();
+            UpdatePointsPositions();
+
+            foreach (var shapeData in 
+                new [] {m_CompositeShapeData}.Cast<ShapeData>()
+                .Concat(m_Points)
+                .Concat(m_Lines)
+                .Concat(m_Polygons))
+            {
+                MyShapeDatas.Add(shapeData);
+                shapeData.SourceBlueprint = this;
+            }
         }
 
         private void ConstructLines()

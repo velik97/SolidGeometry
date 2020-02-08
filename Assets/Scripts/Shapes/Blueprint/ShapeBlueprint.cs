@@ -1,9 +1,14 @@
 using System;
 using System.Collections.Generic;
+using System.Runtime.Serialization;
+using JetBrains.Annotations;
+using Newtonsoft.Json;
 using Shapes.Data;
+using Shapes.Validators.Point;
 
 namespace Shapes.Blueprint
 {
+    [JsonObject(IsReference = true, MemberSerialization = MemberSerialization.OptIn)]
     public abstract class ShapeBlueprint
     {
         public event Action NameUpdated;
@@ -17,6 +22,7 @@ namespace Shapes.Blueprint
         /// <summary>
         /// List of shapes, I depend on
         /// </summary>
+        [JsonProperty]
         private readonly List<ShapeBlueprint> m_DependencesOnOtherShapes = new List<ShapeBlueprint>();
 
         public IReadOnlyList<ShapeBlueprint> DependencesOnOtherShapes => m_DependencesOnOtherShapes;
@@ -27,11 +33,22 @@ namespace Shapes.Blueprint
         
         public abstract ShapeData MainShapeData { get; }
 
-        public readonly ShapeDataFactory DataFactory;
+        public ShapeDataFactory DataFactory;
 
         protected ShapeBlueprint(ShapeDataFactory dataFactory)
         {
             DataFactory = dataFactory;
+        }
+
+        protected ShapeBlueprint()
+        { }
+        
+        protected void RestoreDependences()
+        {
+            foreach (ShapeBlueprint shapeBlueprint in m_DependencesOnOtherShapes)
+            {
+                shapeBlueprint.AddDependence(this);
+            }
         }
         
         public void Destroy()

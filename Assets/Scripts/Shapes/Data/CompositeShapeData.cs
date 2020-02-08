@@ -1,16 +1,24 @@
 using System;
 using System.Linq;
+using System.Runtime.Serialization;
+using JetBrains.Annotations;
+using Newtonsoft.Json;
+using Shapes.Validators;
+using Shapes.Validators.Polygon;
 using Shapes.View;
 
 namespace Shapes.Data
 {
-    [Serializable]
+    [JsonObject(IsReference = true, MemberSerialization = MemberSerialization.OptIn)]
     public class CompositeShapeData : ShapeData
     {
         CompositeShapeView CompositeShapeView => View as CompositeShapeView;
         
+        [JsonProperty]
         private PointData[] m_Points;
+        [JsonProperty]
         private LineData[] m_Lines;
+        [JsonProperty]
         private PolygonData[] m_Polygons;
 
         public PointData[] Points => m_Points;
@@ -22,6 +30,26 @@ namespace Shapes.Data
         public CompositeShapeData()
         {
         }
+        
+        [JsonConstructor]
+        public CompositeShapeData(object _)
+        { }
+        
+        [OnDeserialized, UsedImplicitly]
+        private void OnDeserialized(StreamingContext context)
+        {
+            if (m_Points != null && m_Points.Length > 0)
+            {
+                foreach (PointData pointData in m_Points)
+                {
+                    SubscribeOnPoint(pointData);
+                }
+            }
+            OnDeserialized();
+        }
+        
+        private void OnDeserialized()
+        { }
 
         public void SetShapeName(string shapeName)
         {
@@ -31,8 +59,22 @@ namespace Shapes.Data
 
         public void SetPoints(PointData[] points)
         {
+            if (m_Points != null && m_Points.Length > 0)
+            {
+                foreach (PointData pointData in m_Points)
+                {
+                    UnsubscribeFromPoint(pointData);
+                }
+            }
             m_Points = points;
             OnNameUpdated();
+            if (m_Points != null && m_Points.Length > 0)
+            {
+                foreach (PointData pointData in m_Points)
+                {
+                    SubscribeOnPoint(pointData);
+                }
+            }
         }
 
         public void SetLines(LineData[] lines)

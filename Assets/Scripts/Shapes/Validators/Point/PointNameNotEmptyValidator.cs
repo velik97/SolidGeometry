@@ -11,6 +11,7 @@ namespace Shapes.Validators.Point
         {
             m_PointData = pointData;
             m_PointData.NameUpdated += UpdateValidState;
+            UpdateValidState();
         }
 
         protected override bool CheckIsValid()

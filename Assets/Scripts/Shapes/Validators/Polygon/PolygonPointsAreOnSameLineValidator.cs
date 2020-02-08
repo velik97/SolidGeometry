@@ -14,6 +14,11 @@ namespace Shapes.Validators.Polygon
             m_PolygonData.GeometryUpdated += UpdateValidState;
         }
         
+        public void Update()
+        {
+            UpdateValidState();
+        }
+        
         protected override bool CheckIsValid()
         {
             if (m_PolygonData.Points.Count <= 2)

@@ -1,13 +1,15 @@
 using System;
 using System.Collections.Generic;
+using System.Runtime.Serialization;
+using JetBrains.Annotations;
+using Newtonsoft.Json;
 using Shapes.Validators;
 using Shapes.Validators.Line;
-using Shapes.Validators.Point;
 using Shapes.View;
 
 namespace Shapes.Data
 {
-    [Serializable]
+    [JsonObject(IsReference = true, MemberSerialization = MemberSerialization.OptIn)]
     public class LineData : ShapeData
     {
         public LineView LineView => View as LineView;
@@ -15,10 +17,12 @@ namespace Shapes.Data
         public PointData StartPoint => m_StartPoint;
         public PointData EndPoint => m_EndPoint;
 
-        public readonly LineUniquenessValidator UniquenessValidator;
-        public readonly PointsNotSameValidator PointsNotSameValidator;
+        public LineUniquenessValidator UniquenessValidator;
+        public PointsNotSameValidator PointsNotSameValidator;
         
+        [JsonProperty]
         private PointData m_StartPoint;
+        [JsonProperty]
         private PointData m_EndPoint;
 
         public LineData()
@@ -27,6 +31,27 @@ namespace Shapes.Data
             PointsNotSameValidator = new PointsNotSameValidator(EnumeratePoints());
             
             NameUpdated += PointsNotSameValidator.Update;
+        }
+
+        [JsonConstructor]
+        public LineData(object _)
+        { }
+        
+        [OnDeserialized, UsedImplicitly]
+        private void OnDeserialized(StreamingContext context)
+        {
+            SubscribeOnPoint(m_StartPoint);
+            SubscribeOnPoint(m_EndPoint);
+            OnDeserialized();
+        }
+
+        private void OnDeserialized()
+        {
+            UniquenessValidator = new LineUniquenessValidator(this);
+            PointsNotSameValidator = new PointsNotSameValidator(EnumeratePoints());
+            
+            NameUpdated += PointsNotSameValidator.Update;
+            PointsNotSameValidator.Update();
         }
 
         private IEnumerable<PointData> EnumeratePoints()
@@ -54,7 +79,7 @@ namespace Shapes.Data
             }
             UnsubscribeFromPoint(m_EndPoint);
             m_EndPoint = pointData;
-            SubscribeOnPoint(EndPoint);
+            SubscribeOnPoint(m_EndPoint);
         }
 
         public override string ToString()

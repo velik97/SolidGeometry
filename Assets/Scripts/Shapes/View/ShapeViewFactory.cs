@@ -1,3 +1,4 @@
+using System.Collections.Generic;
 using System.Linq;
 using Shapes.Data;
 using UnityEngine;
@@ -10,20 +11,31 @@ namespace Shapes.View
         [SerializeField] private LineView m_LinePrefab;
         [SerializeField] private PolygonView m_PolygonPrefab;
 
+        private List<IShapeView> m_Views = new List<IShapeView>();
+
         public IShapeView RequestShapeView(ShapeData data)
         {
+            IShapeView view = null;
             switch (data)
             {
                 case PointData pointData:
-                    return CreatePointView(pointData);
+                    view = CreatePointView(pointData);
+                    break;
                 case LineData lineData:
-                    return CreateLineView(lineData);
+                    view = CreateLineView(lineData);
+                    break;
                 case PolygonData polygonData:
-                    return CreatePolygonView(polygonData);
+                    view = CreatePolygonView(polygonData);
+                    break;
                 case CompositeShapeData compositeShapeData:
-                    return CreateCompositeShapeView(compositeShapeData);
+                    view = CreateCompositeShapeView(compositeShapeData);
+                    break;
             }
-            return null;
+            if (view != null)
+            {
+                m_Views.Add(view);
+            }
+            return view;
         }
         
         private PointView CreatePointView(PointData data)
@@ -52,6 +64,7 @@ namespace Shapes.View
         
         public void ReleaseView(IShapeView view)
         {
+            m_Views.Remove(view);
             view.Release();
         }
     }
