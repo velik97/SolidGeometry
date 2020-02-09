@@ -44,6 +44,18 @@ namespace Shapes.Blueprint.DependentShapes
         [OnDeserialized, UsedImplicitly]
         private void OnDeserialized(StreamingContext context)
         {
+            if (m_SourcePointData != null)
+            {
+                m_SourcePointData.GeometryUpdated += UpdatePosition;
+            }
+            if (m_FirstPointOnLine != null)
+            {
+                m_FirstPointOnLine.GeometryUpdated += UpdatePosition;
+            }
+            if (m_SecondPointOnLine != null)
+            {
+                m_SecondPointOnLine.GeometryUpdated += UpdatePosition;
+            }
             RestoreDependences();
             OnDeserialized();
         }

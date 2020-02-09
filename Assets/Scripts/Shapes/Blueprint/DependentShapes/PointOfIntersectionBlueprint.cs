@@ -42,6 +42,15 @@ namespace Shapes.Blueprint.DependentShapes
         [OnDeserialized, UsedImplicitly]
         private void OnDeserialized(StreamingContext context)
         {
+            for (int i = 0; i < m_PointsOnLines.Length; i++)
+            {
+                if (m_PointsOnLines[i] == null) continue;
+                for (int j = 0; j < m_PointsOnLines[i].Length; j++)
+                {
+                    if (m_PointsOnLines[i][j] == null) continue;
+                    m_PointsOnLines[i][j].GeometryUpdated += UpdatePosition;
+                }
+            }
             RestoreDependences();
             OnDeserialized();
         }
@@ -54,7 +63,7 @@ namespace Shapes.Blueprint.DependentShapes
             PointsNotSameValidator = new PointsNotSameValidator(EnumeratePoints());
             LinesIntersectValidator = new LinesIntersectValidator(this);
             PointData.NameUpdated += OnNameUpdated;
-            
+
             UpdatePosition();
         }
 
