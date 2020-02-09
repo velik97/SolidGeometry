@@ -57,13 +57,25 @@ namespace Shapes.View
             return null;
         }
 
-        public CompositeShapeView CreateCompositeShapeView(CompositeShapeData data)
+        private CompositeShapeView CreateCompositeShapeView(CompositeShapeData data)
         {
             return new CompositeShapeView(data);
+        }
+
+        public void Clear()
+        {
+            while (m_Views.Count > 0)
+            {
+                ReleaseView(m_Views[0]);
+            }
         }
         
         public void ReleaseView(IShapeView view)
         {
+            if (!m_Views.Contains(view))
+            {
+                return;
+            }
             m_Views.Remove(view);
             view.Release();
         }

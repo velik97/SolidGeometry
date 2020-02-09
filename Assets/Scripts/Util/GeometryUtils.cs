@@ -29,19 +29,19 @@ namespace Util
                        q.z <= Math.Max(p.z, r.z) && q.z >= Math.Min(p.z, r.z);
             }
 
-            if (orientation1.sqrMagnitude == 0f && LiesOnSegment(p1, p2, q1))
+            if (orientation1.IsZero() && LiesOnSegment(p1, p2, q1))
             {
                 return true;
             }
-            if (orientation2.sqrMagnitude == 0f && LiesOnSegment(p1, p2, q2))
+            if (orientation2.IsZero() && LiesOnSegment(p1, p2, q2))
             {
                 return true;
             }
-            if (orientation3.sqrMagnitude == 0f && LiesOnSegment(q1, q2, p1))
+            if (orientation3.IsZero() && LiesOnSegment(q1, q2, p1))
             {
                 return true;
             }
-            if (orientation4.sqrMagnitude == 0f && LiesOnSegment(q1, q2, p1))
+            if (orientation4.IsZero() && LiesOnSegment(q1, q2, p1))
             {
                 return true;
             }
@@ -75,11 +75,9 @@ namespace Util
             Vector3 p1p2 = p2 - p1;
             Vector3 q1q2 = q2 - q1;
             Vector3 p1q1 = q1 - p1;
-
-            Vector3 cross = Vector3.Cross(p1p2, q1q2);
-
-            return cross.sqrMagnitude != 0f &&
-                   Vector3.Dot(cross, p1q1) == 0f;
+            
+            return !p1p2.ParallelWith(q1q2) &&
+                   p1p2.CollinearWith(q1q2, p1q1);
         }
 
         /// <summary>
@@ -96,7 +94,7 @@ namespace Util
             Vector3 h = Vector3.Cross(f, g);
             Vector3 k = Vector3.Cross(f, e);
 
-            if (k.sqrMagnitude == null)
+            if (k.IsZero())
             {
                 throw new ArgumentException("lines don't intersect");
             }

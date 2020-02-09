@@ -1,6 +1,7 @@
 using System.Linq;
 using Shapes.Data;
 using UnityEngine;
+using Util;
 
 namespace Shapes.Validators.Polygon
 {
@@ -38,12 +39,9 @@ namespace Shapes.Validators.Polygon
                 points[i] = m_PolygonData.Points[i + 1].Position - m_PolygonData.Points[0].Position;
             }
             
-            Vector3 normal = Vector3.Cross(points[0], points[1]);
-            
             for (int i = 2; i < points.Length; i++)
             {
-                float volume = Vector3.Dot(normal, points[i]);
-                if (volume != 0f)
+                if (!points[i].CollinearWith(points[0], points[1]))
                 {
                     return false;
                 }

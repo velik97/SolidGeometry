@@ -375,6 +375,7 @@
             <e p="Extensions.cs" t="Include" />
             <e p="GeometryUtils.cs" t="Include" />
             <e p="StringExtensions.cs" t="Include" />
+            <e p="Vector3Extensions.cs" t="Include" />
           </e>
         </e>
         <e p="TextMesh Pro" t="Include">

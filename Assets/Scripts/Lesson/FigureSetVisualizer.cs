@@ -12,11 +12,10 @@ namespace Lesson
 
         private ShapeViewFactory ShapeViewFactory =>
             m_ShapeViewFactory ?? (m_ShapeViewFactory = GetComponent<ShapeViewFactory>());
-
-        private FiguresSet m_PreviousFiguresSet;
-
+        
         public void SetShapeDataFactory(ShapeDataFactory shapeDataFactory)
         {
+            ShapeViewFactory.Clear();
             shapeDataFactory.SetViewFactory(ShapeViewFactory);
         }
     }

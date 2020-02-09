@@ -1,4 +1,5 @@
 using UnityEngine;
+using Util;
 
 namespace Shapes.Validators.Parallelepiped
 {
@@ -23,7 +24,7 @@ namespace Shapes.Validators.Parallelepiped
                 return false;
             }
 
-            return Vector3.Dot(Vector3.Cross(m_Axes[0], m_Axes[1]), m_Axes[2]) != 0f;
+            return !m_Axes[0].CollinearWith(m_Axes[1], m_Axes[2]);
         }
 
         public override string GetNotValidMessage()

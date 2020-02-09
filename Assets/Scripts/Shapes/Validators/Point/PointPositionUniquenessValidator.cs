@@ -2,6 +2,7 @@ using System;
 using Shapes.Data;
 using Shapes.Validators.Uniqueness;
 using UnityEngine;
+using Util;
 
 namespace Shapes.Validators.Point
 {
@@ -22,12 +23,12 @@ namespace Shapes.Validators.Point
 
         public override int GetUniqueHashCode()
         {
-            return m_PointData.Position.GetHashCode();
+            return m_PointData.Position.GetEpsilonHashCode();
         }
 
         public override bool UniqueEquals(PointPositionUniquenessValidator validator)
         {
-            return m_PointData.Position == validator.m_PointData.Position;
+            return m_PointData.Position.SameWith(validator.m_PointData.Position);
         }
     }
 }

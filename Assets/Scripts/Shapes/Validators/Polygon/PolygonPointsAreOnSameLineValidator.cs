@@ -1,6 +1,7 @@
 using System.Linq;
 using Shapes.Data;
 using UnityEngine;
+using Util;
 
 namespace Shapes.Validators.Polygon
 {
@@ -42,10 +43,8 @@ namespace Shapes.Validators.Polygon
                 int second = (i + 1) % m_PolygonData.Points.Count;
                 int third = (i + 2) % m_PolygonData.Points.Count;
 
-                if (Vector3.Cross(
-                        GetPosition(second) - GetPosition(first), 
-                        GetPosition(third) - GetPosition(first))
-                    == Vector3.zero)
+                if ((GetPosition(second) - GetPosition(first)).ParallelWith
+                    (GetPosition(third) - GetPosition(first)))
                 {
                     return false;
                 }

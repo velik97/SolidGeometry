@@ -47,9 +47,7 @@ namespace Lesson
                 visualizer.SetShapeDataFactory(ShapeDataFactory);
             }
         }
-
-        ~FiguresSet() => Clear();
-
+        
         public void Clear()
         {
             ShapeDataFactory.Clear();
