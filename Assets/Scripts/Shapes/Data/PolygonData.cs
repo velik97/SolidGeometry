@@ -48,6 +48,13 @@ namespace Shapes.Data
         [OnDeserialized, UsedImplicitly]
         private void OnDeserialized(StreamingContext context)
         {
+            foreach (PointData pointData in m_Points)
+            {
+                if (pointData != null)
+                {
+                    SubscribeOnPoint(pointData);
+                }
+            }
             OnDeserialized();
         }
         

@@ -28,6 +28,10 @@ namespace Shapes.View
 
         public void Release()
         {
+            if (gameObject == null)
+            {
+                return;
+            }
 #if UNITY_EDITOR
             if (Application.isEditor)
             {

@@ -372,11 +372,25 @@
             "$ref": "9"
           }
         ]
+      },
+      {
+        "$id": "36",
+        "m_Points": [
+          {
+            "$ref": "14"
+          },
+          {
+            "$ref": "11"
+          },
+          {
+            "$ref": "13"
+          }
+        ]
       }
     ],
     "m_CompositeShapeDatas": [
       {
-        "$id": "36",
+        "$id": "37",
         "m_Points": [
           {
             "$ref": "2"
@@ -466,7 +480,7 @@
   },
   "ShapeBlueprints": [
     {
-      "$id": "37",
+      "$id": "38",
       "$type": "Shapes.Blueprint.Figures.ParallelepipedBlueprint, Assembly-CSharp",
       "m_Origin": {
         "x": 0.0,
@@ -575,15 +589,7 @@
         }
       ],
       "m_CompositeShapeData": {
-        "$ref": "36"
-      },
-      "m_DependencesOnOtherShapes": []
-    },
-    {
-      "$id": "38",
-      "$type": "Shapes.Blueprint.BaseShapes.PointBlueprint, Assembly-CSharp",
-      "PointData": {
-        "$ref": "10"
+        "$ref": "37"
       },
       "m_DependencesOnOtherShapes": []
     },
@@ -591,7 +597,7 @@
       "$id": "39",
       "$type": "Shapes.Blueprint.BaseShapes.PointBlueprint, Assembly-CSharp",
       "PointData": {
-        "$ref": "11"
+        "$ref": "10"
       },
       "m_DependencesOnOtherShapes": []
     },
@@ -599,12 +605,20 @@
       "$id": "40",
       "$type": "Shapes.Blueprint.BaseShapes.PointBlueprint, Assembly-CSharp",
       "PointData": {
-        "$ref": "12"
+        "$ref": "11"
       },
       "m_DependencesOnOtherShapes": []
     },
     {
       "$id": "41",
+      "$type": "Shapes.Blueprint.BaseShapes.PointBlueprint, Assembly-CSharp",
+      "PointData": {
+        "$ref": "12"
+      },
+      "m_DependencesOnOtherShapes": []
+    },
+    {
+      "$id": "42",
       "$type": "Shapes.Blueprint.DependentShapes.PointOfIntersectionBlueprint, Assembly-CSharp",
       "PointData": {
         "$ref": "13"
@@ -629,21 +643,21 @@
       ],
       "m_DependencesOnOtherShapes": [
         {
-          "$ref": "38"
-        },
-        {
           "$ref": "39"
         },
         {
-          "$ref": "37"
+          "$ref": "40"
         },
         {
-          "$ref": "37"
+          "$ref": "38"
+        },
+        {
+          "$ref": "38"
         }
       ]
     },
     {
-      "$id": "42",
+      "$id": "43",
       "$type": "Shapes.Blueprint.DependentShapes.PointOfIntersectionBlueprint, Assembly-CSharp",
       "PointData": {
         "$ref": "14"
@@ -668,31 +682,16 @@
       ],
       "m_DependencesOnOtherShapes": [
         {
-          "$ref": "41"
-        },
-        {
-          "$ref": "40"
-        },
-        {
-          "$ref": "37"
-        },
-        {
-          "$ref": "37"
-        }
-      ]
-    },
-    {
-      "$id": "43",
-      "$type": "Shapes.Blueprint.BaseShapes.LineBlueprint, Assembly-CSharp",
-      "LineData": {
-        "$ref": "27"
-      },
-      "m_DependencesOnOtherShapes": [
-        {
           "$ref": "42"
         },
         {
           "$ref": "41"
+        },
+        {
+          "$ref": "38"
+        },
+        {
+          "$ref": "38"
         }
       ]
     },
@@ -700,14 +699,14 @@
       "$id": "44",
       "$type": "Shapes.Blueprint.BaseShapes.LineBlueprint, Assembly-CSharp",
       "LineData": {
-        "$ref": "28"
+        "$ref": "27"
       },
       "m_DependencesOnOtherShapes": [
         {
-          "$ref": "42"
+          "$ref": "43"
         },
         {
-          "$ref": "39"
+          "$ref": "42"
         }
       ]
     },
@@ -715,14 +714,47 @@
       "$id": "45",
       "$type": "Shapes.Blueprint.BaseShapes.LineBlueprint, Assembly-CSharp",
       "LineData": {
+        "$ref": "28"
+      },
+      "m_DependencesOnOtherShapes": [
+        {
+          "$ref": "43"
+        },
+        {
+          "$ref": "40"
+        }
+      ]
+    },
+    {
+      "$id": "46",
+      "$type": "Shapes.Blueprint.BaseShapes.LineBlueprint, Assembly-CSharp",
+      "LineData": {
         "$ref": "29"
       },
       "m_DependencesOnOtherShapes": [
         {
-          "$ref": "39"
+          "$ref": "40"
         },
         {
-          "$ref": "41"
+          "$ref": "42"
+        }
+      ]
+    },
+    {
+      "$id": "47",
+      "$type": "Shapes.Blueprint.BaseShapes.PolygonBlueprint, Assembly-CSharp",
+      "PolygonData": {
+        "$ref": "36"
+      },
+      "m_DependencesOnOtherShapes": [
+        {
+          "$ref": "43"
+        },
+        {
+          "$ref": "40"
+        },
+        {
+          "$ref": "42"
         }
       ]
     }

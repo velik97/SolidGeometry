@@ -54,7 +54,9 @@ namespace Shapes.View
         
         private PolygonView CreatePolygonView(PolygonData data)
         {
-            return null;
+            PolygonView polygonView = Instantiate(m_PolygonPrefab, transform, false);
+            polygonView.SetShapeData(data);
+            return polygonView;
         }
 
         private CompositeShapeView CreateCompositeShapeView(CompositeShapeData data)
