@@ -8,8 +8,7 @@ namespace Shapes.View
         [SerializeField] private GameObject m_CylinderParent;
         [SerializeField] private GameObject m_Cylinder;
 
-        public override void SetHighlight(HighlightType highlightType)
-        { }
+        public override HighlightType Highlight { get; set; }
 
         public override void UpdateName(LineData shapeData)
         { }

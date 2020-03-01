@@ -9,8 +9,7 @@ namespace Shapes.View
         [SerializeField] private GameObject m_Sphere;
         [SerializeField] private TextMeshProUGUI m_NameLabel;
 
-        public override void SetHighlight(HighlightType highlightType)
-        { }
+        public override HighlightType Highlight { get; set; }
 
         public override void UpdateName(PointData shapeData)
         {

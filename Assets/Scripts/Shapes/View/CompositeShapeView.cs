@@ -12,35 +12,58 @@ namespace Shapes.View
             m_CompositeShapeData = compositeShapeData;
         }
 
-        public void SetActive(bool value)
+        private bool m_Active = false;
+        private HighlightType m_Highlight = HighlightType.Normal;
+
+        public bool Active
         {
-            foreach (PointView point in m_CompositeShapeData.Points.Select(p => p.PointView))
+            get => m_Active;
+            set
             {
-                point.SetActive(value);
+                m_Active = value;
+                SetActive(value);
             }
-            foreach (LineView line in m_CompositeShapeData.Lines.Select(p => p.LineView))
+        }
+        
+        public HighlightType Highlight 
+        {
+            get => m_Highlight;
+            set
             {
-                line.SetActive(value);
-            }
-            foreach (PolygonView polygon in m_CompositeShapeData.Polygons.Select(p => p.PolygonView))
-            {
-                polygon.SetActive(value);
+                m_Highlight = value;
+                SetHighlight(value);
             }
         }
 
-        public void SetHighlight(HighlightType highlightType)
+        private void SetActive(bool value)
         {
             foreach (PointView point in m_CompositeShapeData.Points.Select(p => p.PointView))
             {
-                point.SetHighlight(highlightType);
+                point.Active = value;
             }
             foreach (LineView line in m_CompositeShapeData.Lines.Select(p => p.LineView))
             {
-                line.SetHighlight(highlightType);
+                line.Active = value;
+            }
+            foreach (PolygonView polygon in m_CompositeShapeData.Polygons.Select(p => p.PolygonView))
+            {
+                polygon.Active = value;
+            }
+        }
+
+        private void SetHighlight(HighlightType value)
+        {
+            foreach (PointView point in m_CompositeShapeData.Points.Select(p => p.PointView))
+            {
+                point.Highlight = value;
+            }
+            foreach (LineView line in m_CompositeShapeData.Lines.Select(p => p.LineView))
+            {
+                line.Highlight = value;
             }
             foreach (LineView polygon in m_CompositeShapeData.Lines.Select(p => p.LineView))
             {
-                polygon.SetHighlight(highlightType);
+                polygon.Highlight = value;
             }
         }
 

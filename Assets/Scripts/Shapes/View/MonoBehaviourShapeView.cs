@@ -13,13 +13,14 @@ namespace Shapes.View
             UpdateName(shapeData);
             UpdateGeometry(shapeData);
         }
-        
-        public void SetActive(bool value)
-        {
-            gameObject.SetActive(value);
-        }
 
-        public abstract void SetHighlight(HighlightType highlightType);
+        public bool Active
+        {
+            get => gameObject.activeSelf;
+            set => gameObject.SetActive(value);
+        }
+        
+        public abstract HighlightType Highlight { get; set; }
         
         public abstract void UpdateName(TShapeData shapeData);
         

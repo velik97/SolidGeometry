@@ -2,8 +2,8 @@ namespace Shapes.View
 {
     public interface IShapeView
     {
-        void SetActive(bool value);
-        void SetHighlight(HighlightType highlightType);
+        bool Active { get; set; }
+        HighlightType Highlight { get; set; }
         void Release();
     }
 

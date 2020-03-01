@@ -6,7 +6,7 @@ using UnityEngine;
 namespace Lesson
 {
     [RequireComponent(typeof(ShapeViewFactory))]
-    public class FigureSetVisualizer : MonoBehaviour
+    public class LessonVisualizer : MonoBehaviour
     {
         private ShapeViewFactory m_ShapeViewFactory;
 

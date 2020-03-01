@@ -30,6 +30,7 @@ namespace Shapes.Blueprint
         
         public abstract ShapeData MainShapeData { get; }
 
+        [JsonProperty(IsReference = true)]
         public ShapeDataFactory DataFactory;
 
         protected ShapeBlueprint(ShapeDataFactory dataFactory)

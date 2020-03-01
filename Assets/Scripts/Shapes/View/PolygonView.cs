@@ -33,8 +33,7 @@ namespace Shapes.View
             m_IsInitialized = true;
         }
 
-        public override void SetHighlight(HighlightType highlightType)
-        { }
+        public override HighlightType Highlight { get; set; }
 
         public override void UpdateName(PolygonData shapeData)
         { }

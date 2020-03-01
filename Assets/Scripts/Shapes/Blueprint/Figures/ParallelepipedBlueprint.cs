@@ -136,7 +136,7 @@ namespace Shapes.Blueprint.Figures
                 m_Polygons[i + 1].SetPoint(3, m_Points[4 + i % 4]);
             }
             
-            // Bottom face
+            // Top face
             for (int i = 0; i < 4; i++)
             {
                 m_Polygons[5].SetPoint(i, m_Points[4 + i]);
