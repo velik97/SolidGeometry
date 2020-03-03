@@ -1,5 +1,4 @@
 using Lesson;
-using LessonComponents;
 using UnityEditor;
 using UnityEngine;
 using UnityEngine.UIElements;
@@ -10,9 +9,9 @@ namespace Editor.Lesson
     {
         private VisualElement m_RootVisualElement;
 
-        private LessonsListEditor m_LessonsListEditor;
-        private ShapeBlueprintsEditor m_ShapeBlueprintsEditor;
-        private StagesSetEditor m_StagesSetEditor;
+        private LessonFilesListEditor m_LessonFilesListEditor;
+        private ShapeBlueprintListEditor m_ShapeBlueprintListEditor;
+        private StageListEditor m_StageListEditor;
 
         private LessonData m_LessonData;
 
@@ -27,17 +26,17 @@ namespace Editor.Lesson
 
         private void OnEnable()
         {
-            m_LessonsListEditor = new LessonsListEditor(GetLessonData, SetLessonData, CreateNewLesson);
-            m_ShapeBlueprintsEditor = new ShapeBlueprintsEditor();
-            m_StagesSetEditor = new StagesSetEditor();
+            m_LessonFilesListEditor = new LessonFilesListEditor(GetLessonData, SetLessonData, CreateNewLesson);
+            m_ShapeBlueprintListEditor = new ShapeBlueprintListEditor();
+            m_StageListEditor = new StageListEditor();
             
             m_RootVisualElement = new ScrollView();
             rootVisualElement.Clear();
             rootVisualElement.Add(m_RootVisualElement);
             
-            m_RootVisualElement.Add(m_LessonsListEditor.GetVisualElement());
-            m_RootVisualElement.Add(m_ShapeBlueprintsEditor.GetVisualElement());
-            m_RootVisualElement.Add(m_StagesSetEditor.GetVisualElement());
+            m_RootVisualElement.Add(m_LessonFilesListEditor.GetVisualElement());
+            m_RootVisualElement.Add(m_ShapeBlueprintListEditor.GetVisualElement());
+            m_RootVisualElement.Add(m_StageListEditor.GetVisualElement());
         }
 
         private LessonData GetLessonData()
@@ -49,8 +48,8 @@ namespace Editor.Lesson
         {
             m_LessonData = lessonData;
 
-            m_ShapeBlueprintsEditor.OnTargetChosen(m_LessonData.ShapeBlueprintFactory);
-            m_StagesSetEditor.OnTargetChosen(m_LessonData.LessonStageFactory);
+            m_ShapeBlueprintListEditor.OnTargetChosen(m_LessonData.ShapeBlueprintFactory);
+            m_StageListEditor.OnTargetChosen(m_LessonData.LessonStageFactory);
 
             LessonVisualizer lessonVisualizer = FindObjectOfType<LessonVisualizer>();
             if (lessonVisualizer != null)

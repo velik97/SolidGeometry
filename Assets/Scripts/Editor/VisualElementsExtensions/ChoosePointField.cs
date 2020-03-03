@@ -1,8 +1,9 @@
 using System;
 using JetBrains.Annotations;
+using Lesson.Shapes.Data;
+using Lesson.Shapes.Validators;
 using Shapes.Blueprint;
 using Shapes.Data;
-using Shapes.Validators;
 using UnityEditor.UIElements;
 using UnityEngine;
 using UnityEngine.UIElements;
