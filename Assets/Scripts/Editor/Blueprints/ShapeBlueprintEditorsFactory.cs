@@ -24,6 +24,8 @@ namespace Editor.Blueprints
                     return new PolygonBlueprintEditor(polygonBlueprint, deleteAction).GetVisualElement();
                 case ParallelepipedBlueprint parallelepipedBlueprint:
                     return new ParallelepipedBlueprintEditor(parallelepipedBlueprint, deleteAction).GetVisualElement();
+                case CubeBlueprint cubeBlueprint:
+                    return new CubeBlueprintEditor(cubeBlueprint, deleteAction).GetVisualElement();
                 case PointProjectionOnLineBlueprint projectionOnLineBlueprint:
                     return new PointProjectionOnLineBlueprintEditor(projectionOnLineBlueprint, deleteAction).GetVisualElement();
                 case PointOfIntersectionBlueprint pointOfIntersectionBlueprint:

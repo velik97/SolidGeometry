@@ -10,16 +10,13 @@ using UnityEngine;
 namespace Shapes.Blueprint.Figures
 {    
     [JsonObject(IsReference = true, MemberSerialization = MemberSerialization.OptIn)]
-
     public class CubeBlueprint : ShapeBlueprint
     {
-        // Cube is a point and length, can change
         [JsonProperty]
         private Vector3 m_Origin;
         [JsonProperty] 
         private float m_Length;
         
-        // Data for Json, auto 
         [JsonProperty]
         private readonly PointData[] m_Points = new PointData[8];
         [JsonProperty]
@@ -29,7 +26,6 @@ namespace Shapes.Blueprint.Figures
         [JsonProperty]
         private readonly CompositeShapeData m_CompositeShapeData;
         
-        // for reading
         public Vector3 Origin => m_Origin;
         public float Length => m_Length;
         
@@ -37,11 +33,9 @@ namespace Shapes.Blueprint.Figures
         public IReadOnlyList<LineData> Lines => m_Lines;
         public IReadOnlyList<PolygonData> Polygons => m_Polygons;
         
-        //need to understand 
         public override ShapeData MainShapeData => m_CompositeShapeData;
         
-        public NonZeroVolumeValidator NonZeroVolumeValidator; // хз, что это
-
+        public NonZeroVolumeValidator NonZeroVolumeValidator;
         
         public CubeBlueprint(ShapeDataFactory dataFactory) : base(dataFactory)
         {
@@ -72,6 +66,7 @@ namespace Shapes.Blueprint.Figures
             
             OnDeserialized();
         }
+        
         [JsonConstructor]
         public CubeBlueprint(object _)
         { }
@@ -84,8 +79,8 @@ namespace Shapes.Blueprint.Figures
 
         private void OnDeserialized()
         {
-            //NonZeroVolumeValidator = new NonZeroVolumeValidator(m_Axes);////////////// Пока не разобрался
-            NonZeroVolumeValidator.Update();
+            //NonZeroVolumeValidator = new NonZeroVolumeValidator(m_Axes);
+            //NonZeroVolumeValidator.Update();
             UpdatePointsPositions();
 
             foreach (var shapeData in 
@@ -163,42 +158,17 @@ namespace Shapes.Blueprint.Figures
             UpdatePointsPositions();
         }
 
-        // public void SetAxis(int axisNum, Vector3 axis)
-        // {
-        //     if (axisNum < 0 || axisNum >= 3)
-        //     {
-        //         return;
-        //     }
-        //
-        //     m_Axes[axisNum] = axis;
-        //     NonZeroVolumeValidator.Update();
-        //     UpdatePointsPositions();
-        // }
-        
-        public void SetLength(int Length)
+        public void SetLength(float length)
         {
-            if (Length < 0 )
+            if (length < 0 )
             {
                 return;
             }
 
-            m_Length = Length;
-            NonZeroVolumeValidator.Update();
+            m_Length = length;
+            //NonZeroVolumeValidator.Update();
             UpdatePointsPositions();
         }
-
-        // private void UpdatePointsPositions()
-        // {
-        //     m_Points[0].SetPosition(m_Origin);
-        //     m_Points[1].SetPosition(m_Origin + m_Axes[0]);
-        //     m_Points[2].SetPosition(m_Origin + m_Axes[0] + m_Axes[1]);
-        //     m_Points[3].SetPosition(m_Origin + m_Axes[1]);
-        //     
-        //     m_Points[4].SetPosition(m_Origin + m_Axes[2]);
-        //     m_Points[5].SetPosition(m_Origin + m_Axes[0] + m_Axes[2]);
-        //     m_Points[6].SetPosition(m_Origin + m_Axes[0] + m_Axes[1] + m_Axes[2]);
-        //     m_Points[7].SetPosition(m_Origin + m_Axes[1] + m_Axes[2]);
-        // }
         
         private void UpdatePointsPositions()
         {
