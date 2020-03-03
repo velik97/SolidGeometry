@@ -1,9 +1,10 @@
 using System;
 using Editor.VisualElementsExtensions;
 using Shapes.Blueprint.DependentShapes;
+using Shapes.Data;
 using UnityEngine.UIElements;
 
-namespace Editor.Blueprint
+namespace Editor.Lesson.Blueprints.DependentShapes
 {
     public class PointOfIntersectionBlueprintEditor : ShapeBlueprintEditor<PointOfIntersectionBlueprint>
     {
@@ -28,7 +29,8 @@ namespace Editor.Blueprint
             {
                 int lineNumCopy = lineNum;
                 int pointNumCopy = pointNum;
-                visualElement.Add(new ChoosePointField(
+                visualElement.Add(new ChoseShapeDataField<PointData>(
+                    Blueprint.DataFactory,
                     Blueprint,
                     $"Line {lineNumCopy + 1}, Point {pointNumCopy + 1}",
                     () => Blueprint.PointsOnLines[lineNumCopy][pointNumCopy],

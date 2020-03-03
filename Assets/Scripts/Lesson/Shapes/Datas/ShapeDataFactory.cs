@@ -47,6 +47,11 @@ namespace Lesson.Shapes.Data
             }
         }
 
+        public IReadOnlyList<TShapeData> GetShapeDatasList<TShapeData>() where TShapeData : ShapeData
+        {
+            return AllDatas.Where(data => data is TShapeData).Cast<TShapeData>().ToList();
+        }
+
         public void Clear()
         {
             foreach (ShapeData shapeData in AllDatas)

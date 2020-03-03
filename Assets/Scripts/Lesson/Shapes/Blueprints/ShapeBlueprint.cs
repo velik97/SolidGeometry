@@ -1,13 +1,14 @@
 using System;
 using System.Collections.Generic;
+using Lesson.Shapes.Blueprints;
 using Lesson.Shapes.Data;
 using Newtonsoft.Json;
 using Shapes.Data;
 
 namespace Shapes.Blueprint
 {
-    [JsonObject(IsReference = true, MemberSerialization = MemberSerialization.OptIn)]
-    public abstract class ShapeBlueprint
+    [JsonObject(MemberSerialization = MemberSerialization.OptIn)]
+    public abstract class ShapeBlueprint : CanDependOnShapeBlueprint
     {
         public event Action NameUpdated;
         public event Action DependencesUpdated;
@@ -15,16 +16,8 @@ namespace Shapes.Blueprint
         /// <summary>
         /// List of shapes, that depend on me
         /// </summary>
-        private readonly List<ShapeBlueprint> m_DependentOnMeShapes = new List<ShapeBlueprint>();
+        private readonly List<CanDependOnShapeBlueprint> m_DependentOnMeShapes = new List<CanDependOnShapeBlueprint>();
         
-        /// <summary>
-        /// List of shapes, I depend on
-        /// </summary>
-        [JsonProperty]
-        private readonly List<ShapeBlueprint> m_DependencesOnOtherShapes = new List<ShapeBlueprint>();
-
-        public IReadOnlyList<ShapeBlueprint> DependencesOnOtherShapes => m_DependencesOnOtherShapes;
-
         protected readonly List<ShapeData> MyShapeDatas = new List<ShapeData>();
         
         public bool HaveDependences => m_DependentOnMeShapes.Count > 0;
@@ -38,25 +31,13 @@ namespace Shapes.Blueprint
         {
             DataFactory = dataFactory;
         }
-
+        
         protected ShapeBlueprint()
         { }
-        
-        protected void RestoreDependences()
+
+        public override void Destroy()
         {
-            foreach (ShapeBlueprint shapeBlueprint in m_DependencesOnOtherShapes)
-            {
-                shapeBlueprint.AddDependence(this);
-            }
-        }
-        
-        public void Destroy()
-        {
-            foreach (ShapeBlueprint d in m_DependencesOnOtherShapes)
-            {
-                d.RemoveDependence(this);
-            }
-            m_DependencesOnOtherShapes.Clear();
+            base.Destroy();
             
             foreach (ShapeData data in MyShapeDatas)
             {
@@ -65,25 +46,13 @@ namespace Shapes.Blueprint
             MyShapeDatas.Clear();
         }
 
-        public void CreateDependenceOn(ShapeData shapeData)
+        public void AddDependence(CanDependOnShapeBlueprint dependentOnMe)
         {
-            m_DependencesOnOtherShapes.Add(shapeData.SourceBlueprint);
-            shapeData.SourceBlueprint.AddDependence(this);
-        }
-
-        public void RemoveDependenceOn(ShapeData shapeData)
-        {
-            m_DependencesOnOtherShapes.Remove(shapeData.SourceBlueprint);
-            shapeData.SourceBlueprint.RemoveDependence(this);
-        }
-
-        protected void AddDependence(ShapeBlueprint blueprint)
-        {
-            m_DependentOnMeShapes.Add(blueprint);
+            m_DependentOnMeShapes.Add(dependentOnMe);
             DependencesUpdated?.Invoke();
         }
         
-        private void RemoveDependence(ShapeBlueprint blueprint)
+        public void RemoveDependence(CanDependOnShapeBlueprint blueprint)
         {
             m_DependentOnMeShapes.Remove(blueprint);
             DependencesUpdated?.Invoke();
@@ -92,46 +61,6 @@ namespace Shapes.Blueprint
         protected void OnNameUpdated()
         {
             NameUpdated?.Invoke();
-        }
-    }
-
-    public static class ShapeBlueprintDependencesCyclesSolver
-    {
-        public static bool CanCreateDependence(ShapeBlueprint dependentBlueprint, ShapeData dependsOnData)
-        {
-            return !HasDependenceFromTo(dependsOnData.SourceBlueprint, dependentBlueprint, null);
-        }
-
-        private static bool HasDependenceFromTo(ShapeBlueprint fromBlueprint, ShapeBlueprint toBlueprint,
-            HashSet<ShapeBlueprint> visited)
-        {
-            if (fromBlueprint == toBlueprint)
-            {
-                return true;
-            }
-
-            if (visited == null)
-            {
-                visited = new HashSet<ShapeBlueprint>();
-            }
-
-            foreach (ShapeBlueprint blueprint in fromBlueprint.DependencesOnOtherShapes)
-            {
-                if (visited.Contains(blueprint))
-                {
-                    continue;
-                }
-                visited.Add(blueprint);
-
-                if (blueprint == toBlueprint)
-                {
-                    return true;
-                }
-
-                return HasDependenceFromTo(blueprint, toBlueprint, visited);
-            }
-
-            return false;
         }
     }
 }

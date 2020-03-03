@@ -1,17 +1,16 @@
 using System;
-using Shapes.Data;
 
 namespace Lesson.Shapes.Validators
 {
-    public class PointNotEmptyValidator : IValidator
+    public class DataNotEmptyValidator<TData> : IValidator where TData : class
     {
-        private readonly Func<PointData> m_GetPointFunc;
+        private readonly Func<TData> m_GetPointFunc;
             
         private bool m_AreNotEmpty;
         
         public event Action ValidStateChanged;
         
-        public PointNotEmptyValidator(Func<PointData> getPointFunc, Action<Action> subscribeAction)
+        public DataNotEmptyValidator(Func<TData> getPointFunc, Action<Action> subscribeAction)
         {
             m_GetPointFunc = getPointFunc;
 
@@ -36,7 +35,7 @@ namespace Lesson.Shapes.Validators
 
         public string GetNotValidMessage()
         {
-            return "Point should be set";
+            return "Data should be set";
         }
     }
 }

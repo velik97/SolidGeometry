@@ -5,7 +5,7 @@ using UnityEditor.UIElements;
 using UnityEngine;
 using UnityEngine.UIElements;
 
-namespace Editor.Blueprint
+namespace Editor.Lesson.Blueprints.BaseShapes
 {
     public class PointBlueprintEditor : ShapeBlueprintEditor<PointBlueprint>
     {

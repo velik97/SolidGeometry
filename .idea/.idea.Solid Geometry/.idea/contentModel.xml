@@ -290,18 +290,22 @@
                   <e p="PointProjectionOnLineBlueprintEditor.cs" t="Include" />
                 </e>
                 <e p="ShapeBlueprintEditor.cs" t="Include" />
-                <e p="ShapeBlueprintEditorsFactory.cs" t="Include" />
+                <e p="ShapeBlueprintEditorFactory.cs" t="Include" />
               </e>
               <e p="LessonEditor.cs" t="Include" />
               <e p="LessonFilesListEditor.cs" t="Include" />
-              <e p="ShapeBlueprintListEditor.cs" t="Include" />
-              <e p="StageListEditor.cs" t="Include" />
+              <e p="LessonStagesListEditor.cs" t="Include" />
+              <e p="ShapeBlueprintsListEditor.cs" t="Include" />
               <e p="Stages" t="Include">
-                <e p="StageEditor.cs" t="Include" />
+                <e p="Actions" t="Include">
+                  <e p="SetActiveShapeActionEditor.cs" t="Include" />
+                  <e p="ShapeActionEditor.cs" t="Include" />
+                </e>
+                <e p="LessonStageEditor.cs" t="Include" />
               </e>
             </e>
             <e p="VisualElementsExtensions" t="Include">
-              <e p="ChoosePointField.cs" t="Include" />
+              <e p="ChoseShapeDataField.cs" t="Include" />
               <e p="IHaveVisualElement.cs" t="Include" />
               <e p="ListOfFilesInFolder.cs" t="Include" />
               <e p="ValidatorField.cs" t="Include" />
@@ -316,6 +320,7 @@
                   <e p="PointBlueprint.cs" t="Include" />
                   <e p="PolygonBlueprint.cs" t="Include" />
                 </e>
+                <e p="CanDependOnShapeBlueprint.cs" t="Include" />
                 <e p="CompositeShapes" t="Include">
                   <e p="CubeBlueprint.cs" t="Include" />
                   <e p="ParallelepipedBlueprint.cs" t="Include" />
@@ -336,6 +341,7 @@
                 <e p="ShapeDataFactory.cs" t="Include" />
               </e>
               <e p="Validators" t="Include">
+                <e p="DataNotEmptyValidator.cs" t="Include" />
                 <e p="IValidator.cs" t="Include" />
                 <e p="Line" t="Include">
                   <e p="LineUniquenessValidator.cs" t="Include" />
@@ -345,7 +351,6 @@
                   <e p="PointNameUniquenessValidator.cs" t="Include" />
                   <e p="PointPositionUniquenessValidator.cs" t="Include" />
                 </e>
-                <e p="PointNotEmptyValidator.cs" t="Include" />
                 <e p="PointOfIntersection" t="Include">
                   <e p="LinesIntersectValidator.cs" t="Include" />
                 </e>

@@ -5,7 +5,7 @@ using UnityEngine.UIElements;
 
 namespace Editor.Lesson.Stages
 {
-    public class StageEditor : IHaveVisualElement
+    public class LessonStageEditor : IHaveVisualElement
     {
         private readonly LessonStage m_Stage;
         private readonly Action<LessonStage, VisualElement> m_DeleteAction;
@@ -13,7 +13,7 @@ namespace Editor.Lesson.Stages
         private Foldout m_NameElement;
         private Button m_DeleteButton;
 
-        public StageEditor(LessonStage stage, Action<LessonStage, VisualElement> deleteAction)
+        public LessonStageEditor(LessonStage stage, Action<LessonStage, VisualElement> deleteAction)
         {
             m_Stage = stage;
             m_DeleteAction = deleteAction;

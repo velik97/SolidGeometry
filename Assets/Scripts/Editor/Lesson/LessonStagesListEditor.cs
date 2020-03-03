@@ -5,7 +5,7 @@ using UnityEngine.UIElements;
 
 namespace Editor.Lesson
 {
-    public class StageListEditor : IHaveVisualElement
+    public class LessonStagesListEditor : IHaveVisualElement
     {
         private LessonStageFactory m_LessonStageFactory;
         
@@ -51,7 +51,7 @@ namespace Editor.Lesson
             
             foreach (LessonStage lessonStage in m_LessonStageFactory.LessonStages)
             {
-                visualElement.Add(new StageEditor(lessonStage, RemoveStage).GetVisualElement());
+                visualElement.Add(new LessonStageEditor(lessonStage, RemoveStage).GetVisualElement());
             }
 
             return visualElement;
@@ -75,7 +75,7 @@ namespace Editor.Lesson
         private void CreateStage()
         {
             LessonStage lessonStage = m_LessonStageFactory.CreateLessonStage();
-            VisualElement visualElement = new StageEditor(lessonStage, RemoveStage).GetVisualElement();
+            VisualElement visualElement = new LessonStageEditor(lessonStage, RemoveStage).GetVisualElement();
             m_BaseVisualElement.Add(visualElement);
         }
 

@@ -1,5 +1,6 @@
 using System;
 using JetBrains.Annotations;
+using Lesson.Shapes.Blueprints;
 using Lesson.Shapes.Data;
 using Lesson.Shapes.Validators;
 using Shapes.Blueprint;
@@ -10,29 +11,29 @@ using UnityEngine.UIElements;
 
 namespace Editor.VisualElementsExtensions
 {
-    public class ChoosePointField : VisualElement
+    public class ChoseShapeDataField<TShapeData> : VisualElement where TShapeData : ShapeData
     {
         private readonly ShapeDataFactory m_DataFactory;
-        private readonly ShapeBlueprint m_Blueprint;
+        private readonly CanDependOnShapeBlueprint m_Dependent;
 
         private readonly string m_FieldName;
         
-        [NotNull] private readonly Func<PointData> m_GetPointFunc;
-        [NotNull] private readonly Action<PointData> m_SetPointFunc;
+        [NotNull] private readonly Func<TShapeData> m_GetShapeDataFunc;
+        [NotNull] private readonly Action<TShapeData> m_SetShapeDataFunc;
 
         private readonly Label m_Label;
         private readonly ToolbarMenu m_ToolbarMenu;
 
         private Action m_UpdateValidatorAction;
 
-        public ChoosePointField(ShapeBlueprint blueprint, string fieldName,
-            Func<PointData> getPointFunc, Action<PointData> setPointFunc)
+        public ChoseShapeDataField(ShapeDataFactory shapeDataFactory, CanDependOnShapeBlueprint dependent,
+            string fieldName, Func<TShapeData> getShapeDataFunc, Action<TShapeData> setShapeDataFunc)
         {
-            m_DataFactory = blueprint.DataFactory;
-            m_Blueprint = blueprint;
+            m_DataFactory = shapeDataFactory;
+            m_Dependent = dependent;
             m_FieldName = fieldName;
-            m_GetPointFunc = getPointFunc;
-            m_SetPointFunc = setPointFunc;
+            m_GetShapeDataFunc = getShapeDataFunc;
+            m_SetShapeDataFunc = setShapeDataFunc;
 
             VisualElement firstRow = new VisualElement {style = {flexDirection = FlexDirection.Row}};
             firstRow.Add(m_Label = new Label());
@@ -40,7 +41,7 @@ namespace Editor.VisualElementsExtensions
             Add(firstRow);
 
             IValidator pointNotEmptyValidator =
-                new PointNotEmptyValidator(getPointFunc, action => m_UpdateValidatorAction = action);
+                new DataNotEmptyValidator<TShapeData>(getShapeDataFunc, action => m_UpdateValidatorAction = action);
             VisualElement validatorField = new ValidatorField(pointNotEmptyValidator);
             Add(validatorField);
 
@@ -53,44 +54,44 @@ namespace Editor.VisualElementsExtensions
 
         private void UpdateName()
         {
-            m_Label.text = m_FieldName + " " + m_GetPointFunc()?.PointName;
+            m_Label.text = m_FieldName + " " + m_GetShapeDataFunc()?.ToString();;
         }
 
         private void UpdateList()
         {
             m_ToolbarMenu.menu.MenuItems().Clear();
             
-            foreach (PointData pointData in m_DataFactory.PointDatas)
+            foreach (TShapeData pointData in m_DataFactory.GetShapeDatasList<TShapeData>())
             {
                 m_ToolbarMenu.menu.AppendAction(
                     pointData.ToString(), 
-                    menuAction => SetPoint(pointData),
+                    menuAction => SetData(pointData),
                     DropdownMenuAction.AlwaysEnabled);
             }
         }
 
-        private void SetPoint(PointData pointData)
+        private void SetData(TShapeData shapeData)
         {
-            PointData previousPointData = m_GetPointFunc();
-            if (pointData == previousPointData)
+            TShapeData previousPointData = m_GetShapeDataFunc();
+            if (shapeData == previousPointData)
             {
                 return;
             }
 
-            if (!ShapeBlueprintDependencesCyclesSolver.CanCreateDependence(m_Blueprint, pointData))
+            if (!CanDependOnShapeBlueprint.CanCreateDependence(m_Dependent, shapeData))
             {
-                Debug.LogError("Can't chose point because it will create a cycle in dependences");
+                Debug.LogError("Can't chose data because it will create a cycle in dependences");
                 return;
             }
             
             if (previousPointData != null)
             {
-                m_Blueprint.RemoveDependenceOn(previousPointData);
+                m_Dependent.RemoveDependenceOn(previousPointData);
             }
-            m_SetPointFunc.Invoke(pointData);
-            if (pointData != null)
+            m_SetShapeDataFunc.Invoke(shapeData);
+            if (shapeData != null)
             {
-                m_Blueprint.CreateDependenceOn(pointData);
+                m_Dependent.CreateDependenceOn(shapeData);
             }
             UpdateName();
             m_UpdateValidatorAction?.Invoke();

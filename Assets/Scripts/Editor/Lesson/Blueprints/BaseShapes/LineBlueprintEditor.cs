@@ -1,10 +1,11 @@
 using System;
 using Editor.VisualElementsExtensions;
 using Shapes.Blueprint.BaseShapes;
+using Shapes.Data;
 using UnityEditor.UIElements;
 using UnityEngine.UIElements;
 
-namespace Editor.Blueprint.BaseShapes
+namespace Editor.Lesson.Blueprints.BaseShapes
 {
     public class LineBlueprintEditor : ShapeBlueprintEditor<LineBlueprint>
     {
@@ -20,13 +21,15 @@ namespace Editor.Blueprint.BaseShapes
 
         protected override void SetBaseVisualElement(VisualElement visualElement)
         {
-            ChoosePointField chooseStartPointField = new ChoosePointField(
+            ChoseShapeDataField<PointData> chooseStartPointField = new ChoseShapeDataField<PointData>(
+                Blueprint.DataFactory,
                 Blueprint,
                 "Start Point",
                 () => Blueprint.LineData.StartPoint,
                 Blueprint.LineData.SetStartPoint);
             
-            ChoosePointField chooseEndPointField = new ChoosePointField(
+            ChoseShapeDataField<PointData> chooseEndPointField = new ChoseShapeDataField<PointData>(
+                Blueprint.DataFactory,
                 Blueprint,
                 "End Point",
                 () => Blueprint.LineData.EndPoint,

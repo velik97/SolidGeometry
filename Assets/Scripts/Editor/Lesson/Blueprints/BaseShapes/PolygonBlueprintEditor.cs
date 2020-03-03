@@ -1,10 +1,11 @@
 using System;
 using Editor.VisualElementsExtensions;
 using Shapes.Blueprint.BaseShapes;
+using Shapes.Data;
 using UnityEngine.UIElements;
 using Util;
 
-namespace Editor.Blueprint
+namespace Editor.Lesson.Blueprints.BaseShapes
 {
     public class PolygonBlueprintEditor : ShapeBlueprintEditor<PolygonBlueprint>
     {
@@ -51,7 +52,8 @@ namespace Editor.Blueprint
 
         private void AddPointEditor(int index)
         {
-            VisualElement setPointElement = new ChoosePointField(
+            VisualElement setPointElement = new ChoseShapeDataField<PointData>(
+                Blueprint.DataFactory,
                 Blueprint,
                 (index + 1).GetOrdinalForm() + " Point",
                 () => Blueprint.PolygonData.Points[index],

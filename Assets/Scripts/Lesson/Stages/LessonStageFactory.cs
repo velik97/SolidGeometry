@@ -1,6 +1,7 @@
 using System.Collections.Generic;
 using System.Runtime.Serialization;
 using JetBrains.Annotations;
+using Lesson.Stages.Actions;
 using Newtonsoft.Json;
 
 namespace Lesson.Stages
@@ -10,11 +11,14 @@ namespace Lesson.Stages
     {
         [JsonProperty]
         private readonly List<LessonStage> m_LessonStages;
+        
+        private ShapeActionFactory m_ShapeActionFactory;
 
         public IReadOnlyList<LessonStage> LessonStages => m_LessonStages;
 
-        public LessonStageFactory()
+        public LessonStageFactory(ShapeActionFactory shapeActionFactory)
         {
+            m_ShapeActionFactory = shapeActionFactory;
             m_LessonStages = new List<LessonStage>();
         }
         
@@ -31,9 +35,18 @@ namespace Lesson.Stages
             }
         }
 
+        public void SetShapeActionFactory(ShapeActionFactory shapeActionFactory)
+        {
+            m_ShapeActionFactory = shapeActionFactory;
+            foreach (LessonStage lessonStage in m_LessonStages)
+            {
+                lessonStage.SetShapeActionFactory(m_ShapeActionFactory);
+            }
+        }
+
         public LessonStage CreateLessonStage()
         {
-            LessonStage lessonStage = new LessonStage();
+            LessonStage lessonStage = new LessonStage(m_ShapeActionFactory);
             m_LessonStages.Add(lessonStage);
             lessonStage.SetNum(m_LessonStages.Count - 1);
             return lessonStage;

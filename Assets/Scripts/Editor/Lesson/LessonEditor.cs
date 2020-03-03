@@ -10,8 +10,8 @@ namespace Editor.Lesson
         private VisualElement m_RootVisualElement;
 
         private LessonFilesListEditor m_LessonFilesListEditor;
-        private ShapeBlueprintListEditor m_ShapeBlueprintListEditor;
-        private StageListEditor m_StageListEditor;
+        private ShapeBlueprintsListEditor m_ShapeBlueprintsListEditor;
+        private LessonStagesListEditor m_LessonStagesListEditor;
 
         private LessonData m_LessonData;
 
@@ -27,16 +27,16 @@ namespace Editor.Lesson
         private void OnEnable()
         {
             m_LessonFilesListEditor = new LessonFilesListEditor(GetLessonData, SetLessonData, CreateNewLesson);
-            m_ShapeBlueprintListEditor = new ShapeBlueprintListEditor();
-            m_StageListEditor = new StageListEditor();
+            m_ShapeBlueprintsListEditor = new ShapeBlueprintsListEditor();
+            m_LessonStagesListEditor = new LessonStagesListEditor();
             
             m_RootVisualElement = new ScrollView();
             rootVisualElement.Clear();
             rootVisualElement.Add(m_RootVisualElement);
             
             m_RootVisualElement.Add(m_LessonFilesListEditor.GetVisualElement());
-            m_RootVisualElement.Add(m_ShapeBlueprintListEditor.GetVisualElement());
-            m_RootVisualElement.Add(m_StageListEditor.GetVisualElement());
+            m_RootVisualElement.Add(m_ShapeBlueprintsListEditor.GetVisualElement());
+            m_RootVisualElement.Add(m_LessonStagesListEditor.GetVisualElement());
         }
 
         private LessonData GetLessonData()
@@ -48,8 +48,8 @@ namespace Editor.Lesson
         {
             m_LessonData = lessonData;
 
-            m_ShapeBlueprintListEditor.OnTargetChosen(m_LessonData.ShapeBlueprintFactory);
-            m_StageListEditor.OnTargetChosen(m_LessonData.LessonStageFactory);
+            m_ShapeBlueprintsListEditor.OnTargetChosen(m_LessonData.ShapeBlueprintFactory);
+            m_LessonStagesListEditor.OnTargetChosen(m_LessonData.LessonStageFactory);
 
             LessonVisualizer lessonVisualizer = FindObjectOfType<LessonVisualizer>();
             if (lessonVisualizer != null)

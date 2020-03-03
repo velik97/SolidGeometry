@@ -16,8 +16,10 @@ namespace Lesson.Stages
         private string m_StageName;
         [JsonProperty]
         private string m_StageDescription;
-
+        [JsonProperty]
         private readonly List<ShapeAction> m_ShapeActions;
+        
+        private ShapeActionFactory m_ShapeActionFactory;
 
         public int StageNum => m_StageNum;
         public string StageName => m_StageName;
@@ -25,9 +27,19 @@ namespace Lesson.Stages
 
         public IReadOnlyList<ShapeAction> ShapeActions => m_ShapeActions;
 
-        public LessonStage()
+        public LessonStage(ShapeActionFactory shapeActionFactory)
         {
+            m_ShapeActionFactory = shapeActionFactory;
             m_ShapeActions = new List<ShapeAction>();
+        }
+        
+        [JsonConstructor]
+        public LessonStage(object _)
+        { }
+
+        public void SetShapeActionFactory(ShapeActionFactory shapeActionFactory)
+        {
+            m_ShapeActionFactory = shapeActionFactory;
         }
 
         public void SetNum(int num)
@@ -51,13 +63,16 @@ namespace Lesson.Stages
             m_StageDescription = stageDescription;
         }
 
-        public void AddAction(ShapeAction shapeAction)
+        public ShapeAction AddAction(ShapeActionFactory.ShapeActionType shapeActionType)
         {
+            ShapeAction shapeAction = m_ShapeActionFactory.CreateShapeAction(shapeActionType);
             m_ShapeActions.Add(shapeAction);
+            return shapeAction;
         }
 
         public void RemoveAction(ShapeAction shapeAction)
         {
+            m_ShapeActionFactory.Remove(shapeAction);
             m_ShapeActions.Remove(shapeAction);
         }
 

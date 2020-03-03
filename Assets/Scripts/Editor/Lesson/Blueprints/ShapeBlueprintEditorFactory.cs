@@ -1,7 +1,7 @@
 using System;
-using Editor.Blueprint;
-using Editor.Blueprint.BaseShapes;
-using Editor.Blueprint.CompositeShapes;
+using Editor.Lesson.Blueprints.BaseShapes;
+using Editor.Lesson.Blueprints.CompositeShapes;
+using Editor.Lesson.Blueprints.DependentShapes;
 using Shapes.Blueprint.BaseShapes;
 using Shapes.Blueprint.CompositeShapes;
 using Shapes.Blueprint.DependentShapes;
@@ -9,7 +9,7 @@ using UnityEngine.UIElements;
 
 namespace Editor.Lesson.Blueprints
 {
-    public static class ShapeBlueprintEditorsFactory
+    public static class ShapeBlueprintEditorFactory
     {
         public static VisualElement GetVisualElement(Shapes.Blueprint.ShapeBlueprint blueprint,
             Action<Shapes.Blueprint.ShapeBlueprint, VisualElement> deleteAction)

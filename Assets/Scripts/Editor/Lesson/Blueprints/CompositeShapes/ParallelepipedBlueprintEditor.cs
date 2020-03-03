@@ -6,7 +6,7 @@ using UnityEngine;
 using UnityEngine.UIElements;
 using Util;
 
-namespace Editor.Blueprint
+namespace Editor.Lesson.Blueprints.CompositeShapes
 {
     public class ParallelepipedBlueprintEditor : ShapeBlueprintEditor<ParallelepipedBlueprint>
     {

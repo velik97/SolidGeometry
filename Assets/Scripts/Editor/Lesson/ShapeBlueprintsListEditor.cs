@@ -1,6 +1,5 @@
 using System;
 using System.Linq;
-using Editor.Blueprint;
 using Editor.Lesson.Blueprints;
 using Editor.VisualElementsExtensions;
 using Lesson.Shapes.Blueprints;
@@ -11,7 +10,7 @@ using UnityEngine.UIElements;
 
 namespace Editor.Lesson
 {
-    public class ShapeBlueprintListEditor : IHaveVisualElement
+    public class ShapeBlueprintsListEditor : IHaveVisualElement
     {
         private ShapeBlueprintFactory m_ShapeBlueprintFactory;
         
@@ -53,7 +52,7 @@ namespace Editor.Lesson
             
             foreach (ShapeBlueprint blueprint in m_ShapeBlueprintFactory.ShapeBlueprints)
             {
-                visualElement.Add(ShapeBlueprintEditorsFactory.GetVisualElement(blueprint, RemoveBlueprint));
+                visualElement.Add(ShapeBlueprintEditorFactory.GetVisualElement(blueprint, RemoveBlueprint));
             }
 
             return visualElement;
@@ -111,7 +110,7 @@ namespace Editor.Lesson
         private void CreateBlueprint(ShapeBlueprintFactory.ShapeBlueprintType blueprintType)
         {
             ShapeBlueprint blueprint = m_ShapeBlueprintFactory.CreateShapeBlueprint(blueprintType);
-            VisualElement visualElement = ShapeBlueprintEditorsFactory.GetVisualElement(blueprint, RemoveBlueprint);
+            VisualElement visualElement = ShapeBlueprintEditorFactory.GetVisualElement(blueprint, RemoveBlueprint);
             m_BaseVisualElement.Add(visualElement);
         }
 

@@ -1,13 +1,14 @@
 using System;
 using Editor.VisualElementsExtensions;
+using Shapes.Blueprint;
 using UnityEngine.UIElements;
 
-namespace Editor.Blueprint
+namespace Editor.Lesson.Blueprints
 {
     public abstract class ShapeBlueprintEditor<TBlueprint> : IHaveVisualElement where TBlueprint : Shapes.Blueprint.ShapeBlueprint
     {
         protected readonly TBlueprint Blueprint;
-        private readonly Action<Shapes.Blueprint.ShapeBlueprint, VisualElement> m_DeleteAction;
+        private readonly Action<ShapeBlueprint, VisualElement> m_DeleteAction;
 
         private Foldout m_NameElement;
         private Button m_DeleteButton;

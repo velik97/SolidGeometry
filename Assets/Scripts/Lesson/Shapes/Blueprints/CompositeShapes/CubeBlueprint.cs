@@ -76,6 +76,7 @@ namespace Shapes.Blueprint.CompositeShapes
         [OnDeserialized, UsedImplicitly]
         private void OnDeserialized(StreamingContext context)
         {
+            RestoreDependences();
             OnDeserialized();
         }
 

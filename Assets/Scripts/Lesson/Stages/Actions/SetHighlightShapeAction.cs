@@ -4,9 +4,19 @@ namespace Lesson.Stages.Actions
 {
     public class SetHighlightShapeAction : ShapeAction
     {
-        public HighlightType Highlight;
+        private HighlightType m_Highlight;
         
         private HighlightType m_PreviousState;
+
+        public void SetHighlightType(HighlightType highlight)
+        {
+            if (m_Highlight == highlight)
+            {
+                return;
+            }
+            m_Highlight = highlight;
+            OnNameUpdated();
+        }
 
         public override void PreservePreviousState()
         {
@@ -17,7 +27,7 @@ namespace Lesson.Stages.Actions
         {
             if (ShapeData?.View != null)
             {
-                ShapeData.View.Highlight = Highlight;
+                ShapeData.View.Highlight = m_Highlight;
             }
         }
 
@@ -27,6 +37,11 @@ namespace Lesson.Stages.Actions
             {
                 ShapeData.View.Highlight = m_PreviousState;
             }
+        }
+        
+        public override string ToString()
+        {
+            return "Set highlight " + m_Highlight + " " + ShapeData?.ToString();
         }
     }
 }

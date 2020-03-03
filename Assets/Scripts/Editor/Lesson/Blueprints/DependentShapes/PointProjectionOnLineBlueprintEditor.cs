@@ -1,9 +1,10 @@
 using System;
 using Editor.VisualElementsExtensions;
 using Shapes.Blueprint.DependentShapes;
+using Shapes.Data;
 using UnityEngine.UIElements;
 
-namespace Editor.Blueprint
+namespace Editor.Lesson.Blueprints.DependentShapes
 {
     public class PointProjectionOnLineBlueprintEditor : ShapeBlueprintEditor<PointProjectionOnLineBlueprint>
     {
@@ -22,17 +23,20 @@ namespace Editor.Blueprint
             visualElement.Add(new ValidatorField(Blueprint.PointData.NameUniquenessValidator));
             visualElement.Add(new ValidatorField(Blueprint.PointData.PositionUniquenessValidator));
             
-            visualElement.Add(new ChoosePointField(
+            visualElement.Add(new ChoseShapeDataField<PointData>(
+                Blueprint.DataFactory,
                 Blueprint,
                 "Source point: ",
                 () => Blueprint.SourcePointData,
                 pointData => Blueprint.SetSourcePoint(pointData)));
-            visualElement.Add(new ChoosePointField(
+            visualElement.Add(new ChoseShapeDataField<PointData>(
+                Blueprint.DataFactory,
                 Blueprint,
                 "First point on line: ",
                 () => Blueprint.FirstPointOnLine,
                 pointData => Blueprint.SetFirstPointOnLine(pointData)));
-            visualElement.Add(new ChoosePointField(
+            visualElement.Add(new ChoseShapeDataField<PointData>(
+                Blueprint.DataFactory,
                 Blueprint,
                 "Second point on line: ",
                 () => Blueprint.SecondPointOnLine,

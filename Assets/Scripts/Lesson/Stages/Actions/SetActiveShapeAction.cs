@@ -2,9 +2,21 @@ namespace Lesson.Stages.Actions
 {
     public class SetActiveShapeAction : ShapeAction
     {
-        public bool Active;
+        private bool m_Active;
         
         private bool m_PreviousState;
+
+        public bool Active => m_Active;
+
+        public void SetIsActive(bool active)
+        {
+            if (m_Active == active)
+            {
+                return;
+            }
+            OnNameUpdated();
+            m_Active = active;
+        }
 
         public override void PreservePreviousState()
         {
@@ -15,7 +27,7 @@ namespace Lesson.Stages.Actions
         {
             if (ShapeData?.View != null)
             {
-                ShapeData.View.Active = Active;
+                ShapeData.View.Active = m_Active;
             }
         }
 
@@ -25,6 +37,11 @@ namespace Lesson.Stages.Actions
             {
                 ShapeData.View.Active = m_PreviousState;
             }
+        }
+
+        public override string ToString()
+        {
+            return "Set " + (m_Active ? "active" : "not active") + " " + ShapeData?.ToString();
         }
     }
 }
