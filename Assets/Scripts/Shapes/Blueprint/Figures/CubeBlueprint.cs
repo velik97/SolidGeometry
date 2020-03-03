@@ -158,7 +158,7 @@ namespace Shapes.Blueprint.Figures
             UpdatePointsPositions();
         }
 
-        public void SetLength(int length)
+        public void SetLength(float length)
         {
             if (length < 0 )
             {
@@ -166,7 +166,7 @@ namespace Shapes.Blueprint.Figures
             }
 
             m_Length = length;
-            NonZeroVolumeValidator.Update();
+            //NonZeroVolumeValidator.Update();
             UpdatePointsPositions();
         }
         

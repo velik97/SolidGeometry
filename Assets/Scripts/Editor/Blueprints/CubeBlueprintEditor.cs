@@ -22,10 +22,10 @@ namespace Editor.Blueprints.Figures
             visualElement.Add(originField);
 
             FloatField lengthField = new FloatField("Length: ") {value = Blueprint.Length};
-            lengthField.RegisterCallback<ChangeEvent<int>>(evt => Blueprint.SetLength(evt.newValue));
+            lengthField.RegisterCallback<ChangeEvent<float>>(evt => Blueprint.SetLength(evt.newValue));
             visualElement.Add(lengthField);
             
-            visualElement.Add(new ValidatorField(Blueprint.NonZeroVolumeValidator));
+            // visualElement.Add(new ValidatorField(Blueprint.NonZeroVolumeValidator));
             
             for (int i = 0; i < Blueprint.Points.Count; i++)
             {
