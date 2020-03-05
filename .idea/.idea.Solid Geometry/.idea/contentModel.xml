@@ -291,17 +291,18 @@
                 </e>
                 <e p="ShapeBlueprintEditor.cs" t="Include" />
                 <e p="ShapeBlueprintEditorFactory.cs" t="Include" />
+                <e p="ShapeBlueprintsListEditor.cs" t="Include" />
               </e>
               <e p="LessonEditor.cs" t="Include" />
               <e p="LessonFilesListEditor.cs" t="Include" />
-              <e p="LessonStagesListEditor.cs" t="Include" />
-              <e p="ShapeBlueprintsListEditor.cs" t="Include" />
               <e p="Stages" t="Include">
                 <e p="Actions" t="Include">
                   <e p="SetActiveShapeActionEditor.cs" t="Include" />
                   <e p="ShapeActionEditor.cs" t="Include" />
+                  <e p="ShapeActionEditorFactory.cs" t="Include" />
                 </e>
                 <e p="LessonStageEditor.cs" t="Include" />
+                <e p="LessonStagesListEditor.cs" t="Include" />
               </e>
             </e>
             <e p="VisualElementsExtensions" t="Include">
@@ -340,38 +341,6 @@
                 <e p="ShapeData.cs" t="Include" />
                 <e p="ShapeDataFactory.cs" t="Include" />
               </e>
-              <e p="Validators" t="Include">
-                <e p="DataNotEmptyValidator.cs" t="Include" />
-                <e p="IValidator.cs" t="Include" />
-                <e p="Line" t="Include">
-                  <e p="LineUniquenessValidator.cs" t="Include" />
-                </e>
-                <e p="Point" t="Include">
-                  <e p="PointNameNotEmptyValidator.cs" t="Include" />
-                  <e p="PointNameUniquenessValidator.cs" t="Include" />
-                  <e p="PointPositionUniquenessValidator.cs" t="Include" />
-                </e>
-                <e p="PointOfIntersection" t="Include">
-                  <e p="LinesIntersectValidator.cs" t="Include" />
-                </e>
-                <e p="PointsNotSameValidator.cs" t="Include" />
-                <e p="Polygon" t="Include">
-                  <e p="PolygonLinesDontIntersectValidator.cs" t="Include" />
-                  <e p="PolygonPointsAreInOnePlaneValidator.cs" t="Include" />
-                  <e p="PolygonPointsAreOnSameLineValidator.cs" t="Include" />
-                  <e p="PolygonUniquenessValidator.cs" t="Include" />
-                </e>
-                <e p="Uniqueness" t="Include">
-                  <e p="IUniquenessValidator.cs" t="Include" />
-                  <e p="ShapeDatasUniquenessValidators.cs" t="Include" />
-                  <e p="UniquenessValidator.cs" t="Include" />
-                  <e p="UniquenessValidatorsSolver.cs" t="Include" />
-                </e>
-                <e p="Validator.cs" t="Include" />
-                <e p="VolumeShape" t="Include">
-                  <e p="NonZeroVolumeValidator.cs" t="Include" />
-                </e>
-              </e>
               <e p="Views" t="Include">
                 <e p="CompositeShapeView.cs" t="Include" />
                 <e p="IShapeView.cs" t="Include" />
@@ -391,6 +360,41 @@
               </e>
               <e p="LessonStage.cs" t="Include" />
               <e p="LessonStageFactory.cs" t="Include" />
+            </e>
+            <e p="Validators" t="Include">
+              <e p="DataNotEmptyValidator.cs" t="Include" />
+              <e p="IValidator.cs" t="Include" />
+              <e p="LessonStages" t="Include">
+                <e p="NoConflictsBetweenShapeActionsValidator.cs" t="Include" />
+              </e>
+              <e p="Line" t="Include">
+                <e p="LineUniquenessValidator.cs" t="Include" />
+              </e>
+              <e p="Point" t="Include">
+                <e p="PointNameNotEmptyValidator.cs" t="Include" />
+                <e p="PointNameUniquenessValidator.cs" t="Include" />
+                <e p="PointPositionUniquenessValidator.cs" t="Include" />
+              </e>
+              <e p="PointOfIntersection" t="Include">
+                <e p="LinesIntersectValidator.cs" t="Include" />
+              </e>
+              <e p="PointsNotSameValidator.cs" t="Include" />
+              <e p="Polygon" t="Include">
+                <e p="PolygonLinesDontIntersectValidator.cs" t="Include" />
+                <e p="PolygonPointsAreInOnePlaneValidator.cs" t="Include" />
+                <e p="PolygonPointsAreOnSameLineValidator.cs" t="Include" />
+                <e p="PolygonUniquenessValidator.cs" t="Include" />
+              </e>
+              <e p="Uniqueness" t="Include">
+                <e p="IUniquenessValidator.cs" t="Include" />
+                <e p="ShapeDatasUniquenessValidators.cs" t="Include" />
+                <e p="UniquenessValidator.cs" t="Include" />
+                <e p="UniquenessValidatorsSolver.cs" t="Include" />
+              </e>
+              <e p="Validator.cs" t="Include" />
+              <e p="VolumeShape" t="Include">
+                <e p="NonZeroVolumeValidator.cs" t="Include" />
+              </e>
             </e>
           </e>
           <e p="Serialization" t="Include">

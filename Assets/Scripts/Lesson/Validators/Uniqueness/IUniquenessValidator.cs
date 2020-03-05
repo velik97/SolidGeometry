@@ -1,6 +1,6 @@
 using System;
 
-namespace Lesson.Shapes.Validators.Uniqueness
+namespace Lesson.Validators.Uniqueness
 {
     public interface IUniquenessValidator<in TValidatable>
     {

@@ -1,9 +1,9 @@
 using System.Linq;
-using Lesson.Shapes.Validators.Uniqueness;
+using Lesson.Validators.Uniqueness;
 using Shapes.Data;
 using Util;
 
-namespace Lesson.Shapes.Validators.Polygon
+namespace Lesson.Validators.Polygon
 {
     public class PolygonUniquenessValidator : UniquenessValidator<PolygonUniquenessValidator>
     {

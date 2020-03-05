@@ -2,7 +2,7 @@ using System.Collections.Generic;
 using System.Linq;
 using Shapes.Data;
 
-namespace Lesson.Shapes.Validators
+namespace Lesson.Validators
 {
     public class PointsNotSameValidator : Validator
     {
@@ -11,11 +11,6 @@ namespace Lesson.Shapes.Validators
         public PointsNotSameValidator(IEnumerable<PointData> points)
         {
             m_Points = points;
-        }
-
-        public void Update()
-        {
-            UpdateValidState();
         }
 
         protected override bool CheckIsValid()

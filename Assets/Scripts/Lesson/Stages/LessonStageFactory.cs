@@ -54,6 +54,7 @@ namespace Lesson.Stages
 
         public void Remove(LessonStage lessonStage)
         {
+            lessonStage.ClearActions();
             m_LessonStages.Remove(lessonStage);
             for (var i = 0; i < m_LessonStages.Count; i++)
             {

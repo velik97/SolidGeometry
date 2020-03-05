@@ -2,8 +2,8 @@ using System.Collections.Generic;
 using System.Runtime.Serialization;
 using JetBrains.Annotations;
 using Lesson.Shapes.Data;
-using Lesson.Shapes.Validators;
-using Lesson.Shapes.Validators.PointOfIntersection;
+using Lesson.Validators;
+using Lesson.Validators.PointOfIntersection;
 using Newtonsoft.Json;
 using Shapes.Data;
 using Util;
@@ -28,7 +28,7 @@ namespace Shapes.Blueprint.DependentShapes
 
         public PointOfIntersectionBlueprint(ShapeDataFactory dataFactory) : base(dataFactory)
         {
-            PointData = DataFactory.CreatePointData();
+            PointData = ShapeDataFactory.CreatePointData();
 
             m_PointsOnLines[0] = new PointData[2];
             m_PointsOnLines[1] = new PointData[2];

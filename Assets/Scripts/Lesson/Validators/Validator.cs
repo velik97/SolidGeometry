@@ -1,6 +1,6 @@
 using System;
 
-namespace Lesson.Shapes.Validators
+namespace Lesson.Validators
 {
     public abstract class Validator : IValidator
     {
@@ -8,7 +8,7 @@ namespace Lesson.Shapes.Validators
         
         private bool m_IsValid;
 
-        protected void UpdateValidState()
+        public void Update()
         {
             bool isValid = CheckIsValid();
             if (isValid == m_IsValid)

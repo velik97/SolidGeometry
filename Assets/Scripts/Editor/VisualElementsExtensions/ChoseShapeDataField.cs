@@ -2,7 +2,7 @@ using System;
 using JetBrains.Annotations;
 using Lesson.Shapes.Blueprints;
 using Lesson.Shapes.Data;
-using Lesson.Shapes.Validators;
+using Lesson.Validators;
 using Shapes.Blueprint;
 using Shapes.Data;
 using UnityEditor.UIElements;

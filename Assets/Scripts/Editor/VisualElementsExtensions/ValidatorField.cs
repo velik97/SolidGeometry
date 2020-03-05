@@ -1,4 +1,4 @@
-using Lesson.Shapes.Validators;
+using Lesson.Validators;
 using UnityEngine;
 using UnityEngine.UIElements;
 

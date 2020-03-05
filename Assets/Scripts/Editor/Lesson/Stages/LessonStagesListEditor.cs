@@ -1,9 +1,8 @@
-using Editor.Lesson.Stages;
 using Editor.VisualElementsExtensions;
 using Lesson.Stages;
 using UnityEngine.UIElements;
 
-namespace Editor.Lesson
+namespace Editor.Lesson.Stages
 {
     public class LessonStagesListEditor : IHaveVisualElement
     {

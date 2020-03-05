@@ -1,10 +1,9 @@
-using System;
 using System.Collections.Generic;
 using System.Runtime.Serialization;
 using JetBrains.Annotations;
-using Lesson.Shapes.Validators;
-using Lesson.Shapes.Validators.Line;
 using Lesson.Shapes.Views;
+using Lesson.Validators;
+using Lesson.Validators.Line;
 using Newtonsoft.Json;
 
 namespace Shapes.Data

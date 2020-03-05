@@ -53,7 +53,7 @@ namespace Editor.Lesson.Blueprints.BaseShapes
         private void AddPointEditor(int index)
         {
             VisualElement setPointElement = new ChoseShapeDataField<PointData>(
-                Blueprint.DataFactory,
+                Blueprint.ShapeDataFactory,
                 Blueprint,
                 (index + 1).GetOrdinalForm() + " Point",
                 () => Blueprint.PolygonData.Points[index],

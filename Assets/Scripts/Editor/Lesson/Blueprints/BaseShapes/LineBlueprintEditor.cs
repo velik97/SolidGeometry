@@ -22,14 +22,14 @@ namespace Editor.Lesson.Blueprints.BaseShapes
         protected override void SetBaseVisualElement(VisualElement visualElement)
         {
             ChoseShapeDataField<PointData> chooseStartPointField = new ChoseShapeDataField<PointData>(
-                Blueprint.DataFactory,
+                Blueprint.ShapeDataFactory,
                 Blueprint,
                 "Start Point",
                 () => Blueprint.LineData.StartPoint,
                 Blueprint.LineData.SetStartPoint);
             
             ChoseShapeDataField<PointData> chooseEndPointField = new ChoseShapeDataField<PointData>(
-                Blueprint.DataFactory,
+                Blueprint.ShapeDataFactory,
                 Blueprint,
                 "End Point",
                 () => Blueprint.LineData.EndPoint,

@@ -1,6 +1,5 @@
 using System;
 using System.Linq;
-using Editor.Lesson.Blueprints;
 using Editor.VisualElementsExtensions;
 using Lesson.Shapes.Blueprints;
 using Shapes.Blueprint;
@@ -8,7 +7,7 @@ using Shapes.Data;
 using UnityEditor.UIElements;
 using UnityEngine.UIElements;
 
-namespace Editor.Lesson
+namespace Editor.Lesson.Blueprints
 {
     public class ShapeBlueprintsListEditor : IHaveVisualElement
     {

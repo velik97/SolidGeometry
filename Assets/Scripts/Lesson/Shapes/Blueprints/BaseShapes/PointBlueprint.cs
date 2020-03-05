@@ -16,7 +16,7 @@ namespace Shapes.Blueprint.BaseShapes
 
         public PointBlueprint(ShapeDataFactory dataFactory) : base(dataFactory)
         {
-            PointData = DataFactory.CreatePointData();
+            PointData = ShapeDataFactory.CreatePointData();
             OnDeserialized();
         }
         

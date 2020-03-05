@@ -29,8 +29,8 @@ namespace Editor.Lesson.Stages.Actions
             m_NameElement.Insert(0, visualElement);
             
             SetBaseVisualElement(visualElement);
-            
-            m_DeleteButton = new Button(() => m_DeleteAction(ShapeAction, m_NameElement));
+
+            m_DeleteButton = new Button(() => m_DeleteAction(ShapeAction, m_NameElement)) {text = "Delete"};
             visualElement.Add(m_DeleteButton);
 
             UpdateName();

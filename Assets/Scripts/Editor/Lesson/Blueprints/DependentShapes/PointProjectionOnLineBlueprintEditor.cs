@@ -24,19 +24,19 @@ namespace Editor.Lesson.Blueprints.DependentShapes
             visualElement.Add(new ValidatorField(Blueprint.PointData.PositionUniquenessValidator));
             
             visualElement.Add(new ChoseShapeDataField<PointData>(
-                Blueprint.DataFactory,
+                Blueprint.ShapeDataFactory,
                 Blueprint,
                 "Source point: ",
                 () => Blueprint.SourcePointData,
                 pointData => Blueprint.SetSourcePoint(pointData)));
             visualElement.Add(new ChoseShapeDataField<PointData>(
-                Blueprint.DataFactory,
+                Blueprint.ShapeDataFactory,
                 Blueprint,
                 "First point on line: ",
                 () => Blueprint.FirstPointOnLine,
                 pointData => Blueprint.SetFirstPointOnLine(pointData)));
             visualElement.Add(new ChoseShapeDataField<PointData>(
-                Blueprint.DataFactory,
+                Blueprint.ShapeDataFactory,
                 Blueprint,
                 "Second point on line: ",
                 () => Blueprint.SecondPointOnLine,

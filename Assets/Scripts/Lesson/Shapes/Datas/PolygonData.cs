@@ -1,11 +1,10 @@
-using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Runtime.Serialization;
 using JetBrains.Annotations;
-using Lesson.Shapes.Validators;
-using Lesson.Shapes.Validators.Polygon;
 using Lesson.Shapes.Views;
+using Lesson.Validators;
+using Lesson.Validators.Polygon;
 using Newtonsoft.Json;
 using UnityEngine;
 

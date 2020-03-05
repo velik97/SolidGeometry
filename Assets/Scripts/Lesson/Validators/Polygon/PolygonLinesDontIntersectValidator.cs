@@ -3,7 +3,7 @@ using Shapes.Data;
 using UnityEngine;
 using Util;
 
-namespace Lesson.Shapes.Validators.Polygon
+namespace Lesson.Validators.Polygon
 {
     public class PolygonLinesDontIntersectValidator : Validator
     {
@@ -12,12 +12,7 @@ namespace Lesson.Shapes.Validators.Polygon
         public PolygonLinesDontIntersectValidator(PolygonData polygonData)
         {
             m_PolygonData = polygonData;
-            m_PolygonData.GeometryUpdated += UpdateValidState;
-        }
-        
-        public void Update()
-        {
-            UpdateValidState();
+            m_PolygonData.GeometryUpdated += base.Update;
         }
 
         protected override bool CheckIsValid()

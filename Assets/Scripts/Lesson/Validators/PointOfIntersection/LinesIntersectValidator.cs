@@ -1,7 +1,7 @@
 using Shapes.Blueprint.DependentShapes;
 using Util;
 
-namespace Lesson.Shapes.Validators.PointOfIntersection
+namespace Lesson.Validators.PointOfIntersection
 {
     public class LinesIntersectValidator : Validator
     {
@@ -10,11 +10,6 @@ namespace Lesson.Shapes.Validators.PointOfIntersection
         public LinesIntersectValidator(PointOfIntersectionBlueprint blueprint)
         {
             m_Blueprint = blueprint;
-        }
-        
-        public void Update()
-        {
-            UpdateValidState();
         }
 
         protected override bool CheckIsValid()

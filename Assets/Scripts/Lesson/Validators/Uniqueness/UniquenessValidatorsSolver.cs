@@ -1,7 +1,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-namespace Lesson.Shapes.Validators.Uniqueness
+namespace Lesson.Validators.Uniqueness
 {
     public class UniquenessValidatorsSolver<TValidator> where TValidator : class, IUniquenessValidator<TValidator>
     {

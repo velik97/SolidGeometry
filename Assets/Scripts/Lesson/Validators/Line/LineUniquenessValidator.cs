@@ -1,7 +1,7 @@
-using Lesson.Shapes.Validators.Uniqueness;
+using Lesson.Validators.Uniqueness;
 using Shapes.Data;
 
-namespace Lesson.Shapes.Validators.Line
+namespace Lesson.Validators.Line
 {
     public class LineUniquenessValidator : UniquenessValidator<LineUniquenessValidator>
     {

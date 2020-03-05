@@ -1,7 +1,7 @@
 using UnityEngine;
 using Util;
 
-namespace Lesson.Shapes.Validators.VolumeShape
+namespace Lesson.Validators.VolumeShape
 {
     public class NonZeroVolumeValidator : Validator
     {
@@ -10,11 +10,6 @@ namespace Lesson.Shapes.Validators.VolumeShape
         public NonZeroVolumeValidator(Vector3[] axes)
         {
             m_Axes = axes;
-        }
-
-        public void Update()
-        {
-            UpdateValidState();
         }
 
         protected override bool CheckIsValid()

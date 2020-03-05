@@ -1,3 +1,5 @@
+using Editor.Lesson.Blueprints;
+using Editor.Lesson.Stages;
 using Lesson;
 using UnityEditor;
 using UnityEngine;

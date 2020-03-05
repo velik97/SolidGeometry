@@ -24,16 +24,21 @@ namespace Shapes.Blueprint
         
         public abstract ShapeData MainShapeData { get; }
 
-        [JsonProperty(IsReference = true)]
-        public ShapeDataFactory DataFactory;
+        private ShapeDataFactory m_ShapeDataFactory;
+        public ShapeDataFactory ShapeDataFactory => m_ShapeDataFactory;
 
         protected ShapeBlueprint(ShapeDataFactory dataFactory)
         {
-            DataFactory = dataFactory;
+            m_ShapeDataFactory = dataFactory;
         }
         
         protected ShapeBlueprint()
         { }
+        
+        public void SetShapeDataFactory(ShapeDataFactory shapeDataFactory)
+        {
+            m_ShapeDataFactory = shapeDataFactory;
+        }
 
         public override void Destroy()
         {
@@ -41,7 +46,7 @@ namespace Shapes.Blueprint
             
             foreach (ShapeData data in MyShapeDatas)
             {
-                DataFactory.RemoveShapeData(data);
+                m_ShapeDataFactory.RemoveShapeData(data);
             }
             MyShapeDatas.Clear();
         }

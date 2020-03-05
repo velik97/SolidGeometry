@@ -1,6 +1,9 @@
 using System;
 using System.Collections.Generic;
+using System.Runtime.Serialization;
+using JetBrains.Annotations;
 using Lesson.Stages.Actions;
+using Lesson.Validators.LessonStages;
 using Newtonsoft.Json;
 
 namespace Lesson.Stages
@@ -9,6 +12,7 @@ namespace Lesson.Stages
     public class LessonStage
     {
         public event Action NameUpdated;
+        public event Action ShapeActionsListUpdated;
         public event Action NumUpdated;
 
         private int m_StageNum;
@@ -21,6 +25,8 @@ namespace Lesson.Stages
         
         private ShapeActionFactory m_ShapeActionFactory;
 
+        public NoConflictsBetweenShapeActionsValidator NoConflictsBetweenShapeActionsValidator;
+
         public int StageNum => m_StageNum;
         public string StageName => m_StageName;
         public string StageDescription => m_StageDescription;
@@ -31,11 +37,28 @@ namespace Lesson.Stages
         {
             m_ShapeActionFactory = shapeActionFactory;
             m_ShapeActions = new List<ShapeAction>();
+
+            OnDeserialized();
         }
         
         [JsonConstructor]
         public LessonStage(object _)
         { }
+        
+        [OnDeserialized, UsedImplicitly]
+        private void OnDeserialized(StreamingContext context)
+        {
+            foreach (ShapeAction shapeAction in m_ShapeActions)
+            {
+                shapeAction.ShapeDataUpdated += OnShapeActionsListUpdated;
+            }
+            OnDeserialized();
+        }
+        
+        private void OnDeserialized()
+        {
+            NoConflictsBetweenShapeActionsValidator = new NoConflictsBetweenShapeActionsValidator(this);
+        }
 
         public void SetShapeActionFactory(ShapeActionFactory shapeActionFactory)
         {
@@ -67,6 +90,8 @@ namespace Lesson.Stages
         {
             ShapeAction shapeAction = m_ShapeActionFactory.CreateShapeAction(shapeActionType);
             m_ShapeActions.Add(shapeAction);
+            shapeAction.ShapeDataUpdated += OnShapeActionsListUpdated;
+            OnShapeActionsListUpdated();
             return shapeAction;
         }
 
@@ -74,6 +99,19 @@ namespace Lesson.Stages
         {
             m_ShapeActionFactory.Remove(shapeAction);
             m_ShapeActions.Remove(shapeAction);
+            shapeAction.ShapeDataUpdated -= OnShapeActionsListUpdated;
+            OnShapeActionsListUpdated();
+        }
+
+        public void ClearActions()
+        {
+            foreach (ShapeAction shapeAction in m_ShapeActions)
+            {
+                m_ShapeActionFactory.Remove(shapeAction);
+                shapeAction.ShapeDataUpdated -= OnShapeActionsListUpdated;
+            }
+            m_ShapeActions.Clear();
+            OnShapeActionsListUpdated();
         }
 
         public void ApplyActions()
@@ -91,6 +129,11 @@ namespace Lesson.Stages
             {
                 action.RollbackAction();
             }
+        }
+
+        protected virtual void OnShapeActionsListUpdated()
+        {
+            ShapeActionsListUpdated?.Invoke();
         }
     }
 }

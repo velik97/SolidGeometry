@@ -1,10 +1,8 @@
-using System;
 using System.Runtime.Serialization;
 using JetBrains.Annotations;
-using Lesson.Shapes.Validators.Point;
 using Lesson.Shapes.Views;
+using Lesson.Validators.Point;
 using Newtonsoft.Json;
-using UniRx;
 using UnityEngine;
 
 namespace Shapes.Data

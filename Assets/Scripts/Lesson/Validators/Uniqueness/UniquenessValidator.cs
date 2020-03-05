@@ -1,6 +1,6 @@
 using System;
 
-namespace Lesson.Shapes.Validators.Uniqueness
+namespace Lesson.Validators.Uniqueness
 {
     public abstract class UniquenessValidator<TValidatable> : IValidator, IUniquenessValidator<TValidatable>
     {

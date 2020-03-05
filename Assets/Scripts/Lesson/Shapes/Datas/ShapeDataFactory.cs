@@ -4,8 +4,8 @@ using System.Linq;
 using System.Runtime.Serialization;
 using JetBrains.Annotations;
 using Lesson.Shapes.Datas;
-using Lesson.Shapes.Validators.Uniqueness;
 using Lesson.Shapes.Views;
+using Lesson.Validators.Uniqueness;
 using Newtonsoft.Json;
 using Shapes.Data;
 

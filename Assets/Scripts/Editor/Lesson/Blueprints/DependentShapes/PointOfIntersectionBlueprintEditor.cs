@@ -30,7 +30,7 @@ namespace Editor.Lesson.Blueprints.DependentShapes
                 int lineNumCopy = lineNum;
                 int pointNumCopy = pointNum;
                 visualElement.Add(new ChoseShapeDataField<PointData>(
-                    Blueprint.DataFactory,
+                    Blueprint.ShapeDataFactory,
                     Blueprint,
                     $"Line {lineNumCopy + 1}, Point {pointNumCopy + 1}",
                     () => Blueprint.PointsOnLines[lineNumCopy][pointNumCopy],

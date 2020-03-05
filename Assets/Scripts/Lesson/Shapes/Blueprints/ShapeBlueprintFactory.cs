@@ -33,6 +33,10 @@ namespace Lesson.Shapes.Blueprints
         public void SetShapeDataFactory(ShapeDataFactory shapeDataFactory)
         {
             m_ShapeDataFactory = shapeDataFactory;
+            foreach (ShapeBlueprint shapeBlueprint in m_ShapeBlueprints)
+            {
+                shapeBlueprint.SetShapeDataFactory(shapeDataFactory);
+            }
         }
 
         public ShapeBlueprint CreateShapeBlueprint(ShapeBlueprintType type)

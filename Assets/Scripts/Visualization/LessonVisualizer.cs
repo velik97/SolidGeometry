@@ -1,7 +1,5 @@
-using System;
 using Lesson.Shapes.Data;
 using Lesson.Shapes.Views;
-using Shapes.Data;
 using UnityEngine;
 
 namespace Lesson

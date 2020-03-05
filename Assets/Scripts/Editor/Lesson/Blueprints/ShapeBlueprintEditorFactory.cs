@@ -2,6 +2,7 @@ using System;
 using Editor.Lesson.Blueprints.BaseShapes;
 using Editor.Lesson.Blueprints.CompositeShapes;
 using Editor.Lesson.Blueprints.DependentShapes;
+using Shapes.Blueprint;
 using Shapes.Blueprint.BaseShapes;
 using Shapes.Blueprint.CompositeShapes;
 using Shapes.Blueprint.DependentShapes;
@@ -11,8 +12,8 @@ namespace Editor.Lesson.Blueprints
 {
     public static class ShapeBlueprintEditorFactory
     {
-        public static VisualElement GetVisualElement(Shapes.Blueprint.ShapeBlueprint blueprint,
-            Action<Shapes.Blueprint.ShapeBlueprint, VisualElement> deleteAction)
+        public static VisualElement GetVisualElement(ShapeBlueprint blueprint,
+            Action<ShapeBlueprint, VisualElement> deleteAction)
         {
             switch (blueprint)
             {

@@ -1,10 +1,10 @@
 using Lesson.Shapes.Datas;
-using Lesson.Shapes.Validators.Line;
-using Lesson.Shapes.Validators.Point;
-using Lesson.Shapes.Validators.Polygon;
+using Lesson.Validators.Line;
+using Lesson.Validators.Point;
+using Lesson.Validators.Polygon;
 using Shapes.Data;
 
-namespace Lesson.Shapes.Validators.Uniqueness
+namespace Lesson.Validators.Uniqueness
 {
     public class ShapeDatasUniquenessValidators
     {

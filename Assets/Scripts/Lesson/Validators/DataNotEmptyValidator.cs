@@ -1,6 +1,6 @@
 using System;
 
-namespace Lesson.Shapes.Validators
+namespace Lesson.Validators
 {
     public class DataNotEmptyValidator<TData> : IValidator where TData : class
     {

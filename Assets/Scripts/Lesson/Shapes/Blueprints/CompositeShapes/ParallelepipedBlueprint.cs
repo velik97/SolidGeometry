@@ -4,7 +4,7 @@ using System.Runtime.Serialization;
 using JetBrains.Annotations;
 using Lesson.Shapes.Data;
 using Lesson.Shapes.Datas;
-using Lesson.Shapes.Validators.VolumeShape;
+using Lesson.Validators.VolumeShape;
 using Newtonsoft.Json;
 using Shapes.Data;
 using UnityEngine;

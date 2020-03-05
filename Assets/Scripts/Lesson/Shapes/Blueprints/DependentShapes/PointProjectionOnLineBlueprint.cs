@@ -2,7 +2,7 @@ using System.Collections.Generic;
 using System.Runtime.Serialization;
 using JetBrains.Annotations;
 using Lesson.Shapes.Data;
-using Lesson.Shapes.Validators;
+using Lesson.Validators;
 using Newtonsoft.Json;
 using Shapes.Data;
 using Util;
@@ -32,7 +32,7 @@ namespace Shapes.Blueprint.DependentShapes
         
         public PointProjectionOnLineBlueprint(ShapeDataFactory dataFactory) : base(dataFactory)
         {
-            PointData = DataFactory.CreatePointData();
+            PointData = ShapeDataFactory.CreatePointData();
 
             OnDeserialized();
         }

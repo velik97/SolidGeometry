@@ -1,8 +1,8 @@
-using Lesson.Shapes.Validators.Uniqueness;
+using Lesson.Validators.Uniqueness;
 using Shapes.Data;
 using Util;
 
-namespace Lesson.Shapes.Validators.Point
+namespace Lesson.Validators.Point
 {
     public class PointPositionUniquenessValidator : UniquenessValidator<PointPositionUniquenessValidator>
     {

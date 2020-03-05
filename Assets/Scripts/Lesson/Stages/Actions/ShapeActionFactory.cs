@@ -1,4 +1,5 @@
 using System.Collections.Generic;
+using Lesson.Shapes.Data;
 using Newtonsoft.Json;
 
 namespace Lesson.Stages.Actions
@@ -9,10 +10,13 @@ namespace Lesson.Stages.Actions
         [JsonProperty]
         private List<ShapeAction> m_ShapeActions;
 
+        private ShapeDataFactory m_ShapeDataFactory;
+
         public IReadOnlyList<ShapeAction> ShapeActions => m_ShapeActions;
 
-        public ShapeActionFactory()
+        public ShapeActionFactory(ShapeDataFactory shapeDataFactory)
         {
+            m_ShapeDataFactory = shapeDataFactory;
             m_ShapeActions = new List<ShapeAction>();
         }
         
@@ -20,16 +24,25 @@ namespace Lesson.Stages.Actions
         public ShapeActionFactory(object _)
         { }
 
+        public void SetShapeDataFactory(ShapeDataFactory shapeDataFactory)
+        {
+            m_ShapeDataFactory = shapeDataFactory;
+            foreach (ShapeAction shapeAction in m_ShapeActions)
+            {
+                shapeAction.SetShapeDataFactory(m_ShapeDataFactory);
+            }
+        }
+
         public ShapeAction CreateShapeAction(ShapeActionType shapeActionType)
         {
             ShapeAction shapeAction = null;
             switch (shapeActionType)
             {
                 case ShapeActionType.SetActive:
-                    shapeAction = new SetActiveShapeAction();
+                    shapeAction = new SetActiveShapeAction(m_ShapeDataFactory);
                     break;
                 case ShapeActionType.SetHighlight:
-                    shapeAction = new SetHighlightShapeAction();
+                    shapeAction = new SetHighlightShapeAction(m_ShapeDataFactory);
                     break;
             }
 
@@ -43,11 +56,16 @@ namespace Lesson.Stages.Actions
 
         public void Remove(ShapeAction shapeAction)
         {
+            shapeAction.Destroy();
             m_ShapeActions.Remove(shapeAction);
         }
 
         public void Clear()
         {
+            foreach (ShapeAction shapeAction in m_ShapeActions)
+            {
+                shapeAction.Destroy();
+            }
             m_ShapeActions.Clear();
         }
 

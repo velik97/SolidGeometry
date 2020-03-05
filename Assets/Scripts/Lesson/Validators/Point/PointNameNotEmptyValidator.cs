@@ -1,6 +1,6 @@
 using Shapes.Data;
 
-namespace Lesson.Shapes.Validators.Point
+namespace Lesson.Validators.Point
 {
     public class PointNameNotEmptyValidator : Validator
     {
@@ -9,8 +9,8 @@ namespace Lesson.Shapes.Validators.Point
         public PointNameNotEmptyValidator(PointData pointData)
         {
             m_PointData = pointData;
-            m_PointData.NameUpdated += UpdateValidState;
-            UpdateValidState();
+            m_PointData.NameUpdated += Update;
+            Update();
         }
 
         protected override bool CheckIsValid()

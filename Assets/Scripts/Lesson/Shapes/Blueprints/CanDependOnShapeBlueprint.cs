@@ -1,6 +1,4 @@
 using System.Collections.Generic;
-using System.Runtime.Serialization;
-using JetBrains.Annotations;
 using Newtonsoft.Json;
 using Shapes.Blueprint;
 using Shapes.Data;
@@ -45,15 +43,15 @@ namespace Lesson.Shapes.Blueprints
             DependencesOnOtherShapes.Clear();
         }
         
-        public static bool CanCreateDependence(CanDependOnShapeBlueprint dependentBlueprint, ShapeData dependsOnData)
+        public static bool CanCreateDependence(CanDependOnShapeBlueprint @from, ShapeData to)
         {
-            return !HasDependenceFromTo(dependsOnData.SourceBlueprint, dependentBlueprint, null);
+            return !HasDependence(to.SourceBlueprint, @from, null);
         }
 
-        private static bool HasDependenceFromTo(ShapeBlueprint fromBlueprint, CanDependOnShapeBlueprint toBlueprint,
+        private static bool HasDependence(ShapeBlueprint @from, CanDependOnShapeBlueprint to,
             HashSet<ShapeBlueprint> visited)
         {
-            if (fromBlueprint == toBlueprint)
+            if (@from == to)
             {
                 return true;
             }
@@ -63,7 +61,7 @@ namespace Lesson.Shapes.Blueprints
                 visited = new HashSet<ShapeBlueprint>();
             }
 
-            foreach (ShapeBlueprint blueprint in fromBlueprint.DependencesOnOtherShapes)
+            foreach (ShapeBlueprint blueprint in @from.DependencesOnOtherShapes)
             {
                 if (visited.Contains(blueprint))
                 {
@@ -71,12 +69,12 @@ namespace Lesson.Shapes.Blueprints
                 }
                 visited.Add(blueprint);
 
-                if (blueprint == toBlueprint)
+                if (blueprint == to)
                 {
                     return true;
                 }
 
-                return HasDependenceFromTo(blueprint, toBlueprint, visited);
+                return HasDependence(blueprint, to, visited);
             }
 
             return false;

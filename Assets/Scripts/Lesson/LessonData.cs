@@ -30,7 +30,7 @@ namespace Lesson
             m_ShapeDataFactory = new ShapeDataFactory();
             m_ShapeBlueprintFactory = new ShapeBlueprintFactory(m_ShapeDataFactory);
             
-            m_ShapeActionFactory = new ShapeActionFactory();
+            m_ShapeActionFactory = new ShapeActionFactory(m_ShapeDataFactory);
             m_LessonStageFactory = new LessonStageFactory(m_ShapeActionFactory);
         }
 
@@ -42,6 +42,7 @@ namespace Lesson
         private void OnDeserialized(StreamingContext context)
         {
             m_ShapeBlueprintFactory.SetShapeDataFactory(m_ShapeDataFactory);
+            m_ShapeActionFactory.SetShapeDataFactory(m_ShapeDataFactory);
             m_LessonStageFactory.SetShapeActionFactory(m_ShapeActionFactory);
         }
     }
