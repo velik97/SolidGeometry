@@ -1,4 +1,4 @@
-using Shapes.Blueprint.DependentShapes;
+using Lesson.Shapes.Blueprints.DependentShapes;
 using Util;
 
 namespace Lesson.Validators.PointOfIntersection

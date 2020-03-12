@@ -1,5 +1,5 @@
+using Lesson.Shapes.Datas;
 using Lesson.Validators.Uniqueness;
-using Shapes.Data;
 using Util;
 
 namespace Lesson.Validators.Point

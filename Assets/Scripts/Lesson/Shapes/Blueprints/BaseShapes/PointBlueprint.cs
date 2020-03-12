@@ -1,10 +1,10 @@
 using System.Runtime.Serialization;
 using JetBrains.Annotations;
-using Lesson.Shapes.Data;
+using Lesson.Shapes.Datas;
 using Newtonsoft.Json;
-using Shapes.Data;
+using Serialization;
 
-namespace Shapes.Blueprint.BaseShapes
+namespace Lesson.Shapes.Blueprints.BaseShapes
 {
     [JsonObject(IsReference = true, MemberSerialization = MemberSerialization.OptIn)]
     public class PointBlueprint : ShapeBlueprint
@@ -21,7 +21,7 @@ namespace Shapes.Blueprint.BaseShapes
         }
         
         [JsonConstructor]
-        public PointBlueprint(object _)
+        public PointBlueprint(JsonConstructorMark _)
         { }
         
         [OnDeserialized, UsedImplicitly]

@@ -1,4 +1,4 @@
-using Shapes.Data;
+using Lesson.Shapes.Datas;
 
 namespace Lesson.Validators.Point
 {

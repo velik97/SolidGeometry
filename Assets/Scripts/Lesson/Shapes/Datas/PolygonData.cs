@@ -6,9 +6,10 @@ using Lesson.Shapes.Views;
 using Lesson.Validators;
 using Lesson.Validators.Polygon;
 using Newtonsoft.Json;
+using Serialization;
 using UnityEngine;
 
-namespace Shapes.Data
+namespace Lesson.Shapes.Datas
 {
     [JsonObject(IsReference = true, MemberSerialization = MemberSerialization.OptIn)]
     public class PolygonData : ShapeData
@@ -40,7 +41,7 @@ namespace Shapes.Data
         }
         
         [JsonConstructor]
-        public PolygonData(object _)
+        public PolygonData(JsonConstructorMark _)
         { }
         
         [OnDeserialized, UsedImplicitly]

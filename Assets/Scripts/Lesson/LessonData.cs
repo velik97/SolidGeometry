@@ -1,10 +1,11 @@
 using System.Runtime.Serialization;
 using JetBrains.Annotations;
 using Lesson.Shapes.Blueprints;
-using Lesson.Shapes.Data;
+using Lesson.Shapes.Datas;
 using Lesson.Stages;
 using Lesson.Stages.Actions;
 using Newtonsoft.Json;
+using Serialization;
 
 namespace Lesson
 {
@@ -35,7 +36,7 @@ namespace Lesson
         }
 
         [JsonConstructor]
-        public LessonData(object _)
+        public LessonData(JsonConstructorMark _)
         { }
         
         [OnDeserialized, UsedImplicitly]

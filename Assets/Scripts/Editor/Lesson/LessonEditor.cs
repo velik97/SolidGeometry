@@ -4,6 +4,7 @@ using Lesson;
 using UnityEditor;
 using UnityEngine;
 using UnityEngine.UIElements;
+using Visualization;
 
 namespace Editor.Lesson
 {

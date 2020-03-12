@@ -1,11 +1,9 @@
 using System;
 using System.Collections.Generic;
-using Lesson.Shapes.Blueprints;
-using Lesson.Shapes.Data;
+using Lesson.Shapes.Datas;
 using Newtonsoft.Json;
-using Shapes.Data;
 
-namespace Shapes.Blueprint
+namespace Lesson.Shapes.Blueprints
 {
     [JsonObject(MemberSerialization = MemberSerialization.OptIn)]
     public abstract class ShapeBlueprint : CanDependOnShapeBlueprint

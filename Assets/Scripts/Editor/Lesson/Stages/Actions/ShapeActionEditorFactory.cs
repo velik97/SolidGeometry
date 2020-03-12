@@ -14,7 +14,7 @@ namespace Editor.Lesson.Stages.Actions
                 case SetActiveShapeAction setActiveShapeAction:
                     return new SetActiveShapeActionEditor(setActiveShapeAction, deleteAction).GetVisualElement();
                 case SetHighlightShapeAction setHighlightShapeAction:
-                    break;
+                    return new SetHighlightShapeActionEditor(setHighlightShapeAction, deleteAction).GetVisualElement();
             }
 
             return null;

@@ -1,7 +1,8 @@
 using System;
 using Editor.VisualElementsExtensions;
-using Shapes.Blueprint.BaseShapes;
-using Shapes.Data;
+using Lesson.Shapes.Blueprints;
+using Lesson.Shapes.Blueprints.BaseShapes;
+using Lesson.Shapes.Datas;
 using UnityEngine.UIElements;
 using Util;
 
@@ -12,7 +13,7 @@ namespace Editor.Lesson.Blueprints.BaseShapes
         private VisualElement m_PointsList;
         private Button m_DeleteButton;
         
-        public PolygonBlueprintEditor(PolygonBlueprint blueprint, Action<Shapes.Blueprint.ShapeBlueprint, VisualElement> deleteAction) : base(blueprint, deleteAction)
+        public PolygonBlueprintEditor(PolygonBlueprint blueprint, Action<ShapeBlueprint, VisualElement> deleteAction) : base(blueprint, deleteAction)
         {
         }
 

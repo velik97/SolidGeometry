@@ -2,7 +2,6 @@ using Lesson.Shapes.Datas;
 using Lesson.Validators.Line;
 using Lesson.Validators.Point;
 using Lesson.Validators.Polygon;
-using Shapes.Data;
 
 namespace Lesson.Validators.Uniqueness
 {

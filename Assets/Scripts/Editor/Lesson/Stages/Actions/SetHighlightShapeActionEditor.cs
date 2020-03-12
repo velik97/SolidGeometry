@@ -1,14 +1,16 @@
 using System;
 using Editor.VisualElementsExtensions;
 using Lesson.Shapes.Datas;
+using Lesson.Shapes.Views;
 using Lesson.Stages.Actions;
+using UnityEditor.UIElements;
 using UnityEngine.UIElements;
 
 namespace Editor.Lesson.Stages.Actions
 {
-    public class SetActiveShapeActionEditor : ShapeActionEditor<SetActiveShapeAction>
+    public class SetHighlightShapeActionEditor : ShapeActionEditor<SetHighlightShapeAction>
     {
-        public SetActiveShapeActionEditor(SetActiveShapeAction shapeAction, Action<ShapeAction, VisualElement> deleteAction) : base(shapeAction, deleteAction)
+        public SetHighlightShapeActionEditor(SetHighlightShapeAction shapeAction, Action<ShapeAction, VisualElement> deleteAction) : base(shapeAction, deleteAction)
         {
         }
 
@@ -23,10 +25,11 @@ namespace Editor.Lesson.Stages.Actions
 
             visualElement.Add(choseShapeField);
             
-            Toggle setActiveField = new Toggle("Set Active: ") {value = ShapeAction.Active};
-            setActiveField.RegisterCallback<ChangeEvent<bool>>(evt => ShapeAction.SetIsActive(evt.newValue));
+            EnumField highlightField = new EnumField("Set Highlight") {value = ShapeAction.Highlight};
+            highlightField.Init(ShapeAction.Highlight);
+            highlightField.RegisterCallback<ChangeEvent<HighlightType>>(evt => ShapeAction.SetHighlightType(evt.newValue));
             
-            visualElement.Add(setActiveField);
+            visualElement.Add(highlightField);
         }
     }
 }

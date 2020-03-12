@@ -1,8 +1,8 @@
-using Lesson.Shapes.Data;
+using Lesson.Shapes.Datas;
 using Lesson.Shapes.Views;
 using UnityEngine;
 
-namespace Lesson
+namespace Visualization
 {
     [RequireComponent(typeof(ShapeViewFactory))]
     public class LessonVisualizer : MonoBehaviour
@@ -16,6 +16,7 @@ namespace Lesson
         {
             ShapeViewFactory.Clear();
             shapeDataFactory.SetViewFactory(ShapeViewFactory);
+            
         }
     }
 }

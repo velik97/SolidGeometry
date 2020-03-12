@@ -1,9 +1,9 @@
 using System;
+using Lesson.Shapes.Blueprints;
 using Lesson.Shapes.Views;
 using Newtonsoft.Json;
-using Shapes.Blueprint;
 
-namespace Shapes.Data
+namespace Lesson.Shapes.Datas
 {
     [JsonObject(IsReference = true, MemberSerialization = MemberSerialization.OptIn)]
     public abstract class ShapeData

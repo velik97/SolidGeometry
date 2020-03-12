@@ -1,7 +1,8 @@
 using System;
 using Editor.VisualElementsExtensions;
-using Shapes.Blueprint.BaseShapes;
-using Shapes.Data;
+using Lesson.Shapes.Blueprints;
+using Lesson.Shapes.Blueprints.BaseShapes;
+using Lesson.Shapes.Datas;
 using UnityEditor.UIElements;
 using UnityEngine.UIElements;
 
@@ -15,7 +16,7 @@ namespace Editor.Lesson.Blueprints.BaseShapes
         private ToolbarMenu m_StartPointChoose;
         private ToolbarMenu m_EndPointChoose;
         
-        public LineBlueprintEditor(LineBlueprint blueprint, Action<Shapes.Blueprint.ShapeBlueprint, VisualElement> deleteAction) : base(blueprint, deleteAction)
+        public LineBlueprintEditor(LineBlueprint blueprint, Action<ShapeBlueprint, VisualElement> deleteAction) : base(blueprint, deleteAction)
         {
         }
 

@@ -5,6 +5,7 @@ using JetBrains.Annotations;
 using Lesson.Stages.Actions;
 using Lesson.Validators.LessonStages;
 using Newtonsoft.Json;
+using Serialization;
 
 namespace Lesson.Stages
 {
@@ -42,7 +43,7 @@ namespace Lesson.Stages
         }
         
         [JsonConstructor]
-        public LessonStage(object _)
+        public LessonStage(JsonConstructorMark _)
         { }
         
         [OnDeserialized, UsedImplicitly]

@@ -1,14 +1,14 @@
 using System.Collections.Generic;
 using System.Runtime.Serialization;
 using JetBrains.Annotations;
-using Lesson.Shapes.Data;
+using Lesson.Shapes.Datas;
 using Lesson.Validators;
 using Lesson.Validators.PointOfIntersection;
 using Newtonsoft.Json;
-using Shapes.Data;
+using Serialization;
 using Util;
 
-namespace Shapes.Blueprint.DependentShapes
+namespace Lesson.Shapes.Blueprints.DependentShapes
 {
     [JsonObject(IsReference = true, MemberSerialization = MemberSerialization.OptIn)]
     public class PointOfIntersectionBlueprint : ShapeBlueprint
@@ -37,7 +37,7 @@ namespace Shapes.Blueprint.DependentShapes
         }
         
         [JsonConstructor]
-        public PointOfIntersectionBlueprint(object _)
+        public PointOfIntersectionBlueprint(JsonConstructorMark _)
         { }
         
         [OnDeserialized, UsedImplicitly]

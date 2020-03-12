@@ -2,10 +2,10 @@ using System;
 using Editor.Lesson.Blueprints.BaseShapes;
 using Editor.Lesson.Blueprints.CompositeShapes;
 using Editor.Lesson.Blueprints.DependentShapes;
-using Shapes.Blueprint;
-using Shapes.Blueprint.BaseShapes;
-using Shapes.Blueprint.CompositeShapes;
-using Shapes.Blueprint.DependentShapes;
+using Lesson.Shapes.Blueprints;
+using Lesson.Shapes.Blueprints.BaseShapes;
+using Lesson.Shapes.Blueprints.CompositeShapes;
+using Lesson.Shapes.Blueprints.DependentShapes;
 using UnityEngine.UIElements;
 
 namespace Editor.Lesson.Blueprints

@@ -1,7 +1,6 @@
 using System.Collections.Generic;
+using Lesson.Shapes.Datas;
 using Newtonsoft.Json;
-using Shapes.Blueprint;
-using Shapes.Data;
 
 namespace Lesson.Shapes.Blueprints
 {

@@ -1,13 +1,13 @@
 using System.Collections.Generic;
 using System.Runtime.Serialization;
 using JetBrains.Annotations;
-using Lesson.Shapes.Data;
+using Lesson.Shapes.Datas;
 using Lesson.Validators;
 using Newtonsoft.Json;
-using Shapes.Data;
+using Serialization;
 using Util;
 
-namespace Shapes.Blueprint.DependentShapes
+namespace Lesson.Shapes.Blueprints.DependentShapes
 {
     [JsonObject(IsReference = true, MemberSerialization = MemberSerialization.OptIn)]
     public class PointProjectionOnLineBlueprint : ShapeBlueprint
@@ -38,7 +38,7 @@ namespace Shapes.Blueprint.DependentShapes
         }
         
         [JsonConstructor]
-        public PointProjectionOnLineBlueprint(object _)
+        public PointProjectionOnLineBlueprint(JsonConstructorMark _)
         { }
         
         [OnDeserialized, UsedImplicitly]

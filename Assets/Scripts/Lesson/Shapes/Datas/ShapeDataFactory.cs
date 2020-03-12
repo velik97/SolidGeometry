@@ -3,13 +3,11 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Runtime.Serialization;
 using JetBrains.Annotations;
-using Lesson.Shapes.Datas;
 using Lesson.Shapes.Views;
 using Lesson.Validators.Uniqueness;
 using Newtonsoft.Json;
-using Shapes.Data;
 
-namespace Lesson.Shapes.Data
+namespace Lesson.Shapes.Datas
 {
     [JsonObject(IsReference = true, MemberSerialization = MemberSerialization.OptIn)]
     public class ShapeDataFactory

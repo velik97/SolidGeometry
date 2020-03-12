@@ -1,6 +1,7 @@
 using System;
 using Editor.VisualElementsExtensions;
-using Shapes.Blueprint.BaseShapes;
+using Lesson.Shapes.Blueprints;
+using Lesson.Shapes.Blueprints.BaseShapes;
 using UnityEditor.UIElements;
 using UnityEngine;
 using UnityEngine.UIElements;
@@ -9,7 +10,7 @@ namespace Editor.Lesson.Blueprints.BaseShapes
 {
     public class PointBlueprintEditor : ShapeBlueprintEditor<PointBlueprint>
     {
-        public PointBlueprintEditor(PointBlueprint blueprint, Action<Shapes.Blueprint.ShapeBlueprint, VisualElement> deleteAction) : base(blueprint, deleteAction)
+        public PointBlueprintEditor(PointBlueprint blueprint, Action<ShapeBlueprint, VisualElement> deleteAction) : base(blueprint, deleteAction)
         {
         }
 

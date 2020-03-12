@@ -1,10 +1,10 @@
 using System.Collections.Generic;
-using Lesson.Shapes.Data;
+using Lesson.Shapes.Blueprints.BaseShapes;
+using Lesson.Shapes.Blueprints.CompositeShapes;
+using Lesson.Shapes.Blueprints.DependentShapes;
+using Lesson.Shapes.Datas;
 using Newtonsoft.Json;
-using Shapes.Blueprint;
-using Shapes.Blueprint.BaseShapes;
-using Shapes.Blueprint.CompositeShapes;
-using Shapes.Blueprint.DependentShapes;
+using Serialization;
 
 namespace Lesson.Shapes.Blueprints
 {
@@ -21,7 +21,7 @@ namespace Lesson.Shapes.Blueprints
         public ShapeDataFactory ShapeDataFactory => m_ShapeDataFactory;
 
         [JsonConstructor]
-        public ShapeBlueprintFactory(object _)
+        public ShapeBlueprintFactory(JsonConstructorMark _)
         { }
 
         public ShapeBlueprintFactory(ShapeDataFactory shapeDataFactory)

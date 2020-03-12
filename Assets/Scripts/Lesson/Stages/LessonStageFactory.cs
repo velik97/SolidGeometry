@@ -3,6 +3,7 @@ using System.Runtime.Serialization;
 using JetBrains.Annotations;
 using Lesson.Stages.Actions;
 using Newtonsoft.Json;
+using Serialization;
 
 namespace Lesson.Stages
 {
@@ -23,7 +24,7 @@ namespace Lesson.Stages
         }
         
         [JsonConstructor]
-        public LessonStageFactory(object _)
+        public LessonStageFactory(JsonConstructorMark _)
         { }
         
         [OnDeserialized, UsedImplicitly]

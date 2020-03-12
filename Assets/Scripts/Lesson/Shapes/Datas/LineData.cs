@@ -5,8 +5,9 @@ using Lesson.Shapes.Views;
 using Lesson.Validators;
 using Lesson.Validators.Line;
 using Newtonsoft.Json;
+using Serialization;
 
-namespace Shapes.Data
+namespace Lesson.Shapes.Datas
 {
     [JsonObject(IsReference = true, MemberSerialization = MemberSerialization.OptIn)]
     public class LineData : ShapeData
@@ -33,7 +34,7 @@ namespace Shapes.Data
         }
 
         [JsonConstructor]
-        public LineData(object _)
+        public LineData(JsonConstructorMark _)
         { }
         
         [OnDeserialized, UsedImplicitly]

@@ -1,6 +1,5 @@
 using System.Collections.Generic;
 using Lesson.Shapes.Datas;
-using Shapes.Data;
 using UnityEngine;
 
 namespace Lesson.Shapes.Views

@@ -1,14 +1,15 @@
 using System;
 using Editor.VisualElementsExtensions;
-using Shapes.Blueprint.DependentShapes;
-using Shapes.Data;
+using Lesson.Shapes.Blueprints;
+using Lesson.Shapes.Blueprints.DependentShapes;
+using Lesson.Shapes.Datas;
 using UnityEngine.UIElements;
 
 namespace Editor.Lesson.Blueprints.DependentShapes
 {
     public class PointOfIntersectionBlueprintEditor : ShapeBlueprintEditor<PointOfIntersectionBlueprint>
     {
-        public PointOfIntersectionBlueprintEditor(PointOfIntersectionBlueprint blueprint, Action<Shapes.Blueprint.ShapeBlueprint, VisualElement> deleteAction) : base(blueprint, deleteAction)
+        public PointOfIntersectionBlueprintEditor(PointOfIntersectionBlueprint blueprint, Action<ShapeBlueprint, VisualElement> deleteAction) : base(blueprint, deleteAction)
         {
         }
 

@@ -2,14 +2,13 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Runtime.Serialization;
 using JetBrains.Annotations;
-using Lesson.Shapes.Data;
 using Lesson.Shapes.Datas;
 using Lesson.Validators.VolumeShape;
 using Newtonsoft.Json;
-using Shapes.Data;
+using Serialization;
 using UnityEngine;
 
-namespace Shapes.Blueprint.CompositeShapes
+namespace Lesson.Shapes.Blueprints.CompositeShapes
 {    
     [JsonObject(IsReference = true, MemberSerialization = MemberSerialization.OptIn)]
     public class CubeBlueprint : ShapeBlueprint
@@ -70,7 +69,7 @@ namespace Shapes.Blueprint.CompositeShapes
         }
         
         [JsonConstructor]
-        public CubeBlueprint(object _)
+        public CubeBlueprint(JsonConstructorMark _)
         { }
         
         [OnDeserialized, UsedImplicitly]

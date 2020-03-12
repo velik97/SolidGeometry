@@ -298,6 +298,7 @@
               <e p="Stages" t="Include">
                 <e p="Actions" t="Include">
                   <e p="SetActiveShapeActionEditor.cs" t="Include" />
+                  <e p="SetHighlightShapeActionEditor.cs" t="Include" />
                   <e p="ShapeActionEditor.cs" t="Include" />
                   <e p="ShapeActionEditorFactory.cs" t="Include" />
                 </e>
@@ -399,6 +400,7 @@
           </e>
           <e p="Serialization" t="Include">
             <e p="FolderJsonsListSerializer.cs" t="Include" />
+            <e p="JsonConstructorMark.cs" t="Include" />
             <e p="StaticPaths.cs" t="Include" />
           </e>
           <e p="Util" t="Include">

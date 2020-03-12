@@ -2,8 +2,7 @@ using System;
 using System.Linq;
 using Editor.VisualElementsExtensions;
 using Lesson.Shapes.Blueprints;
-using Shapes.Blueprint;
-using Shapes.Data;
+using Lesson.Shapes.Datas;
 using UnityEditor.UIElements;
 using UnityEngine.UIElements;
 

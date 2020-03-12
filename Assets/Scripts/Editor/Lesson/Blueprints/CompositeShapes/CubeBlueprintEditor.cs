@@ -1,6 +1,7 @@
 using System;
 using Editor.VisualElementsExtensions;
-using Shapes.Blueprint.CompositeShapes;
+using Lesson.Shapes.Blueprints;
+using Lesson.Shapes.Blueprints.CompositeShapes;
 using UnityEditor.UIElements;
 using UnityEngine;
 using UnityEngine.UIElements;
@@ -10,7 +11,7 @@ namespace Editor.Lesson.Blueprints.CompositeShapes
 {
     public class CubeBlueprintEditor: ShapeBlueprintEditor<CubeBlueprint>
     {
-        public CubeBlueprintEditor(CubeBlueprint blueprint, Action<Shapes.Blueprint.ShapeBlueprint, VisualElement> deleteAction) : base(blueprint, deleteAction)
+        public CubeBlueprintEditor(CubeBlueprint blueprint, Action<ShapeBlueprint, VisualElement> deleteAction) : base(blueprint, deleteAction)
         {
         }
         

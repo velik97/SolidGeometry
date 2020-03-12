@@ -1,16 +1,34 @@
-using Lesson.Shapes.Data;
+using System.Runtime.Serialization;
+using JetBrains.Annotations;
+using Lesson.Shapes.Datas;
 using Lesson.Shapes.Views;
+using Newtonsoft.Json;
+using Serialization;
 
 namespace Lesson.Stages.Actions
 {
+    [JsonObject(IsReference = true, MemberSerialization = MemberSerialization.OptIn)]
     public class SetHighlightShapeAction : ShapeAction
     {
-        private HighlightType m_Highlight;
+        [JsonProperty]
+        private HighlightType m_Highlight = HighlightType.Normal;
         
         private HighlightType m_PreviousState;
 
+        public HighlightType Highlight => m_Highlight;
+
         public SetHighlightShapeAction(ShapeDataFactory shapeDataFactory) : base(shapeDataFactory)
         {
+        }
+        
+        [JsonConstructor]
+        public SetHighlightShapeAction(JsonConstructorMark _)
+        { }
+        
+        [OnDeserialized, UsedImplicitly]
+        private void OnDeserialized(StreamingContext context)
+        {
+            OnDeserialized();
         }
 
         public void SetHighlightType(HighlightType highlight)

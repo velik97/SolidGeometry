@@ -1,7 +1,8 @@
 using System.Runtime.Serialization;
 using JetBrains.Annotations;
-using Lesson.Shapes.Data;
+using Lesson.Shapes.Datas;
 using Newtonsoft.Json;
+using Serialization;
 
 namespace Lesson.Stages.Actions
 {
@@ -20,7 +21,7 @@ namespace Lesson.Stages.Actions
         }
         
         [JsonConstructor]
-        public SetActiveShapeAction(object _)
+        public SetActiveShapeAction(JsonConstructorMark _)
         { }
         
         [OnDeserialized, UsedImplicitly]

@@ -3,9 +3,10 @@ using JetBrains.Annotations;
 using Lesson.Shapes.Views;
 using Lesson.Validators.Point;
 using Newtonsoft.Json;
+using Serialization;
 using UnityEngine;
 
-namespace Shapes.Data
+namespace Lesson.Shapes.Datas
 {
     [JsonObject(IsReference = true, MemberSerialization = MemberSerialization.OptIn)]
     public class PointData : ShapeData
@@ -30,7 +31,7 @@ namespace Shapes.Data
         }
 
         [JsonConstructor]
-        public PointData(object _)
+        public PointData(JsonConstructorMark _)
         { }
         
         [OnDeserialized, UsedImplicitly]

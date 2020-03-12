@@ -1,6 +1,7 @@
 using System.Collections.Generic;
-using Lesson.Shapes.Data;
+using Lesson.Shapes.Datas;
 using Newtonsoft.Json;
+using Serialization;
 
 namespace Lesson.Stages.Actions
 {
@@ -21,7 +22,7 @@ namespace Lesson.Stages.Actions
         }
         
         [JsonConstructor]
-        public ShapeActionFactory(object _)
+        public ShapeActionFactory(JsonConstructorMark _)
         { }
 
         public void SetShapeDataFactory(ShapeDataFactory shapeDataFactory)

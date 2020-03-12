@@ -3,7 +3,7 @@ using System.Runtime.Serialization;
 using JetBrains.Annotations;
 using Lesson.Shapes.Views;
 using Newtonsoft.Json;
-using Shapes.Data;
+using Serialization;
 
 namespace Lesson.Shapes.Datas
 {
@@ -30,7 +30,7 @@ namespace Lesson.Shapes.Datas
         }
         
         [JsonConstructor]
-        public CompositeShapeData(object _)
+        public CompositeShapeData(JsonConstructorMark _)
         { }
         
         [OnDeserialized, UsedImplicitly]
