@@ -66,7 +66,5 @@ namespace Lesson.Shapes.Views
                 polygon.Highlight = value;
             }
         }
-
-        public void Release() { }
     }
 }

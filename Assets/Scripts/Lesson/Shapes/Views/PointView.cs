@@ -11,14 +11,14 @@ namespace Lesson.Shapes.Views
 
         public override HighlightType Highlight { get; set; }
 
-        public override void UpdateName(PointData shapeData)
+        public override void UpdateName()
         {
-            m_NameLabel.text = shapeData.PointName;
+            m_NameLabel.text = ShapeData.PointName;
         }
 
-        public override void UpdateGeometry(PointData shapeData)
+        public override void UpdateGeometry()
         {
-            transform.position = shapeData.Position;
+            transform.position = ShapeData.Position;
         }
     }
 }

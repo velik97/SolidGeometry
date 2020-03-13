@@ -34,19 +34,19 @@ namespace Lesson.Shapes.Views
 
         public override HighlightType Highlight { get; set; }
 
-        public override void UpdateName(PolygonData shapeData)
+        public override void UpdateName()
         { }
 
-        public override void UpdateGeometry(PolygonData shapeData)
+        public override void UpdateGeometry()
         {
             Initialize();
 
-            if (shapeData.Points == null || shapeData.Points.Any(p => p == null))
+            if (ShapeData.Points == null || ShapeData.Points.Any(p => p == null))
             {
                 return;
             }
 
-            Vector3[] vertices = shapeData.Points.Select(p => p.Position).ToArray();
+            Vector3[] vertices = ShapeData.Points.Select(p => p.Position).ToArray();
             int[] triangles = new int[(vertices.Length - 2) * 6];
 
             int tr = 0;

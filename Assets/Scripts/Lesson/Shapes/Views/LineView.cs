@@ -10,18 +10,18 @@ namespace Lesson.Shapes.Views
 
         public override HighlightType Highlight { get; set; }
 
-        public override void UpdateName(LineData shapeData)
+        public override void UpdateName()
         { }
 
-        public override void UpdateGeometry(LineData shapeData)
+        public override void UpdateGeometry()
         {
-            if (shapeData.StartPoint == null || shapeData.EndPoint == null)
+            if (ShapeData.StartPoint == null || ShapeData.EndPoint == null)
             {
                 return;
             }
             
-            Vector3 start = shapeData.StartPoint.Position;
-            Vector3 end = shapeData.EndPoint.Position;
+            Vector3 start = ShapeData.StartPoint.Position;
+            Vector3 end = ShapeData.EndPoint.Position;
 
             Vector3 middle = (start + end) / 2f;
             Vector3 direction = start - end;

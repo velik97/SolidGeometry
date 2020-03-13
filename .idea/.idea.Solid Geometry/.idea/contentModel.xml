@@ -345,11 +345,13 @@
               <e p="Views" t="Include">
                 <e p="CompositeShapeView.cs" t="Include" />
                 <e p="IShapeView.cs" t="Include" />
+                <e p="IShapeViewFactory.cs" t="Include" />
                 <e p="LineView.cs" t="Include" />
                 <e p="MonoBehaviourShapeView.cs" t="Include" />
                 <e p="PointView.cs" t="Include" />
                 <e p="PolygonView.cs" t="Include" />
                 <e p="ShapeViewFactory.cs" t="Include" />
+                <e p="ShapeViewFactoryProxy.cs" t="Include" />
               </e>
             </e>
             <e p="Stages" t="Include">
@@ -404,6 +406,11 @@
             <e p="StaticPaths.cs" t="Include" />
           </e>
           <e p="Util" t="Include">
+            <e p="EventBusSystem" t="Include">
+              <e p="EventBus.cs" t="Include" />
+              <e p="EventBusHelper.cs" t="Include" />
+              <e p="IGlobalSubscriber.cs" t="Include" />
+            </e>
             <e p="Extensions.cs" t="Include" />
             <e p="GeometryUtils.cs" t="Include" />
             <e p="StringExtensions.cs" t="Include" />

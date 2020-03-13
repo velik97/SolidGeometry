@@ -5,13 +5,26 @@ namespace Lesson.Shapes.Views
 {
     public abstract class MonoBehaviourShapeView<TShapeData> : MonoBehaviour, IShapeView where TShapeData : ShapeData
     {
+        protected TShapeData ShapeData;
+        
         public void SetShapeData(TShapeData shapeData)
         {
-            shapeData.NameUpdated += () => UpdateName(shapeData);
-            shapeData.GeometryUpdated += () => UpdateGeometry(shapeData);
-
-            UpdateName(shapeData);
-            UpdateGeometry(shapeData);
+            if (ShapeData != null)
+            {
+                ShapeData.NameUpdated -= UpdateName;
+                ShapeData.GeometryUpdated -= UpdateGeometry;
+            }
+            
+            ShapeData = shapeData;
+            
+            if (ShapeData != null)
+            {
+                ShapeData.NameUpdated += UpdateName;
+                ShapeData.GeometryUpdated += UpdateGeometry;
+                
+                UpdateName();
+                UpdateGeometry();
+            }
         }
 
         public bool Active
@@ -22,25 +35,8 @@ namespace Lesson.Shapes.Views
         
         public abstract HighlightType Highlight { get; set; }
         
-        public abstract void UpdateName(TShapeData shapeData);
+        public abstract void UpdateName();
         
-        public abstract void UpdateGeometry(TShapeData shapeData);
-
-
-        public void Release()
-        {
-            if (gameObject == null)
-            {
-                return;
-            }
-#if UNITY_EDITOR
-            if (Application.isEditor)
-            {
-                DestroyImmediate(gameObject);
-                return;
-            }
-#endif
-            Destroy(gameObject);
-        }
+        public abstract void UpdateGeometry();
     }
 }

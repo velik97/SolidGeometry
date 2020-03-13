@@ -4,13 +4,22 @@ using UnityEngine;
 
 namespace Lesson.Shapes.Views
 {
-    public class ShapeViewFactory : MonoBehaviour
+    public class ShapeViewFactory : MonoBehaviour, IShapeViewFactory
     {
         [SerializeField] private PointView m_PointPrefab;
         [SerializeField] private LineView m_LinePrefab;
         [SerializeField] private PolygonView m_PolygonPrefab;
 
-        private List<IShapeView> m_Views = new List<IShapeView>();
+        private readonly Stack<PointView> m_PointsPool = new Stack<PointView>();
+        private readonly Stack<LineView> m_LinesPool = new Stack<LineView>();
+        private readonly Stack<PolygonView> m_PolygonsPool = new Stack<PolygonView>();
+        
+        private readonly List<IShapeView> m_Views = new List<IShapeView>();
+
+        private void Awake()
+        {
+            gameObject.SetActive(false);
+        }
 
         public IShapeView RequestShapeView(ShapeData data)
         {
@@ -39,21 +48,30 @@ namespace Lesson.Shapes.Views
         
         private PointView CreatePointView(PointData data)
         {
-            PointView pointView = Instantiate(m_PointPrefab, transform, false);
+            PointView pointView = m_PointsPool.Count > 0
+                ? m_PointsPool.Pop()
+                : Instantiate(m_PointPrefab, transform, false);
+
             pointView.SetShapeData(data);
             return pointView;
         }
         
         private LineView CreateLineView(LineData data)
         {
-            LineView lineView = Instantiate(m_LinePrefab, transform, false);
+            LineView lineView = m_LinesPool.Count > 0
+                ? m_LinesPool.Pop()
+                : Instantiate(m_LinePrefab, transform, false);
+            
             lineView.SetShapeData(data);
             return lineView;
         }
         
         private PolygonView CreatePolygonView(PolygonData data)
         {
-            PolygonView polygonView = Instantiate(m_PolygonPrefab, transform, false);
+            PolygonView polygonView = m_PointsPool.Count > 0
+                ? m_PolygonsPool.Pop()
+                : Instantiate(m_PolygonPrefab, transform, false);
+            
             polygonView.SetShapeData(data);
             return polygonView;
         }
@@ -67,7 +85,7 @@ namespace Lesson.Shapes.Views
         {
             while (m_Views.Count > 0)
             {
-                ReleaseView(m_Views[0]);
+                ReleaseView(m_Views[m_Views.Count - 1]);
             }
         }
         
@@ -78,7 +96,22 @@ namespace Lesson.Shapes.Views
                 return;
             }
             m_Views.Remove(view);
-            view.Release();
+            
+            switch (view)
+            {
+                case PointView pointView:
+                    pointView.transform.parent = transform;
+                    m_PointsPool.Push(pointView);
+                    break;
+                case LineView lineView:
+                    lineView.transform.parent = transform;
+                    m_LinesPool.Push(lineView);
+                    break;
+                case PolygonView polygonView:
+                    polygonView.transform.parent = transform;
+                    m_PolygonsPool.Push(polygonView);
+                    break;
+            }
         }
     }
 }

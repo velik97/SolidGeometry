@@ -60,6 +60,10 @@ namespace Lesson.Shapes.Datas
 
         public void SetViewFactory(ShapeViewFactory shapeViewFactory)
         {
+            if (m_ShapeViewFactory != null)
+            {
+                m_ShapeViewFactory.Clear();
+            }
             m_ShapeViewFactory = shapeViewFactory;
             if (m_ShapeViewFactory == null)
             {
