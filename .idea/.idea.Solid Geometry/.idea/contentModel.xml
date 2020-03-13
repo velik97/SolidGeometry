@@ -406,6 +406,11 @@
             <e p="StaticPaths.cs" t="Include" />
           </e>
           <e p="Util" t="Include">
+            <e p="EventBusSystem" t="Include">
+              <e p="EventBus.cs" t="Include" />
+              <e p="EventBusHelper.cs" t="Include" />
+              <e p="IGlobalSubscriber.cs" t="Include" />
+            </e>
             <e p="Extensions.cs" t="Include" />
             <e p="GeometryUtils.cs" t="Include" />
             <e p="StringExtensions.cs" t="Include" />
