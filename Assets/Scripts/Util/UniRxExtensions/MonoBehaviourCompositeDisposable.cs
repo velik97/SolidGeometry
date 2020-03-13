@@ -1,69 +1,18 @@
-﻿using System;
+using System;
 using System.Collections.Generic;
-// using System.Linq; do not use LINQ
-using System.Text;
+using UniRx;
+using UnityEngine;
 
-namespace UniRx
+namespace Util.UniRxExtensions
 {
-    // copy, modified from Rx Official
-
-    public class CompositeDisposable : ICollection<IDisposable>, IDisposable, ICancelable
+    public class MonoBehaviourCompositeDisposable : MonoBehaviour, ICollection<IDisposable>, IDisposable, ICancelable
     {
         private readonly object _gate = new object();
 
         private bool _disposed;
-        private List<IDisposable> _disposables;
+        private List<IDisposable> _disposables = new List<IDisposable>();
         private int _count;
         private const int SHRINK_THRESHOLD = 64;
-
-        /// <summary>
-        /// Initializes a new instance of the <see cref="T:System.Reactive.Disposables.CompositeDisposable"/> class with no disposables contained by it initially.
-        /// </summary>
-        public CompositeDisposable()
-        {
-            _disposables = new List<IDisposable>();
-        }
-
-        /// <summary>
-        /// Initializes a new instance of the <see cref="T:System.Reactive.Disposables.CompositeDisposable"/> class with the specified number of disposables.
-        /// </summary>
-        /// <param name="capacity">The number of disposables that the new CompositeDisposable can initially store.</param>
-        /// <exception cref="ArgumentOutOfRangeException"><paramref name="capacity"/> is less than zero.</exception>
-        public CompositeDisposable(int capacity)
-        {
-            if (capacity < 0)
-                throw new ArgumentOutOfRangeException("capacity");
-
-            _disposables = new List<IDisposable>(capacity);
-        }
-
-        /// <summary>
-        /// Initializes a new instance of the <see cref="T:System.Reactive.Disposables.CompositeDisposable"/> class from a group of disposables.
-        /// </summary>
-        /// <param name="disposables">Disposables that will be disposed together.</param>
-        /// <exception cref="ArgumentNullException"><paramref name="disposables"/> is null.</exception>
-        public CompositeDisposable(params IDisposable[] disposables)
-        {
-            if (disposables == null)
-                throw new ArgumentNullException("disposables");
-
-            _disposables = new List<IDisposable>(disposables);
-            _count = _disposables.Count;
-        }
-
-        /// <summary>
-        /// Initializes a new instance of the <see cref="T:System.Reactive.Disposables.CompositeDisposable"/> class from a group of disposables.
-        /// </summary>
-        /// <param name="disposables">Disposables that will be disposed together.</param>
-        /// <exception cref="ArgumentNullException"><paramref name="disposables"/> is null.</exception>
-        public CompositeDisposable(IEnumerable<IDisposable> disposables)
-        {
-            if (disposables == null)
-                throw new ArgumentNullException("disposables");
-
-            _disposables = new List<IDisposable>(disposables);
-            _count = _disposables.Count;
-        }
 
         /// <summary>
         /// Gets the number of disposables contained in the CompositeDisposable.

@@ -405,6 +405,12 @@
             <e p="JsonConstructorMark.cs" t="Include" />
             <e p="StaticPaths.cs" t="Include" />
           </e>
+          <e p="UI" t="Include">
+            <e p="MVVM" t="Include">
+              <e p="View.cs" t="Include" />
+              <e p="ViewModel.cs" t="Include" />
+            </e>
+          </e>
           <e p="Util" t="Include">
             <e p="EventBusSystem" t="Include">
               <e p="EventBus.cs" t="Include" />
@@ -414,6 +420,9 @@
             <e p="Extensions.cs" t="Include" />
             <e p="GeometryUtils.cs" t="Include" />
             <e p="StringExtensions.cs" t="Include" />
+            <e p="UniRxExtensions" t="Include">
+              <e p="MonoBehaviourCompositeDisposable.cs" t="Include" />
+            </e>
             <e p="Vector3Extensions.cs" t="Include" />
           </e>
           <e p="Visualization" t="Include">
