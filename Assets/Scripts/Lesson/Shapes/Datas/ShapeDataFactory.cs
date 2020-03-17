@@ -23,7 +23,7 @@ namespace Lesson.Shapes.Datas
         
         private readonly ShapeDatasUniquenessValidators m_UniquenessValidators = new ShapeDatasUniquenessValidators();
 
-        private ShapeViewFactory m_ShapeViewFactory;
+        private IShapeViewFactory m_ShapeViewFactory;
 
         public event Action ShapesListUpdated;
 
@@ -58,11 +58,11 @@ namespace Lesson.Shapes.Datas
             }
         }
 
-        public void SetViewFactory(ShapeViewFactory shapeViewFactory)
+        public void SetViewFactory(IShapeViewFactory shapeViewFactory)
         {
             if (m_ShapeViewFactory != null)
             {
-                m_ShapeViewFactory.Clear();
+                m_ShapeViewFactory.Dispose();
             }
             m_ShapeViewFactory = shapeViewFactory;
             if (m_ShapeViewFactory == null)

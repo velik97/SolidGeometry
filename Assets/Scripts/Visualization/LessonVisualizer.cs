@@ -14,9 +14,8 @@ namespace Visualization
         
         public void SetShapeDataFactory(ShapeDataFactory shapeDataFactory)
         {
-            ShapeViewFactory.Clear();
+            ShapeViewFactory.Dispose();
             shapeDataFactory.SetViewFactory(ShapeViewFactory);
-            
         }
     }
 }

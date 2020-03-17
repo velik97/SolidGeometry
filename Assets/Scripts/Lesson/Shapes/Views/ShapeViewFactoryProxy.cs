@@ -37,7 +37,7 @@ namespace Lesson.Shapes.Views
             m_InnerShapeViewFactory.ReleaseView(view);
         }
 
-        public void Clear()
+        public void Dispose()
         {
             while (m_Views.Count > 0)
             {

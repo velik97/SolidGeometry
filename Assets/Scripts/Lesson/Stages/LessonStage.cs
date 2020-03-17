@@ -117,7 +117,9 @@ namespace Lesson.Stages
 
         public void ApplyActions()
         {
-            foreach (var action in m_ShapeActions)
+            List<ShapeAction> sorted = new List<ShapeAction>(m_ShapeActions);
+            sorted.Sort();
+            foreach (var action in sorted)
             {
                 action.PreservePreviousState();
                 action.ApplyAction();
@@ -126,13 +128,16 @@ namespace Lesson.Stages
 
         public void RollbackActions()
         {
+            List<ShapeAction> sorted = new List<ShapeAction>(m_ShapeActions);
+            sorted.Sort();
+            sorted.Reverse();
             foreach (var action in m_ShapeActions)
             {
                 action.RollbackAction();
             }
         }
 
-        protected virtual void OnShapeActionsListUpdated()
+        private void OnShapeActionsListUpdated()
         {
             ShapeActionsListUpdated?.Invoke();
         }

@@ -6,7 +6,7 @@ using Newtonsoft.Json;
 namespace Lesson.Stages.Actions
 {
     [JsonObject(IsReference = true, MemberSerialization = MemberSerialization.OptIn)]
-    public abstract class ShapeAction : CanDependOnShapeBlueprint
+    public abstract class ShapeAction : CanDependOnShapeBlueprint, IComparable<ShapeAction>
     {
         public event Action NameUpdated;
         public event Action ShapeDataUpdated;
@@ -71,6 +71,24 @@ namespace Lesson.Stages.Actions
         {
             return other.m_ShapeData == this.m_ShapeData &&
                    other.GetType() == this.GetType();
+        }
+
+        public int CompareTo(ShapeAction other)
+        {
+            bool thisHasCompositeShapeData = m_ShapeData is CompositeShapeData;
+            bool otherHasCompositeShapeData = other.m_ShapeData is CompositeShapeData;
+
+            if (thisHasCompositeShapeData == otherHasCompositeShapeData)
+            {
+                return 0;
+            }
+
+            if (thisHasCompositeShapeData)
+            {
+                return 1;
+            }
+
+            return -1;
         }
 
         protected void OnNameUpdated()

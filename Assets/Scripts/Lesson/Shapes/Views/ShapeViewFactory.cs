@@ -1,11 +1,14 @@
 using System.Collections.Generic;
 using Lesson.Shapes.Datas;
 using UnityEngine;
+using Util;
 
 namespace Lesson.Shapes.Views
 {
-    public class ShapeViewFactory : MonoBehaviour, IShapeViewFactory
+    public class ShapeViewFactory : MonoSingleton<ShapeViewFactory>, IShapeViewFactory
     {
+        [SerializeField] private Transform m_DisposedContainer;
+
         [SerializeField] private PointView m_PointPrefab;
         [SerializeField] private LineView m_LinePrefab;
         [SerializeField] private PolygonView m_PolygonPrefab;
@@ -18,6 +21,7 @@ namespace Lesson.Shapes.Views
 
         private void Awake()
         {
+            DontDestroyOnLoad(this);
             gameObject.SetActive(false);
         }
 
@@ -81,7 +85,7 @@ namespace Lesson.Shapes.Views
             return new CompositeShapeView(data);
         }
 
-        public void Clear()
+        public void Dispose()
         {
             while (m_Views.Count > 0)
             {
@@ -100,15 +104,18 @@ namespace Lesson.Shapes.Views
             switch (view)
             {
                 case PointView pointView:
-                    pointView.transform.parent = transform;
+                    pointView.transform.parent = m_DisposedContainer;
+                    pointView.SetShapeData(null);
                     m_PointsPool.Push(pointView);
                     break;
                 case LineView lineView:
-                    lineView.transform.parent = transform;
+                    lineView.transform.parent = m_DisposedContainer;
+                    lineView.SetShapeData(null);
                     m_LinesPool.Push(lineView);
                     break;
                 case PolygonView polygonView:
-                    polygonView.transform.parent = transform;
+                    polygonView.transform.parent = m_DisposedContainer;
+                    polygonView.SetShapeData(null);
                     m_PolygonsPool.Push(polygonView);
                     break;
             }

@@ -6,7 +6,7 @@ using Util.UniRxExtensions;
 
 namespace UI.MVVM
 {
-    public abstract class View<TViewModel> : MonoBehaviourCompositeDisposable, IDisposable where TViewModel : ViewModel, new()
+    public abstract class View<TViewModel> : MonoBehaviourCompositeDisposable, IDisposable where TViewModel : ViewModel
     {
         private readonly List<IDisposable> m_Disposables = new List<IDisposable>();
         
@@ -14,16 +14,12 @@ namespace UI.MVVM
 
         private IDisposable m_UnbindDisposable;
 
-        public TViewModel CreateViewModelAndBind()
-        {
-            TViewModel vm = new TViewModel();
-            Bind(vm);
-            return vm;
-        }
-
         public virtual void Bind(TViewModel viewModel)
         {
-            Unbind();
+            if (ViewModel != null)
+            {
+                Unbind();
+            }
             ViewModel = viewModel;
             ViewModel.Add(this);
 
@@ -33,7 +29,7 @@ namespace UI.MVVM
 
         private void Unbind()
         {
-            ViewModel?.Remove(this);
+            ViewModel.Remove(this);
             Remove(m_UnbindDisposable);
         }
 
