@@ -1,10 +1,11 @@
 using System.Collections.Generic;
-using Lesson.Shapes.Blueprints.BaseShapes;
 using Lesson.Shapes.Blueprints.CompositeShapes;
-using Lesson.Shapes.Blueprints.DependentShapes;
-using Lesson.Shapes.Datas;
+using Lesson.Shapes.Data;
 using Newtonsoft.Json;
-using Serialization;
+using Shapes.Blueprint;
+using Shapes.Blueprint.BaseShapes;
+using Shapes.Blueprint.CompositeShapes;
+using Shapes.Blueprint.DependentShapes;
 
 namespace Lesson.Shapes.Blueprints
 {
@@ -21,7 +22,7 @@ namespace Lesson.Shapes.Blueprints
         public ShapeDataFactory ShapeDataFactory => m_ShapeDataFactory;
 
         [JsonConstructor]
-        public ShapeBlueprintFactory(JsonConstructorMark _)
+        public ShapeBlueprintFactory(object _)
         { }
 
         public ShapeBlueprintFactory(ShapeDataFactory shapeDataFactory)
@@ -59,6 +60,15 @@ namespace Lesson.Shapes.Blueprints
                 case ShapeBlueprintType.Cube:
                     blueprint = new CubeBlueprint(m_ShapeDataFactory);
                     break;
+                case ShapeBlueprintType.Pyramid:
+                    blueprint = new PyramidBlueprint(m_ShapeDataFactory);
+                    break;
+                case ShapeBlueprintType.RegularPyramid:
+                    blueprint = new RegularPyramidBlueprint(m_ShapeDataFactory);
+                    break;
+                case ShapeBlueprintType.RegularNPolygon:
+                    blueprint = new RegularNPolygonBlueprint(m_ShapeDataFactory);
+                    break;
                 case ShapeBlueprintType.PointProjectionOnLine:
                     blueprint = new PointProjectionOnLineBlueprint(m_ShapeDataFactory);
                     break;
@@ -93,6 +103,9 @@ namespace Lesson.Shapes.Blueprints
             Polygon,
             Parallelepiped,
             Cube, 
+            Pyramid,
+            RegularPyramid,
+            RegularNPolygon,
             PointProjectionOnLine,
             PointOfIntersection
         }

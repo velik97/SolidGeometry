@@ -104,7 +104,7 @@ namespace Lesson.Shapes.Datas
             m_Points.RemoveAt(index);
         }
 
-        public void SetPoint(int index, PointData pointData)
+        public void  SetPoint(int index, PointData pointData)
         {
             if (m_Points.Count <= index)
             {
