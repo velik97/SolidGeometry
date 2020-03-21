@@ -1,7 +1,7 @@
 using System;
 using Editor.VisualElementsExtensions;
+using Lesson.Shapes.Blueprints;
 using Lesson.Shapes.Blueprints.CompositeShapes;
-using Shapes.Blueprint;
 using UnityEditor.UIElements;
 using UnityEngine;
 using UnityEngine.UIElements;

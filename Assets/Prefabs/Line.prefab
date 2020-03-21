@@ -55,6 +55,7 @@ MeshRenderer:
   m_MotionVectors: 1
   m_LightProbeUsage: 1
   m_ReflectionProbeUsage: 1
+  m_RayTracingMode: 2
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
@@ -170,3 +171,10 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   m_CylinderParent: {fileID: 6739730070864827517}
   m_Cylinder: {fileID: 4150909750243554143}
+  m_Materials:
+  - {fileID: 2100000, guid: 9b423e8c7dd0f4e8c9d3948c3e31af12, type: 2}
+  - {fileID: 2100000, guid: b83a0c91e60534666b26401eedae0cb9, type: 2}
+  - {fileID: 2100000, guid: 8046056fbf0f3412981ba275931f479b, type: 2}
+  - {fileID: 2100000, guid: 3b0d0bd5136244d6a80902d49aa14ee4, type: 2}
+  - {fileID: 2100000, guid: 80e6932e659b34492b1ee818b4f90adf, type: 2}
+  m_Renderer: {fileID: 1479029208757370017}

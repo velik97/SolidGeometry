@@ -1,7 +1,7 @@
 using System;
 using Editor.VisualElementsExtensions;
+using Lesson.Shapes.Blueprints;
 using Lesson.Shapes.Blueprints.CompositeShapes;
-using Shapes.Blueprint.CompositeShapes;
 using UnityEditor.UIElements;
 using UnityEngine;
 using UnityEngine.UIElements;
@@ -11,7 +11,7 @@ namespace Editor.Lesson.Blueprints.CompositeShapes
 {
     public class RegularPyramidBlueprintEditor: ShapeBlueprintEditor<RegularPyramidBlueprint>
     {
-        public RegularPyramidBlueprintEditor(RegularPyramidBlueprint blueprint, Action<Shapes.Blueprint.ShapeBlueprint, VisualElement> deleteAction) : base(blueprint, deleteAction)
+        public RegularPyramidBlueprintEditor(RegularPyramidBlueprint blueprint, Action<ShapeBlueprint, VisualElement> deleteAction) : base(blueprint, deleteAction)
         {
         }
         

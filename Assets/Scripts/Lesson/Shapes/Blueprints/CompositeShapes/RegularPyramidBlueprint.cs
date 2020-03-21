@@ -2,12 +2,9 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Runtime.Serialization;
 using JetBrains.Annotations;
-using Lesson.Shapes.Data;
 using Lesson.Shapes.Datas;
 using Lesson.Validators.VolumeShape;
 using Newtonsoft.Json;
-using Shapes.Blueprint;
-using Shapes.Data;
 using UnityEngine;
 
 namespace Lesson.Shapes.Blueprints.CompositeShapes
@@ -125,8 +122,7 @@ namespace Lesson.Shapes.Blueprints.CompositeShapes
             {
                 m_Polygons[0].SetPoint(i, m_Points[i]);
             }
-
-
+            
             // Side faces
             for (int i = 0; i < 2; i++)
             {
@@ -152,11 +148,6 @@ namespace Lesson.Shapes.Blueprints.CompositeShapes
 
         public void SetOrigin(Vector3 origin)
         {
-            if (m_Origin == origin)
-            {
-                return;
-            }
-
             m_Origin = origin;
             UpdatePointsPositions();
         }
@@ -188,11 +179,10 @@ namespace Lesson.Shapes.Blueprints.CompositeShapes
             var v2 = new Vector3(m_Length* 1/2,m_Length*Mathf.Sqrt(3)/2, 0);
             var height = new Vector3(0, 0, m_Height);
             
-            
             m_Points[0].SetPosition(m_Origin);
             m_Points[1].SetPosition(m_Origin + v1);
             m_Points[2].SetPosition(m_Origin + v2);
-            m_Points[3].SetPosition(m_Origin + (v1 + v2)/3 + height); //hope my maths true
+            m_Points[3].SetPosition(m_Origin + (v1 + v2)/3 + height);
 
         }
     }

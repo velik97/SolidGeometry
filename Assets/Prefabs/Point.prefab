@@ -54,6 +54,7 @@ MeshRenderer:
   m_MotionVectors: 1
   m_LightProbeUsage: 1
   m_ReflectionProbeUsage: 1
+  m_RayTracingMode: 2
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
@@ -224,6 +225,13 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   m_Sphere: {fileID: 53356014681774311}
   m_NameLabel: {fileID: 5169775501501636050}
+  m_Materials:
+  - {fileID: 2100000, guid: 773b712371471490faa2974d232ba32d, type: 2}
+  - {fileID: 2100000, guid: be7b2658c74414623b45fdb2680844c8, type: 2}
+  - {fileID: 2100000, guid: 873214094c84c4364aa112e55dbdfc65, type: 2}
+  - {fileID: 2100000, guid: 9cdcc0bff4b6946adaf46b4063518005, type: 2}
+  - {fileID: 2100000, guid: 85f2f02ab990d43ff9276fd149547ff0, type: 2}
+  m_Renderer: {fileID: 7094307040766511753}
 --- !u!1 &3260459349302935416
 GameObject:
   m_ObjectHideFlags: 0
@@ -287,8 +295,6 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-    m_TypeName: UnityEngine.UI.MaskableGraphic+CullStateChangedEvent, UnityEngine.UI,
-      Version=1.0.0.0, Culture=neutral, PublicKeyToken=null
   m_text: A
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}

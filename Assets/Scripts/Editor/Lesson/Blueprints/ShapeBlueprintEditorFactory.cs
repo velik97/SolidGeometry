@@ -31,6 +31,12 @@ namespace Editor.Lesson.Blueprints
                     return new PointProjectionOnLineBlueprintEditor(projectionOnLineBlueprint, deleteAction).GetVisualElement();
                 case PointOfIntersectionBlueprint pointOfIntersectionBlueprint:
                     return new PointOfIntersectionBlueprintEditor(pointOfIntersectionBlueprint, deleteAction).GetVisualElement();
+                case PyramidBlueprint pyramidBlueprint:
+                    return new PyramidBlueprintEditor(pyramidBlueprint, deleteAction).GetVisualElement();
+                case RegularPyramidBlueprint regularPyramidBlueprint:
+                    return new RegularPyramidBlueprintEditor(regularPyramidBlueprint, deleteAction).GetVisualElement();
+                case RegularNPolygonBlueprint regularNPolygonBlueprint:
+                    return new RegularNPolygonBlueprintEditor(regularNPolygonBlueprint, deleteAction).GetVisualElement();
             }
 
             return null;

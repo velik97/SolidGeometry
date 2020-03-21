@@ -1,14 +1,10 @@
-using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Runtime.Serialization;
 using JetBrains.Annotations;
-using Lesson.Shapes.Data;
 using Lesson.Shapes.Datas;
 using Lesson.Validators.VolumeShape;
 using Newtonsoft.Json;
-using Shapes.Blueprint;
-using Shapes.Data;
 using UnityEngine;
 
 namespace Lesson.Shapes.Blueprints.CompositeShapes
@@ -205,17 +201,18 @@ namespace Lesson.Shapes.Blueprints.CompositeShapes
             }
             else
             {
-                /*foreach (var pointData in ShapeDataFactory.PointDatas)
+                foreach (var pointData in ShapeDataFactory.PointDatas)
                 {
+                    pointData.NameUpdated -= OnNameUpdated;
                     ShapeDataFactory.RemoveShapeData(pointData);
+                    
                 }
                 
                 for (int i = 0; i < 2*n; i++)
                 {
                     m_Points.Add(ShapeDataFactory.CreatePointData()) ;
-//                    m_Points[i].NameUpdated += OnNameUpdated;
-
-                }*/
+                    m_Points[i].NameUpdated += OnNameUpdated;
+                }
             }
             m_N = n;
 

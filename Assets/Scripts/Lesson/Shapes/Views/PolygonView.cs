@@ -13,6 +13,13 @@ namespace Lesson.Shapes.Views
 
         private bool m_IsInitialized = false;
 
+        private HighlightType m_Highlight;
+
+        [SerializeField] private Material[] m_Materials = new Material[5];
+        
+        [SerializeField] private Renderer m_Renderer;
+        
+        
         private void Awake()
         {
             Initialize();
@@ -31,8 +38,6 @@ namespace Lesson.Shapes.Views
             m_MeshFilter.mesh = m_PolygonMesh;
             m_IsInitialized = true;
         }
-
-        public override HighlightType Highlight { get; set; }
 
         public override void UpdateName()
         { }
@@ -70,6 +75,40 @@ namespace Lesson.Shapes.Views
             m_PolygonMesh.Clear();
             m_PolygonMesh.vertices = vertices;
             m_PolygonMesh.triangles = triangles;
+        }
+        
+        public override HighlightType Highlight 
+        {
+            get
+            {
+                return m_Highlight;
+            }
+            set
+            {
+                m_Highlight = value;
+                UpdateHighlight();
+            }
+        }
+        public void UpdateHighlight()
+        {
+            switch (Highlight)
+            {
+                case HighlightType.Highlighted:
+                    m_Renderer.material = m_Materials[0];
+                    break;
+                case HighlightType.Normal:
+                    m_Renderer.material = m_Materials[1];
+                    break;
+                case HighlightType.Important:
+                    m_Renderer.material = m_Materials[2];
+                    break;
+                case HighlightType.SemiHighlighted:
+                    m_Renderer.material = m_Materials[3];
+                    break;
+                case HighlightType.Subtle:
+                    m_Renderer.material = m_Materials[4];
+                    break;
+            }
         }
     }
 }

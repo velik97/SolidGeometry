@@ -27,7 +27,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 6350399957105059941}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalPosition: {x: 0, y: 0, z: 0.0002}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
@@ -46,6 +46,13 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_MeshFilter: {fileID: 4108041926998653526}
+  m_Materials:
+  - {fileID: 2100000, guid: f37a88d9c84164a3cb796f3ad3693089, type: 2}
+  - {fileID: 2100000, guid: 33ba5b5c49e914d39be3ab220f9b8a19, type: 2}
+  - {fileID: 2100000, guid: f6f62266bc1c34675b05925d646bc28e, type: 2}
+  - {fileID: 2100000, guid: 1a31b7703271045158c3f515d64e9bc7, type: 2}
+  - {fileID: 2100000, guid: 5bd792fa10a83401b8cadfc294af2423, type: 2}
+  m_Renderer: {fileID: 3354600675210642661}
 --- !u!33 &4108041926998653526
 MeshFilter:
   m_ObjectHideFlags: 0
@@ -68,6 +75,7 @@ MeshRenderer:
   m_MotionVectors: 1
   m_LightProbeUsage: 1
   m_ReflectionProbeUsage: 1
+  m_RayTracingMode: 2
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:

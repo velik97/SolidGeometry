@@ -1,7 +1,7 @@
 using System;
 using Editor.VisualElementsExtensions;
+using Lesson.Shapes.Blueprints;
 using Lesson.Shapes.Blueprints.CompositeShapes;
-using Shapes.Blueprint.CompositeShapes;
 using UnityEditor.UIElements;
 using UnityEngine;
 using UnityEngine.UIElements;
@@ -14,7 +14,7 @@ namespace Editor.Lesson.Blueprints.CompositeShapes
         
         private Button m_CreateButton;
 
-        public RegularNPolygonBlueprintEditor(RegularNPolygonBlueprint blueprint, Action<Shapes.Blueprint.ShapeBlueprint, VisualElement> deleteAction) : base(blueprint, deleteAction)
+        public RegularNPolygonBlueprintEditor(RegularNPolygonBlueprint blueprint, Action<ShapeBlueprint, VisualElement> deleteAction) : base(blueprint, deleteAction)
         {
         }
         
@@ -22,8 +22,8 @@ namespace Editor.Lesson.Blueprints.CompositeShapes
         {
                 IntegerField nField = new IntegerField("N: ") {value = Blueprint.N};
                 nField.RegisterCallback<ChangeEvent<int>>(evt => Blueprint.SetN(evt.newValue));
-                visualElement.Add(nField);
-                
+                visualElement.Add(nField);//change 
+            
                 Vector3Field originField = new Vector3Field("Origin: ") {value = Blueprint.Origin};
                 originField.RegisterCallback<ChangeEvent<Vector3>>(evt => Blueprint.SetOrigin(evt.newValue));
                 visualElement.Add(originField);
@@ -49,7 +49,7 @@ namespace Editor.Lesson.Blueprints.CompositeShapes
                         Blueprint.SetPointName(pointNum, evt.newValue));
                     visualElement.Add(nameField);
                     visualElement.Add(new ValidatorField(Blueprint.Points[i].NameNotEmptyValidator));
-                    //visualElement.Add(new ValidatorField(Blueprint.Points[i].NameUniquenessValidator));
+                    visualElement.Add(new ValidatorField(Blueprint.Points[i].NameUniquenessValidator));
                     visualElement.Add(new ValidatorField(Blueprint.Points[i].PositionUniquenessValidator));
                 }
             

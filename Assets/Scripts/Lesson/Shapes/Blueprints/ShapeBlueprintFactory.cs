@@ -1,11 +1,9 @@
 using System.Collections.Generic;
+using Lesson.Shapes.Blueprints.BaseShapes;
 using Lesson.Shapes.Blueprints.CompositeShapes;
-using Lesson.Shapes.Data;
+using Lesson.Shapes.Blueprints.DependentShapes;
+using Lesson.Shapes.Datas;
 using Newtonsoft.Json;
-using Shapes.Blueprint;
-using Shapes.Blueprint.BaseShapes;
-using Shapes.Blueprint.CompositeShapes;
-using Shapes.Blueprint.DependentShapes;
 
 namespace Lesson.Shapes.Blueprints
 {

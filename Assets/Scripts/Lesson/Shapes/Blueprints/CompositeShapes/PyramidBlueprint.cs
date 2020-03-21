@@ -2,12 +2,9 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Runtime.Serialization;
 using JetBrains.Annotations;
-using Lesson.Shapes.Data;
 using Lesson.Shapes.Datas;
 using Lesson.Validators.VolumeShape;
 using Newtonsoft.Json;
-using Shapes.Blueprint;
-using Shapes.Data;
 using UnityEngine;
 
 namespace Lesson.Shapes.Blueprints.CompositeShapes
