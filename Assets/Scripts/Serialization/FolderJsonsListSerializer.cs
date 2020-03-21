@@ -120,10 +120,16 @@ namespace Serialization
             return Directory.Exists(m_FolderPath);
         }
 
+        private bool CreateDirectory()
+        {
+            Directory.CreateDirectory(m_FolderPath);
+            return IsValidFolderPath();
+        }
+
         public void UpdateList()
         {
             m_FileNames.Clear();
-            if (!IsValidFolderPath())
+            if (!CreateDirectory())
             {
                 Debug.LogError(NoSuchDirectoryMessage);
                 return;

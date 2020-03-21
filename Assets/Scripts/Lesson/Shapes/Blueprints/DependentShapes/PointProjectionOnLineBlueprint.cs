@@ -56,7 +56,7 @@ namespace Lesson.Shapes.Blueprints.DependentShapes
             {
                 m_SecondPointOnLine.GeometryUpdated += UpdatePosition;
             }
-            RestoreDependences();
+            RestoreDependencies();
             OnDeserialized();
         }
 

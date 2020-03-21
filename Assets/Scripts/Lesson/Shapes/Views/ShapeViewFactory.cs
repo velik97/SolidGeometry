@@ -1,4 +1,5 @@
 using System.Collections.Generic;
+using System.Linq;
 using Lesson.Shapes.Datas;
 using UnityEngine;
 using Util;
@@ -13,11 +14,11 @@ namespace Lesson.Shapes.Views
         [SerializeField] private LineView m_LinePrefab;
         [SerializeField] private PolygonView m_PolygonPrefab;
 
-        private readonly Stack<PointView> m_PointsPool = new Stack<PointView>();
-        private readonly Stack<LineView> m_LinesPool = new Stack<LineView>();
-        private readonly Stack<PolygonView> m_PolygonsPool = new Stack<PolygonView>();
+        private Stack<PointView> m_PointsPool = new Stack<PointView>();
+        private Stack<LineView> m_LinesPool = new Stack<LineView>();
+        private Stack<PolygonView> m_PolygonsPool = new Stack<PolygonView>();
         
-        private readonly List<IShapeView> m_Views = new List<IShapeView>();
+        private readonly List<IShapeView> m_ViewsInUse = new List<IShapeView>();
 
         private void Awake()
         {
@@ -45,7 +46,7 @@ namespace Lesson.Shapes.Views
             }
             if (view != null)
             {
-                m_Views.Add(view);
+                m_ViewsInUse.Add(view);
             }
             return view;
         }
@@ -87,20 +88,18 @@ namespace Lesson.Shapes.Views
 
         public void Dispose()
         {
-            while (m_Views.Count > 0)
+            while (m_ViewsInUse.Count > 0)
             {
-                ReleaseView(m_Views[m_Views.Count - 1]);
+                ReleaseView(m_ViewsInUse[m_ViewsInUse.Count - 1]);
             }
         }
         
         public void ReleaseView(IShapeView view)
         {
-            if (!m_Views.Contains(view))
+            if (m_ViewsInUse.Contains(view))
             {
-                return;
+                m_ViewsInUse.Remove(view);
             }
-            m_Views.Remove(view);
-            
             switch (view)
             {
                 case PointView pointView:
@@ -119,6 +118,52 @@ namespace Lesson.Shapes.Views
                     m_PolygonsPool.Push(polygonView);
                     break;
             }
+        }
+
+        /// <summary>
+        /// After recompiling project views might be lost
+        /// </summary>
+        public void CollectLostViews()
+        {
+            ClearNullViews();
+            
+            if (m_PointsPool.Count == 0)
+            {
+                foreach (PointView pointView in m_DisposedContainer.GetComponentsInChildren<PointView>())
+                {
+                    m_PointsPool.Push(pointView);
+                }
+            }
+            
+            if (m_LinesPool.Count == 0)
+            {
+                foreach (LineView lineView in m_DisposedContainer.GetComponentsInChildren<LineView>())
+                {
+                    m_LinesPool.Push(lineView);
+                }
+            }
+            
+            if (m_PolygonsPool.Count == 0)
+            {
+                foreach (PolygonView polygonView in m_DisposedContainer.GetComponentsInChildren<PolygonView>())
+                {
+                    m_PolygonsPool.Push(polygonView);
+                }
+            }
+        }
+        
+        private void ClearNullViews()
+        {
+            IEnumerable<PointView> notNullPointsInPool = m_PointsPool.AsEnumerable().Where(view => view != null);
+            m_PointsPool = new Stack<PointView>(notNullPointsInPool);
+            
+            IEnumerable<LineView> notNullLinesInPool = m_LinesPool.AsEnumerable().Where(view => view != null);
+            m_LinesPool = new Stack<LineView>(notNullLinesInPool);
+            
+            IEnumerable<PolygonView> notNullPolygonsInPool = m_PolygonsPool.AsEnumerable().Where(view => view != null);
+            m_PolygonsPool = new Stack<PolygonView>(notNullPolygonsInPool);
+            
+            m_ViewsInUse.RemoveAll(view => view == null);
         }
     }
 }

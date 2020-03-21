@@ -13,7 +13,7 @@ namespace Lesson.Shapes.Blueprints
         protected CanDependOnShapeBlueprint()
         { }
 
-        protected void RestoreDependences()
+        protected void RestoreDependencies()
         {
             foreach (ShapeBlueprint shapeBlueprint in DependencesOnOtherShapes)
             {
@@ -30,7 +30,7 @@ namespace Lesson.Shapes.Blueprints
         public void RemoveDependenceOn(ShapeData shapeData)
         {
             DependencesOnOtherShapes.Remove(shapeData.SourceBlueprint);
-            shapeData.SourceBlueprint.RemoveDependence(this);
+            shapeData?.SourceBlueprint.RemoveDependence(this);
         }
 
         public virtual void Destroy()

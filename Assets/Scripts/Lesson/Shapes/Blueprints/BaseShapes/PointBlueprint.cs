@@ -27,7 +27,7 @@ namespace Lesson.Shapes.Blueprints.BaseShapes
         [OnDeserialized, UsedImplicitly]
         private void OnDeserialized(StreamingContext context)
         {
-            RestoreDependences();
+            RestoreDependencies();
             OnDeserialized();
         }
 

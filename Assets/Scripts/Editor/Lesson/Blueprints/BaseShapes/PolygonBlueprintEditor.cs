@@ -34,7 +34,7 @@ namespace Editor.Lesson.Blueprints.BaseShapes
             visualElement.Add(new ValidatorField(Blueprint.PolygonData.PolygonUniquenessValidator));
 
             VisualElement buttonsScope = new VisualElement {style = {flexDirection = FlexDirection.Row}};
-            Button createNewPointButton = new Button(AddPoint) {text = "Create point"};
+            Button createNewPointButton = new Button(AddPoint) {text = "Add point"};
             m_DeleteButton = new Button(RemoveLastPoint);
 
             buttonsScope.Add(m_DeleteButton);

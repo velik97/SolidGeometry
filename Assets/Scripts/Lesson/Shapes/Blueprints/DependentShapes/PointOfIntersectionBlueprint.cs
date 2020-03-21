@@ -52,7 +52,7 @@ namespace Lesson.Shapes.Blueprints.DependentShapes
                     m_PointsOnLines[i][j].GeometryUpdated += UpdatePosition;
                 }
             }
-            RestoreDependences();
+            RestoreDependencies();
             OnDeserialized();
         }
 

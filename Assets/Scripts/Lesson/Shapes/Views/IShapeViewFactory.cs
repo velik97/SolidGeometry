@@ -8,5 +8,7 @@ namespace Lesson.Shapes.Views
         IShapeView RequestShapeView(ShapeData data);
 
         void ReleaseView(IShapeView view);
+
+        void CollectLostViews();
     }
 }

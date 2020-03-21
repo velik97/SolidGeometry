@@ -4,7 +4,7 @@ namespace Util
 {
     public static class Vector3Extensions
     {
-        private const float EPSILON = 0.001f;
+        private const float EPSILON = 0.025f;
         private const float EPSILON_2 = EPSILON * EPSILON;
         private const float EPSILON_3 = EPSILON * EPSILON * EPSILON;
 

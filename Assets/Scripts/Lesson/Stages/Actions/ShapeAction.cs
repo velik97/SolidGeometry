@@ -30,7 +30,7 @@ namespace Lesson.Stages.Actions
 
         protected void OnDeserialized()
         {
-            RestoreDependences();
+            RestoreDependencies();
             if (m_ShapeData != null)
             {
                 m_ShapeData.NameUpdated += OnNameUpdated;

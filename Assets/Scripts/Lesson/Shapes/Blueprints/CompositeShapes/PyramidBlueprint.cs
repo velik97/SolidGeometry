@@ -57,7 +57,6 @@ namespace Lesson.Shapes.Blueprints.CompositeShapes
 
             m_CompositeShapeData = dataFactory.CreateCompositeShapeData();
 
-            m_CompositeShapeData.SetShapeName("Pyramid");
             m_CompositeShapeData.SetPoints(m_Points);
             m_CompositeShapeData.SetLines(m_Lines);
             m_CompositeShapeData.SetPolygons(m_Polygons);
@@ -91,6 +90,8 @@ namespace Lesson.Shapes.Blueprints.CompositeShapes
                 MyShapeDatas.Add(shapeData);
                 shapeData.SourceBlueprint = this;
             }
+            
+            m_CompositeShapeData.SetShapeName("Pyramid");
         }
 
         private void ConstructLines()

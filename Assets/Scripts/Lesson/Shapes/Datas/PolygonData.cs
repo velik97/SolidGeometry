@@ -81,6 +81,25 @@ namespace Lesson.Shapes.Datas
             }
         }
 
+        public void SetPointsCount(int count)
+        {
+            if (count < 3)
+            {
+                Debug.LogError("Polygon have to have at least 3 points");
+                return;
+            }
+
+            while (m_Points.Count < count)
+            {
+                AddPoint();
+            }
+
+            while (m_Points.Count > count)
+            {
+                RemovePoint(m_Points.Count - 1);
+            }
+        }
+
         public void AddPoint()
         {
             m_Points.Add(null);
@@ -102,9 +121,10 @@ namespace Lesson.Shapes.Datas
             
             UnsubscribeFromPoint(m_Points[index]);
             m_Points.RemoveAt(index);
+            OnGeometryUpdated();
         }
 
-        public void  SetPoint(int index, PointData pointData)
+        public void SetPoint(int index, PointData pointData)
         {
             if (m_Points.Count <= index)
             {

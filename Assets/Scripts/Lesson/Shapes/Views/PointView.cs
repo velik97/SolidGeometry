@@ -55,6 +55,5 @@ namespace Lesson.Shapes.Views
         {
             transform.position = ShapeData.Position;
         }
-        
     }
 }

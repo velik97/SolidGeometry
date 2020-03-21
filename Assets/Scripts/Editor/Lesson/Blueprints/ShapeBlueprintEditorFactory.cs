@@ -35,8 +35,8 @@ namespace Editor.Lesson.Blueprints
                     return new PyramidBlueprintEditor(pyramidBlueprint, deleteAction).GetVisualElement();
                 case RegularPyramidBlueprint regularPyramidBlueprint:
                     return new RegularPyramidBlueprintEditor(regularPyramidBlueprint, deleteAction).GetVisualElement();
-                case RegularNPolygonBlueprint regularNPolygonBlueprint:
-                    return new RegularNPolygonBlueprintEditor(regularNPolygonBlueprint, deleteAction).GetVisualElement();
+                case RegularPrismBlueprint regularNPolygonBlueprint:
+                    return new RegularPrismBlueprintEditor(regularNPolygonBlueprint, deleteAction).GetVisualElement();
             }
 
             return null;

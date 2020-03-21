@@ -7,15 +7,16 @@ namespace Visualization
     [RequireComponent(typeof(ShapeViewFactory))]
     public class LessonVisualizer : MonoBehaviour
     {
-        private ShapeViewFactory m_ShapeViewFactory;
+        private IShapeViewFactory m_ViewFactory;
 
-        private ShapeViewFactory ShapeViewFactory =>
-            m_ShapeViewFactory ?? (m_ShapeViewFactory = GetComponent<ShapeViewFactory>());
+        private IShapeViewFactory ViewFactory =>
+            m_ViewFactory ?? (m_ViewFactory = new ShapeViewFactoryProxy(ShapeViewFactory.Instance, transform));
         
         public void SetShapeDataFactory(ShapeDataFactory shapeDataFactory)
         {
-            ShapeViewFactory.Dispose();
-            shapeDataFactory.SetViewFactory(ShapeViewFactory);
+            ViewFactory.CollectLostViews();
+            ViewFactory.Dispose();
+            shapeDataFactory.SetViewFactory(ViewFactory);
         }
     }
 }

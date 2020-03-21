@@ -19,7 +19,6 @@ namespace Lesson.Shapes.Views
         
         [SerializeField] private Renderer m_Renderer;
         
-        
         private void Awake()
         {
             Initialize();

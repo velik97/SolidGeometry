@@ -64,8 +64,8 @@ namespace Lesson.Shapes.Blueprints
                 case ShapeBlueprintType.RegularPyramid:
                     blueprint = new RegularPyramidBlueprint(m_ShapeDataFactory);
                     break;
-                case ShapeBlueprintType.RegularNPolygon:
-                    blueprint = new RegularNPolygonBlueprint(m_ShapeDataFactory);
+                case ShapeBlueprintType.RegularPrism:
+                    blueprint = new RegularPrismBlueprint(m_ShapeDataFactory);
                     break;
                 case ShapeBlueprintType.PointProjectionOnLine:
                     blueprint = new PointProjectionOnLineBlueprint(m_ShapeDataFactory);
@@ -103,7 +103,7 @@ namespace Lesson.Shapes.Blueprints
             Cube, 
             Pyramid,
             RegularPyramid,
-            RegularNPolygon,
+            RegularPrism,
             PointProjectionOnLine,
             PointOfIntersection
         }

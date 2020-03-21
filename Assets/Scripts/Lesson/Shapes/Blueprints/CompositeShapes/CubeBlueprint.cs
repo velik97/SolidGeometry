@@ -52,7 +52,7 @@ namespace Lesson.Shapes.Blueprints.CompositeShapes
             for (int i = 0; i < m_Polygons.Length; i++)
             {
                 m_Polygons[i] = dataFactory.CreatePolygonData();
-                m_Polygons[i].AddPoint(); // By default polygon has 3 points, we need 4
+                m_Polygons[i].SetPointsCount(4); // By default polygon has 3 points, we need 4
             }
 
             ConstructLines();
@@ -60,7 +60,6 @@ namespace Lesson.Shapes.Blueprints.CompositeShapes
 
             m_CompositeShapeData = dataFactory.CreateCompositeShapeData();
             
-            m_CompositeShapeData.SetShapeName("Cube");
             m_CompositeShapeData.SetPoints(m_Points);
             m_CompositeShapeData.SetLines(m_Lines);
             m_CompositeShapeData.SetPolygons(m_Polygons);
@@ -75,7 +74,7 @@ namespace Lesson.Shapes.Blueprints.CompositeShapes
         [OnDeserialized, UsedImplicitly]
         private void OnDeserialized(StreamingContext context)
         {
-            RestoreDependences();
+            RestoreDependencies();
             OnDeserialized();
         }
 
@@ -94,6 +93,8 @@ namespace Lesson.Shapes.Blueprints.CompositeShapes
                 MyShapeDatas.Add(shapeData);
                 shapeData.SourceBlueprint = this;
             }
+            
+            m_CompositeShapeData.SetShapeName("Cube");
         }
         
          private void ConstructLines()
