@@ -1,5 +1,6 @@
 using Lesson;
-using UI.Session.LessonBrowser;
+using Session;
+using UI.Session.LessonScrollBrowser;
 using UnityEngine;
 using Util.UniRxExtensions;
 
@@ -9,13 +10,9 @@ namespace UI.Session
     {
         [SerializeField] private LessonBrowserView m_BrowserView;
         
-        private LessonData m_LessonData;
-
-        public void Initialize(LessonData lessonData)
+        public void Initialize(SessionRunner sessionRunner)
         {
-            m_LessonData = lessonData;
-
-            LessonBrowserVM browserVM = new LessonBrowserVM(lessonData.LessonStageFactory);
+            LessonBrowserVM browserVM = new LessonBrowserVM(sessionRunner.LessonBrowser);
             Add(browserVM);
             m_BrowserView.Bind(browserVM);
         }

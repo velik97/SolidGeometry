@@ -16,10 +16,13 @@ namespace Session
         // ================= For debug, should be taken from other place =================
 
         [SerializeField] private SessionUIConfig m_UIConfig;
-        
         [SerializeField] private Transform m_SessionAnchor;
 
+        private LessonBrowser m_LessonBrowser;
+        public LessonBrowser LessonBrowser => m_LessonBrowser;
+
         private LessonData m_LessonData;
+        public LessonData LessonData => m_LessonData;
 
         private void Awake()
         {
@@ -51,12 +54,12 @@ namespace Session
 
         private void InitializeLessonBrowser()
         {
-            Add(new LessonBrowser(m_LessonData));
+            Add(m_LessonBrowser = new LessonBrowser(m_LessonData));
         }
         
         private void InitializeUI()
         {
-            m_UIConfig.Initialize(m_LessonData);
+            m_UIConfig.Initialize(this);
             Add(m_UIConfig);
         }
 

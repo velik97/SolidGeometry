@@ -9,9 +9,10 @@ using Util.EventBusSystem;
 
 namespace Session
 {
-    public class LessonBrowser : CompositeDisposable, ILessonStageHandler
+    public class LessonBrowser : CompositeDisposable
     {
         private readonly LessonStageFactory m_LessonStageFactory;
+        public LessonStageFactory LessonStageFactory => m_LessonStageFactory;
 
         private const bool DEFAULT_ACTIVE_STATE = false;
         private const HighlightType DEFAULT_HIGHLIGHT_TYPE = HighlightType.Normal;
@@ -26,8 +27,6 @@ namespace Session
             LessonStage firstStage = m_LessonStageFactory.LessonStages[0];
             m_AppliedActions.Push(firstStage);
             firstStage.ApplyActions();
-            
-            Add(EventBus.Subscribe(this));
         }
 
         private void ApplyDefaultState(ShapeDataFactory shapeDataFactory)
@@ -39,7 +38,7 @@ namespace Session
             }
         }
 
-        public void HandleGoToStage(int stageNumber)
+        public void GoToStage(int stageNumber)
         {
             if (stageNumber < 0 || stageNumber >= m_LessonStageFactory.LessonStages.Count)
             {
