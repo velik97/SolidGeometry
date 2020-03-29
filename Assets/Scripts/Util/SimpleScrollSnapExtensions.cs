@@ -1,4 +1,4 @@
-﻿using DanielLochner.Assets.SimpleScrollSnap;
+﻿﻿using DanielLochner.Assets.SimpleScrollSnap;
 using UnityEngine;
 
 namespace Util
