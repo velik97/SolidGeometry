@@ -27,7 +27,7 @@ namespace Editor.Lesson.Stages.Actions
             
             EnumField highlightField = new EnumField("Set Highlight") {value = ShapeAction.Highlight};
             highlightField.Init(ShapeAction.Highlight);
-            highlightField.RegisterCallback<ChangeEvent<HighlightType>>(evt => ShapeAction.SetHighlightType(evt.newValue));
+            highlightField.RegisterCallback<ChangeEvent<Enum>>(evt => ShapeAction.SetHighlightType((HighlightType)evt.newValue));
             
             visualElement.Add(highlightField);
         }
