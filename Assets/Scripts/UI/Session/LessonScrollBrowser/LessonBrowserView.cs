@@ -10,15 +10,9 @@ namespace UI.Session.LessonScrollBrowser
         [SerializeField] private SimpleScrollSnap m_Scroll;
         [SerializeField] private LessonStageDescriptionView m_DescriptionPrefab;
 
-        private void Awake()
-        {
-            m_Scroll.enabled = false;
-        }
-
         public override void Bind(LessonBrowserVM viewModel)
         {
             base.Bind(viewModel);
-            m_Scroll.enabled = true;
 
             foreach (LessonStageDescriptionVM descriptionVM in viewModel.StagesVMs)
             {

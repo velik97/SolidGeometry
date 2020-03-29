@@ -1,4 +1,3 @@
-using Lesson;
 using Session;
 using UI.Session.LessonScrollBrowser;
 using UnityEngine;
