@@ -8,9 +8,9 @@ namespace Editor.VisualElementsExtensions
     {
         private readonly FolderJsonsListSerializer<T> m_Serializer;
         
-        private readonly Action<T> m_OnChosenAction;
+        private readonly Action<string, T> m_OnChosenAction;
 
-        public ListOfFilesInFolder(FolderJsonsListSerializer<T> serializer, Action<T> onChosenAction)
+        public ListOfFilesInFolder(FolderJsonsListSerializer<T> serializer, Action<string, T> onChosenAction)
         {
             m_Serializer = serializer;
             m_Serializer.ListUpdated += UpdateList;
@@ -43,7 +43,7 @@ namespace Editor.VisualElementsExtensions
             T obj = m_Serializer.GetObject(fileName);
             if (m_OnChosenAction != null && obj != null)
             {
-                m_OnChosenAction(obj);
+                m_OnChosenAction(fileName, obj);
             }
         }
 

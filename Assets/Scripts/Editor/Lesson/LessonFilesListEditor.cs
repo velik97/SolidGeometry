@@ -19,6 +19,8 @@ namespace Editor.Lesson
         private Action<LessonData> m_LessonChosenAction;
         private Action m_CreateNewAction;
 
+        private TextField m_SaveName;
+
         public LessonFilesListEditor(Func<LessonData> getLessonFunc, Action<LessonData> lessonChosenAction, Action createNewAction)
         {
             m_GetLessonFunc = getLessonFunc;
@@ -33,7 +35,7 @@ namespace Editor.Lesson
             m_Serializer.UpdateList();
             
             VisualElement foldout = new Foldout {text = "All Files"};
-            foldout.Add(new ListOfFilesInFolder<LessonData>(m_Serializer, m_LessonChosenAction));
+            foldout.Add(new ListOfFilesInFolder<LessonData>(m_Serializer, OnLessonChosen));
             
             Button createNewButton = new Button(m_CreateNewAction) {text = "Create Empty"};
             foldout.Add(createNewButton);
@@ -41,14 +43,20 @@ namespace Editor.Lesson
             Button updateButton = new Button(m_Serializer.UpdateList) {text = "Update"};
             foldout.Add(updateButton);
 
-            TextField saveName = new TextField("Save Name");
-            Button saveButton = new Button(() => SaveLesson(saveName.value)) {text = "Save"};
-            foldout.Add(saveName);
+            m_SaveName = new TextField("Save Name");
+            Button saveButton = new Button(() => SaveLesson(m_SaveName.value)) {text = "Save"};
+            foldout.Add(m_SaveName);
             foldout.Add(saveButton);
 
             return foldout;
         }
-        
+
+        private void OnLessonChosen(string lessonName, LessonData lessonData)
+        {
+            m_SaveName.value = lessonName;
+            m_LessonChosenAction?.Invoke(lessonData);
+        }
+
         private void SaveLesson(string fileName)
         {
             m_Serializer.SaveObject(m_GetLessonFunc(), fileName);
