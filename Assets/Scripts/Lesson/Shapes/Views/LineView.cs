@@ -11,6 +11,7 @@ namespace Lesson.Shapes.Views
         [SerializeField] private Material[] m_Materials = new Material[5];
         [SerializeField] private Renderer m_Renderer;
         private HighlightType m_Highlight;
+        
         public override HighlightType Highlight 
         {
             get
@@ -23,26 +24,10 @@ namespace Lesson.Shapes.Views
                 UpdateHighlight();
             }
         }
-        public void UpdateHighlight()
+
+        private void UpdateHighlight()
         {
-            switch (Highlight)
-            {
-                case HighlightType.Highlighted:
-                    m_Renderer.material = m_Materials[0];
-                    break;
-                case HighlightType.Normal:
-                    m_Renderer.material = m_Materials[1];
-                    break;
-                case HighlightType.Important:
-                    m_Renderer.material = m_Materials[2];
-                    break;
-                case HighlightType.SemiHighlighted:
-                    m_Renderer.material = m_Materials[3];
-                    break;
-                case HighlightType.Subtle:
-                    m_Renderer.material = m_Materials[4];
-                    break;
-            }
+            m_Renderer.material = m_Materials[(int)m_Highlight];
         }
 
 

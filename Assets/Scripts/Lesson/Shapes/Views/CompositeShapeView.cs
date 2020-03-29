@@ -61,7 +61,7 @@ namespace Lesson.Shapes.Views
             {
                 line.Highlight = value;
             }
-            foreach (LineView polygon in m_CompositeShapeData.Lines.Select(p => p.LineView))
+            foreach (PolygonView polygon in m_CompositeShapeData.Polygons.Select(p => p.PolygonView))
             {
                 polygon.Highlight = value;
             }
