@@ -3,7 +3,7 @@ using UI.MVVM;
 using UnityEngine;
 using Util;
 
-namespace UI.Session.LessonScrollBrowser
+namespace UI.Session.LessonBrowserUI
 {
     public class LessonBrowserView : View<LessonBrowserVM>
     {

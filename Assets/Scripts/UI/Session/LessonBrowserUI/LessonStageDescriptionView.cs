@@ -2,7 +2,7 @@
 using UI.MVVM;
 using UnityEngine;
 
-namespace UI.Session.LessonScrollBrowser
+namespace UI.Session.LessonBrowserUI
 {
     public class LessonStageDescriptionView : View<LessonStageDescriptionVM>
     {

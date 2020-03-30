@@ -14,10 +14,15 @@ namespace Session
             m_MainCameraTransform = Camera.main.transform;
         }
 
-        public void Rotate(Vector2 deltaDirection)
+        public void RotateAroundXY(Vector2 deltaRotation)
         {
-            m_ShapesAnchor.Rotate(m_MainCameraTransform.up, -deltaDirection.x, Space.World);
-            m_ShapesAnchor.Rotate(m_MainCameraTransform.right, deltaDirection.y, Space.World);
+            m_ShapesAnchor.Rotate(m_MainCameraTransform.up, -deltaRotation.x, Space.World);
+            m_ShapesAnchor.Rotate(m_MainCameraTransform.right, deltaRotation.y, Space.World);
+        }
+
+        public void RotateAroundZ(float deltaRotation)
+        {
+            m_ShapesAnchor.Rotate(m_MainCameraTransform.forward, deltaRotation, Space.World);
         }
 
         public void Shift(Vector2 deltaDirection)
@@ -36,9 +41,9 @@ namespace Session
 
         public void Reset()
         {
-            m_ShapesAnchor.DOLocalMove(Vector3.zero, 1f);
-            m_ShapesAnchor.DOLocalRotate(Vector3.zero, 1f);
-            m_ShapesAnchor.DOScale(Vector3.one, 1f);
+            m_ShapesAnchor.DOLocalMove(Vector3.zero, .5f);
+            m_ShapesAnchor.DOLocalRotate(Vector3.zero, .5f);
+            m_ShapesAnchor.DOScale(Vector3.one, .5f);
         }
     }
 }

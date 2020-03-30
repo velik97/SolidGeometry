@@ -1,7 +1,7 @@
 ﻿using Lesson.Stages;
 using UI.MVVM;
 
-namespace UI.Session.LessonScrollBrowser
+namespace UI.Session.LessonBrowserUI
 {
     public class LessonStageDescriptionVM : ViewModel
     {

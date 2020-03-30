@@ -2,9 +2,8 @@ using System.Collections.Generic;
 using Lesson.Stages;
 using Session;
 using UI.MVVM;
-using Util.EventBusSystem;
 
-namespace UI.Session.LessonScrollBrowser
+namespace UI.Session.LessonBrowserUI
 {
     public class LessonBrowserVM : ViewModel
     {

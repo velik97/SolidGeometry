@@ -40,8 +40,6 @@ namespace Session
 
         private void Initialize()
         {
-            DontDestroyOnLoad(this);
-            
             // ================= For debug, should be taken from other place =================
             FolderJsonsListSerializer<LessonData> serializer =
                 new FolderJsonsListSerializer<LessonData>(Path.Combine(Application.dataPath, StaticPaths.FILES_FOLDER));
