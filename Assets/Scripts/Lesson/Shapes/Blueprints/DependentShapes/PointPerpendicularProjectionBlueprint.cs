@@ -10,7 +10,7 @@ using Util;
 namespace Lesson.Shapes.Blueprints.DependentShapes
 {
     [JsonObject(IsReference = true, MemberSerialization = MemberSerialization.OptIn)]
-    public class PointProjectionOnLineBlueprint : ShapeBlueprint
+    public class PointPerpendicularProjectionBlueprint : ShapeBlueprint
     {
         [JsonProperty]
         public readonly PointData PointData;
@@ -30,7 +30,7 @@ namespace Lesson.Shapes.Blueprints.DependentShapes
 
         public override ShapeData MainShapeData => PointData;
         
-        public PointProjectionOnLineBlueprint(ShapeDataFactory dataFactory) : base(dataFactory)
+        public PointPerpendicularProjectionBlueprint(ShapeDataFactory dataFactory) : base(dataFactory)
         {
             PointData = ShapeDataFactory.CreatePointData();
 
@@ -38,7 +38,7 @@ namespace Lesson.Shapes.Blueprints.DependentShapes
         }
         
         [JsonConstructor]
-        public PointProjectionOnLineBlueprint(JsonConstructorMark _)
+        public PointPerpendicularProjectionBlueprint(JsonConstructorMark _)
         { }
         
         [OnDeserialized, UsedImplicitly]

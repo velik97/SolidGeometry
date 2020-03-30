@@ -67,8 +67,8 @@ namespace Lesson.Shapes.Blueprints
                 case ShapeBlueprintType.RegularPrism:
                     blueprint = new RegularPrismBlueprint(m_ShapeDataFactory);
                     break;
-                case ShapeBlueprintType.PointProjectionOnLine:
-                    blueprint = new PointProjectionOnLineBlueprint(m_ShapeDataFactory);
+                case ShapeBlueprintType.PointPerpendicularProjection:
+                    blueprint = new PointPerpendicularProjectionBlueprint(m_ShapeDataFactory);
                     break;
                 case ShapeBlueprintType.PointOfIntersection:
                     blueprint = new PointOfIntersectionBlueprint(m_ShapeDataFactory);
@@ -104,7 +104,7 @@ namespace Lesson.Shapes.Blueprints
             Pyramid,
             RegularPyramid,
             RegularPrism,
-            PointProjectionOnLine,
+            PointPerpendicularProjection,
             PointOfIntersection
         }
     }

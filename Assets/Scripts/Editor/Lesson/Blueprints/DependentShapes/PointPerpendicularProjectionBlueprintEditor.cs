@@ -7,9 +7,9 @@ using UnityEngine.UIElements;
 
 namespace Editor.Lesson.Blueprints.DependentShapes
 {
-    public class PointProjectionOnLineBlueprintEditor : ShapeBlueprintEditor<PointProjectionOnLineBlueprint>
+    public class PointPerpendicularProjectionBlueprintEditor : ShapeBlueprintEditor<PointPerpendicularProjectionBlueprint>
     {
-        public PointProjectionOnLineBlueprintEditor(PointProjectionOnLineBlueprint blueprint, Action<ShapeBlueprint, VisualElement> deleteAction) : base(blueprint, deleteAction)
+        public PointPerpendicularProjectionBlueprintEditor(PointPerpendicularProjectionBlueprint blueprint, Action<ShapeBlueprint, VisualElement> deleteAction) : base(blueprint, deleteAction)
         {
         }
 
