@@ -33,9 +33,7 @@ namespace Lesson.Shapes.Datas
         public PolygonData()
         {
             // Polygon should have at least three points
-            m_Points.Add(null);
-            m_Points.Add(null);
-            m_Points.Add(null);
+            SetPointsCount(3);
 
             OnDeserialized();
         }
