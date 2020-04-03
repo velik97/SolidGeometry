@@ -76,7 +76,7 @@ namespace Lesson.Shapes.Blueprints
                 case ShapeBlueprintType.PointIn2DSubspace:
                     blueprint = new PointIn2DSubspaceBlueprint(m_ShapeDataFactory);
                     break;
-                case ShapeBlueprintType.PointProjectionContinuationOfPoint:
+                case ShapeBlueprintType.PointProjectionFromPoint:
                     blueprint = new PointProjectionFromPointBlueprint(m_ShapeDataFactory);
                     break;
                 case ShapeBlueprintType.PointProjectionAlongLine:
@@ -115,12 +115,12 @@ namespace Lesson.Shapes.Blueprints
             Cube, 
             Pyramid,
             RegularPyramid,
+            RegularPrism,
             PointOfIntersection,
             PointIn1DSubspace,
             PointIn2DSubspace,
-            PointProjectionContinuationOfPoint,
+            PointProjectionFromPoint,
             PointProjectionAlongLine,
-            RegularPrism,
             PointPerpendicularProjection,
         }
     }
