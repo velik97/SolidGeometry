@@ -35,8 +35,16 @@ namespace Editor.Lesson.Blueprints
                     return new PyramidBlueprintEditor(pyramidBlueprint, deleteAction).GetVisualElement();
                 case RegularPyramidBlueprint regularPyramidBlueprint:
                     return new RegularPyramidBlueprintEditor(regularPyramidBlueprint, deleteAction).GetVisualElement();
-                case RegularPrismBlueprint regularNPolygonBlueprint:
-                    return new RegularPrismBlueprintEditor(regularNPolygonBlueprint, deleteAction).GetVisualElement();
+                case RegularPrismBlueprint regularPrismBlueprint:
+                    return new RegularPrismBlueprintEditor(regularPrismBlueprint, deleteAction).GetVisualElement();
+                case PointIn2DSubspaceBlueprint pointIn2DSubspaceBlueprint:
+                    return new PointIn2DSubspaceBlueprintEditor(pointIn2DSubspaceBlueprint, deleteAction).GetVisualElement();
+                case PointIn1DSubspaceBlueprint pointIn1DSubspaceBlueprint:
+                    return new PointIn1DSubspaceBlueprintEditor(pointIn1DSubspaceBlueprint, deleteAction).GetVisualElement();
+                case PointProjectionAlongLineBlueprint pointProjectionAlongLineBlueprint:
+                    return new PointProjectionAlongLineBlueprintEditor(pointProjectionAlongLineBlueprint, deleteAction).GetVisualElement();
+                case PointProjectionFromPointBlueprint pointProjectionFromPointBlueprint:
+                    return new PointProjectionFromPointBlueprintEditor(pointProjectionFromPointBlueprint, deleteAction).GetVisualElement();
             }
 
             return null;

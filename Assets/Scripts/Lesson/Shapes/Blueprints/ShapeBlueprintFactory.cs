@@ -73,6 +73,18 @@ namespace Lesson.Shapes.Blueprints
                 case ShapeBlueprintType.PointOfIntersection:
                     blueprint = new PointOfIntersectionBlueprint(m_ShapeDataFactory);
                     break;
+                case ShapeBlueprintType.PointIn2DSubspace:
+                    blueprint = new PointIn2DSubspaceBlueprint(m_ShapeDataFactory);
+                    break;
+                case ShapeBlueprintType.PointProjectionContinuationOfPoint:
+                    blueprint = new PointProjectionFromPointBlueprint(m_ShapeDataFactory);
+                    break;
+                case ShapeBlueprintType.PointProjectionAlongLine:
+                    blueprint = new PointProjectionAlongLineBlueprint(m_ShapeDataFactory);
+                    break;
+                case ShapeBlueprintType.PointIn1DSubspace:
+                    blueprint = new PointIn1DSubspaceBlueprint(m_ShapeDataFactory);
+                    break;
             }
 
             if (blueprint != null)
@@ -103,9 +115,13 @@ namespace Lesson.Shapes.Blueprints
             Cube, 
             Pyramid,
             RegularPyramid,
+            PointOfIntersection,
+            PointIn1DSubspace,
+            PointIn2DSubspace,
+            PointProjectionContinuationOfPoint,
+            PointProjectionAlongLine,
             RegularPrism,
             PointPerpendicularProjection,
-            PointOfIntersection
         }
     }
 }

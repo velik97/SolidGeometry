@@ -1,0 +1,110 @@
+{
+  "m_ShapeDataFactory": {
+    "$id": "1",
+    "m_PointDatas": [
+      {
+        "$id": "2",
+        "m_Position": {
+          "x": -2.44,
+          "y": 0.0,
+          "z": 0.0
+        },
+        "m_PointName": "A"
+      },
+      {
+        "$id": "3",
+        "m_Position": {
+          "x": -1.43,
+          "y": -1.18,
+          "z": 0.0
+        },
+        "m_PointName": "B"
+      },
+      {
+        "$id": "4",
+        "m_Position": {
+          "x": -3.08,
+          "y": -1.29,
+          "z": 0.0
+        },
+        "m_PointName": "C"
+      },
+      {
+        "$id": "5",
+        "m_Position": {
+          "x": -2.4391,
+          "y": -0.6735,
+          "z": 0.0
+        },
+        "m_PointName": "4"
+      }
+    ],
+    "m_LinetDatas": [],
+    "m_PolygonDatas": [],
+    "m_CompositeShapeDatas": []
+  },
+  "m_ShapeBlueprintFactory": {
+    "$id": "6",
+    "m_ShapeBlueprints": [
+      {
+        "$id": "7",
+        "$type": "Lesson.Shapes.Blueprints.BaseShapes.PointBlueprint, Assembly-CSharp",
+        "PointData": {
+          "$ref": "2"
+        },
+        "DependencesOnOtherShapes": []
+      },
+      {
+        "$id": "8",
+        "$type": "Lesson.Shapes.Blueprints.BaseShapes.PointBlueprint, Assembly-CSharp",
+        "PointData": {
+          "$ref": "3"
+        },
+        "DependencesOnOtherShapes": []
+      },
+      {
+        "$id": "9",
+        "$type": "Lesson.Shapes.Blueprints.BaseShapes.PointBlueprint, Assembly-CSharp",
+        "PointData": {
+          "$ref": "4"
+        },
+        "DependencesOnOtherShapes": []
+      },
+      {
+        "$id": "10",
+        "$type": "Lesson.Shapes.Blueprints.DependentShapes.PointAsSumOfTwoVectorsBlueprint, Assembly-CSharp",
+        "PointData": {
+          "$ref": "5"
+        },
+        "m_ThirdPoint": {
+          "$ref": "4"
+        },
+        "m_FirstPoint": {
+          "$ref": "2"
+        },
+        "m_SecondPoint": {
+          "$ref": "3"
+        },
+        "m_Kof1": 0.21,
+        "m_Kof2": 0.33,
+        "DependencesOnOtherShapes": [
+          {
+            "$ref": "7"
+          },
+          {
+            "$ref": "8"
+          },
+          {
+            "$ref": "9"
+          }
+        ]
+      }
+    ]
+  },
+  "m_ShapeActionFactory": {
+    "m_ShapeActions": []
+  },
+  "m_LessonStageFactory": {
+    "m_LessonStages": []
+  }
+}
