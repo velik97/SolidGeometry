@@ -74,7 +74,7 @@ namespace Lesson.Shapes.Blueprints.DependentShapes
             }
             
 
-            RestoreDependences();
+            RestoreDependencies();
             OnDeserialized();
         }
 

@@ -67,7 +67,7 @@ namespace Lesson.Shapes.Blueprints.DependentShapes
                 m_PointAlong.GeometryUpdated += UpdatePosition;
             }
             
-            RestoreDependences();
+            RestoreDependencies();
             OnDeserialized();
         }
 

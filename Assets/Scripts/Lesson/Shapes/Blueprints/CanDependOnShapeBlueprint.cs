@@ -8,14 +8,14 @@ namespace Lesson.Shapes.Blueprints
     public class CanDependOnShapeBlueprint
     {
         [JsonProperty]
-        protected readonly List<ShapeBlueprint> DependencesOnOtherShapes = new List<ShapeBlueprint>();
+        protected readonly List<ShapeBlueprint> DependenciesOnOtherShapes = new List<ShapeBlueprint>();
 
         protected CanDependOnShapeBlueprint()
         { }
 
         protected void RestoreDependencies()
         {
-            foreach (ShapeBlueprint shapeBlueprint in DependencesOnOtherShapes)
+            foreach (ShapeBlueprint shapeBlueprint in DependenciesOnOtherShapes)
             {
                 shapeBlueprint.AddDependence(this);
             }
@@ -23,23 +23,23 @@ namespace Lesson.Shapes.Blueprints
 
         public void CreateDependenceOn(ShapeData shapeData)
         {
-            DependencesOnOtherShapes.Add(shapeData.SourceBlueprint);
+            DependenciesOnOtherShapes.Add(shapeData.SourceBlueprint);
             shapeData.SourceBlueprint.AddDependence(this);
         }
 
         public void RemoveDependenceOn(ShapeData shapeData)
         {
-            DependencesOnOtherShapes.Remove(shapeData.SourceBlueprint);
+            DependenciesOnOtherShapes.Remove(shapeData.SourceBlueprint);
             shapeData?.SourceBlueprint.RemoveDependence(this);
         }
 
         public virtual void Destroy()
         {
-            foreach (ShapeBlueprint d in DependencesOnOtherShapes)
+            foreach (ShapeBlueprint d in DependenciesOnOtherShapes)
             {
                 d.RemoveDependence(this);
             }
-            DependencesOnOtherShapes.Clear();
+            DependenciesOnOtherShapes.Clear();
         }
         
         public static bool CanCreateDependence(CanDependOnShapeBlueprint @from, ShapeData to)
@@ -60,7 +60,7 @@ namespace Lesson.Shapes.Blueprints
                 visited = new HashSet<ShapeBlueprint>();
             }
 
-            foreach (ShapeBlueprint blueprint in @from.DependencesOnOtherShapes)
+            foreach (ShapeBlueprint blueprint in @from.DependenciesOnOtherShapes)
             {
                 if (visited.Contains(blueprint))
                 {
