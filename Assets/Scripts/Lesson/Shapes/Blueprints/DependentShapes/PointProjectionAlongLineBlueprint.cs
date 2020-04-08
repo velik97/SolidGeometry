@@ -228,12 +228,10 @@ namespace Lesson.Shapes.Blueprints.DependentShapes
                     m_FirstPointOnLine.Position, 
                     m_SecondPointOnLine.Position));
             }
-            else
-            {
-                throw new ArgumentException("lines don't collinear");
-            }
-            
-            
+//            else
+//            {
+//                throw new ArgumentException("lines don't collinear");
+//            }
         }
     }
 }
