@@ -4,6 +4,8 @@ using System.Runtime.Serialization;
 using JetBrains.Annotations;
 using Lesson.Shapes.Datas;
 using Lesson.Validators;
+using Lesson.Validators.Polygon;
+using Lesson.Validators.Projections;
 using Newtonsoft.Json;
 using Serialization;
 using UnityEngine;
@@ -27,9 +29,9 @@ namespace Lesson.Shapes.Blueprints.DependentShapes
         public PointData FirstPointOnLine => m_FirstPointOnLine;
         public PointData FirstPointAlong => m_FirstPointAlong;
         public PointData SecondPointAlong => m_SecondPointAlong;
-    
-
+        
         public PointsNotSameValidator PointsNotSameValidator;
+        public ProjectionAlongLineValidator ProjectionAlongLineValidator;
 
         public override ShapeData MainShapeData => PointData;
 
@@ -72,7 +74,6 @@ namespace Lesson.Shapes.Blueprints.DependentShapes
             {
                 m_FirstPointAlong.GeometryUpdated += UpdatePosition;
             }
-            
 
             RestoreDependencies();
             OnDeserialized();
@@ -85,6 +86,8 @@ namespace Lesson.Shapes.Blueprints.DependentShapes
 
             PointsNotSameValidator = new PointsNotSameValidator(EnumeratePoints());
             PointData.NameUpdated += OnNameUpdated;
+
+            ProjectionAlongLineValidator = new ProjectionAlongLineValidator(this);
 
             UpdatePosition();
         }
@@ -205,33 +208,35 @@ namespace Lesson.Shapes.Blueprints.DependentShapes
         private void UpdatePosition()
         {
             PointsNotSameValidator.Update();
+            ProjectionAlongLineValidator.Update();
+
             if (!PointsNotSameValidator.IsValid())
             {
                 return;
             }
 
-            if (m_FirstPointOnLine == null || m_ProjectedPoint == null || m_SecondPointOnLine == null || m_FirstPointAlong == null || m_SecondPointAlong == null)
+            if (m_FirstPointOnLine == null 
+                || m_ProjectedPoint == null 
+                || m_SecondPointOnLine == null 
+                || m_FirstPointAlong == null 
+                || m_SecondPointAlong == null)
+            {
+                return;
+            }
+            
+            if (!ProjectionAlongLineValidator.IsValid())
             {
                 return;
             }
 
-            Vector3 vOn = m_SecondPointOnLine.Position - m_FirstPointOnLine.Position;
             Vector3 vAlong = m_SecondPointAlong.Position - m_FirstPointAlong.Position;
-            Vector3 v = m_ProjectedPoint.Position - m_FirstPointOnLine.Position;
 
             Vector3 point = m_ProjectedPoint.Position + vAlong;
-            //Write that not collinear???
-            if (Vector3Extensions.CollinearWith(vOn, vAlong, v))
-            {
-                PointData.SetPosition(GeometryUtils.PointOfIntersection(point, 
-                    m_ProjectedPoint.Position, 
-                    m_FirstPointOnLine.Position, 
-                    m_SecondPointOnLine.Position));
-            }
-//            else
-//            {
-//                throw new ArgumentException("lines don't collinear");
-//            }
+
+            PointData.SetPosition(GeometryUtils.PointOfIntersection(point, 
+                m_ProjectedPoint.Position, 
+                m_FirstPointOnLine.Position, 
+                m_SecondPointOnLine.Position));
         }
     }
 }

@@ -11,10 +11,6 @@ namespace Lesson.Validators
         public void Update()
         {
             bool isValid = CheckIsValid();
-            if (isValid == m_IsValid)
-            {
-                return;
-            }
             m_IsValid = isValid;
             ValidStateChanged?.Invoke();
         }

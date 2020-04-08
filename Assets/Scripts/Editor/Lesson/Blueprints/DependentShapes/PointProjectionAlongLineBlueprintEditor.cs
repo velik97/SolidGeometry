@@ -55,9 +55,8 @@ namespace Editor.Lesson.Blueprints.DependentShapes
                 () => Blueprint.SecondPointAlong,
                 pointData => Blueprint.SetSecondPointAlong(pointData)));
             
+            visualElement.Add(new ValidatorField(Blueprint.ProjectionAlongLineValidator));
             visualElement.Add(new ValidatorField(Blueprint.PointsNotSameValidator));
-
-
         }
     }
 }
