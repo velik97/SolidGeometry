@@ -59,7 +59,12 @@ namespace Editor.Lesson.Stages
         
         private VisualElement GeDescriptionFieldVisualElement()
         {
-            TextField descriptionField = new TextField("Description: ") {value = m_Stage.StageDescription};
+            TextField descriptionField = new TextField("Description: ")
+            {
+                value = m_Stage.StageDescription,
+                multiline = true,
+                style = { whiteSpace = WhiteSpace.Normal}
+            };
             descriptionField.RegisterCallback<ChangeEvent<string>>(evt => m_Stage.SetDescription(evt.newValue));
             return descriptionField;
         }
