@@ -1,6 +1,10 @@
 using Lesson.Shapes.Datas;
 using UnityEngine;
 
+#if UNITY_EDITOR
+using UnityEditor;
+#endif
+
 namespace Lesson.Shapes.Views
 {
     public abstract class MonoBehaviourShapeView<TShapeData> : MonoBehaviour, IShapeView where TShapeData : ShapeData
@@ -34,9 +38,19 @@ namespace Lesson.Shapes.Views
         }
         
         public abstract HighlightType Highlight { get; set; }
-        
-        public abstract void UpdateName();
-        
-        public abstract void UpdateGeometry();
+
+        protected virtual void UpdateName()
+        {
+            name = ShapeData.ToString();
+        }
+
+        protected abstract void UpdateGeometry();
+
+        public void SelectInEditor()
+        {
+#if UNITY_EDITOR
+            Selection.activeGameObject = gameObject;
+#endif
+        }
     }
 }

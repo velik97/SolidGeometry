@@ -31,6 +31,8 @@ namespace Editor.Lesson.Blueprints
             m_NameElement = new Foldout();
             m_NameElement.AddToClassList("sub-header-1");
             m_NameElement.Add(visualElement);
+
+            m_NameElement.RegisterCallback<MouseEnterEvent>(_ => OnSelected());
             
             SetBaseVisualElement(visualElement);
             
@@ -41,6 +43,11 @@ namespace Editor.Lesson.Blueprints
             UpdateName();
             UpdateDeleteButton();
             return m_NameElement;
+        }
+
+        private void OnSelected()
+        {
+            Blueprint.MainShapeData.View.SelectInEditor();
         }
 
         private void UpdateName()

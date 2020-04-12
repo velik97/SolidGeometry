@@ -4,6 +4,7 @@ namespace Lesson.Shapes.Views
     {
         bool Active { get; set; }
         HighlightType Highlight { get; set; }
+        void SelectInEditor();
     }
 
     public enum HighlightType

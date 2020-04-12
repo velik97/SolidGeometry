@@ -30,11 +30,7 @@ namespace Lesson.Shapes.Views
             m_Renderer.material = m_Materials[(int)m_Highlight];
         }
 
-
-        public override void UpdateName()
-        { }
-
-        public override void UpdateGeometry()
+        protected override void UpdateGeometry()
         {
             if (ShapeData.StartPoint == null || ShapeData.EndPoint == null)
             {

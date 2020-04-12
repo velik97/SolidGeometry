@@ -35,10 +35,7 @@ namespace Lesson.Shapes.Views
             m_IsInitialized = true;
         }
 
-        public override void UpdateName()
-        { }
-
-        public override void UpdateGeometry()
+        protected override void UpdateGeometry()
         {
             Initialize();
 

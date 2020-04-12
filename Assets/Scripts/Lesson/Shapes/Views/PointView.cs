@@ -31,12 +31,13 @@ namespace Lesson.Shapes.Views
             m_Renderer.material = m_Materials[(int)m_Highlight];
         }
 
-        public override void UpdateName()
+        protected override void UpdateName()
         {
+            base.UpdateName();
             m_NameLabel.text = ShapeData.PointName;
         }
 
-        public override void UpdateGeometry()
+        protected override void UpdateGeometry()
         {
             transform.position = ShapeData.Position;
         }

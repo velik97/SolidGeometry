@@ -1,5 +1,10 @@
 using System.Linq;
 using Lesson.Shapes.Datas;
+using UnityEngine;
+
+#if UNITY_EDITOR
+using UnityEditor;
+#endif
 
 namespace Lesson.Shapes.Views
 {
@@ -65,6 +70,34 @@ namespace Lesson.Shapes.Views
             {
                 polygon.Highlight = value;
             }
+        }
+
+        public void SelectInEditor()
+        {
+            Object[] gameObjects = new Object[m_CompositeShapeData.Points.Length +
+                                                      m_CompositeShapeData.Lines.Length +
+                                                      m_CompositeShapeData.Polygons.Length];
+            int i = 0;
+            
+            foreach (PointView point in m_CompositeShapeData.Points.Select(p => p.PointView))
+            {
+                gameObjects[i] = point.gameObject;
+                i++;
+            }
+            foreach (LineView line in m_CompositeShapeData.Lines.Select(p => p.LineView))
+            {
+                gameObjects[i] = line.gameObject;
+                i++;
+            }
+            foreach (PolygonView polygon in m_CompositeShapeData.Polygons.Select(p => p.PolygonView))
+            {
+                gameObjects[i] = polygon.gameObject;
+                i++;
+            }
+            
+#if UNITY_EDITOR
+            Selection.objects = gameObjects;
+#endif
         }
     }
 }
