@@ -96,7 +96,8 @@ namespace Util
 
             if (k.IsZero())
             {
-                throw new ArgumentException("lines don't intersect");
+                Debug.LogError("Lines don't intersect");
+                return Vector3.zero;
             }
 
             float sign = Mathf.Sign(Vector3.Dot(h, k));
