@@ -8,9 +8,9 @@ using UnityEngine.UIElements;
 
 namespace Editor.Lesson.Blueprints.DependentShapes
 {
-    public class PointIn2DSubspaceBlueprintEditor : ShapeBlueprintEditor<PointIn2DSubspaceBlueprint>
+    public class PointOnSurfaceBlueprintEditor : ShapeBlueprintEditor<PointOnSurfaceBlueprint>
     {
-        public PointIn2DSubspaceBlueprintEditor(PointIn2DSubspaceBlueprint blueprint, Action<ShapeBlueprint, VisualElement> deleteAction) : base(blueprint, deleteAction)
+        public PointOnSurfaceBlueprintEditor(PointOnSurfaceBlueprint blueprint, Action<ShapeBlueprint, VisualElement> deleteAction) : base(blueprint, deleteAction)
         {
         }
 

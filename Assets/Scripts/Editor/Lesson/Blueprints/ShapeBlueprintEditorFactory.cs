@@ -48,11 +48,11 @@ namespace Editor.Lesson.Blueprints
                 case RegularPrismBlueprint regularPrismBlueprint:
                     visualElement = new RegularPrismBlueprintEditor(regularPrismBlueprint, deleteAction).GetVisualElement();
                     break;
-                case PointIn2DSubspaceBlueprint pointIn2DSubspaceBlueprint:
-                    visualElement = new PointIn2DSubspaceBlueprintEditor(pointIn2DSubspaceBlueprint, deleteAction).GetVisualElement();
+                case PointOnSurfaceBlueprint pointOnSurfaceBlueprint:
+                    visualElement = new PointOnSurfaceBlueprintEditor(pointOnSurfaceBlueprint, deleteAction).GetVisualElement();
                     break;
-                case PointIn1DSubspaceBlueprint pointIn1DSubspaceBlueprint:
-                    visualElement = new PointIn1DSubspaceBlueprintEditor(pointIn1DSubspaceBlueprint, deleteAction).GetVisualElement();
+                case PointOnLineBlueprint pointOnLineBlueprint:
+                    visualElement = new PointOnLineEditor(pointOnLineBlueprint, deleteAction).GetVisualElement();
                     break;
                 case PointProjectionAlongLineBlueprint pointProjectionAlongLineBlueprint:
                     visualElement = new PointProjectionAlongLineBlueprintEditor(pointProjectionAlongLineBlueprint, deleteAction).GetVisualElement();

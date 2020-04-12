@@ -11,7 +11,7 @@ using Util;
 namespace Lesson.Shapes.Blueprints.DependentShapes
 {
     [JsonObject(IsReference = true, MemberSerialization = MemberSerialization.OptIn)]
-    public class PointIn1DSubspaceBlueprint : ShapeBlueprint
+    public class PointOnLineBlueprint : ShapeBlueprint
     {
         [JsonProperty] public readonly PointData PointData;
 
@@ -24,12 +24,11 @@ namespace Lesson.Shapes.Blueprints.DependentShapes
         public PointData SecondPoint => m_SecondPoint;
         public float Coefficient => m_Coefficient;
 
-
         public PointsNotSameValidator PointsNotSameValidator;
 
         public override ShapeData MainShapeData => PointData;
 
-        public PointIn1DSubspaceBlueprint(ShapeDataFactory dataFactory) : base(dataFactory)
+        public PointOnLineBlueprint(ShapeDataFactory dataFactory) : base(dataFactory)
         {
             PointData = ShapeDataFactory.CreatePointData();
 
@@ -37,7 +36,7 @@ namespace Lesson.Shapes.Blueprints.DependentShapes
         }
 
         [JsonConstructor]
-        public PointIn1DSubspaceBlueprint(JsonConstructorMark _)
+        public PointOnLineBlueprint(JsonConstructorMark _)
         {
         }
 
@@ -125,7 +124,6 @@ namespace Lesson.Shapes.Blueprints.DependentShapes
             }
 
             m_Coefficient = coef;
-            //NonZeroVolumeValidator.Update();
             UpdatePosition();
         }
         
