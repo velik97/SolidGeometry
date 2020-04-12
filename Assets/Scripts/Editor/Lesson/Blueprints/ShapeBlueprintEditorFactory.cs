@@ -33,20 +33,23 @@ namespace Editor.Lesson.Blueprints
                 case CubeBlueprint cubeBlueprint:
                     visualElement = new CubeBlueprintEditor(cubeBlueprint, deleteAction).GetVisualElement();
                     break;
-                case PointPerpendicularProjectionBlueprint projectionOnLineBlueprint:
-                    visualElement = new PointPerpendicularProjectionBlueprintEditor(projectionOnLineBlueprint, deleteAction).GetVisualElement();
-                    break;
-                case PointOfIntersectionBlueprint pointOfIntersectionBlueprint:
-                    visualElement = new PointOfIntersectionBlueprintEditor(pointOfIntersectionBlueprint, deleteAction).GetVisualElement();
-                    break;
                 case PyramidBlueprint pyramidBlueprint:
                     visualElement = new PyramidBlueprintEditor(pyramidBlueprint, deleteAction).GetVisualElement();
                     break;
                 case RegularPyramidBlueprint regularPyramidBlueprint:
                     visualElement = new RegularPyramidBlueprintEditor(regularPyramidBlueprint, deleteAction).GetVisualElement();
                     break;
+                case PrismBlueprint prismBlueprint:
+                    visualElement = new PrismBlueprintEditor(prismBlueprint, deleteAction).GetVisualElement();
+                    break;
                 case RegularPrismBlueprint regularPrismBlueprint:
                     visualElement = new RegularPrismBlueprintEditor(regularPrismBlueprint, deleteAction).GetVisualElement();
+                    break;
+                case PointPerpendicularProjectionBlueprint projectionOnLineBlueprint:
+                    visualElement = new PointPerpendicularProjectionBlueprintEditor(projectionOnLineBlueprint, deleteAction).GetVisualElement();
+                    break;
+                case PointOfIntersectionBlueprint pointOfIntersectionBlueprint:
+                    visualElement = new PointOfIntersectionBlueprintEditor(pointOfIntersectionBlueprint, deleteAction).GetVisualElement();
                     break;
                 case PointOnSurfaceBlueprint pointOnSurfaceBlueprint:
                     visualElement = new PointOnSurfaceBlueprintEditor(pointOnSurfaceBlueprint, deleteAction).GetVisualElement();

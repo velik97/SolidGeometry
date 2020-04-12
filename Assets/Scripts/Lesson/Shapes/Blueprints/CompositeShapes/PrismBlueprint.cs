@@ -1,4 +1,4 @@
-using System.Collections.Generic;
+﻿using System.Collections.Generic;
 using System.Linq;
 using System.Runtime.Serialization;
 using JetBrains.Annotations;
@@ -8,42 +8,40 @@ using UnityEngine;
 
 namespace Lesson.Shapes.Blueprints.CompositeShapes
 {
-    [JsonObject(IsReference = true, MemberSerialization = MemberSerialization.OptIn)]
-    public class RegularPrismBlueprint: ShapeBlueprint
+    public class PrismBlueprint : ShapeBlueprint
     {
         [JsonProperty]
         private int m_VerticesAtTheBaseCount = 3;
-
         [JsonProperty]
         private Vector3 m_Origin;
         [JsonProperty]
         private Vector3 m_Offset;
         [JsonProperty]
-        private float m_Radius;
+        private List<Vector3> m_PointsPositions = new List<Vector3>();
 
         [JsonProperty]
         private readonly CompositeShapeData m_CompositeShapeData;
-        
+
         [JsonProperty]
         private readonly List<PointData> m_Points = new List<PointData>();
         [JsonProperty]
         private readonly List<LineData> m_Lines = new List<LineData>();
         [JsonProperty]
         private readonly List<PolygonData> m_Polygons = new List<PolygonData>();
-        
+
         public int VerticesAtTheBaseCount => m_VerticesAtTheBaseCount;
 
         public Vector3 Origin => m_Origin;
         public Vector3 Offset => m_Offset;
-        public float Radius => m_Radius;
-        
+        public IReadOnlyList<Vector3> PointsPositions => m_PointsPositions;
+
         public IReadOnlyList<PointData> Points => m_Points;
         public IReadOnlyList<LineData> Lines => m_Lines;
         public IReadOnlyList<PolygonData> Polygons => m_Polygons;
 
         public override ShapeData MainShapeData => m_CompositeShapeData;
         
-        public RegularPrismBlueprint(ShapeDataFactory dataFactory) : base(dataFactory)
+        public PrismBlueprint(ShapeDataFactory dataFactory) : base(dataFactory)
         {
             m_CompositeShapeData = dataFactory.CreateCompositeShapeData();
             ConstructPrism();
@@ -51,7 +49,7 @@ namespace Lesson.Shapes.Blueprints.CompositeShapes
         }
 
         [JsonConstructor]
-        public RegularPrismBlueprint(object _)
+        public PrismBlueprint(object _)
         {
         }
 
@@ -67,6 +65,7 @@ namespace Lesson.Shapes.Blueprints.CompositeShapes
                 MyShapeDatas.Add(shapeData);
                 shapeData.SourceBlueprint = this;
             }
+
             OnDeserialized();
         }
 
@@ -74,11 +73,13 @@ namespace Lesson.Shapes.Blueprints.CompositeShapes
         {
             UpdatePointsPositions();
 
-            m_CompositeShapeData.SetShapeName("Regular Prism");
+            m_CompositeShapeData.SetShapeName("Prism");
         }
-        
+
         private void ConstructPrism()
         {
+            UpdateVerticesPositionsList();
+            
             for (int i = 0; i < 2 * m_VerticesAtTheBaseCount; i++)
             {
                 m_Points.Add(ShapeDataFactory.CreatePointData());
@@ -107,11 +108,11 @@ namespace Lesson.Shapes.Blueprints.CompositeShapes
 
             ConstructLines();
             ConstructPolygons();
-            
+
             m_CompositeShapeData.SetPoints(m_Points.ToArray());
             m_CompositeShapeData.SetLines(m_Lines.ToArray());
             m_CompositeShapeData.SetPolygons(m_Polygons.ToArray());
-            
+
             foreach (ShapeData shapeData in
                 new[] {m_CompositeShapeData}.Cast<ShapeData>()
                     .Concat(m_Points)
@@ -123,6 +124,19 @@ namespace Lesson.Shapes.Blueprints.CompositeShapes
             }
         }
 
+        private void UpdateVerticesPositionsList()
+        {
+            while (m_PointsPositions.Count < m_VerticesAtTheBaseCount)
+            {
+                m_PointsPositions.Add(Vector3.zero);
+            }
+            
+            while (m_PointsPositions.Count > m_VerticesAtTheBaseCount)
+            {
+                m_PointsPositions.RemoveAt(m_PointsPositions.Count - 1);
+            }
+        }
+
         private void ConstructLines()
         {
             // Bottom edges
@@ -131,7 +145,7 @@ namespace Lesson.Shapes.Blueprints.CompositeShapes
                 m_Lines[i].SetStartPoint(m_Points[i % m_VerticesAtTheBaseCount]);
                 m_Lines[i].SetEndPoint(m_Points[(i + 1) % m_VerticesAtTheBaseCount]);
             }
-            
+
             // Top edges
             for (int i = 0; i < m_VerticesAtTheBaseCount; i++)
             {
@@ -140,7 +154,7 @@ namespace Lesson.Shapes.Blueprints.CompositeShapes
                 m_Lines[i + m_VerticesAtTheBaseCount]
                     .SetEndPoint(m_Points[((i + 1) % m_VerticesAtTheBaseCount) + m_VerticesAtTheBaseCount]);
             }
-            
+
             // Side edges
             for (int i = 0; i < m_VerticesAtTheBaseCount; i++)
             {
@@ -156,7 +170,7 @@ namespace Lesson.Shapes.Blueprints.CompositeShapes
             {
                 m_Polygons[m_VerticesAtTheBaseCount + 1].SetPoint(i, m_Points[i + m_VerticesAtTheBaseCount]);
             }
-            
+
             // Bottom face
             for (int i = 0; i < m_VerticesAtTheBaseCount; i++)
             {
@@ -180,25 +194,29 @@ namespace Lesson.Shapes.Blueprints.CompositeShapes
             {
                 shapeData.SourceBlueprint = null;
             }
+
             MyShapeDatas.Clear();
-            
+
             foreach (PointData pointData in m_Points)
             {
                 pointData.NameUpdated -= OnNameUpdated;
                 ShapeDataFactory.RemoveShapeData(pointData);
             }
+
             m_Points.Clear();
-            
+
             foreach (LineData lineData in m_Lines)
             {
                 ShapeDataFactory.RemoveShapeData(lineData);
             }
+
             m_Lines.Clear();
-            
+
             foreach (PolygonData polygonData in m_Polygons)
             {
                 ShapeDataFactory.RemoveShapeData(polygonData);
             }
+
             m_Polygons.Clear();
         }
 
@@ -208,22 +226,8 @@ namespace Lesson.Shapes.Blueprints.CompositeShapes
             {
                 return;
             }
-            m_Points[pointIndex].SetName(name);
-        }
-        
-        public void SetBaseVerticesCount(int count)
-        {
-            if (count > 15 || count < 3)
-            {
-                return;
-            }
 
-            m_VerticesAtTheBaseCount = count;
-            
-            Clear();
-            ConstructPrism();
-            
-            UpdatePointsPositions();
+            m_Points[pointIndex].SetName(name);
         }
 
         public void SetOrigin(Vector3 origin)
@@ -237,35 +241,46 @@ namespace Lesson.Shapes.Blueprints.CompositeShapes
             UpdatePointsPositions();
         }
 
+        public void SetBaseVerticesCount(int count)
+        {
+            if (count > 8 || count < 3)
+            {
+                return;
+            }
+
+            m_VerticesAtTheBaseCount = count;
+
+            Clear();
+            ConstructPrism();
+
+            UpdatePointsPositions();
+        }
+
         public void SetOffset(Vector3 offset)
         {
             m_Offset = offset;
             UpdatePointsPositions();
         }
         
-        public void SetRadius(float radius)
+        public void SetPointPosition(int pointIndex, Vector3 position)
         {
-            if (radius < 0)
+            if (pointIndex < 0 || pointIndex >= m_PointsPositions.Count)
             {
                 return;
             }
 
-            m_Radius = radius;
-            
+            m_PointsPositions[pointIndex] = position;
             UpdatePointsPositions();
         }
 
         private void UpdatePointsPositions()
         {
-            for (int i = 0; i < m_VerticesAtTheBaseCount; i++)
+            for (int i = 0; i < m_PointsPositions.Count; i++)
             {
-                Vector3 position = new Vector3(
-                    m_Radius * Mathf.Cos(2 * Mathf.PI * i / m_VerticesAtTheBaseCount),
-                    0f,
-                    m_Radius * Mathf.Sin(2 * Mathf.PI * i / m_VerticesAtTheBaseCount));
+                Vector3 position = m_PointsPositions[i];
 
                 position += m_Origin;
-                
+
                 m_Points[i].SetPosition(position);
                 m_Points[i + m_VerticesAtTheBaseCount].SetPosition(position + m_Offset);
             }

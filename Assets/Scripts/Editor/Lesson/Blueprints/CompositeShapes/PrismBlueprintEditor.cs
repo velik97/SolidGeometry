@@ -1,4 +1,4 @@
-using System;
+﻿using System;
 using Editor.VisualElementsExtensions;
 using Lesson.Shapes.Blueprints;
 using Lesson.Shapes.Blueprints.CompositeShapes;
@@ -9,14 +9,15 @@ using Util;
 
 namespace Editor.Lesson.Blueprints.CompositeShapes
 {
-    public class RegularPrismBlueprintEditor : ShapeBlueprintEditor<RegularPrismBlueprint>
+    public class PrismBlueprintEditor : ShapeBlueprintEditor<PrismBlueprint>
     {
+        private VisualElement m_PointsPositionsField;
         private VisualElement m_PointNameFields;
 
         private IntegerField m_VerticesCountField;
         private Label m_CantChangeVerticesCount = new Label("Cant change, have dependencies");
 
-        public RegularPrismBlueprintEditor(RegularPrismBlueprint blueprint, Action<ShapeBlueprint, VisualElement> deleteAction) : base(blueprint, deleteAction)
+        public PrismBlueprintEditor(PrismBlueprint blueprint, Action<ShapeBlueprint, VisualElement> deleteAction) : base(blueprint, deleteAction)
         {
         }
         
@@ -35,9 +36,12 @@ namespace Editor.Lesson.Blueprints.CompositeShapes
             offsetField.RegisterCallback<ChangeEvent<Vector3>>(evt => Blueprint.SetOffset(evt.newValue));
             visualElement.Add(offsetField);
             
-            FloatField radiusField = new FloatField("Radius: ") {value = Blueprint.Radius};
-            radiusField.RegisterCallback<ChangeEvent<float>>(evt => Blueprint.SetRadius(evt.newValue));
-            visualElement.Add(radiusField);
+            Label positionsLabel = new Label("Points Positions");
+            positionsLabel.AddToClassList("sub-header");
+            visualElement.Add(positionsLabel);
+            
+            m_PointsPositionsField = new VisualElement();
+            visualElement.Add(m_PointsPositionsField);
             
             Label namesLabel = new Label("Points Names");
             namesLabel.AddToClassList("sub-header");
@@ -49,6 +53,7 @@ namespace Editor.Lesson.Blueprints.CompositeShapes
             Blueprint.DependenciesUpdated += UpdateVerticesCountFieldAvailability;
             UpdateVerticesCountFieldAvailability();
             UpdatePointNameFields();
+            UpdatePointPositionsField();
         }
 
         private void UpdateVerticesCountFieldAvailability()
@@ -61,6 +66,21 @@ namespace Editor.Lesson.Blueprints.CompositeShapes
         {
             Blueprint.SetBaseVerticesCount(count);
             UpdatePointNameFields();
+            UpdatePointPositionsField();
+        }
+
+        private void UpdatePointPositionsField()
+        {
+            m_PointsPositionsField.Clear();
+
+            for (var i = 0; i < Blueprint.PointsPositions.Count; i++)
+            {
+                int pointNum = i;
+                Vector3Field positionField = new Vector3Field((pointNum + 1).GetOrdinalForm() + " Position: ");
+                positionField.RegisterCallback<ChangeEvent<Vector3>>(evt => 
+                    Blueprint.SetPointPosition(pointNum, evt.newValue));
+                m_PointsPositionsField.Add(positionField);
+            }
         }
 
         private void UpdatePointNameFields()
