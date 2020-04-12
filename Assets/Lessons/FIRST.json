@@ -1,6 +1,11 @@
 {
   "m_ShapeDataFactory": {
     "$id": "1",
+    "m_Origin": {
+      "x": 2.0,
+      "y": 2.5,
+      "z": 1.5
+    },
     "m_PointDatas": [
       {
         "$id": "2",
@@ -791,7 +796,7 @@
       },
       {
         "$id": "62",
-        "$type": "Lesson.Shapes.Blueprints.DependentShapes.PointIn2DSubspaceBlueprint, Assembly-CSharp",
+        "$type": "Lesson.Shapes.Blueprints.DependentShapes.PointOnSurfaceBlueprint, Assembly-CSharp",
         "PointData": {
           "$ref": "10"
         },
@@ -820,7 +825,7 @@
       },
       {
         "$id": "63",
-        "$type": "Lesson.Shapes.Blueprints.DependentShapes.PointIn2DSubspaceBlueprint, Assembly-CSharp",
+        "$type": "Lesson.Shapes.Blueprints.DependentShapes.PointOnSurfaceBlueprint, Assembly-CSharp",
         "PointData": {
           "$ref": "11"
         },
@@ -849,7 +854,7 @@
       },
       {
         "$id": "64",
-        "$type": "Lesson.Shapes.Blueprints.DependentShapes.PointIn2DSubspaceBlueprint, Assembly-CSharp",
+        "$type": "Lesson.Shapes.Blueprints.DependentShapes.PointOnSurfaceBlueprint, Assembly-CSharp",
         "PointData": {
           "$ref": "12"
         },
