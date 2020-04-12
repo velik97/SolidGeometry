@@ -8,13 +8,19 @@
 }
 
 .create {
-    border-left-color: lawngreen;
+    border-left-color: limegreen;
+}
+
+.validator {
+    border-width: 1px;
+    color: dimgray;
+    border-left-color: orangered;
 }
 
 .save-load-container {
     margin: 4px;
     border-left-width: 2px;
-    border-left-color: cornflowerblue;
+    border-left-color: limegreen;
 }
 
 .blueprints-container {
@@ -26,7 +32,7 @@
 .stages-container {
     margin: 4px;
     border-left-width: 2px;
-    border-left-color: cornflowerblue;
+    border-left-color: yellow;
 }
 
 .container {

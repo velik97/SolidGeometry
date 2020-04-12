@@ -11,7 +11,8 @@ namespace Editor.VisualElementsExtensions
         public ValidatorField(IValidator validator)
         {
             m_Validator = validator;
-            style.color = new StyleColor(Color.red);
+            
+            AddToClassList("validator");
             
             validator.ValidStateChanged += UpdateField;
             UpdateField();
@@ -19,7 +20,9 @@ namespace Editor.VisualElementsExtensions
         
         private void UpdateField()
         {
-            text = m_Validator.IsValid() ? string.Empty : m_Validator.GetNotValidMessage();
+            bool isValid = m_Validator.IsValid();
+            style.display = isValid ? DisplayStyle.None : DisplayStyle.Flex;
+            text = isValid ? string.Empty : m_Validator.GetNotValidMessage();
         }
     }
 }
