@@ -10,6 +10,8 @@ namespace Editor.Lesson.Blueprints.DependentShapes
 {
     public class PointProjectionAlongLineBlueprintEditor : ShapeBlueprintEditor<PointProjectionAlongLineBlueprint>
     {
+        protected override string NameSuffix => "Projection Along Line";
+
         public PointProjectionAlongLineBlueprintEditor(PointProjectionAlongLineBlueprint blueprint, Action<ShapeBlueprint, VisualElement> deleteAction) : base(blueprint, deleteAction)
         {
         }

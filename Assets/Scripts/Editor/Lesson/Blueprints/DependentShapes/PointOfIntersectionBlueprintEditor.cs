@@ -10,6 +10,8 @@ namespace Editor.Lesson.Blueprints.DependentShapes
 {
     public class PointOfIntersectionBlueprintEditor : ShapeBlueprintEditor<PointOfIntersectionBlueprint>
     {
+        protected override string NameSuffix => "Intersection";
+
         public PointOfIntersectionBlueprintEditor(PointOfIntersectionBlueprint blueprint, Action<ShapeBlueprint, VisualElement> deleteAction) : base(blueprint, deleteAction)
         {
         }

@@ -13,6 +13,8 @@ namespace Editor.Lesson.Blueprints
         private Foldout m_NameElement;
         private Button m_DeleteButton;
 
+        protected virtual string NameSuffix => "";
+
         protected ShapeBlueprintEditor(TBlueprint blueprint, Action<ShapeBlueprint, VisualElement> deleteAction)
         {
             Blueprint = blueprint;
@@ -26,7 +28,7 @@ namespace Editor.Lesson.Blueprints
         {
             VisualElement visualElement = new VisualElement();
 
-            m_NameElement = new Foldout {text = Blueprint.MainShapeData.ToString()};
+            m_NameElement = new Foldout();
             m_NameElement.AddToClassList("sub-header-1");
             m_NameElement.Add(visualElement);
             
@@ -43,12 +45,12 @@ namespace Editor.Lesson.Blueprints
 
         private void UpdateName()
         {
-            m_NameElement.text = Blueprint.MainShapeData.ToString();
+            m_NameElement.text = Blueprint.MainShapeData + "  " + NameSuffix;
         }
 
         private void UpdateDeleteButton()
         {
-            m_DeleteButton.text = Blueprint.HaveDependencies ? "Can't delete, have dependences" : "Delete";
+            m_DeleteButton.text = Blueprint.HaveDependencies ? "Can't delete, have dependencies" : "Delete";
             m_DeleteButton.SetEnabled(!Blueprint.HaveDependencies);
         }
 

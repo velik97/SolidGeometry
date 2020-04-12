@@ -13,6 +13,8 @@ namespace Editor.Lesson.Blueprints.DependentShapes
 {
     public class PointProjectionFromPointBlueprintEditor : ShapeBlueprintEditor<PointProjectionFromPointBlueprint>
     {
+        protected override string NameSuffix => "Projection From Point";
+        
         public PointProjectionFromPointBlueprintEditor(PointProjectionFromPointBlueprint blueprint, Action<ShapeBlueprint, VisualElement> deleteAction) : base(blueprint, deleteAction)
         {
         }

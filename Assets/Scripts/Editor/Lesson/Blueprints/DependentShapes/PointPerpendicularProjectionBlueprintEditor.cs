@@ -9,6 +9,8 @@ namespace Editor.Lesson.Blueprints.DependentShapes
 {
     public class PointPerpendicularProjectionBlueprintEditor : ShapeBlueprintEditor<PointPerpendicularProjectionBlueprint>
     {
+        protected override string NameSuffix => "Perpendicular Projection";
+
         public PointPerpendicularProjectionBlueprintEditor(PointPerpendicularProjectionBlueprint blueprint, Action<ShapeBlueprint, VisualElement> deleteAction) : base(blueprint, deleteAction)
         {
         }

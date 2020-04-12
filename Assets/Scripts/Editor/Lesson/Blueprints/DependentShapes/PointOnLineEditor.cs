@@ -10,6 +10,8 @@ namespace Editor.Lesson.Blueprints.DependentShapes
 {
     public class PointOnLineEditor : ShapeBlueprintEditor<PointOnLineBlueprint>
     {
+        protected override string NameSuffix => "On Line";
+
         public PointOnLineEditor(PointOnLineBlueprint blueprint, Action<ShapeBlueprint, VisualElement> deleteAction) : base(blueprint, deleteAction)
         {
         }

@@ -10,6 +10,8 @@ namespace Editor.Lesson.Blueprints.DependentShapes
 {
     public class PointOnSurfaceBlueprintEditor : ShapeBlueprintEditor<PointOnSurfaceBlueprint>
     {
+        protected override string NameSuffix => "On Surface";
+
         public PointOnSurfaceBlueprintEditor(PointOnSurfaceBlueprint blueprint, Action<ShapeBlueprint, VisualElement> deleteAction) : base(blueprint, deleteAction)
         {
         }
