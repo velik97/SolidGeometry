@@ -1,3 +1,4 @@
+using System;
 using Editor.Lesson.Blueprints;
 using Editor.Lesson.Stages;
 using Lesson;
@@ -59,6 +60,8 @@ namespace Editor.Lesson
             StyleSheet styleSheet = AssetDatabase.LoadAssetAtPath<StyleSheet>("Assets/Scripts/Editor/Styles/lesson_editor_styles.uss");
             rootVisualElement.styleSheets.Add(styleSheet);
         }
+        
+        
 
         public LessonData GetLessonData()
         {
@@ -103,6 +106,11 @@ namespace Editor.Lesson
             m_LessonIsDirty = m_LessonData.IsDirty;
 
             m_LessonNameLabel.text = m_LessonName + (m_LessonIsDirty ? "*" : "");
-    }
+        }
+
+        private void OnGUI()
+        {
+            Handles.SphereHandleCap(0, Vector3.one, Quaternion.identity, 1f, EventType.Ignore);
+        }
     }
 }

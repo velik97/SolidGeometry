@@ -3,7 +3,9 @@ using System.Linq;
 using Editor.VisualElementsExtensions;
 using Lesson.Shapes.Blueprints;
 using Lesson.Shapes.Datas;
+using UnityEditor;
 using UnityEditor.UIElements;
+using UnityEngine;
 using UnityEngine.UIElements;
 
 namespace Editor.Lesson.Blueprints
@@ -13,7 +15,8 @@ namespace Editor.Lesson.Blueprints
         private ShapeBlueprintFactory m_ShapeBlueprintFactory;
         
         private VisualElement m_RootVisualElement;
-        
+
+        private VisualElement m_OriginField;
         // Contains list of blueprint editors
         private VisualElement m_BaseVisualElement;
         // Contains 'Create' button
@@ -29,12 +32,31 @@ namespace Editor.Lesson.Blueprints
         private void UpdateCanvas()
         {
             m_RootVisualElement.Clear();
-            
+
+            m_OriginField = GetOriginField();
             m_BaseVisualElement = GetBaseVisualElement();
             m_BottomVisualElement = GetBottomVisualElement();
-            
+
+            m_RootVisualElement.Add(m_OriginField);
             m_RootVisualElement.Add(m_BaseVisualElement);
             m_RootVisualElement.Add(m_BottomVisualElement);
+        }
+
+        private VisualElement GetOriginField()
+        {
+            if (m_ShapeBlueprintFactory == null)
+            {
+                return new VisualElement();
+            }
+            
+            Vector3Field originField = new Vector3Field("Origin");
+
+            originField.RegisterCallback<ChangeEvent<Vector3>>(evt =>
+                m_ShapeBlueprintFactory.ShapeDataFactory.SetOrigin(evt.newValue));
+
+            originField.value = m_ShapeBlueprintFactory.ShapeDataFactory.Origin;
+            
+            return originField;
         }
 
         private VisualElement GetBaseVisualElement()
@@ -77,6 +99,7 @@ namespace Editor.Lesson.Blueprints
         public void OnTargetChosen(ShapeBlueprintFactory target)
         {
             m_ShapeBlueprintFactory = target;
+
             UpdateCanvas();
         }
 

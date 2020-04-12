@@ -6,6 +6,7 @@ using JetBrains.Annotations;
 using Lesson.Shapes.Views;
 using Lesson.Validators.Uniqueness;
 using Newtonsoft.Json;
+using UnityEngine;
 
 namespace Lesson.Shapes.Datas
 {
@@ -14,6 +15,9 @@ namespace Lesson.Shapes.Datas
     {
         public event Action BecameDirty;
 
+        [JsonProperty]
+        private Vector3 m_Origin;
+        
         [JsonProperty]
         private readonly List<PointData> m_PointDatas = new List<PointData>();
         [JsonProperty]
@@ -27,6 +31,8 @@ namespace Lesson.Shapes.Datas
 
         private IShapeViewFactory m_ShapeViewFactory;
         public IReadOnlyCollection<PointData> PointDatas => m_PointDatas;
+
+        public Vector3 Origin => m_Origin;
 
         public IReadOnlyCollection<ShapeData> AllDatas =>
             m_PointDatas.Cast<ShapeData>()
@@ -142,6 +148,12 @@ namespace Lesson.Shapes.Datas
                 m_ShapeViewFactory?.ReleaseView(shapeData.View);
             }
             shapeData.DestroyData(); 
+            OnBecameDirty();
+        }
+
+        public void SetOrigin(Vector3 origin)
+        {
+            m_Origin = origin;
             OnBecameDirty();
         }
 
