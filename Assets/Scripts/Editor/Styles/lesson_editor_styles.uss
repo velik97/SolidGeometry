@@ -1,6 +1,9 @@
 ﻿.header {
+    margin: 2px;
     font-size: 24px;
     -unity-font-style: bold;
+    border-bottom-width: 2px;
+    border-bottom-color: dimgray;
 }
 
 .delete {
