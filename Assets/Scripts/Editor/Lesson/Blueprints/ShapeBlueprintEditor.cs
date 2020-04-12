@@ -19,7 +19,7 @@ namespace Editor.Lesson.Blueprints
             m_DeleteAction = deleteAction;
 
             Blueprint.NameUpdated += UpdateName;
-            Blueprint.DependencesUpdated += UpdateDeleteButton;
+            Blueprint.DependenciesUpdated += UpdateDeleteButton;
         }
 
         public VisualElement GetVisualElement()
@@ -47,8 +47,8 @@ namespace Editor.Lesson.Blueprints
 
         private void UpdateDeleteButton()
         {
-            m_DeleteButton.text = Blueprint.HaveDependences ? "Can't delete, have dependences" : "Delete";
-            m_DeleteButton.SetEnabled(!Blueprint.HaveDependences);
+            m_DeleteButton.text = Blueprint.HaveDependencies ? "Can't delete, have dependences" : "Delete";
+            m_DeleteButton.SetEnabled(!Blueprint.HaveDependencies);
         }
 
         protected abstract void SetBaseVisualElement(VisualElement visualElement);

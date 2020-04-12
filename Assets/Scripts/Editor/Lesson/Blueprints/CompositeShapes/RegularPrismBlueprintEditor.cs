@@ -44,15 +44,15 @@ namespace Editor.Lesson.Blueprints.CompositeShapes
             m_PointNameFields = new VisualElement();
             visualElement.Add(m_PointNameFields);
 
-            Blueprint.DependencesUpdated += UpdateVerticesCountFieldAvailability;
+            Blueprint.DependenciesUpdated += UpdateVerticesCountFieldAvailability;
             UpdateVerticesCountFieldAvailability();
             UpdatePointNameFields();
         }
 
         private void UpdateVerticesCountFieldAvailability()
         {
-            m_VerticesCountField.SetEnabled(!Blueprint.HaveDependences);
-            m_CantChangeVerticesCount.visible = Blueprint.HaveDependences;
+            m_VerticesCountField.SetEnabled(!Blueprint.HaveDependencies);
+            m_CantChangeVerticesCount.visible = Blueprint.HaveDependencies;
         }
 
         private void SetVerticesCount(int count)

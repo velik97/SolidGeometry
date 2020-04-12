@@ -9,7 +9,7 @@ namespace Lesson.Shapes.Blueprints
     public abstract class ShapeBlueprint : CanDependOnShapeBlueprint
     {
         public event Action NameUpdated;
-        public event Action DependencesUpdated;
+        public event Action DependenciesUpdated;
         
         /// <summary>
         /// List of shapes, that depend on me
@@ -18,7 +18,7 @@ namespace Lesson.Shapes.Blueprints
         
         protected readonly List<ShapeData> MyShapeDatas = new List<ShapeData>();
         
-        public bool HaveDependences => m_DependentOnMeShapes.Count > 0;
+        public bool HaveDependencies => m_DependentOnMeShapes.Count > 0;
         
         public abstract ShapeData MainShapeData { get; }
 
@@ -52,13 +52,13 @@ namespace Lesson.Shapes.Blueprints
         public void AddDependence(CanDependOnShapeBlueprint dependentOnMe)
         {
             m_DependentOnMeShapes.Add(dependentOnMe);
-            DependencesUpdated?.Invoke();
+            DependenciesUpdated?.Invoke();
         }
         
         public void RemoveDependence(CanDependOnShapeBlueprint blueprint)
         {
             m_DependentOnMeShapes.Remove(blueprint);
-            DependencesUpdated?.Invoke();
+            DependenciesUpdated?.Invoke();
         }
 
         protected void OnNameUpdated()
