@@ -50,6 +50,7 @@ namespace Session
 
         private void InitializeShapeViewFactory()
         {
+            m_ShapesPivot.position = -LessonData.ShapeDataFactory.Origin;
             IShapeViewFactory shapeViewFactory = new ShapeViewFactoryProxy(ShapeViewFactory.Instance, m_ShapesPivot);
             m_LessonData.ShapeDataFactory.SetViewFactory(shapeViewFactory);
             Add(shapeViewFactory);
