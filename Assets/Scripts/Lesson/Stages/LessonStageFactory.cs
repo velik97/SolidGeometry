@@ -1,3 +1,4 @@
+using System;
 using System.Collections.Generic;
 using System.Runtime.Serialization;
 using JetBrains.Annotations;
@@ -10,6 +11,8 @@ namespace Lesson.Stages
     [JsonObject(MemberSerialization.OptIn)]
     public class LessonStageFactory
     {
+        public event Action BecameDirty;
+
         [JsonProperty]
         private readonly List<LessonStage> m_LessonStages;
         
@@ -33,6 +36,7 @@ namespace Lesson.Stages
             for (var i = 0; i < m_LessonStages.Count; i++)
             {
                 m_LessonStages[i].SetNum(i);
+                m_LessonStages[i].BecameDirty += OnBecameDirty;
             }
         }
 
@@ -50,6 +54,8 @@ namespace Lesson.Stages
             LessonStage lessonStage = new LessonStage(m_ShapeActionFactory);
             m_LessonStages.Add(lessonStage);
             lessonStage.SetNum(m_LessonStages.Count - 1);
+            lessonStage.BecameDirty += OnBecameDirty;
+
             return lessonStage;
         }
 
@@ -57,6 +63,8 @@ namespace Lesson.Stages
         {
             lessonStage.ClearActions();
             m_LessonStages.Remove(lessonStage);
+            lessonStage.BecameDirty -= OnBecameDirty;
+
             for (var i = 0; i < m_LessonStages.Count; i++)
             {
                 m_LessonStages[i].SetNum(i);
@@ -65,7 +73,17 @@ namespace Lesson.Stages
 
         public void Clear()
         {
+            foreach (LessonStage lessonStage in m_LessonStages)
+            {
+                lessonStage.BecameDirty -= OnBecameDirty;
+            }
+
             m_LessonStages.Clear();
+        }
+        
+        private void OnBecameDirty()
+        {
+            BecameDirty?.Invoke();
         }
     }
 }

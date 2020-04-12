@@ -15,39 +15,60 @@ namespace Editor.Lesson.Blueprints
         public static VisualElement GetVisualElement(ShapeBlueprint blueprint,
             Action<ShapeBlueprint, VisualElement> deleteAction)
         {
+            VisualElement visualElement = null;
             switch (blueprint)
             {
                 case PointBlueprint pointBlueprint:
-                    return new PointBlueprintEditor(pointBlueprint, deleteAction).GetVisualElement();
+                    visualElement = new PointBlueprintEditor(pointBlueprint, deleteAction).GetVisualElement();
+                    break;
                 case LineBlueprint lineBlueprint:
-                    return new LineBlueprintEditor(lineBlueprint, deleteAction).GetVisualElement();
+                    visualElement = new LineBlueprintEditor(lineBlueprint, deleteAction).GetVisualElement();
+                    break;
                 case PolygonBlueprint polygonBlueprint:
-                    return new PolygonBlueprintEditor(polygonBlueprint, deleteAction).GetVisualElement();
+                    visualElement = new PolygonBlueprintEditor(polygonBlueprint, deleteAction).GetVisualElement();
+                    break;
                 case ParallelepipedBlueprint parallelepipedBlueprint:
-                    return new ParallelepipedBlueprintEditor(parallelepipedBlueprint, deleteAction).GetVisualElement();
+                    visualElement = new ParallelepipedBlueprintEditor(parallelepipedBlueprint, deleteAction).GetVisualElement();
+                    break;
                 case CubeBlueprint cubeBlueprint:
-                    return new CubeBlueprintEditor(cubeBlueprint, deleteAction).GetVisualElement();
+                    visualElement = new CubeBlueprintEditor(cubeBlueprint, deleteAction).GetVisualElement();
+                    break;
                 case PointPerpendicularProjectionBlueprint projectionOnLineBlueprint:
-                    return new PointPerpendicularProjectionBlueprintEditor(projectionOnLineBlueprint, deleteAction).GetVisualElement();
+                    visualElement = new PointPerpendicularProjectionBlueprintEditor(projectionOnLineBlueprint, deleteAction).GetVisualElement();
+                    break;
                 case PointOfIntersectionBlueprint pointOfIntersectionBlueprint:
-                    return new PointOfIntersectionBlueprintEditor(pointOfIntersectionBlueprint, deleteAction).GetVisualElement();
+                    visualElement = new PointOfIntersectionBlueprintEditor(pointOfIntersectionBlueprint, deleteAction).GetVisualElement();
+                    break;
                 case PyramidBlueprint pyramidBlueprint:
-                    return new PyramidBlueprintEditor(pyramidBlueprint, deleteAction).GetVisualElement();
+                    visualElement = new PyramidBlueprintEditor(pyramidBlueprint, deleteAction).GetVisualElement();
+                    break;
                 case RegularPyramidBlueprint regularPyramidBlueprint:
-                    return new RegularPyramidBlueprintEditor(regularPyramidBlueprint, deleteAction).GetVisualElement();
+                    visualElement = new RegularPyramidBlueprintEditor(regularPyramidBlueprint, deleteAction).GetVisualElement();
+                    break;
                 case RegularPrismBlueprint regularPrismBlueprint:
-                    return new RegularPrismBlueprintEditor(regularPrismBlueprint, deleteAction).GetVisualElement();
+                    visualElement = new RegularPrismBlueprintEditor(regularPrismBlueprint, deleteAction).GetVisualElement();
+                    break;
                 case PointIn2DSubspaceBlueprint pointIn2DSubspaceBlueprint:
-                    return new PointIn2DSubspaceBlueprintEditor(pointIn2DSubspaceBlueprint, deleteAction).GetVisualElement();
+                    visualElement = new PointIn2DSubspaceBlueprintEditor(pointIn2DSubspaceBlueprint, deleteAction).GetVisualElement();
+                    break;
                 case PointIn1DSubspaceBlueprint pointIn1DSubspaceBlueprint:
-                    return new PointIn1DSubspaceBlueprintEditor(pointIn1DSubspaceBlueprint, deleteAction).GetVisualElement();
+                    visualElement = new PointIn1DSubspaceBlueprintEditor(pointIn1DSubspaceBlueprint, deleteAction).GetVisualElement();
+                    break;
                 case PointProjectionAlongLineBlueprint pointProjectionAlongLineBlueprint:
-                    return new PointProjectionAlongLineBlueprintEditor(pointProjectionAlongLineBlueprint, deleteAction).GetVisualElement();
+                    visualElement = new PointProjectionAlongLineBlueprintEditor(pointProjectionAlongLineBlueprint, deleteAction).GetVisualElement();
+                    break;
                 case PointProjectionFromPointBlueprint pointProjectionFromPointBlueprint:
-                    return new PointProjectionFromPointBlueprintEditor(pointProjectionFromPointBlueprint, deleteAction).GetVisualElement();
+                    visualElement = new PointProjectionFromPointBlueprintEditor(pointProjectionFromPointBlueprint, deleteAction).GetVisualElement();
+                    break;
             }
+            if (visualElement == null)
+            {
+                return null;
+            }
+            
+            visualElement.AddToClassList("container");
 
-            return null;
+            return visualElement;
         }
     }
 }

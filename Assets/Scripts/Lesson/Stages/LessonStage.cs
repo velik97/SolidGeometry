@@ -12,9 +12,7 @@ namespace Lesson.Stages
     [JsonObject(MemberSerialization.OptIn)]
     public class LessonStage
     {
-        public event Action NameUpdated;
-        public event Action ShapeActionsListUpdated;
-        public event Action NumUpdated;
+        public event Action BecameDirty;
 
         private int m_StageNum;
         [JsonProperty]
@@ -51,7 +49,7 @@ namespace Lesson.Stages
         {
             foreach (ShapeAction shapeAction in m_ShapeActions)
             {
-                shapeAction.ShapeDataUpdated += OnShapeActionsListUpdated;
+                shapeAction.BecameDirty += OnBecameDirty;
             }
             OnDeserialized();
         }
@@ -73,26 +71,27 @@ namespace Lesson.Stages
                 return;
             }
             m_StageNum = num;
-            NumUpdated?.Invoke();
+            BecameDirty?.Invoke();
         }
 
         public void SetName(string stageName)
         {
             m_StageName = stageName;
-            NameUpdated?.Invoke();
+            BecameDirty?.Invoke();
         }
 
         public void SetDescription(string stageDescription)
         {
             m_StageDescription = stageDescription;
+            BecameDirty?.Invoke();
         }
 
         public ShapeAction AddAction(ShapeActionFactory.ShapeActionType shapeActionType)
         {
             ShapeAction shapeAction = m_ShapeActionFactory.CreateShapeAction(shapeActionType);
             m_ShapeActions.Add(shapeAction);
-            shapeAction.ShapeDataUpdated += OnShapeActionsListUpdated;
-            OnShapeActionsListUpdated();
+            shapeAction.BecameDirty += OnBecameDirty;
+            OnBecameDirty();
             return shapeAction;
         }
 
@@ -100,8 +99,8 @@ namespace Lesson.Stages
         {
             m_ShapeActionFactory.Remove(shapeAction);
             m_ShapeActions.Remove(shapeAction);
-            shapeAction.ShapeDataUpdated -= OnShapeActionsListUpdated;
-            OnShapeActionsListUpdated();
+            shapeAction.BecameDirty -= OnBecameDirty;
+            OnBecameDirty();
         }
 
         public void ClearActions()
@@ -109,10 +108,10 @@ namespace Lesson.Stages
             foreach (ShapeAction shapeAction in m_ShapeActions)
             {
                 m_ShapeActionFactory.Remove(shapeAction);
-                shapeAction.ShapeDataUpdated -= OnShapeActionsListUpdated;
+                shapeAction.BecameDirty -= OnBecameDirty;
             }
             m_ShapeActions.Clear();
-            OnShapeActionsListUpdated();
+            OnBecameDirty();
         }
 
         public void ApplyActions()
@@ -137,9 +136,9 @@ namespace Lesson.Stages
             }
         }
 
-        private void OnShapeActionsListUpdated()
+        private void OnBecameDirty()
         {
-            ShapeActionsListUpdated?.Invoke();
+            BecameDirty?.Invoke();
         }
     }
 }

@@ -8,8 +8,7 @@ namespace Lesson.Stages.Actions
     [JsonObject(IsReference = true, MemberSerialization = MemberSerialization.OptIn)]
     public abstract class ShapeAction : CanDependOnShapeBlueprint, IComparable<ShapeAction>
     {
-        public event Action NameUpdated;
-        public event Action ShapeDataUpdated;
+        public event Action BecameDirty;
 
         [JsonProperty]
         protected ShapeData m_ShapeData;
@@ -33,7 +32,7 @@ namespace Lesson.Stages.Actions
             RestoreDependencies();
             if (m_ShapeData != null)
             {
-                m_ShapeData.NameUpdated += OnNameUpdated;
+                m_ShapeData.NameUpdated += OnBecameDirty;
             }
         }
 
@@ -56,15 +55,14 @@ namespace Lesson.Stages.Actions
             }
             if (m_ShapeData != null)
             {
-                m_ShapeData.NameUpdated += OnNameUpdated;
+                m_ShapeData.NameUpdated -= OnBecameDirty;
             }
             m_ShapeData = shapeData;
             if (m_ShapeData != null)
             {
-                m_ShapeData.NameUpdated += OnNameUpdated;
+                m_ShapeData.NameUpdated += OnBecameDirty;
             }
-            ShapeDataUpdated?.Invoke();
-            OnNameUpdated();
+            OnBecameDirty();
         }
 
         public virtual bool HasConflictWith(ShapeAction other)
@@ -91,9 +89,9 @@ namespace Lesson.Stages.Actions
             return -1;
         }
 
-        protected void OnNameUpdated()
+        protected void OnBecameDirty()
         {
-            NameUpdated?.Invoke();
+            BecameDirty?.Invoke();
         }
     }
 }

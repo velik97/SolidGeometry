@@ -9,7 +9,7 @@ namespace Lesson.Validators.LessonStages
         public NoConflictsBetweenShapeActionsValidator(LessonStage lessonStage)
         {
             m_LessonStage = lessonStage;
-            m_LessonStage.ShapeActionsListUpdated += Update;
+            m_LessonStage.BecameDirty += Update;
             Update();
         }
 

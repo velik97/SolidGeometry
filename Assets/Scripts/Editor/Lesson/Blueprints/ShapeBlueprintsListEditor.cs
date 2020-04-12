@@ -16,11 +16,9 @@ namespace Editor.Lesson.Blueprints
         
         // Contains list of blueprint editors
         private VisualElement m_BaseVisualElement;
-        // Contains 'Create' button and debug element with all shape datas
+        // Contains 'Create' button
         private VisualElement m_BottomVisualElement; 
-
-        private Foldout m_DebugElement;
-
+        
         public VisualElement GetVisualElement()
         {
             m_RootVisualElement = new Foldout {text = "Shapes Set"};
@@ -65,14 +63,14 @@ namespace Editor.Lesson.Blueprints
                 return visualElement;
             }
 
-            ToolbarMenu blueprintsList = new ToolbarMenu {text = "Create"};
+            ToolbarMenu blueprintsList = new ToolbarMenu {text = "Create new Blueprint", style = { flexDirection = FlexDirection.Row}};
+            blueprintsList.RemoveFromClassList("unity-toolbar-menu");
+            blueprintsList.AddToClassList("unity-button");
+            blueprintsList.AddToClassList("create");
+
             CreateDropdown(blueprintsList.menu);
             visualElement.Add(blueprintsList);
             
-            m_DebugElement = new Foldout {text = "All Datas"};
-            m_ShapeBlueprintFactory.ShapeDataFactory.ShapesListUpdated += UpdateDebug;
-            visualElement.Add(m_DebugElement);
-            UpdateDebug();
             return visualElement;
         }
 
@@ -92,16 +90,6 @@ namespace Editor.Lesson.Blueprints
                     shapeType.ToString(), 
                     menuAction => CreateBlueprint(shapeType),
                     DropdownMenuAction.AlwaysEnabled);
-            }
-        }
-
-        private void UpdateDebug()
-        {
-            m_DebugElement.Clear();
-            int i = 0;
-            foreach (ShapeData shapeData in m_ShapeBlueprintFactory.ShapeDataFactory.AllDatas)
-            {
-                m_DebugElement.Insert(i++, new Label(shapeData.ToString()));
             }
         }
 

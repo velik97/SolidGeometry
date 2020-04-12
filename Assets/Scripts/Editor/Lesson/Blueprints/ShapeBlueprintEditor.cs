@@ -27,11 +27,12 @@ namespace Editor.Lesson.Blueprints
             VisualElement visualElement = new VisualElement();
 
             m_NameElement = new Foldout {text = Blueprint.MainShapeData.ToString()};
-            m_NameElement.Insert(0, visualElement);
+            m_NameElement.Add(visualElement);
             
             SetBaseVisualElement(visualElement);
             
             m_DeleteButton = new Button(() => m_DeleteAction(Blueprint, m_NameElement));
+            m_DeleteButton.AddToClassList("delete");
             visualElement.Add(m_DeleteButton);
 
             UpdateName();

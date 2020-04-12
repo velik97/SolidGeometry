@@ -1,3 +1,4 @@
+using System;
 using System.Runtime.Serialization;
 using JetBrains.Annotations;
 using Lesson.Shapes.Blueprints;
@@ -26,6 +27,12 @@ namespace Lesson
         public ShapeActionFactory ShapeActionFactory => m_ShapeActionFactory;
         public LessonStageFactory LessonStageFactory => m_LessonStageFactory;
 
+        public event Action DirtinessChanged;
+        
+        private bool m_IsDirty;
+
+        public bool IsDirty => m_IsDirty;
+
         public LessonData()
         {
             m_ShapeDataFactory = new ShapeDataFactory();
@@ -33,6 +40,8 @@ namespace Lesson
             
             m_ShapeActionFactory = new ShapeActionFactory(m_ShapeDataFactory);
             m_LessonStageFactory = new LessonStageFactory(m_ShapeActionFactory);
+            
+            OnDeserialized();
         }
 
         [JsonConstructor]
@@ -45,6 +54,26 @@ namespace Lesson
             m_ShapeBlueprintFactory.SetShapeDataFactory(m_ShapeDataFactory);
             m_ShapeActionFactory.SetShapeDataFactory(m_ShapeDataFactory);
             m_LessonStageFactory.SetShapeActionFactory(m_ShapeActionFactory);
+            
+            OnDeserialized();
+        }
+
+        private void OnDeserialized()
+        {
+            m_ShapeDataFactory.BecameDirty += OnBecameDirty;
+            m_LessonStageFactory.BecameDirty += OnBecameDirty;
+        }
+
+        private void OnBecameDirty()
+        {
+            m_IsDirty = true;
+            DirtinessChanged?.Invoke();
+        }
+
+        public void Saved()
+        {
+            m_IsDirty = false;
+            DirtinessChanged?.Invoke();
         }
     }
 }

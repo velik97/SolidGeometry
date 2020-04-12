@@ -38,7 +38,7 @@ namespace Lesson.Stages.Actions
                 return;
             }
             m_Highlight = highlight;
-            OnNameUpdated();
+            OnBecameDirty();
         }
 
         public override void PreservePreviousState()

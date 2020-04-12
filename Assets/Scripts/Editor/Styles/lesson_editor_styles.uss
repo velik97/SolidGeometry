@@ -1,0 +1,40 @@
+﻿.header {
+    font-size: 24px;
+    -unity-font-style: bold;
+}
+
+.delete {
+    border-left-color: mediumvioletred;
+}
+
+.create {
+    border-left-color: lawngreen;
+}
+
+.save-load-container {
+    margin: 4px;
+    border-left-width: 2px;
+    border-left-color: cornflowerblue;
+}
+
+.blueprints-container {
+    margin: 4px;
+    border-left-width: 2px;
+    border-left-color: cornflowerblue;
+}
+
+.stages-container {
+    margin: 4px;
+    border-left-width: 2px;
+    border-left-color: cornflowerblue;
+}
+
+.container {
+    margin: 4px;
+    border-left-width: 2px;
+    border-left-color: gray;
+}
+
+Toggle {
+    margin-left: 0;
+}

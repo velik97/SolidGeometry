@@ -36,7 +36,7 @@ namespace Lesson.Stages.Actions
             {
                 return;
             }
-            OnNameUpdated();
+            OnBecameDirty();
             m_Active = active;
         }
 

@@ -18,7 +18,7 @@ namespace Editor.Lesson.Stages.Actions
             ShapeAction = shapeAction;
             m_DeleteAction = deleteAction;
 
-            ShapeAction.NameUpdated += UpdateName;
+            ShapeAction.BecameDirty += UpdateName;
         }
 
         public VisualElement GetVisualElement()
@@ -31,6 +31,8 @@ namespace Editor.Lesson.Stages.Actions
             SetBaseVisualElement(visualElement);
 
             m_DeleteButton = new Button(() => m_DeleteAction(ShapeAction, m_NameElement)) {text = "Delete"};
+            m_DeleteButton.AddToClassList("delete");
+
             visualElement.Add(m_DeleteButton);
 
             UpdateName();

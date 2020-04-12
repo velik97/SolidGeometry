@@ -35,7 +35,13 @@ namespace Editor.VisualElementsExtensions
 
             VisualElement firstRow = new VisualElement {style = {flexDirection = FlexDirection.Row}};
             firstRow.Add(m_Label = new Label());
-            firstRow.Add(m_ToolbarMenu = new ToolbarMenu {text = "Change"});
+            
+            m_ToolbarMenu = new ToolbarMenu {text = "Change", style = { flexDirection = FlexDirection.Row}};
+            m_ToolbarMenu.RemoveFromClassList("unity-toolbar-menu");
+            m_ToolbarMenu.AddToClassList("unity-button");
+            
+            firstRow.Add(m_ToolbarMenu);
+            
             Add(firstRow);
 
             IValidator pointNotEmptyValidator =
@@ -43,7 +49,7 @@ namespace Editor.VisualElementsExtensions
             VisualElement validatorField = new ValidatorField(pointNotEmptyValidator);
             Add(validatorField);
 
-            m_DataFactory.ShapesListUpdated += UpdateList;
+            m_DataFactory.BecameDirty += UpdateList;
 
             UpdateList();
             UpdateName();

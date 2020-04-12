@@ -12,6 +12,8 @@ namespace Lesson.Shapes.Datas
     [JsonObject(IsReference = true, MemberSerialization = MemberSerialization.OptIn)]
     public class ShapeDataFactory
     {
+        public event Action BecameDirty;
+
         [JsonProperty]
         private readonly List<PointData> m_PointDatas = new List<PointData>();
         [JsonProperty]
@@ -24,9 +26,6 @@ namespace Lesson.Shapes.Datas
         private readonly ShapeDatasUniquenessValidators m_UniquenessValidators = new ShapeDatasUniquenessValidators();
 
         private IShapeViewFactory m_ShapeViewFactory;
-
-        public event Action ShapesListUpdated;
-
         public IReadOnlyCollection<PointData> PointDatas => m_PointDatas;
 
         public IReadOnlyCollection<ShapeData> AllDatas =>
@@ -109,8 +108,9 @@ namespace Lesson.Shapes.Datas
 
         private void ProcessNewShapeData(ShapeData shapeData)
         {
-            OnShapeListUpdated();
-            shapeData.NameUpdated += OnShapeListUpdated;
+            OnBecameDirty();
+            shapeData.NameUpdated += OnBecameDirty;
+            shapeData.GeometryUpdated += OnBecameDirty;
             m_UniquenessValidators.AddShapeData(shapeData);
             IShapeView view = m_ShapeViewFactory?.RequestShapeView(shapeData);
             if (view != null)
@@ -141,13 +141,13 @@ namespace Lesson.Shapes.Datas
             {
                 m_ShapeViewFactory?.ReleaseView(shapeData.View);
             }
-            shapeData.DestroyData();
-            OnShapeListUpdated();
+            shapeData.DestroyData(); 
+            OnBecameDirty();
         }
 
-        private void OnShapeListUpdated()
+        private void OnBecameDirty()
         {
-            ShapesListUpdated?.Invoke();
+            BecameDirty?.Invoke();
         }
     }
 }

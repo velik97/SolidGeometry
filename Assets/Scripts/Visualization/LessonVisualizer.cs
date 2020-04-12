@@ -4,7 +4,6 @@ using UnityEngine;
 
 namespace Visualization
 {
-    [RequireComponent(typeof(ShapeViewFactory))]
     public class LessonVisualizer : MonoBehaviour
     {
         private IShapeViewFactory m_ViewFactory;

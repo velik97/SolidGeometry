@@ -8,15 +8,19 @@ using Visualization;
 
 namespace Editor.Lesson
 {
-    public class LessonEditor : EditorWindow
+    public class LessonEditor : EditorWindow, ILessonDataCarrier
     {
-        private VisualElement m_RootVisualElement;
+        private Label m_LessonNameLabel;
+        private VisualElement m_RootScroll;
 
-        private LessonFilesListEditor m_LessonFilesListEditor;
+        private LessonFileSaveLoadEditor m_LessonFileSaveLoadEditor;
         private ShapeBlueprintsListEditor m_ShapeBlueprintsListEditor;
         private LessonStagesListEditor m_LessonStagesListEditor;
 
         private LessonData m_LessonData;
+        
+        private string m_LessonName;
+        private bool m_LessonIsDirty;
 
         [MenuItem("Tools/Lessons Editor")]
         public static void ShowWindow()
@@ -29,27 +33,50 @@ namespace Editor.Lesson
 
         private void OnEnable()
         {
-            m_LessonFilesListEditor = new LessonFilesListEditor(GetLessonData, SetLessonData, CreateNewLesson);
+            m_LessonFileSaveLoadEditor = new LessonFileSaveLoadEditor(this);
             m_ShapeBlueprintsListEditor = new ShapeBlueprintsListEditor();
             m_LessonStagesListEditor = new LessonStagesListEditor();
             
-            m_RootVisualElement = new ScrollView();
+            m_RootScroll = new ScrollView();
             rootVisualElement.Clear();
-            rootVisualElement.Add(m_RootVisualElement);
+            rootVisualElement.Add(m_LessonNameLabel = new Label());
+            m_LessonNameLabel.AddToClassList("header");
+            rootVisualElement.Add(m_RootScroll);
+
+            VisualElement lessonSaveLoadEditorElement = m_LessonFileSaveLoadEditor.GetVisualElement();
+            lessonSaveLoadEditorElement.AddToClassList("save-load-container");
             
-            m_RootVisualElement.Add(m_LessonFilesListEditor.GetVisualElement());
-            m_RootVisualElement.Add(m_ShapeBlueprintsListEditor.GetVisualElement());
-            m_RootVisualElement.Add(m_LessonStagesListEditor.GetVisualElement());
+            VisualElement lessonBlueprintsEditorElement = m_ShapeBlueprintsListEditor.GetVisualElement();
+            lessonBlueprintsEditorElement.AddToClassList("blueprints-container");
+            
+            VisualElement lessonStagesEditorElement = m_LessonStagesListEditor.GetVisualElement();
+            lessonStagesEditorElement.AddToClassList("stages-container");
+            
+            m_RootScroll.Add(lessonSaveLoadEditorElement);
+            m_RootScroll.Add(lessonBlueprintsEditorElement);
+            m_RootScroll.Add(lessonStagesEditorElement);
+
+            StyleSheet styleSheet = AssetDatabase.LoadAssetAtPath<StyleSheet>("Assets/Scripts/Editor/Styles/lesson_editor_styles.uss");
+            rootVisualElement.styleSheets.Add(styleSheet);
         }
 
-        private LessonData GetLessonData()
+        public LessonData GetLessonData()
         {
             return m_LessonData;
         }
 
-        private void SetLessonData(LessonData lessonData)
+        public void SetLessonData(LessonData lessonData, string lessonName)
         {
+            if (m_LessonData != null)
+            {
+                m_LessonData.DirtinessChanged -= UpdateLessonName;
+            }
             m_LessonData = lessonData;
+            m_LessonData.DirtinessChanged += UpdateLessonName;
+
+            m_LessonName = lessonName;
+            m_LessonIsDirty = !m_LessonData.IsDirty;
+            UpdateLessonName();
 
             m_ShapeBlueprintsListEditor.OnTargetChosen(m_LessonData.ShapeBlueprintFactory);
             m_LessonStagesListEditor.OnTargetChosen(m_LessonData.LessonStageFactory);
@@ -61,9 +88,21 @@ namespace Editor.Lesson
             }
         }
 
-        private void CreateNewLesson()
+        public void CreateNewLesson(string lessonName)
         {
-            SetLessonData(new LessonData());
+            SetLessonData(new LessonData(), lessonName);
         }
+
+        private void UpdateLessonName()
+        {
+            if (m_LessonData.IsDirty == m_LessonIsDirty)
+            {
+                return;
+            }
+
+            m_LessonIsDirty = m_LessonData.IsDirty;
+
+            m_LessonNameLabel.text = m_LessonName + (m_LessonIsDirty ? "*" : "");
+    }
     }
 }

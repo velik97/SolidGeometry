@@ -26,8 +26,8 @@ namespace Editor.Lesson.Stages
             m_Stage = stage;
             m_DeleteAction = deleteAction;
 
-            m_Stage.NameUpdated += UpdateName;
-            m_Stage.NumUpdated += UpdateName;
+            m_Stage.BecameDirty += UpdateName;
+            m_Stage.BecameDirty += UpdateName;
         }
 
         public VisualElement GetVisualElement()
@@ -40,11 +40,15 @@ namespace Editor.Lesson.Stages
             visualElement.Add(GetNameFieldVisualElement());
             visualElement.Add(GeDescriptionFieldVisualElement());
 
-            visualElement.Add(GetShapeActionsListVisualElement());
-            visualElement.Add(new ValidatorField(m_Stage.NoConflictsBetweenShapeActionsValidator));
-            visualElement.Add(GetCreateShapeActionVisualElement());
+            VisualElement actionsElement = new Foldout {text = "Actions"};
+            actionsElement.Add(GetShapeActionsListVisualElement());
+            actionsElement.Add(new ValidatorField(m_Stage.NoConflictsBetweenShapeActionsValidator));
+            actionsElement.Add(GetCreateShapeActionVisualElement());
+            visualElement.Add(actionsElement);
             
             visualElement.Add(GetDeleteStageVisualElement());
+            
+            m_NameElement.AddToClassList("container");
 
             UpdateName();
             return m_NameElement;
@@ -71,7 +75,7 @@ namespace Editor.Lesson.Stages
 
         private VisualElement GetShapeActionsListVisualElement()
         {
-            m_ShapeActionsListVisualElement = new Foldout {text = "Actions"};
+            m_ShapeActionsListVisualElement = new VisualElement();
             foreach (ShapeAction shapeAction in m_Stage.ShapeActions)
             {
                 VisualElement visualElement = ShapeActionEditorFactory.GetVisualElement(shapeAction, RemoveShapeAction);
@@ -82,7 +86,10 @@ namespace Editor.Lesson.Stages
 
         private VisualElement GetCreateShapeActionVisualElement()
         {
-            ToolbarMenu shapeActionTypesList = new ToolbarMenu {text = "Create Action"};
+            ToolbarMenu shapeActionTypesList = new ToolbarMenu {text = "Add Action", style = { flexDirection = FlexDirection.Row}};
+            shapeActionTypesList.RemoveFromClassList("unity-toolbar-menu");
+            shapeActionTypesList.AddToClassList("unity-button");
+            shapeActionTypesList.AddToClassList("create");
 
             foreach (ShapeActionFactory.ShapeActionType actionType in Enum
                 .GetValues(typeof(ShapeActionFactory.ShapeActionType))
@@ -113,6 +120,8 @@ namespace Editor.Lesson.Stages
         private VisualElement GetDeleteStageVisualElement()
         {
             Button deleteButton = new Button(() => m_DeleteAction(m_Stage, m_NameElement)) {text = "Delete"};
+            deleteButton.AddToClassList("delete");
+
             return deleteButton;
         }
 

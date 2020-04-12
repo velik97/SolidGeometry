@@ -35,7 +35,10 @@ namespace Editor.Lesson.Blueprints.BaseShapes
 
             VisualElement buttonsScope = new VisualElement {style = {flexDirection = FlexDirection.Row}};
             Button createNewPointButton = new Button(AddPoint) {text = "Add point"};
+            createNewPointButton.AddToClassList("create");
+            
             m_DeleteButton = new Button(RemoveLastPoint);
+            m_DeleteButton.AddToClassList("delete");
 
             buttonsScope.Add(m_DeleteButton);
             buttonsScope.Add(createNewPointButton);

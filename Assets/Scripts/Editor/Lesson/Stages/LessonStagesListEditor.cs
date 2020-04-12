@@ -65,7 +65,9 @@ namespace Editor.Lesson.Stages
                 return visualElement;
             }
 
-            Button createButton = new Button(CreateStage) {text = "Create new"};
+            Button createButton = new Button(CreateStage) {text = "Create new Stage"};
+            createButton.AddToClassList("create");
+
             visualElement.Add(createButton);
             
             return visualElement;
