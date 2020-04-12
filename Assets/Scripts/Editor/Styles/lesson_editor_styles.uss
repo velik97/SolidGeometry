@@ -4,11 +4,13 @@
 }
 
 .delete {
-    border-left-color: mediumvioletred;
+    border-left-color: orangered;
+    border-left-width: 2px;
 }
 
 .create {
     border-left-color: limegreen;
+    border-left-width: 3px;
 }
 
 .validator {
@@ -19,7 +21,7 @@
 
 .save-load-container {
     margin: 4px;
-    border-left-width: 2px;
+    border-left-width: 3px;
     border-left-color: limegreen;
 }
 
