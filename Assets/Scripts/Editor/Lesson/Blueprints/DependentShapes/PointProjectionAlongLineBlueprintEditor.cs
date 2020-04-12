@@ -23,40 +23,54 @@ namespace Editor.Lesson.Blueprints.DependentShapes
             visualElement.Add(new ValidatorField(Blueprint.PointData.NameNotEmptyValidator));
             visualElement.Add(new ValidatorField(Blueprint.PointData.NameUniquenessValidator));
             visualElement.Add(new ValidatorField(Blueprint.PointData.PositionUniquenessValidator));
-            
-            visualElement.Add(new ChoseShapeDataField<PointData>(
-                Blueprint.ShapeDataFactory,
-                Blueprint,
-                "First Point On Line: ",
-                () => Blueprint.FirstPointOnLine,
-                pointData => Blueprint.SetFirstPointOnLine(pointData)));
-            visualElement.Add(new ChoseShapeDataField<PointData>(
-                Blueprint.ShapeDataFactory,
-                Blueprint,
-                "Second point On Line: ",
-                () => Blueprint.SecondPointOnLine,
-                pointData => Blueprint.SetSecondPointOnLine(pointData)));
+
+            // Projection point
             visualElement.Add(new ChoseShapeDataField<PointData>(
                 Blueprint.ShapeDataFactory,
                 Blueprint,
                 "Projected point: ",
                 () => Blueprint.ProjectedPoint,
                 pointData => Blueprint.SetProjectedPoint(pointData)));
-            visualElement.Add(new ChoseShapeDataField<PointData>(
-                Blueprint.ShapeDataFactory,
-                Blueprint,
-                "First point Along: ",
-                () => Blueprint.FirstPointAlong,
-                pointData => Blueprint.SetFirstPointAlong(pointData)));
-            visualElement.Add(new ChoseShapeDataField<PointData>(
-                Blueprint.ShapeDataFactory,
-                Blueprint,
-                "Second point Along: ",
-                () => Blueprint.SecondPointAlong,
-                pointData => Blueprint.SetSecondPointAlong(pointData)));
             
+            // Target line
+            Label targetLineLabel = new Label("Target Line");
+            targetLineLabel.AddToClassList("sub-header");
+            visualElement.Add(targetLineLabel);
+            
+            visualElement.Add(new ChoseShapeDataField<PointData>(
+                Blueprint.ShapeDataFactory,
+                Blueprint,
+                "1-st Point: ",
+                () => Blueprint.FirstPointOnTargetLine,
+                pointData => Blueprint.SetFirstPointOnTargetLine(pointData)));
+            visualElement.Add(new ChoseShapeDataField<PointData>(
+                Blueprint.ShapeDataFactory,
+                Blueprint,
+                "2-nd Point: ",
+                () => Blueprint.SecondPointOnTargetLine,
+                pointData => Blueprint.SetSecondPointTargetOnLine(pointData)));
+            visualElement.Add(new ValidatorField(Blueprint.TargetPointsNotSameValidator));
+            
+            // Parallel point
+            Label parallelLineLabel = new Label("Parallel Line");
+            parallelLineLabel.AddToClassList("sub-header");
+            visualElement.Add(parallelLineLabel);
+
+            visualElement.Add(new ChoseShapeDataField<PointData>(
+                Blueprint.ShapeDataFactory,
+                Blueprint,
+                "1-st Point: ",
+                () => Blueprint.FirstPointOnParallelLine,
+                pointData => Blueprint.SetFirstPointOnParallelLine(pointData)));
+            visualElement.Add(new ChoseShapeDataField<PointData>(
+                Blueprint.ShapeDataFactory,
+                Blueprint,
+                "2-nd Point: ",
+                () => Blueprint.SecondPointOnParallelLine,
+                pointData => Blueprint.SetSecondPointOnParallelLine(pointData)));
+            visualElement.Add(new ValidatorField(Blueprint.ParallelPointsNotSameValidator));
+
             visualElement.Add(new ValidatorField(Blueprint.ProjectionAlongLineValidator));
-            visualElement.Add(new ValidatorField(Blueprint.PointsNotSameValidator));
         }
     }
 }

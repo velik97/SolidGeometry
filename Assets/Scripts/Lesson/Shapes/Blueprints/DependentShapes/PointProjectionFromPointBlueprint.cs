@@ -16,16 +16,23 @@ namespace Lesson.Shapes.Blueprints.DependentShapes
     [JsonObject(IsReference = true, MemberSerialization = MemberSerialization.OptIn)]
     public class PointProjectionFromPointBlueprint : ShapeBlueprint
     {
-        [JsonProperty] public readonly PointData PointData;
+        [JsonProperty]
+        public readonly PointData PointData;
 
-        [JsonProperty] private PointData m_ProjectedPoint;
-        [JsonProperty] private PointData m_SecondPointOnLine;
-        [JsonProperty] private PointData m_FirstPointOnLine;
-        [JsonProperty] private PointData m_PointAlong;
+        [JsonProperty]
+        private PointData m_ProjectedPoint;
+        [JsonProperty]
+        private PointData m_SourcePoint;
+        [JsonProperty]
+        private PointData m_FirstPointOnTargetLine;
+        [JsonProperty]
+        private PointData m_SecondPointOnTargetLine;
+
         public PointData ProjectedPoint => m_ProjectedPoint;
-        public PointData SecondPointOnLine => m_SecondPointOnLine;
-        public PointData FirstPointOnLine => m_FirstPointOnLine;
-        public PointData PointAlong => m_PointAlong;
+        public PointData FirstPointOnTargetLine => m_FirstPointOnTargetLine;
+        public PointData SecondPointOnTargetLine => m_SecondPointOnTargetLine;
+
+        public PointData SourcePoint => m_SourcePoint;
     
 
         public PointsNotSameValidator PointsNotSameValidator;
@@ -47,14 +54,14 @@ namespace Lesson.Shapes.Blueprints.DependentShapes
         [OnDeserialized, UsedImplicitly]
         private void OnDeserialized(StreamingContext context)
         {
-            if (m_FirstPointOnLine != null)
+            if (m_FirstPointOnTargetLine != null)
             {
-                m_FirstPointOnLine.GeometryUpdated += UpdatePosition;
+                m_FirstPointOnTargetLine.GeometryUpdated += UpdatePosition;
             }
 
-            if (m_SecondPointOnLine != null)
+            if (m_SecondPointOnTargetLine != null)
             {
-                m_SecondPointOnLine.GeometryUpdated += UpdatePosition;
+                m_SecondPointOnTargetLine.GeometryUpdated += UpdatePosition;
             }
             
             if (m_ProjectedPoint != null)
@@ -62,9 +69,9 @@ namespace Lesson.Shapes.Blueprints.DependentShapes
                 m_ProjectedPoint.GeometryUpdated += UpdatePosition;
             }
 
-            if (m_PointAlong != null)
+            if (m_SourcePoint != null)
             {
-                m_PointAlong.GeometryUpdated += UpdatePosition;
+                m_SourcePoint.GeometryUpdated += UpdatePosition;
             }
             
             RestoreDependencies();
@@ -85,9 +92,9 @@ namespace Lesson.Shapes.Blueprints.DependentShapes
         private IEnumerable<PointData> EnumeratePoints()
         {
             yield return m_ProjectedPoint;
-            yield return m_SecondPointOnLine;
-            yield return m_FirstPointOnLine;
-            yield return m_PointAlong;
+            yield return m_SecondPointOnTargetLine;
+            yield return m_FirstPointOnTargetLine;
+            yield return m_SourcePoint;
         }
 
         public void SetProjectedPoint(PointData pointData)
@@ -110,65 +117,65 @@ namespace Lesson.Shapes.Blueprints.DependentShapes
 
             UpdatePosition();
         }
-
-        public void SetSecondPointOnLine(PointData pointData)
+        
+        public void SetSourcePoint(PointData pointData)
         {
-            if (m_SecondPointOnLine == pointData)
+            if (m_SourcePoint == pointData)
             {
                 return;
             }
 
-            if (m_SecondPointOnLine != null)
+            if (m_SourcePoint != null)
             {
-                m_SecondPointOnLine.GeometryUpdated -= UpdatePosition;
+                m_SourcePoint.GeometryUpdated -= UpdatePosition;
             }
 
-            m_SecondPointOnLine = pointData;
-            if (m_SecondPointOnLine != null)
+            m_SourcePoint = pointData;
+            if (m_SourcePoint != null)
             {
-                m_SecondPointOnLine.GeometryUpdated += UpdatePosition;
-            }
-
-            UpdatePosition();
-        }
-
-        public void SetFirstPointOnLine(PointData pointData)
-        {
-            if (m_FirstPointOnLine == pointData)
-            {
-                return;
-            }
-
-            if (m_FirstPointOnLine != null)
-            {
-                m_FirstPointOnLine.GeometryUpdated -= UpdatePosition;
-            }
-
-            m_FirstPointOnLine = pointData;
-            if (m_FirstPointOnLine != null)
-            {
-                m_FirstPointOnLine.GeometryUpdated += UpdatePosition;
+                m_SourcePoint.GeometryUpdated += UpdatePosition;
             }
 
             UpdatePosition();
         }
         
-        public void SetPointAlong(PointData pointData)
+        public void SetFirstPointOnTargetLine(PointData pointData)
         {
-            if (m_PointAlong == pointData)
+            if (m_FirstPointOnTargetLine == pointData)
             {
                 return;
             }
 
-            if (m_PointAlong != null)
+            if (m_FirstPointOnTargetLine != null)
             {
-                m_PointAlong.GeometryUpdated -= UpdatePosition;
+                m_FirstPointOnTargetLine.GeometryUpdated -= UpdatePosition;
             }
 
-            m_PointAlong = pointData;
-            if (m_PointAlong != null)
+            m_FirstPointOnTargetLine = pointData;
+            if (m_FirstPointOnTargetLine != null)
             {
-                m_PointAlong.GeometryUpdated += UpdatePosition;
+                m_FirstPointOnTargetLine.GeometryUpdated += UpdatePosition;
+            }
+
+            UpdatePosition();
+        }
+
+        public void SetSecondPointOnTargetLine(PointData pointData)
+        {
+            if (m_SecondPointOnTargetLine == pointData)
+            {
+                return;
+            }
+
+            if (m_SecondPointOnTargetLine != null)
+            {
+                m_SecondPointOnTargetLine.GeometryUpdated -= UpdatePosition;
+            }
+
+            m_SecondPointOnTargetLine = pointData;
+            if (m_SecondPointOnTargetLine != null)
+            {
+                m_SecondPointOnTargetLine.GeometryUpdated += UpdatePosition;
             }
 
             UpdatePosition();
@@ -182,15 +189,15 @@ namespace Lesson.Shapes.Blueprints.DependentShapes
                 return;
             }
 
-            if (m_FirstPointOnLine == null || m_ProjectedPoint == null || m_SecondPointOnLine == null || m_PointAlong == null )
+            if (m_FirstPointOnTargetLine == null || m_ProjectedPoint == null || m_SecondPointOnTargetLine == null || m_SourcePoint == null )
             {
                 return;
             }
             
-            PointData.SetPosition(GeometryUtils.PointOfIntersection(m_PointAlong.Position, 
+            PointData.SetPosition(GeometryUtils.PointOfIntersection(m_SourcePoint.Position, 
                 m_ProjectedPoint.Position, 
-                m_FirstPointOnLine.Position, 
-                m_SecondPointOnLine.Position));
+                m_FirstPointOnTargetLine.Position, 
+                m_SecondPointOnTargetLine.Position));
         }
     }
 }

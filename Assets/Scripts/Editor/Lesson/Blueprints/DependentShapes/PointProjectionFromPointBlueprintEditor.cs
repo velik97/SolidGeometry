@@ -27,30 +27,38 @@ namespace Editor.Lesson.Blueprints.DependentShapes
             visualElement.Add(new ValidatorField(Blueprint.PointData.NameUniquenessValidator));
             visualElement.Add(new ValidatorField(Blueprint.PointData.PositionUniquenessValidator));
             
+            // Projection point
             visualElement.Add(new ChoseShapeDataField<PointData>(
                 Blueprint.ShapeDataFactory,
                 Blueprint,
-                "First Point On Line: ",
-                () => Blueprint.FirstPointOnLine,
-                pointData => Blueprint.SetFirstPointOnLine(pointData)));
-            visualElement.Add(new ChoseShapeDataField<PointData>(
-                Blueprint.ShapeDataFactory,
-                Blueprint,
-                "Second point On Line: ",
-                () => Blueprint.SecondPointOnLine,
-                pointData => Blueprint.SetSecondPointOnLine(pointData)));
-            visualElement.Add(new ChoseShapeDataField<PointData>(
-                Blueprint.ShapeDataFactory,
-                Blueprint,
-                "Projected point: ",
+                "Projected Point: ",
                 () => Blueprint.ProjectedPoint,
                 pointData => Blueprint.SetProjectedPoint(pointData)));
+            // Source point
             visualElement.Add(new ChoseShapeDataField<PointData>(
                 Blueprint.ShapeDataFactory,
                 Blueprint,
-                "Point Along: ",
-                () => Blueprint.PointAlong,
-                pointData => Blueprint.SetPointAlong(pointData)));
+                "Source Point: ",
+                () => Blueprint.SourcePoint,
+                pointData => Blueprint.SetSourcePoint(pointData)));
+            
+            // Target line
+            Label targetLineLabel = new Label("Target Line");
+            targetLineLabel.AddToClassList("sub-header");
+            visualElement.Add(targetLineLabel);
+            
+            visualElement.Add(new ChoseShapeDataField<PointData>(
+                Blueprint.ShapeDataFactory,
+                Blueprint,
+                "1-st Point: ",
+                () => Blueprint.FirstPointOnTargetLine,
+                pointData => Blueprint.SetFirstPointOnTargetLine(pointData)));
+            visualElement.Add(new ChoseShapeDataField<PointData>(
+                Blueprint.ShapeDataFactory,
+                Blueprint,
+                "2-nd Point: ",
+                () => Blueprint.SecondPointOnTargetLine,
+                pointData => Blueprint.SetSecondPointOnTargetLine(pointData)));
 
             visualElement.Add(new ValidatorField(Blueprint.PointsNotSameValidator));
 

@@ -27,6 +27,7 @@ namespace Editor.Lesson.Blueprints
             VisualElement visualElement = new VisualElement();
 
             m_NameElement = new Foldout {text = Blueprint.MainShapeData.ToString()};
+            m_NameElement.AddToClassList("sub-header-1");
             m_NameElement.Add(visualElement);
             
             SetBaseVisualElement(visualElement);

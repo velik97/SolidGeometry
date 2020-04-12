@@ -20,10 +20,6 @@ namespace Editor.Lesson.Blueprints.DependentShapes
             nameField.RegisterCallback<ChangeEvent<string>>(evt => Blueprint.PointData.SetName(evt.newValue));
             visualElement.Add(nameField);
 
-            FloatField coefField = new FloatField("Coefficient: ") {value = Blueprint.Coefficient};
-            coefField.RegisterCallback<ChangeEvent<float>>(evt => Blueprint.SetCoefficient(evt.newValue));
-            visualElement.Add(coefField);
-            
             visualElement.Add(new ValidatorField(Blueprint.PointData.NameNotEmptyValidator));
             visualElement.Add(new ValidatorField(Blueprint.PointData.NameUniquenessValidator));
             visualElement.Add(new ValidatorField(Blueprint.PointData.PositionUniquenessValidator));
@@ -42,6 +38,9 @@ namespace Editor.Lesson.Blueprints.DependentShapes
                 pointData => Blueprint.SetSecondPoint(pointData)));
             visualElement.Add(new ValidatorField(Blueprint.PointsNotSameValidator));
 
+            FloatField coefField = new FloatField("Coefficient: ") {value = Blueprint.Coefficient};
+            coefField.RegisterCallback<ChangeEvent<float>>(evt => Blueprint.SetCoefficient(evt.newValue));
+            visualElement.Add(coefField);
         }
     }
 }

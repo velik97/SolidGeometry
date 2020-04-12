@@ -1,9 +1,19 @@
 ﻿.header {
-    margin: 2px;
     font-size: 24px;
     -unity-font-style: bold;
+    margin: 2px;
     border-bottom-width: 2px;
     border-bottom-color: dimgray;
+}
+
+.unity-toggle__text {
+    font-size: 14px;
+    -unity-font-style: bold;
+}
+
+.sub-header {
+    font-size: 12px;
+    -unity-font-style: bold;
 }
 
 .delete {
@@ -19,7 +29,7 @@
 .validator {
     border-width: 1px;
     color: dimgray;
-    border-left-color: orangered;
+    border-right-color: mediumvioletred;
 }
 
 .save-load-container {

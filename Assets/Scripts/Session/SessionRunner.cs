@@ -12,12 +12,16 @@ namespace Session
     public class SessionRunner : MonoBehaviourCompositeDisposable
     {
         // ================= For debug, should be taken from other place =================
-        [SerializeField] private string m_LessonFileName;
+        [SerializeField]
+        private string m_LessonFileName;
         // ================= For debug, should be taken from other place =================
 
-        [SerializeField] private SessionUIConfig m_UIConfig;
-        [SerializeField] private Transform m_ShapesAnchor;
-        [SerializeField] private Transform m_ShapesPivot;
+        [SerializeField]
+        private SessionUIConfig m_UIConfig;
+        [SerializeField]
+        private Transform m_ShapesAnchor;
+        [SerializeField]
+        private Transform m_ShapesPivot;
 
         private LessonBrowser m_LessonBrowser;
         public LessonBrowser LessonBrowser => m_LessonBrowser;

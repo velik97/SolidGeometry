@@ -887,13 +887,13 @@
         "PointData": {
           "$ref": "13"
         },
-        "m_SourcePointData": {
+        "m_ProjectedPoint": {
           "$ref": "12"
         },
-        "m_FirstPointOnLine": {
+        "m_FirstPointOnTargetLine": {
           "$ref": "3"
         },
-        "m_SecondPointOnLine": {
+        "m_SecondPointOnTargetLine": {
           "$ref": "7"
         },
         "DependenciesOnOtherShapes": [
@@ -914,13 +914,13 @@
         "PointData": {
           "$ref": "14"
         },
-        "m_SourcePointData": {
+        "m_ProjectedPoint": {
           "$ref": "11"
         },
-        "m_FirstPointOnLine": {
+        "m_FirstPointOnTargetLine": {
           "$ref": "2"
         },
-        "m_SecondPointOnLine": {
+        "m_SecondPointOnTargetLine": {
           "$ref": "6"
         },
         "DependenciesOnOtherShapes": [
@@ -1205,16 +1205,16 @@
         "m_ProjectedPoint": {
           "$ref": "11"
         },
-        "m_SecondPointOnLine": {
-          "$ref": "9"
-        },
-        "m_FirstPointOnLine": {
+        "m_FirstPointOnTargetLine": {
           "$ref": "6"
         },
-        "m_FirstPointAlong": {
+        "m_SecondPointOnTargetLine": {
+          "$ref": "9"
+        },
+        "m_FirstPointOnParallelLine": {
           "$ref": "16"
         },
-        "m_SecondPointAlong": {
+        "m_SecondPointOnParallelLine": {
           "$ref": "12"
         },
         "DependenciesOnOtherShapes": [
@@ -1268,16 +1268,16 @@
         "m_ProjectedPoint": {
           "$ref": "11"
         },
-        "m_SecondPointOnLine": {
-          "$ref": "9"
-        },
-        "m_FirstPointOnLine": {
+        "m_FirstPointOnTargetLine": {
           "$ref": "5"
         },
-        "m_FirstPointAlong": {
+        "m_SecondPointOnTargetLine": {
+          "$ref": "9"
+        },
+        "m_FirstPointOnParallelLine": {
           "$ref": "12"
         },
-        "m_SecondPointAlong": {
+        "m_SecondPointOnParallelLine": {
           "$ref": "18"
         },
         "DependenciesOnOtherShapes": [
@@ -1322,16 +1322,16 @@
         "m_ProjectedPoint": {
           "$ref": "20"
         },
-        "m_SecondPointOnLine": {
-          "$ref": "4"
-        },
-        "m_FirstPointOnLine": {
+        "m_FirstPointOnTargetLine": {
           "$ref": "5"
         },
-        "m_FirstPointAlong": {
+        "m_SecondPointOnTargetLine": {
+          "$ref": "4"
+        },
+        "m_FirstPointOnParallelLine": {
           "$ref": "16"
         },
-        "m_SecondPointAlong": {
+        "m_SecondPointOnParallelLine": {
           "$ref": "17"
         },
         "DependenciesOnOtherShapes": [

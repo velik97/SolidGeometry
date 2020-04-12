@@ -24,24 +24,31 @@ namespace Editor.Lesson.Blueprints.DependentShapes
             visualElement.Add(new ValidatorField(Blueprint.PointData.NameUniquenessValidator));
             visualElement.Add(new ValidatorField(Blueprint.PointData.PositionUniquenessValidator));
             
+            // Projection point
             visualElement.Add(new ChoseShapeDataField<PointData>(
                 Blueprint.ShapeDataFactory,
                 Blueprint,
-                "Source point: ",
-                () => Blueprint.SourcePointData,
-                pointData => Blueprint.SetSourcePoint(pointData)));
+                "Projected point: ",
+                () => Blueprint.ProjectedPoint,
+                pointData => Blueprint.SetProjectedPoint(pointData)));
+            
+            // Target line
+            Label targetLineLabel = new Label("Target Line");
+            targetLineLabel.AddToClassList("sub-header");
+            visualElement.Add(targetLineLabel);
+            
             visualElement.Add(new ChoseShapeDataField<PointData>(
                 Blueprint.ShapeDataFactory,
                 Blueprint,
-                "First point on line: ",
-                () => Blueprint.FirstPointOnLine,
-                pointData => Blueprint.SetFirstPointOnLine(pointData)));
+                "1-st Point: ",
+                () => Blueprint.FirstPointOnTargetLine,
+                pointData => Blueprint.SetFirstPointOnTargetLine(pointData)));
             visualElement.Add(new ChoseShapeDataField<PointData>(
                 Blueprint.ShapeDataFactory,
                 Blueprint,
-                "Second point on line: ",
-                () => Blueprint.SecondPointOnLine,
-                pointData => Blueprint.SetSecondPointOnLine(pointData)));
+                "2-nd Point: ",
+                () => Blueprint.SecondPointOnTargetLine,
+                pointData => Blueprint.SetSecondPointOnTargetLine(pointData)));
             visualElement.Add(new ValidatorField(Blueprint.PointsNotSameValidator));
         }
     }

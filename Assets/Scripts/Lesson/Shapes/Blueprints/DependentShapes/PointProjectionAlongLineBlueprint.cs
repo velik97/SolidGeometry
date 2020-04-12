@@ -19,18 +19,19 @@ namespace Lesson.Shapes.Blueprints.DependentShapes
         [JsonProperty] public readonly PointData PointData;
 
         [JsonProperty] private PointData m_ProjectedPoint;
-        [JsonProperty] private PointData m_SecondPointOnLine;
-        [JsonProperty] private PointData m_FirstPointOnLine;
-        [JsonProperty] private PointData m_FirstPointAlong;
-        [JsonProperty] private PointData m_SecondPointAlong;
+        [JsonProperty] private PointData m_FirstPointOnTargetLine;
+        [JsonProperty] private PointData m_SecondPointOnTargetLine;
+        [JsonProperty] private PointData m_FirstPointOnParallelLine;
+        [JsonProperty] private PointData m_SecondPointOnParallelLine;
     
         public PointData ProjectedPoint => m_ProjectedPoint;
-        public PointData SecondPointOnLine => m_SecondPointOnLine;
-        public PointData FirstPointOnLine => m_FirstPointOnLine;
-        public PointData FirstPointAlong => m_FirstPointAlong;
-        public PointData SecondPointAlong => m_SecondPointAlong;
+        public PointData FirstPointOnTargetLine => m_FirstPointOnTargetLine;
+        public PointData SecondPointOnTargetLine => m_SecondPointOnTargetLine;
+        public PointData FirstPointOnParallelLine => m_FirstPointOnParallelLine;
+        public PointData SecondPointOnParallelLine => m_SecondPointOnParallelLine;
         
-        public PointsNotSameValidator PointsNotSameValidator;
+        public PointsNotSameValidator TargetPointsNotSameValidator;
+        public PointsNotSameValidator ParallelPointsNotSameValidator;
         public ProjectionAlongLineValidator ProjectionAlongLineValidator;
 
         public override ShapeData MainShapeData => PointData;
@@ -50,14 +51,14 @@ namespace Lesson.Shapes.Blueprints.DependentShapes
         [OnDeserialized, UsedImplicitly]
         private void OnDeserialized(StreamingContext context)
         {
-            if (m_FirstPointOnLine != null)
+            if (m_FirstPointOnTargetLine != null)
             {
-                m_FirstPointOnLine.GeometryUpdated += UpdatePosition;
+                m_FirstPointOnTargetLine.GeometryUpdated += UpdatePosition;
             }
 
-            if (m_SecondPointOnLine != null)
+            if (m_SecondPointOnTargetLine != null)
             {
-                m_SecondPointOnLine.GeometryUpdated += UpdatePosition;
+                m_SecondPointOnTargetLine.GeometryUpdated += UpdatePosition;
             }
             
             if (m_ProjectedPoint != null)
@@ -65,14 +66,14 @@ namespace Lesson.Shapes.Blueprints.DependentShapes
                 m_ProjectedPoint.GeometryUpdated += UpdatePosition;
             }
 
-            if (m_SecondPointAlong != null)
+            if (m_SecondPointOnParallelLine != null)
             {
-                m_SecondPointAlong.GeometryUpdated += UpdatePosition;
+                m_SecondPointOnParallelLine.GeometryUpdated += UpdatePosition;
             }
             
-            if (m_FirstPointAlong != null)
+            if (m_FirstPointOnParallelLine != null)
             {
-                m_FirstPointAlong.GeometryUpdated += UpdatePosition;
+                m_FirstPointOnParallelLine.GeometryUpdated += UpdatePosition;
             }
 
             RestoreDependencies();
@@ -84,7 +85,9 @@ namespace Lesson.Shapes.Blueprints.DependentShapes
             PointData.SourceBlueprint = this;
             MyShapeDatas.Add(PointData);
 
-            PointsNotSameValidator = new PointsNotSameValidator(EnumeratePoints());
+            TargetPointsNotSameValidator = new PointsNotSameValidator(EnumerateTargetPoints());
+            ParallelPointsNotSameValidator = new PointsNotSameValidator(EnumerateParallelPoints());
+            
             PointData.NameUpdated += OnNameUpdated;
 
             ProjectionAlongLineValidator = new ProjectionAlongLineValidator(this);
@@ -92,13 +95,18 @@ namespace Lesson.Shapes.Blueprints.DependentShapes
             UpdatePosition();
         }
 
-        private IEnumerable<PointData> EnumeratePoints()
+        private IEnumerable<PointData> EnumerateTargetPoints()
         {
             yield return m_ProjectedPoint;
-            yield return m_SecondPointOnLine;
-            yield return m_FirstPointOnLine;
-            yield return m_FirstPointAlong;
-            yield return m_SecondPointAlong;
+            yield return m_FirstPointOnTargetLine;
+            yield return m_SecondPointOnTargetLine;
+        }
+        
+        private IEnumerable<PointData> EnumerateParallelPoints()
+        {
+            yield return m_ProjectedPoint;
+            yield return m_FirstPointOnParallelLine;
+            yield return m_SecondPointOnParallelLine;
         }
 
         public void SetProjectedPoint(PointData pointData)
@@ -121,85 +129,85 @@ namespace Lesson.Shapes.Blueprints.DependentShapes
 
             UpdatePosition();
         }
-
-        public void SetSecondPointOnLine(PointData pointData)
-        {
-            if (m_SecondPointOnLine == pointData)
-            {
-                return;
-            }
-
-            if (m_SecondPointOnLine != null)
-            {
-                m_SecondPointOnLine.GeometryUpdated -= UpdatePosition;
-            }
-
-            m_SecondPointOnLine = pointData;
-            if (m_SecondPointOnLine != null)
-            {
-                m_SecondPointOnLine.GeometryUpdated += UpdatePosition;
-            }
-
-            UpdatePosition();
-        }
-
-        public void SetFirstPointOnLine(PointData pointData)
-        {
-            if (m_FirstPointOnLine == pointData)
-            {
-                return;
-            }
-
-            if (m_FirstPointOnLine != null)
-            {
-                m_FirstPointOnLine.GeometryUpdated -= UpdatePosition;
-            }
-
-            m_FirstPointOnLine = pointData;
-            if (m_FirstPointOnLine != null)
-            {
-                m_FirstPointOnLine.GeometryUpdated += UpdatePosition;
-            }
-
-            UpdatePosition();
-        }
         
-        public void SetFirstPointAlong(PointData pointData)
+        public void SetFirstPointOnTargetLine(PointData pointData)
         {
-            if (m_FirstPointAlong == pointData)
+            if (m_FirstPointOnTargetLine == pointData)
             {
                 return;
             }
 
-            if (m_FirstPointAlong != null)
+            if (m_FirstPointOnTargetLine != null)
             {
-                m_FirstPointAlong.GeometryUpdated -= UpdatePosition;
+                m_FirstPointOnTargetLine.GeometryUpdated -= UpdatePosition;
             }
 
-            m_FirstPointAlong = pointData;
-            if (m_FirstPointAlong != null)
+            m_FirstPointOnTargetLine = pointData;
+            if (m_FirstPointOnTargetLine != null)
             {
-                m_FirstPointAlong.GeometryUpdated += UpdatePosition;
+                m_FirstPointOnTargetLine.GeometryUpdated += UpdatePosition;
             }
 
             UpdatePosition();
         }
-        public void SetSecondPointAlong(PointData pointData)
+
+        public void SetSecondPointTargetOnLine(PointData pointData)
         {
-            if (m_SecondPointAlong == pointData)
+            if (m_SecondPointOnTargetLine == pointData)
             {
                 return;
             }
 
-            if (m_SecondPointAlong != null)
+            if (m_SecondPointOnTargetLine != null)
             {
-                m_SecondPointAlong.GeometryUpdated -= UpdatePosition;
+                m_SecondPointOnTargetLine.GeometryUpdated -= UpdatePosition;
             }
 
-            m_SecondPointAlong = pointData;
-            if (m_SecondPointAlong != null)
+            m_SecondPointOnTargetLine = pointData;
+            if (m_SecondPointOnTargetLine != null)
             {
-                m_SecondPointAlong.GeometryUpdated += UpdatePosition;
+                m_SecondPointOnTargetLine.GeometryUpdated += UpdatePosition;
+            }
+
+            UpdatePosition();
+        }
+
+        public void SetFirstPointOnParallelLine(PointData pointData)
+        {
+            if (m_FirstPointOnParallelLine == pointData)
+            {
+                return;
+            }
+
+            if (m_FirstPointOnParallelLine != null)
+            {
+                m_FirstPointOnParallelLine.GeometryUpdated -= UpdatePosition;
+            }
+
+            m_FirstPointOnParallelLine = pointData;
+            if (m_FirstPointOnParallelLine != null)
+            {
+                m_FirstPointOnParallelLine.GeometryUpdated += UpdatePosition;
+            }
+
+            UpdatePosition();
+        }
+        public void SetSecondPointOnParallelLine(PointData pointData)
+        {
+            if (m_SecondPointOnParallelLine == pointData)
+            {
+                return;
+            }
+
+            if (m_SecondPointOnParallelLine != null)
+            {
+                m_SecondPointOnParallelLine.GeometryUpdated -= UpdatePosition;
+            }
+
+            m_SecondPointOnParallelLine = pointData;
+            if (m_SecondPointOnParallelLine != null)
+            {
+                m_SecondPointOnParallelLine.GeometryUpdated += UpdatePosition;
             }
 
             UpdatePosition();
@@ -207,19 +215,22 @@ namespace Lesson.Shapes.Blueprints.DependentShapes
 
         private void UpdatePosition()
         {
-            PointsNotSameValidator.Update();
+            TargetPointsNotSameValidator.Update();
+            ParallelPointsNotSameValidator.Update();
+            
             ProjectionAlongLineValidator.Update();
 
-            if (!PointsNotSameValidator.IsValid())
+            if (!ParallelPointsNotSameValidator.IsValid() ||
+                !TargetPointsNotSameValidator.IsValid())
             {
                 return;
             }
 
-            if (m_FirstPointOnLine == null 
+            if (m_FirstPointOnTargetLine == null 
                 || m_ProjectedPoint == null 
-                || m_SecondPointOnLine == null 
-                || m_FirstPointAlong == null 
-                || m_SecondPointAlong == null)
+                || m_SecondPointOnTargetLine == null 
+                || m_FirstPointOnParallelLine == null 
+                || m_SecondPointOnParallelLine == null)
             {
                 return;
             }
@@ -229,14 +240,14 @@ namespace Lesson.Shapes.Blueprints.DependentShapes
                 return;
             }
 
-            Vector3 vAlong = m_SecondPointAlong.Position - m_FirstPointAlong.Position;
+            Vector3 vAlong = m_SecondPointOnParallelLine.Position - m_FirstPointOnParallelLine.Position;
 
             Vector3 point = m_ProjectedPoint.Position + vAlong;
 
             PointData.SetPosition(GeometryUtils.PointOfIntersection(point, 
                 m_ProjectedPoint.Position, 
-                m_FirstPointOnLine.Position, 
-                m_SecondPointOnLine.Position));
+                m_FirstPointOnTargetLine.Position, 
+                m_SecondPointOnTargetLine.Position));
         }
     }
 }
