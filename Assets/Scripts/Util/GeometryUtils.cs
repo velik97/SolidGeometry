@@ -83,7 +83,6 @@ namespace Util
         /// <summary>
         /// Returns point of intersection of lines p1p2 and q1q2
         /// </summary>
-        /// <exception cref="ArgumentException"></exception>
         public static Vector3 PointOfIntersection(Vector3 p1, Vector3 p2, Vector3 q1, Vector3 q2)
         {
             // Solution from here https://math.stackexchange.com/questions/270767/find-intersection-of-two-3d-lines/271366
