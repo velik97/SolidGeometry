@@ -267,7 +267,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: fe626d7fdc9e34d188ceb6ded83df113, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  m_LessonFileName: Prism
+  m_LessonFileName: Fifth
   m_UIConfig: {fileID: 268238789}
   m_ShapesAnchor: {fileID: 477440469}
   m_ShapesPivot: {fileID: 2002011017}
