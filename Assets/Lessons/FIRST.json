@@ -92,7 +92,7 @@
         "$id": "11",
         "m_Position": {
           "x": 0.0,
-          "y": 2.5,
+          "y": 3.0,
           "z": 2.1
         },
         "m_PointName": "G"
@@ -127,9 +127,9 @@
       {
         "$id": "15",
         "m_Position": {
-          "x": 10.0,
+          "x": 8.0,
           "y": 0.0,
-          "z": -0.149999619
+          "z": 0.3000002
         },
         "m_PointName": "H"
       },
@@ -138,14 +138,14 @@
         "m_Position": {
           "x": 4.0,
           "y": 0.0,
-          "z": 1.88571417
+          "z": 1.8
         },
         "m_PointName": "F'"
       },
       {
         "$id": "17",
         "m_Position": {
-          "x": 0.7157888,
+          "x": 0.799999356,
           "y": 0.0,
           "z": 3.0
         },
@@ -155,8 +155,8 @@
         "$id": "18",
         "m_Position": {
           "x": 4.0,
-          "y": 4.12500048,
-          "z": 1.1920929E-07
+          "y": 4.500001,
+          "z": 0.0
         },
         "m_PointName": "I"
       },
@@ -164,7 +164,7 @@
         "$id": "19",
         "m_Position": {
           "x": 0.0,
-          "y": 0.5312493,
+          "y": 0.7499993,
           "z": 3.0
         },
         "m_PointName": "J"
@@ -174,14 +174,14 @@
         "m_Position": {
           "x": 0.0,
           "y": 5.0,
-          "z": 0.957143
+          "z": 1.30000019
         },
         "m_PointName": "K"
       },
       {
         "$id": "21",
         "m_Position": {
-          "x": 2.821054,
+          "x": 3.46666813,
           "y": 5.0,
           "z": 0.0
         },
@@ -838,7 +838,7 @@
         "m_SecondPoint": {
           "$ref": "5"
         },
-        "m_Coefficient1": 0.5,
+        "m_Coefficient1": 0.6,
         "m_Coefficient2": 0.7,
         "DependenciesOnOtherShapes": [
           {
@@ -1701,7 +1701,7 @@
       {
         "$id": "108",
         "$type": "Lesson.Stages.Actions.SetHighlightShapeAction, Assembly-CSharp",
-        "m_Highlight": 3,
+        "m_Highlight": 2,
         "m_ShapeData": {
           "$ref": "40"
         },
@@ -1714,7 +1714,7 @@
       {
         "$id": "109",
         "$type": "Lesson.Stages.Actions.SetHighlightShapeAction, Assembly-CSharp",
-        "m_Highlight": 3,
+        "m_Highlight": 2,
         "m_ShapeData": {
           "$ref": "39"
         },
@@ -1753,7 +1753,7 @@
       {
         "$id": "112",
         "$type": "Lesson.Stages.Actions.SetHighlightShapeAction, Assembly-CSharp",
-        "m_Highlight": 3,
+        "m_Highlight": 2,
         "m_ShapeData": {
           "$ref": "49"
         },
@@ -1944,6 +1944,253 @@
             "$ref": "89"
           }
         ]
+      },
+      {
+        "$id": "127",
+        "$type": "Lesson.Stages.Actions.SetActiveShapeAction, Assembly-CSharp",
+        "m_Active": true,
+        "m_ShapeData": {
+          "$ref": "47"
+        },
+        "DependenciesOnOtherShapes": [
+          {
+            "$ref": "87"
+          }
+        ]
+      },
+      {
+        "$id": "128",
+        "$type": "Lesson.Stages.Actions.SetActiveShapeAction, Assembly-CSharp",
+        "m_Active": true,
+        "m_ShapeData": {
+          "$ref": "48"
+        },
+        "DependenciesOnOtherShapes": [
+          {
+            "$ref": "88"
+          }
+        ]
+      },
+      {
+        "$id": "129",
+        "$type": "Lesson.Stages.Actions.SetActiveShapeAction, Assembly-CSharp",
+        "m_Active": true,
+        "m_ShapeData": {
+          "$ref": "51"
+        },
+        "DependenciesOnOtherShapes": [
+          {
+            "$ref": "92"
+          }
+        ]
+      },
+      {
+        "$id": "130",
+        "$type": "Lesson.Stages.Actions.SetActiveShapeAction, Assembly-CSharp",
+        "m_Active": false,
+        "m_ShapeData": {
+          "$ref": "47"
+        },
+        "DependenciesOnOtherShapes": [
+          {
+            "$ref": "87"
+          }
+        ]
+      },
+      {
+        "$id": "131",
+        "$type": "Lesson.Stages.Actions.SetActiveShapeAction, Assembly-CSharp",
+        "m_Active": false,
+        "m_ShapeData": {
+          "$ref": "48"
+        },
+        "DependenciesOnOtherShapes": [
+          {
+            "$ref": "88"
+          }
+        ]
+      },
+      {
+        "$id": "132",
+        "$type": "Lesson.Stages.Actions.SetActiveShapeAction, Assembly-CSharp",
+        "m_Active": true,
+        "m_ShapeData": {
+          "$ref": "50"
+        },
+        "DependenciesOnOtherShapes": [
+          {
+            "$ref": "91"
+          }
+        ]
+      },
+      {
+        "$id": "133",
+        "$type": "Lesson.Stages.Actions.SetActiveShapeAction, Assembly-CSharp",
+        "m_Active": false,
+        "m_ShapeData": {
+          "$ref": "15"
+        },
+        "DependenciesOnOtherShapes": [
+          {
+            "$ref": "69"
+          }
+        ]
+      },
+      {
+        "$id": "134",
+        "$type": "Lesson.Stages.Actions.SetActiveShapeAction, Assembly-CSharp",
+        "m_Active": false,
+        "m_ShapeData": {
+          "$ref": "51"
+        },
+        "DependenciesOnOtherShapes": [
+          {
+            "$ref": "92"
+          }
+        ]
+      },
+      {
+        "$id": "135",
+        "$type": "Lesson.Stages.Actions.SetActiveShapeAction, Assembly-CSharp",
+        "m_Active": false,
+        "m_ShapeData": {
+          "$ref": "50"
+        },
+        "DependenciesOnOtherShapes": [
+          {
+            "$ref": "91"
+          }
+        ]
+      },
+      {
+        "$id": "136",
+        "$type": "Lesson.Stages.Actions.SetHighlightShapeAction, Assembly-CSharp",
+        "m_Highlight": 2,
+        "m_ShapeData": {
+          "$ref": "41"
+        },
+        "DependenciesOnOtherShapes": [
+          {
+            "$ref": "79"
+          }
+        ]
+      },
+      {
+        "$id": "137",
+        "$type": "Lesson.Stages.Actions.SetHighlightShapeAction, Assembly-CSharp",
+        "m_Highlight": 2,
+        "m_ShapeData": {
+          "$ref": "43"
+        },
+        "DependenciesOnOtherShapes": [
+          {
+            "$ref": "82"
+          }
+        ]
+      },
+      {
+        "$id": "138",
+        "$type": "Lesson.Stages.Actions.SetHighlightShapeAction, Assembly-CSharp",
+        "m_Highlight": 2,
+        "m_ShapeData": {
+          "$ref": "44"
+        },
+        "DependenciesOnOtherShapes": [
+          {
+            "$ref": "84"
+          }
+        ]
+      },
+      {
+        "$id": "139",
+        "$type": "Lesson.Stages.Actions.SetHighlightShapeAction, Assembly-CSharp",
+        "m_Highlight": 1,
+        "m_ShapeData": {
+          "$ref": "39"
+        },
+        "DependenciesOnOtherShapes": [
+          {
+            "$ref": "75"
+          }
+        ]
+      },
+      {
+        "$id": "140",
+        "$type": "Lesson.Stages.Actions.SetHighlightShapeAction, Assembly-CSharp",
+        "m_Highlight": 1,
+        "m_ShapeData": {
+          "$ref": "39"
+        },
+        "DependenciesOnOtherShapes": [
+          {
+            "$ref": "75"
+          }
+        ]
+      },
+      {
+        "$id": "141",
+        "$type": "Lesson.Stages.Actions.SetHighlightShapeAction, Assembly-CSharp",
+        "m_Highlight": 1,
+        "m_ShapeData": {
+          "$ref": "44"
+        },
+        "DependenciesOnOtherShapes": [
+          {
+            "$ref": "84"
+          }
+        ]
+      },
+      {
+        "$id": "142",
+        "$type": "Lesson.Stages.Actions.SetActiveShapeAction, Assembly-CSharp",
+        "m_Active": true,
+        "m_ShapeData": {
+          "$ref": "58"
+        },
+        "DependenciesOnOtherShapes": [
+          {
+            "$ref": "90"
+          }
+        ]
+      },
+      {
+        "$id": "143",
+        "$type": "Lesson.Stages.Actions.SetActiveShapeAction, Assembly-CSharp",
+        "m_Active": false,
+        "m_ShapeData": {
+          "$ref": "15"
+        },
+        "DependenciesOnOtherShapes": [
+          {
+            "$ref": "69"
+          }
+        ]
+      },
+      {
+        "$id": "144",
+        "$type": "Lesson.Stages.Actions.SetHighlightShapeAction, Assembly-CSharp",
+        "m_Highlight": 1,
+        "m_ShapeData": {
+          "$ref": "43"
+        },
+        "DependenciesOnOtherShapes": [
+          {
+            "$ref": "82"
+          }
+        ]
+      },
+      {
+        "$id": "145",
+        "$type": "Lesson.Stages.Actions.SetHighlightShapeAction, Assembly-CSharp",
+        "m_Highlight": 1,
+        "m_ShapeData": {
+          "$ref": "41"
+        },
+        "DependenciesOnOtherShapes": [
+          {
+            "$ref": "79"
+          }
+        ]
       }
     ]
   },
@@ -1982,6 +2229,12 @@
           },
           {
             "$ref": "121"
+          },
+          {
+            "$ref": "127"
+          },
+          {
+            "$ref": "128"
           }
         ]
       },
@@ -1991,6 +2244,18 @@
         "m_ShapeActions": [
           {
             "$ref": "122"
+          },
+          {
+            "$ref": "129"
+          },
+          {
+            "$ref": "130"
+          },
+          {
+            "$ref": "131"
+          },
+          {
+            "$ref": "133"
           }
         ]
       },
@@ -2003,6 +2268,9 @@
           },
           {
             "$ref": "124"
+          },
+          {
+            "$ref": "132"
           }
         ]
       },
@@ -2060,6 +2328,15 @@
           },
           {
             "$ref": "107"
+          },
+          {
+            "$ref": "134"
+          },
+          {
+            "$ref": "135"
+          },
+          {
+            "$ref": "143"
           }
         ]
       },
@@ -2078,6 +2355,12 @@
           },
           {
             "$ref": "111"
+          },
+          {
+            "$ref": "136"
+          },
+          {
+            "$ref": "137"
           }
         ]
       },
@@ -2096,6 +2379,21 @@
           },
           {
             "$ref": "118"
+          },
+          {
+            "$ref": "138"
+          },
+          {
+            "$ref": "139"
+          },
+          {
+            "$ref": "140"
+          },
+          {
+            "$ref": "144"
+          },
+          {
+            "$ref": "145"
           }
         ]
       },
@@ -2108,6 +2406,9 @@
           },
           {
             "$ref": "119"
+          },
+          {
+            "$ref": "141"
           }
         ]
       },
@@ -2126,6 +2427,9 @@
         "m_ShapeActions": [
           {
             "$ref": "116"
+          },
+          {
+            "$ref": "142"
           }
         ]
       }
