@@ -1,6 +1,4 @@
-﻿using System;
-using TouchScript;
-using TouchScript.Examples.Checkers;
+﻿using TouchScript;
 using TouchScript.Gestures;
 using TouchScript.Gestures.TransformGestures;
 using TouchScript.Pointers;

@@ -1,41 +1,35 @@
-﻿using Session;
+﻿using Runtime.Session;
 using UI.MVVM;
 using UnityEngine;
+using Util.EventBusSystem;
 
 namespace UI.Session.LessonMovementUI
 {
     public class LessonMovementVM : ViewModel
     {
-        private LessonMovement m_LessonMovement;
-
-        public LessonMovementVM(LessonMovement lessonMovement)
-        {
-            m_LessonMovement = lessonMovement;
-        }
-        
         public void RotateAroundXY(Vector3 deltaRotation)
         {
-            m_LessonMovement.RotateAroundXY(deltaRotation);
+            EventBus.RaiseEvent<ILessonMovementHandler>(h => h.HandleRotateAroundXY(deltaRotation));
         }
 
         public void RotateAroundZ(float deltaRotation)
         {
-            m_LessonMovement.RotateAroundZ(deltaRotation);
+            EventBus.RaiseEvent<ILessonMovementHandler>(h => h.HandleRotateAroundZ(deltaRotation));
         }
 
         public void Shift(Vector3 deltaDirection)
         {
-            m_LessonMovement.Shift(deltaDirection);
+            EventBus.RaiseEvent<ILessonMovementHandler>(h => h.HandleShift(deltaDirection));
         }
 
         public void Scale(float deltaScale)
         {
-            m_LessonMovement.Scale(deltaScale);
+            EventBus.RaiseEvent<ILessonMovementHandler>(h => h.HandleScale(deltaScale));
         }
 
         public void Reset()
         {
-            m_LessonMovement.Reset();
+            EventBus.RaiseEvent<ILessonMovementHandler>(h => h.HandleReset());
         }
     }
 }

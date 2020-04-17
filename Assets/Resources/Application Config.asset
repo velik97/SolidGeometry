@@ -1,0 +1,35 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 5b1812af768ae8a4792429f28f7312fc, type: 3}
+  m_Name: Application Config
+  m_EditorClassIdentifier: 
+  m_MainMenuMechanicsScene:
+    sceneAsset: {fileID: 0}
+    scenePath: 
+  m_MainMenuUIScene:
+    sceneAsset: {fileID: 0}
+    scenePath: 
+  m_Session3DMechanicsScene:
+    sceneAsset: {fileID: 102900000, guid: 90ef51829c97c3b4f9b7706c74273cbd, type: 3}
+    scenePath: Assets/Scenes/Runtime/Session3D.unity
+  m_SessionARMechanicsScene:
+    sceneAsset: {fileID: 0}
+    scenePath: 
+  m_SessionUIScene:
+    sceneAsset: {fileID: 102900000, guid: f10b878ab27994e0f9b88a97d8ac8f29, type: 3}
+    scenePath: Assets/Scenes/Runtime/UI_Session.unity
+  m_ShapeViewFactoryScene:
+    sceneAsset: {fileID: 102900000, guid: 7608802f93bdc3e49bd2bfe13fe4504c, type: 3}
+    scenePath: Assets/Scenes/Runtime/ShapViewFactoryScene.unity
+  m_CameraScene:
+    sceneAsset: {fileID: 102900000, guid: 37a1bec68c0942041a7c3d616decd6f4, type: 3}
+    scenePath: Assets/Scenes/Runtime/CameraScene.unity

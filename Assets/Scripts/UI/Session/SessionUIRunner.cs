@@ -1,4 +1,8 @@
-using Session;
+using System;
+using Lesson;
+using Runtime;
+using Runtime.Core;
+using Runtime.Session;
 using UI.Session.LessonBrowserUI;
 using UI.Session.LessonMovementUI;
 using UnityEngine;
@@ -6,16 +10,15 @@ using Util.UniRxExtensions;
 
 namespace UI.Session
 {
-    public class SessionUIConfig : MonoBehaviourCompositeDisposable
+    public class SessionUIRunner : MonoBehaviourCompositeDisposable, ISceneRunner
     {
-        private SessionRunner m_SessionRunner;
-        
         [SerializeField] private LessonBrowserView m_BrowserView;
         [SerializeField] private LessonMovementView m_LessonMovementView;
         
-        public void Initialize(SessionRunner sessionRunner)
+        private GlobalData m_GlobalData;
+        public void Initialize(GlobalData globalData)
         {
-            m_SessionRunner = sessionRunner;
+            m_GlobalData = globalData;
             
             InitializeLessonBrowser();
             InitializeLessonMovement();
@@ -23,16 +26,22 @@ namespace UI.Session
 
         private void InitializeLessonBrowser()
         {
-            LessonBrowserVM browserVM = new LessonBrowserVM(m_SessionRunner.LessonBrowser);
+            LessonBrowserVM browserVM = new LessonBrowserVM(m_GlobalData.CurrentLessonData.LessonStageFactory.LessonStages);
             Add(browserVM);
             m_BrowserView.Bind(browserVM);
         }
 
         private void InitializeLessonMovement()
         {
-            LessonMovementVM movementVM = new LessonMovementVM(m_SessionRunner.LessonMovement);
+            LessonMovementVM movementVM = new LessonMovementVM();
             Add(movementVM);
             m_LessonMovementView.Bind(movementVM);
+        }
+
+        public void Unload(Action callback)
+        {
+            Dispose();
+            callback.Invoke();
         }
     }
 }

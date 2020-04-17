@@ -1,12 +1,15 @@
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using Lesson.Shapes.Datas;
+using Runtime;
+using Runtime.Core;
 using UnityEngine;
 using Util;
 
 namespace Lesson.Shapes.Views
 {
-    public class ShapeViewFactory : MonoSingleton<ShapeViewFactory>, IShapeViewFactory
+    public class ShapeViewFactory : MonoSingleton<ShapeViewFactory>, IShapeViewFactory, ISceneRunner
     {
         [SerializeField] private Transform m_DisposedContainer;
 
@@ -20,10 +23,8 @@ namespace Lesson.Shapes.Views
         
         private readonly List<IShapeView> m_ViewsInUse = new List<IShapeView>();
 
-        private void Awake()
+        public void Initialize(GlobalData globalData)
         {
-            DontDestroyOnLoad(this);
-            gameObject.SetActive(false);
         }
 
         public IShapeView RequestShapeView(ShapeData data)
@@ -84,6 +85,12 @@ namespace Lesson.Shapes.Views
         private CompositeShapeView CreateCompositeShapeView(CompositeShapeData data)
         {
             return new CompositeShapeView(data);
+        }
+
+        public void Unload(Action callback)
+        {
+            Dispose();
+            callback.Invoke();
         }
 
         public void Dispose()

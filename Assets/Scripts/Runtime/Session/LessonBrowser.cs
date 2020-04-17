@@ -7,9 +7,9 @@ using UniRx;
 using UnityEngine;
 using Util.EventBusSystem;
 
-namespace Session
+namespace Runtime.Session
 {
-    public class LessonBrowser : CompositeDisposable
+    public class LessonBrowser : CompositeDisposable, ILessonStageHandler
     {
         private readonly LessonStageFactory m_LessonStageFactory;
         public LessonStageFactory LessonStageFactory => m_LessonStageFactory;
@@ -27,6 +27,8 @@ namespace Session
             LessonStage firstStage = m_LessonStageFactory.LessonStages[0];
             m_AppliedActions.Push(firstStage);
             firstStage.ApplyActions();
+
+            Add(EventBus.Subscribe(this));
         }
 
         private void ApplyDefaultState(ShapeDataFactory shapeDataFactory)
@@ -38,7 +40,7 @@ namespace Session
             }
         }
 
-        public void GoToStage(int stageNumber)
+        public void HandleGoToStage(int stageNumber)
         {
             if (stageNumber < 0 || stageNumber >= m_LessonStageFactory.LessonStages.Count)
             {

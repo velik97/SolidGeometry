@@ -1,11 +1,11 @@
 using System;
+using ConstructorVisualization;
 using Editor.Lesson.Blueprints;
 using Editor.Lesson.Stages;
 using Lesson;
 using UnityEditor;
 using UnityEngine;
 using UnityEngine.UIElements;
-using Visualization;
 
 namespace Editor.Lesson
 {

@@ -1,9 +1,8 @@
-using System;
 using Lesson.Shapes.Datas;
 using Lesson.Shapes.Views;
 using UnityEngine;
 
-namespace Visualization
+namespace ConstructorVisualization
 {
     public class LessonVisualizer : MonoBehaviour
     {

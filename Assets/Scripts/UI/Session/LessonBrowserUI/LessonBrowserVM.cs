@@ -1,25 +1,22 @@
 using System.Collections.Generic;
 using Lesson.Stages;
-using Session;
+using Runtime.Session;
 using UI.MVVM;
+using Util.EventBusSystem;
 
 namespace UI.Session.LessonBrowserUI
 {
     public class LessonBrowserVM : ViewModel
     {
-        private readonly LessonBrowser m_LessonBrowser;
-
         private readonly int m_MaxIndex;
         private int m_CurrentIndex;
 
         private readonly List<LessonStageDescriptionVM> m_StagesVMs = new List<LessonStageDescriptionVM>();
         public IReadOnlyList<LessonStageDescriptionVM> StagesVMs => m_StagesVMs;
 
-        public LessonBrowserVM(LessonBrowser browser)
+        public LessonBrowserVM(IEnumerable<LessonStage> lessonStages)
         {
-            m_LessonBrowser = browser;
-
-            foreach (LessonStage lessonStage in browser.LessonStageFactory.LessonStages)
+            foreach (LessonStage lessonStage in lessonStages)
             {
                 LessonStageDescriptionVM stageVM = new LessonStageDescriptionVM(lessonStage);
                 Add(stageVM);
@@ -29,7 +26,7 @@ namespace UI.Session.LessonBrowserUI
 
         public void GoToStage(int stageNumber)
         {
-            m_LessonBrowser.GoToStage(stageNumber);
+            EventBus.RaiseEvent<ILessonStageHandler>(h => h.HandleGoToStage(stageNumber));
         }
     }
 }
