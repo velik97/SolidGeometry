@@ -13,20 +13,17 @@ MonoBehaviour:
   m_Name: Application Config
   m_EditorClassIdentifier: 
   m_MainMenuMechanicsScene:
-    sceneAsset: {fileID: 0}
-    scenePath: 
-  m_MainMenuUIScene:
-    sceneAsset: {fileID: 0}
-    scenePath: 
+    sceneAsset: {fileID: 102900000, guid: 8b1054dfaddc8d04bad55bb56309d867, type: 3}
+    scenePath: Assets/Scenes/Runtime/MainMenu/UI_MainMenu.unity
   m_Session3DMechanicsScene:
     sceneAsset: {fileID: 102900000, guid: 90ef51829c97c3b4f9b7706c74273cbd, type: 3}
-    scenePath: Assets/Scenes/Runtime/Session3D.unity
+    scenePath: Assets/Scenes/Runtime/Session/Session3D.unity
   m_SessionARMechanicsScene:
     sceneAsset: {fileID: 0}
     scenePath: 
   m_SessionUIScene:
     sceneAsset: {fileID: 102900000, guid: f10b878ab27994e0f9b88a97d8ac8f29, type: 3}
-    scenePath: Assets/Scenes/Runtime/UI_Session.unity
+    scenePath: Assets/Scenes/Runtime/Session/UI_Session.unity
   m_ShapeViewFactoryScene:
     sceneAsset: {fileID: 102900000, guid: 7608802f93bdc3e49bd2bfe13fe4504c, type: 3}
     scenePath: Assets/Scenes/Runtime/ShapViewFactoryScene.unity

@@ -111,16 +111,19 @@ namespace Lesson.Shapes.Views
             {
                 case PointView pointView:
                     pointView.transform.parent = m_DisposedContainer;
+                    pointView.transform.Reset();
                     pointView.SetShapeData(null);
                     m_PointsPool.Push(pointView);
                     break;
                 case LineView lineView:
                     lineView.transform.parent = m_DisposedContainer;
+                    lineView.transform.Reset();
                     lineView.SetShapeData(null);
                     m_LinesPool.Push(lineView);
                     break;
                 case PolygonView polygonView:
                     polygonView.transform.parent = m_DisposedContainer;
+                    polygonView.transform.Reset();
                     polygonView.SetShapeData(null);
                     m_PolygonsPool.Push(polygonView);
                     break;

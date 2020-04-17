@@ -9,10 +9,10 @@ EditorBuildSettings:
     path: Assets/Scenes/Runtime/Start.unity
     guid: 60b9d5df16216d04a9eba615fe1ee681
   - enabled: 1
-    path: Assets/Scenes/Runtime/UI_Session.unity
+    path: Assets/Scenes/Runtime/Session/UI_Session.unity
     guid: f10b878ab27994e0f9b88a97d8ac8f29
   - enabled: 1
-    path: Assets/Scenes/Runtime/Session3D.unity
+    path: Assets/Scenes/Runtime/Session/Session3D.unity
     guid: 90ef51829c97c3b4f9b7706c74273cbd
   - enabled: 1
     path: Assets/Scenes/Runtime/ShapViewFactoryScene.unity
@@ -20,4 +20,7 @@ EditorBuildSettings:
   - enabled: 1
     path: Assets/Scenes/Runtime/CameraScene.unity
     guid: 37a1bec68c0942041a7c3d616decd6f4
+  - enabled: 1
+    path: Assets/Scenes/Runtime/MainMenu/UI_MainMenu.unity
+    guid: 8b1054dfaddc8d04bad55bb56309d867
   m_configObjects: {}

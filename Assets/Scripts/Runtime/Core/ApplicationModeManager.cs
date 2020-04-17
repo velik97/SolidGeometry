@@ -14,8 +14,7 @@ namespace Runtime.Core
         private readonly Dictionary<ApplicationMode, List<SceneReference>> m_ModeScenes;
         private readonly List<SceneData> m_RunningScenes;
 
-        // Should be changed to private when main menu will be done
-        public readonly GlobalData m_GlobalData;
+        private readonly GlobalData m_GlobalData;
 
         private List<SceneReference> m_SceneReferencesToLoad;
         private List<SceneData> m_SceneDatasToInitialize;
@@ -42,7 +41,6 @@ namespace Runtime.Core
         private void FillModeScenesDictionary()
         {
             RegisterSceneReference(m_ApplicationConfig.MainMenuMechanicsScene, ApplicationMode.MainMenu);
-            RegisterSceneReference(m_ApplicationConfig.MainMenuUIScene, ApplicationMode.MainMenu);
             
             RegisterSceneReference(m_ApplicationConfig.Session3DMechanicsScene, ApplicationMode.Session3D);
             RegisterSceneReference(m_ApplicationConfig.SessionARMechanicsScene, ApplicationMode.SessionAR);

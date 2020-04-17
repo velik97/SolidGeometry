@@ -14,20 +14,28 @@ namespace Runtime.Session
         private readonly LessonStageFactory m_LessonStageFactory;
         public LessonStageFactory LessonStageFactory => m_LessonStageFactory;
 
-        private const bool DEFAULT_ACTIVE_STATE = false;
-        private const HighlightType DEFAULT_HIGHLIGHT_TYPE = HighlightType.Normal;
+        private bool m_DefaultActiveState = false;
+        private HighlightType m_DefaultHighlightType = HighlightType.Normal;
 
         private readonly Stack<LessonStage> m_AppliedActions = new Stack<LessonStage>();
 
         public LessonBrowser(LessonData lessonData)
         {
             m_LessonStageFactory = lessonData.LessonStageFactory;
-            
-            ApplyDefaultState(lessonData.ShapeDataFactory);
-            LessonStage firstStage = m_LessonStageFactory.LessonStages[0];
-            m_AppliedActions.Push(firstStage);
-            firstStage.ApplyActions();
 
+            if (m_LessonStageFactory.LessonStages.Count > 0)
+            {
+                LessonStage firstStage = m_LessonStageFactory.LessonStages[0];
+                ApplyDefaultState(lessonData.ShapeDataFactory);
+                m_AppliedActions.Push(firstStage);
+                firstStage.ApplyActions();
+            }
+            else
+            {
+                m_DefaultActiveState = true;
+                ApplyDefaultState(lessonData.ShapeDataFactory);
+            }
+            
             Add(EventBus.Subscribe(this));
         }
 
@@ -35,8 +43,8 @@ namespace Runtime.Session
         {
             foreach (ShapeData shapeData in shapeDataFactory.AllDatas)
             {
-                shapeData.View.Active = DEFAULT_ACTIVE_STATE;
-                shapeData.View.Highlight = DEFAULT_HIGHLIGHT_TYPE;
+                shapeData.View.Active = m_DefaultActiveState;
+                shapeData.View.Highlight = m_DefaultHighlightType;
             }
         }
 

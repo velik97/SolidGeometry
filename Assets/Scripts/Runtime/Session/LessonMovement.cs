@@ -1,6 +1,7 @@
 ﻿using DG.Tweening;
 using UniRx;
 using UnityEngine;
+using Util;
 using Util.EventBusSystem;
 
 namespace Runtime.Session
@@ -13,6 +14,7 @@ namespace Runtime.Session
         public LessonMovement(Transform shapesAnchor)
         {
             Add(EventBus.Subscribe(this));
+            Add(Disposable.Create(ResetTransform));
             
             m_ShapesAnchor = shapesAnchor;
             m_MainCameraTransform = Camera.main.transform;
@@ -48,6 +50,11 @@ namespace Runtime.Session
             m_ShapesAnchor.DOLocalMove(Vector3.zero, .5f);
             m_ShapesAnchor.DOLocalRotate(Vector3.zero, .5f);
             m_ShapesAnchor.DOScale(Vector3.one, .5f);
+        }
+
+        private void ResetTransform()
+        {
+            m_ShapesAnchor.Reset();
         }
     }
 }

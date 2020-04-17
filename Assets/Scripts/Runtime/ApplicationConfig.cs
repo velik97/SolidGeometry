@@ -1,15 +1,13 @@
 ﻿using UnityEngine;
 using Util.SceneUtils;
 
-namespace Runtime.Core
+namespace Runtime
 {
     [CreateAssetMenu]
     public class ApplicationConfig : ScriptableObject
     {
         [SerializeField]
         private SceneReference m_MainMenuMechanicsScene;
-        [SerializeField]
-        private SceneReference m_MainMenuUIScene;
         
         [SerializeField]
         private SceneReference m_Session3DMechanicsScene;
@@ -24,7 +22,6 @@ namespace Runtime.Core
         private SceneReference m_CameraScene;
 
         public SceneReference MainMenuMechanicsScene => m_MainMenuMechanicsScene;
-        public SceneReference MainMenuUIScene => m_MainMenuUIScene;
 
         public SceneReference SessionARMechanicsScene => m_SessionARMechanicsScene;
         public SceneReference Session3DMechanicsScene => m_Session3DMechanicsScene;
