@@ -50,7 +50,7 @@ namespace Editor.Lesson.Stages
             
             foreach (LessonStage lessonStage in m_LessonStageFactory.LessonStages)
             {
-                visualElement.Add(new LessonStageEditor(lessonStage, RemoveStage).GetVisualElement());
+                visualElement.Add(new LessonStageEditor(lessonStage, RemoveStage, SwapStage).GetVisualElement());
             }
 
             return visualElement;
@@ -76,7 +76,7 @@ namespace Editor.Lesson.Stages
         private void CreateStage()
         {
             LessonStage lessonStage = m_LessonStageFactory.CreateLessonStage();
-            VisualElement visualElement = new LessonStageEditor(lessonStage, RemoveStage).GetVisualElement();
+            VisualElement visualElement = new LessonStageEditor(lessonStage, RemoveStage, SwapStage).GetVisualElement();
             m_BaseVisualElement.Add(visualElement);
         }
 
@@ -84,6 +84,36 @@ namespace Editor.Lesson.Stages
         {
             m_LessonStageFactory.Remove(stage);
             m_BaseVisualElement.Remove(blueprintVisualElement);
+        }
+
+        private void SwapStage(LessonStage stage, VisualElement element, bool up)
+        {
+            if (!m_BaseVisualElement.Contains(element))
+            {
+                return;
+            }
+
+            int elementIndex = m_BaseVisualElement.IndexOf(element);
+            int swapElementIndex = elementIndex + (up ? -1 : 1);
+
+            if (swapElementIndex < 0 || swapElementIndex >= m_BaseVisualElement.childCount)
+            {
+                return;
+            }
+
+            VisualElement swapElement = m_BaseVisualElement.ElementAt(swapElementIndex);
+
+            if (swapElement.GetType() != element.GetType())
+            {
+                return;
+            }
+
+            if (!m_BaseVisualElement.SwapElementsAt(elementIndex, swapElementIndex))
+            {
+                return;
+            }
+
+            m_LessonStageFactory.SwapStages(stage, up);
         }
     }
 }

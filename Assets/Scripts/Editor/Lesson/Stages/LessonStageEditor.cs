@@ -5,6 +5,7 @@ using Editor.VisualElementsExtensions;
 using Lesson.Stages;
 using Lesson.Stages.Actions;
 using UnityEditor.UIElements;
+using UnityEngine;
 using UnityEngine.UIElements;
 
 namespace Editor.Lesson.Stages
@@ -13,18 +14,22 @@ namespace Editor.Lesson.Stages
     {
         private readonly LessonStage m_Stage;
         private readonly Action<LessonStage, VisualElement> m_DeleteAction;
+        private readonly Action<LessonStage, VisualElement, bool> m_SwapAction;
 
         private Foldout m_NameElement;
-        
+
+        // Contains swap buttons
+        private VisualElement m_SwapButtonsElement;
         // Contains list of shape action editors
         private VisualElement m_ShapeActionsListVisualElement;
         // Contains 'Create' button
         private VisualElement m_CreateShapeActionVisualElement; 
 
-        public LessonStageEditor(LessonStage stage, Action<LessonStage, VisualElement> deleteAction)
+        public LessonStageEditor(LessonStage stage, Action<LessonStage, VisualElement> deleteAction, Action<LessonStage, VisualElement, bool> swapAction)
         {
             m_Stage = stage;
             m_DeleteAction = deleteAction;
+            m_SwapAction = swapAction;
 
             m_Stage.BecameDirty += UpdateName;
             m_Stage.BecameDirty += UpdateName;
@@ -35,8 +40,9 @@ namespace Editor.Lesson.Stages
             VisualElement visualElement = new VisualElement();
 
             m_NameElement = new Foldout();
-            m_NameElement.Insert(0, visualElement);
+            m_NameElement.Add(visualElement);
 
+            visualElement.Add(GetSwapVisualElement());
             visualElement.Add(GetNameFieldVisualElement());
             visualElement.Add(GeDescriptionFieldVisualElement());
 
@@ -123,6 +129,17 @@ namespace Editor.Lesson.Stages
             deleteButton.AddToClassList("delete");
 
             return deleteButton;
+        }
+        
+        private VisualElement GetSwapVisualElement()
+        {
+            m_SwapButtonsElement = new VisualElement {style = { flexDirection = FlexDirection.Row}};
+            m_SwapButtonsElement.Add(
+                new Button(() => m_SwapAction(m_Stage, m_NameElement, true)) {text = "Up"});
+            m_SwapButtonsElement.Add(
+                new Button(() => m_SwapAction(m_Stage, m_NameElement, false)) {text = "Down"});
+
+            return m_SwapButtonsElement;
         }
 
         private void UpdateName()

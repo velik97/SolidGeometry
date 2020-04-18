@@ -71,6 +71,26 @@ namespace Lesson.Stages
             }
         }
 
+        public void SwapStages(LessonStage lessonStage, bool up)
+        {
+            int stageIndex = m_LessonStages.IndexOf(lessonStage);
+            int swapStageIndex = stageIndex + (up ? -1 : 1);
+
+            if (swapStageIndex < 0 || swapStageIndex >= m_LessonStages.Count)
+            {
+                return;
+            }
+
+            LessonStage tmp = m_LessonStages[stageIndex];
+            m_LessonStages[stageIndex] = m_LessonStages[swapStageIndex];
+            m_LessonStages[swapStageIndex] = tmp;
+                
+            for (var i = 0; i < m_LessonStages.Count; i++)
+            {
+                m_LessonStages[i].SetNum(i);
+            }
+        }
+
         public void Clear()
         {
             foreach (LessonStage lessonStage in m_LessonStages)
