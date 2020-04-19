@@ -1,0 +1,520 @@
+{
+  "m_ShapeDataFactory": {
+    "$id": "1",
+    "m_Origin": {
+      "x": 0.5,
+      "y": 0.5,
+      "z": 0.5
+    },
+    "m_PointDatas": [
+      {
+        "$id": "2",
+        "m_Position": {
+          "x": 0.0,
+          "y": 0.0,
+          "z": 0.0
+        },
+        "m_PointName": "A"
+      },
+      {
+        "$id": "3",
+        "m_Position": {
+          "x": 1.0,
+          "y": 0.0,
+          "z": 0.0
+        },
+        "m_PointName": "B"
+      },
+      {
+        "$id": "4",
+        "m_Position": {
+          "x": 1.0,
+          "y": 1.0,
+          "z": 0.0
+        },
+        "m_PointName": "C"
+      },
+      {
+        "$id": "5",
+        "m_Position": {
+          "x": 0.0,
+          "y": 1.0,
+          "z": 0.0
+        },
+        "m_PointName": "D"
+      },
+      {
+        "$id": "6",
+        "m_Position": {
+          "x": 0.0,
+          "y": 0.0,
+          "z": 1.0
+        },
+        "m_PointName": "E"
+      },
+      {
+        "$id": "7",
+        "m_Position": {
+          "x": 1.0,
+          "y": 0.0,
+          "z": 1.0
+        },
+        "m_PointName": "F"
+      },
+      {
+        "$id": "8",
+        "m_Position": {
+          "x": 1.0,
+          "y": 1.0,
+          "z": 1.0
+        },
+        "m_PointName": "G"
+      },
+      {
+        "$id": "9",
+        "m_Position": {
+          "x": 0.0,
+          "y": 1.0,
+          "z": 1.0
+        },
+        "m_PointName": "H"
+      }
+    ],
+    "m_LinetDatas": [
+      {
+        "$id": "10",
+        "m_StartPoint": {
+          "$ref": "2"
+        },
+        "m_EndPoint": {
+          "$ref": "3"
+        }
+      },
+      {
+        "$id": "11",
+        "m_StartPoint": {
+          "$ref": "3"
+        },
+        "m_EndPoint": {
+          "$ref": "4"
+        }
+      },
+      {
+        "$id": "12",
+        "m_StartPoint": {
+          "$ref": "4"
+        },
+        "m_EndPoint": {
+          "$ref": "5"
+        }
+      },
+      {
+        "$id": "13",
+        "m_StartPoint": {
+          "$ref": "5"
+        },
+        "m_EndPoint": {
+          "$ref": "2"
+        }
+      },
+      {
+        "$id": "14",
+        "m_StartPoint": {
+          "$ref": "2"
+        },
+        "m_EndPoint": {
+          "$ref": "6"
+        }
+      },
+      {
+        "$id": "15",
+        "m_StartPoint": {
+          "$ref": "3"
+        },
+        "m_EndPoint": {
+          "$ref": "7"
+        }
+      },
+      {
+        "$id": "16",
+        "m_StartPoint": {
+          "$ref": "4"
+        },
+        "m_EndPoint": {
+          "$ref": "8"
+        }
+      },
+      {
+        "$id": "17",
+        "m_StartPoint": {
+          "$ref": "5"
+        },
+        "m_EndPoint": {
+          "$ref": "9"
+        }
+      },
+      {
+        "$id": "18",
+        "m_StartPoint": {
+          "$ref": "6"
+        },
+        "m_EndPoint": {
+          "$ref": "7"
+        }
+      },
+      {
+        "$id": "19",
+        "m_StartPoint": {
+          "$ref": "7"
+        },
+        "m_EndPoint": {
+          "$ref": "8"
+        }
+      },
+      {
+        "$id": "20",
+        "m_StartPoint": {
+          "$ref": "8"
+        },
+        "m_EndPoint": {
+          "$ref": "9"
+        }
+      },
+      {
+        "$id": "21",
+        "m_StartPoint": {
+          "$ref": "9"
+        },
+        "m_EndPoint": {
+          "$ref": "6"
+        }
+      }
+    ],
+    "m_PolygonDatas": [
+      {
+        "$id": "22",
+        "m_Points": [
+          {
+            "$ref": "2"
+          },
+          {
+            "$ref": "3"
+          },
+          {
+            "$ref": "4"
+          },
+          {
+            "$ref": "5"
+          }
+        ]
+      },
+      {
+        "$id": "23",
+        "m_Points": [
+          {
+            "$ref": "2"
+          },
+          {
+            "$ref": "3"
+          },
+          {
+            "$ref": "7"
+          },
+          {
+            "$ref": "6"
+          }
+        ]
+      },
+      {
+        "$id": "24",
+        "m_Points": [
+          {
+            "$ref": "3"
+          },
+          {
+            "$ref": "4"
+          },
+          {
+            "$ref": "8"
+          },
+          {
+            "$ref": "7"
+          }
+        ]
+      },
+      {
+        "$id": "25",
+        "m_Points": [
+          {
+            "$ref": "4"
+          },
+          {
+            "$ref": "5"
+          },
+          {
+            "$ref": "9"
+          },
+          {
+            "$ref": "8"
+          }
+        ]
+      },
+      {
+        "$id": "26",
+        "m_Points": [
+          {
+            "$ref": "5"
+          },
+          {
+            "$ref": "2"
+          },
+          {
+            "$ref": "6"
+          },
+          {
+            "$ref": "9"
+          }
+        ]
+      },
+      {
+        "$id": "27",
+        "m_Points": [
+          {
+            "$ref": "6"
+          },
+          {
+            "$ref": "7"
+          },
+          {
+            "$ref": "8"
+          },
+          {
+            "$ref": "9"
+          }
+        ]
+      }
+    ],
+    "m_CompositeShapeDatas": [
+      {
+        "$id": "28",
+        "m_Points": [
+          {
+            "$ref": "2"
+          },
+          {
+            "$ref": "3"
+          },
+          {
+            "$ref": "4"
+          },
+          {
+            "$ref": "5"
+          },
+          {
+            "$ref": "6"
+          },
+          {
+            "$ref": "7"
+          },
+          {
+            "$ref": "8"
+          },
+          {
+            "$ref": "9"
+          }
+        ],
+        "m_Lines": [
+          {
+            "$ref": "10"
+          },
+          {
+            "$ref": "11"
+          },
+          {
+            "$ref": "12"
+          },
+          {
+            "$ref": "13"
+          },
+          {
+            "$ref": "14"
+          },
+          {
+            "$ref": "15"
+          },
+          {
+            "$ref": "16"
+          },
+          {
+            "$ref": "17"
+          },
+          {
+            "$ref": "18"
+          },
+          {
+            "$ref": "19"
+          },
+          {
+            "$ref": "20"
+          },
+          {
+            "$ref": "21"
+          }
+        ],
+        "m_Polygons": [
+          {
+            "$ref": "22"
+          },
+          {
+            "$ref": "23"
+          },
+          {
+            "$ref": "24"
+          },
+          {
+            "$ref": "25"
+          },
+          {
+            "$ref": "26"
+          },
+          {
+            "$ref": "27"
+          }
+        ]
+      }
+    ]
+  },
+  "m_ShapeBlueprintFactory": {
+    "$id": "29",
+    "m_ShapeBlueprints": [
+      {
+        "$id": "30",
+        "$type": "Lesson.Shapes.Blueprints.CompositeShapes.CubeBlueprint, Assembly-CSharp",
+        "m_Origin": {
+          "x": 0.0,
+          "y": 0.0,
+          "z": 0.0
+        },
+        "m_Length": 1.0,
+        "m_Points": [
+          {
+            "$ref": "2"
+          },
+          {
+            "$ref": "3"
+          },
+          {
+            "$ref": "4"
+          },
+          {
+            "$ref": "5"
+          },
+          {
+            "$ref": "6"
+          },
+          {
+            "$ref": "7"
+          },
+          {
+            "$ref": "8"
+          },
+          {
+            "$ref": "9"
+          }
+        ],
+        "m_Lines": [
+          {
+            "$ref": "10"
+          },
+          {
+            "$ref": "11"
+          },
+          {
+            "$ref": "12"
+          },
+          {
+            "$ref": "13"
+          },
+          {
+            "$ref": "14"
+          },
+          {
+            "$ref": "15"
+          },
+          {
+            "$ref": "16"
+          },
+          {
+            "$ref": "17"
+          },
+          {
+            "$ref": "18"
+          },
+          {
+            "$ref": "19"
+          },
+          {
+            "$ref": "20"
+          },
+          {
+            "$ref": "21"
+          }
+        ],
+        "m_Polygons": [
+          {
+            "$ref": "22"
+          },
+          {
+            "$ref": "23"
+          },
+          {
+            "$ref": "24"
+          },
+          {
+            "$ref": "25"
+          },
+          {
+            "$ref": "26"
+          },
+          {
+            "$ref": "27"
+          }
+        ],
+        "m_CompositeShapeData": {
+          "$ref": "28"
+        },
+        "DependenciesOnOtherShapes": []
+      }
+    ]
+  },
+  "m_ShapeActionFactory": {
+    "m_ShapeActions": [
+      {
+        "$id": "31",
+        "$type": "Lesson.Stages.Actions.SetActiveShapeAction, Assembly-CSharp",
+        "m_Active": true,
+        "m_ShapeData": {
+          "$ref": "28"
+        },
+        "DependenciesOnOtherShapes": [
+          {
+            "$ref": "30"
+          }
+        ]
+      }
+    ]
+  },
+  "m_LessonStageFactory": {
+    "m_LessonStages": [
+      {
+        "m_StageName": "Stage oe",
+        "m_StageDescription": "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. ",
+        "m_ShapeActions": [
+          {
+            "$ref": "31"
+          }
+        ]
+      }
+    ]
+  }
+}
