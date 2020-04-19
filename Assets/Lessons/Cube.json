@@ -488,9 +488,33 @@
     ]
   },
   "m_ShapeActionFactory": {
-    "m_ShapeActions": []
+    "m_ShapeActions": [
+      {
+        "$id": "31",
+        "$type": "Lesson.Stages.Actions.SetActiveShapeAction, Assembly-CSharp",
+        "m_Active": true,
+        "m_ShapeData": {
+          "$ref": "28"
+        },
+        "DependenciesOnOtherShapes": [
+          {
+            "$ref": "30"
+          }
+        ]
+      }
+    ]
   },
   "m_LessonStageFactory": {
-    "m_LessonStages": []
+    "m_LessonStages": [
+      {
+        "m_StageName": "Stage oe",
+        "m_StageDescription": "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. ",
+        "m_ShapeActions": [
+          {
+            "$ref": "31"
+          }
+        ]
+      }
+    ]
   }
 }

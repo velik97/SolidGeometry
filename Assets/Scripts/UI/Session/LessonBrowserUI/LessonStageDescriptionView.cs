@@ -21,7 +21,7 @@ namespace UI.Session.LessonBrowserUI
 
         private void SetNumber(int number)
         {
-            m_NumberText.text = (number + 1).ToString();
+            m_NumberText.text = (number + 1 + ".").ToString();
         }
         
         private void SetName(string nameText)

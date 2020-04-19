@@ -125,79 +125,6 @@
                 </e>
               </e>
             </e>
-            <e p="Examples" t="Include">
-              <e p="_misc" t="Include">
-                <e p="Scripts" t="Include">
-                  <e p="Checker.cs" t="Include" />
-                  <e p="ExamplesList.cs" t="Include" />
-                  <e p="Highlight.cs" t="Include" />
-                  <e p="KillMe.cs" t="Include" />
-                  <e p="Runner.cs" t="Include" />
-                  <e p="ShowMe.cs" t="Include" />
-                </e>
-                <e p="Shaders" t="Include">
-                  <e p="BorderDiffuse.shader" t="Include" />
-                  <e p="UnlitColor.shader" t="Include" />
-                </e>
-              </e>
-              <e p="Camera" t="Include">
-                <e p="Scripts" t="Include">
-                  <e p="CameraController.cs" t="Include" />
-                </e>
-              </e>
-              <e p="Checkers" t="Include">
-                <e p="Scripts" t="Include">
-                  <e p="Board.cs" t="Include" />
-                  <e p="Exclusive.cs" t="Include" />
-                </e>
-              </e>
-              <e p="Colors" t="Include">
-                <e p="Scripts" t="Include">
-                  <e p="Circle.cs" t="Include" />
-                  <e p="Colors.cs" t="Include" />
-                </e>
-              </e>
-              <e p="Cube" t="Include">
-                <e p="Scripts" t="Include">
-                  <e p="CustomPointerProxy.cs" t="Include" />
-                  <e p="Init.cs" t="Include" />
-                  <e p="LayerDelegate.cs" t="Include" />
-                  <e p="RedirectInput.cs" t="Include" />
-                </e>
-              </e>
-              <e p="Multiuser" t="Include">
-                <e p="Scripts" t="Include">
-                  <e p="Logo.cs" t="Include" />
-                </e>
-              </e>
-              <e p="Photos" t="Include">
-                <e p="Scripts" t="Include">
-                  <e p="Container.cs" t="Include" />
-                  <e p="SetColor.cs" t="Include" />
-                </e>
-              </e>
-              <e p="Portal" t="Include">
-                <e p="Scripts" t="Include">
-                  <e p="Planet.cs" t="Include" />
-                  <e p="Rotator.cs" t="Include" />
-                  <e p="Spawner.cs" t="Include" />
-                  <e p="Vortex.cs" t="Include" />
-                </e>
-              </e>
-              <e p="RawInput" t="Include">
-                <e p="Scripts" t="Include">
-                  <e p="Ball.cs" t="Include" />
-                  <e p="Spawner.cs" t="Include" />
-                </e>
-              </e>
-              <e p="Taps" t="Include">
-                <e p="Scripts" t="Include">
-                  <e p="Break.cs" t="Include" />
-                  <e p="Kick.cs" t="Include" />
-                  <e p="Spawn.cs" t="Include" />
-                </e>
-              </e>
-            </e>
             <e p="license.txt" t="Include" />
             <e p="Modules" t="Include">
               <e p="TUIO" t="Include">
@@ -630,6 +557,9 @@
           </e>
         </e>
         <e p="Scripts" t="Include">
+          <e p="ConstructorVisualization" t="Include">
+            <e p="LessonVisualizer.cs" t="Include" />
+          </e>
           <e p="Editor" t="Include">
             <e p="Lesson" t="Include">
               <e p="Blueprints" t="Include">
@@ -679,6 +609,7 @@
               <e p="ChoseShapeDataField.cs" t="Include" />
               <e p="IHaveVisualElement.cs" t="Include" />
               <e p="ValidatorField.cs" t="Include" />
+              <e p="VisualElementExtensions.cs" t="Include" />
             </e>
           </e>
           <e p="Lesson" t="Include">
@@ -779,22 +710,46 @@
               </e>
             </e>
           </e>
+          <e p="Runtime" t="Include">
+            <e p="ApplicationConfig.cs" t="Include" />
+            <e p="Core" t="Include">
+              <e p="ApplicationModeManager.cs" t="Include" />
+              <e p="CoreRunner.cs" t="Include" />
+              <e p="GlobalData.cs" t="Include" />
+              <e p="IApplicationModeHandler.cs" t="Include" />
+            </e>
+            <e p="ISceneRunner.cs" t="Include" />
+            <e p="SceneData.cs" t="Include" />
+            <e p="Session" t="Include">
+              <e p="ILessonMovementHandler.cs" t="Include" />
+              <e p="ILessonStageHandler.cs" t="Include" />
+              <e p="LessonBrowser.cs" t="Include" />
+              <e p="LessonMovement.cs" t="Include" />
+              <e p="Session3DRunner.cs" t="Include" />
+            </e>
+          </e>
           <e p="Serialization" t="Include">
             <e p="FolderJsonsListSerializer.cs" t="Include" />
             <e p="JsonConstructorMark.cs" t="Include" />
             <e p="StaticPaths.cs" t="Include" />
           </e>
-          <e p="Session" t="Include">
-            <e p="LessonBrowser.cs" t="Include" />
-            <e p="LessonMovement.cs" t="Include" />
-            <e p="SessionRunner.cs" t="Include" />
-          </e>
           <e p="UI" t="Include">
+            <e p="MainMenu" t="Include">
+              <e p="LessonListElementView.cs" t="Include" />
+              <e p="LessonListElementVM.cs" t="Include" />
+              <e p="LessonListVM.cs" t="Include" />
+              <e p="LessonsListView.cs" t="Include" />
+              <e p="MainMenuUIRunner.cs" t="Include" />
+            </e>
             <e p="MVVM" t="Include">
               <e p="View.cs" t="Include" />
               <e p="ViewModel.cs" t="Include" />
             </e>
             <e p="Session" t="Include">
+              <e p="CloseLesson" t="Include">
+                <e p="CloseLessonView.cs" t="Include" />
+                <e p="CloseLessonVM.cs" t="Include" />
+              </e>
               <e p="LessonBrowserUI" t="Include">
                 <e p="LessonBrowserView.cs" t="Include" />
                 <e p="LessonBrowserVM.cs" t="Include" />
@@ -805,7 +760,7 @@
                 <e p="LessonMovementView.cs" t="Include" />
                 <e p="LessonMovementVM.cs" t="Include" />
               </e>
-              <e p="SessionUIConfig.cs" t="Include" />
+              <e p="SessionUIRunner.cs" t="Include" />
             </e>
           </e>
           <e p="Util" t="Include">
@@ -818,9 +773,13 @@
             <e p="GeometryUtils.cs" t="Include" />
             <e p="MonoSingleton.cs" t="Include" />
             <e p="RectTransformExtensions.cs" t="Include" />
+            <e p="SceneUtils" t="Include">
+              <e p="SceneReference.cs" t="Include" />
+            </e>
             <e p="SimpleScrollSnapExtensions.cs" t="Include" />
             <e p="StringExtensions.cs" t="Include" />
             <e p="TouchScriptExtensions.cs" t="Include" />
+            <e p="TransformExtensions.cs" t="Include" />
             <e p="UniRxExtensions" t="Include">
               <e p="MonoBehaviourCompositeDisposable.cs" t="Include" />
             </e>
@@ -828,9 +787,6 @@
           </e>
           <e p="Visual" t="Include">
             <e p="LookatCamera.cs" t="Include" />
-          </e>
-          <e p="Visualization" t="Include">
-            <e p="LessonVisualizer.cs" t="Include" />
           </e>
         </e>
       </e>
