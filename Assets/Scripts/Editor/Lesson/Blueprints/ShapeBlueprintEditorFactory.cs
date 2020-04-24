@@ -39,6 +39,9 @@ namespace Editor.Lesson.Blueprints
                 case RegularPyramidBlueprint regularPyramidBlueprint:
                     visualElement = new RegularPyramidBlueprintEditor(regularPyramidBlueprint, deleteAction).GetVisualElement();
                     break;
+                case TetrahedronBlueprint tetrahedronBlueprint:
+                    visualElement = new TetrahedronBlueprintEditor(tetrahedronBlueprint, deleteAction).GetVisualElement();
+                    break;
                 case PrismBlueprint prismBlueprint:
                     visualElement = new PrismBlueprintEditor(prismBlueprint, deleteAction).GetVisualElement();
                     break;

@@ -64,6 +64,9 @@ namespace Lesson.Shapes.Blueprints
                 case ShapeBlueprintType.RegularPyramid:
                     blueprint = new RegularPyramidBlueprint(m_ShapeDataFactory);
                     break;
+                case ShapeBlueprintType.Tetrahedron:
+                    blueprint = new TetrahedronBlueprint(m_ShapeDataFactory);
+                    break;
                 case ShapeBlueprintType.Prism:
                     blueprint = new PrismBlueprint(m_ShapeDataFactory);
                     break;
@@ -118,6 +121,7 @@ namespace Lesson.Shapes.Blueprints
             Cube, 
             Pyramid,
             RegularPyramid,
+            Tetrahedron,
             Prism,
             RegularPrism,
             PointOfIntersection,

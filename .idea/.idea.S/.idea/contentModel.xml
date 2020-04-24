@@ -575,6 +575,7 @@
                   <e p="PyramidBlueprintEditor.cs" t="Include" />
                   <e p="RegularPrismBlueprintEditor.cs" t="Include" />
                   <e p="RegularPyramidBlueprintEditor.cs" t="Include" />
+                  <e p="TetrahedronBlueprintEditor.cs" t="Include" />
                 </e>
                 <e p="DependentShapes" t="Include">
                   <e p="PointOfIntersectionBlueprintEditor.cs" t="Include" />
@@ -629,6 +630,7 @@
                   <e p="PyramidBlueprint.cs" t="Include" />
                   <e p="RegularPrismBlueprint.cs" t="Include" />
                   <e p="RegularPyramidBlueprint.cs" t="Include" />
+                  <e p="TetrahedronBlueprint.cs" t="Include" />
                 </e>
                 <e p="DependentShapes" t="Include">
                   <e p="PointOfIntersectionBlueprint.cs" t="Include" />
