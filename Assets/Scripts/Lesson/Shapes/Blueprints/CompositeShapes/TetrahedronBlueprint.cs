@@ -17,10 +17,6 @@ namespace Lesson.Shapes.Blueprints.CompositeShapes
         private Vector3 m_Origin;
         [JsonProperty] 
         private float m_Length;
-        [JsonProperty] 
-        private float m_Height;
-        [JsonProperty] 
-        private bool m_IsSideEqual;
 
         [JsonProperty] private readonly PointData[] m_Points = new PointData[4];
         [JsonProperty] private readonly LineData[] m_Lines = new LineData[6];
@@ -29,8 +25,6 @@ namespace Lesson.Shapes.Blueprints.CompositeShapes
 
         public Vector3 Origin => m_Origin;
         public float Length => m_Length;
-        public float Height => m_Height;
-        public bool IsSideEqual => m_IsSideEqual;
 
 
         public IReadOnlyList<PointData> Points => m_Points;
@@ -143,12 +137,7 @@ namespace Lesson.Shapes.Blueprints.CompositeShapes
 
 
         }
-
-        public void SetIsSideEqual(bool state)
-        {
-            m_IsSideEqual = state;
-            UpdatePointsPositions();
-        }
+        
         public void SetPointName(int pointIndex, string name)
         {
             m_Points[pointIndex].SetName(name);
@@ -171,16 +160,6 @@ namespace Lesson.Shapes.Blueprints.CompositeShapes
             //NonZeroVolumeValidator.Update();
             UpdatePointsPositions();
         }
-        public void SetHeight(float height)
-        {
-            if (height < 0 )
-            {
-                return;
-            }
-
-            m_Height = height;
-            UpdatePointsPositions();
-        }
         private void UpdatePointsPositions()
         {
             var v1 = new Vector3(m_Length, 0, 0);
@@ -188,10 +167,8 @@ namespace Lesson.Shapes.Blueprints.CompositeShapes
             var v3 = ((v1 + v2) / 3);
             
             Vector3 height;
-            if (m_IsSideEqual == true)
-                height = new Vector3(0, 0, Mathf.Sqrt(m_Length*m_Length - v3.sqrMagnitude));
-            else 
-                height = new Vector3(0, 0, m_Height);
+            height = new Vector3(0, 0, Mathf.Sqrt(m_Length*m_Length - v3.sqrMagnitude));
+
 
 
             m_Points[0].SetPosition(m_Origin);

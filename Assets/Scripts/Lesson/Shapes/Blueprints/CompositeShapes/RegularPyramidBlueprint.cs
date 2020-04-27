@@ -58,32 +58,6 @@ namespace Lesson.Shapes.Blueprints.CompositeShapes
             m_CompositeShapeData = dataFactory.CreateCompositeShapeData();
             ConstructPyramid();
             OnDeserialized();
-            /*for (int i = 0; i < m_Points.Length; i++)
-            {
-                m_Points[i] = dataFactory.CreatePointData();
-                m_Points[i].NameUpdated += OnNameUpdated;
-            }
-
-            for (int i = 0; i < m_Lines.Length; i++)
-            {
-                m_Lines[i] = dataFactory.CreateLineData();
-            }
-
-            for (int i = 0; i < m_Polygons.Length; i++)
-            {
-                m_Polygons[i] = dataFactory.CreatePolygonData();
-            }
-
-            ConstructLines();
-            ConstructPolygons();
-
-            m_CompositeShapeData = dataFactory.CreateCompositeShapeData();
-
-            m_CompositeShapeData.SetPoints(m_Points);
-            m_CompositeShapeData.SetLines(m_Lines);
-            m_CompositeShapeData.SetPolygons(m_Polygons);
-
-            OnDeserialized();*/
         }
 
         [JsonConstructor]

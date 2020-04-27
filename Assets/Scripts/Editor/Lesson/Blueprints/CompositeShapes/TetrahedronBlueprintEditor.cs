@@ -25,13 +25,6 @@ namespace Editor.Lesson.Blueprints.CompositeShapes
             lengthField.RegisterCallback<ChangeEvent<float>>(evt => Blueprint.SetLength(evt.newValue));
             visualElement.Add(lengthField);
             
-            FloatField heightField = new FloatField("Height: ") {value = Blueprint.Height};
-            heightField.RegisterCallback<ChangeEvent<float>>(evt => Blueprint.SetHeight(evt.newValue));
-            visualElement.Add(heightField);
-            
-            Toggle isSideEqual = new Toggle("isSideEqual: ") {value = Blueprint.IsSideEqual};
-            isSideEqual.RegisterCallback<ChangeEvent<bool>>(evt => Blueprint.SetIsSideEqual(evt.newValue)); 
-            visualElement.Add(isSideEqual);
             // visualElement.Add(new ValidatorField(Blueprint.NonZeroVolumeValidator));
             
             for (int i = 0; i < Blueprint.Points.Count; i++)
