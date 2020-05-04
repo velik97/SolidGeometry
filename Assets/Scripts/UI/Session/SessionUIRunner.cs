@@ -20,21 +20,22 @@ namespace UI.Session
         private LessonMovementView m_LessonMovementView;
 
         [SerializeField]
-        private CloseLessonView m_CloseLessonView;
+        private TopPanelView m_TopPanelView;
         
         private GlobalData m_GlobalData;
+        
         public void Initialize(GlobalData globalData)
         {
             m_GlobalData = globalData;
             
             InitializeLessonBrowser();
             InitializeLessonMovement();
-            InitializeCloseLesson();
+            InitializeTopPanel();
         }
 
         private void InitializeLessonBrowser()
         {
-            LessonBrowserVM browserVM = new LessonBrowserVM(m_GlobalData.CurrentLessonData.LessonStageFactory.LessonStages);
+            LessonBrowserVM browserVM = new LessonBrowserVM(m_GlobalData);
             Add(browserVM);
             m_BrowserView.Bind(browserVM);
         }
@@ -46,18 +47,12 @@ namespace UI.Session
             m_LessonMovementView.Bind(movementVM);
         }
 
-        private void InitializeCloseLesson()
+        private void InitializeTopPanel()
         {
-            CloseLessonVM closeLessonVM = new CloseLessonVM(CloseLesson);
-            Add(closeLessonVM);
-            m_CloseLessonView.Bind(closeLessonVM);
+            TopPanelVM topPanelVM = new TopPanelVM(m_GlobalData);
+            Add(topPanelVM);
+            m_TopPanelView.Bind(topPanelVM);
         }
-
-        private void CloseLesson()
-        {
-            EventBus.RaiseEvent<IApplicationModeHandler>(h => h.HandleChangeApplicationMode(ApplicationMode.MainMenu));
-        }
-        
 
         public void Unload(Action callback)
         {

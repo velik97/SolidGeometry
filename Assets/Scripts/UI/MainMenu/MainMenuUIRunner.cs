@@ -5,7 +5,6 @@ using Runtime;
 using Runtime.Core;
 using Serialization;
 using UnityEngine;
-using Util.EventBusSystem;
 using Util.UniRxExtensions;
 
 namespace UI.MainMenu
@@ -42,10 +41,8 @@ namespace UI.MainMenu
 
         private void OnLessonChosen(string lessonName)
         {
-            m_GlobalData.CurrentLessonData = m_Serializer.GetObject(lessonName);
-            
-            EventBus.RaiseEvent<IApplicationModeHandler>(
-                h => h.HandleChangeApplicationMode(ApplicationMode.Session3D));
+            m_GlobalData.SetCurrentLessonData(m_Serializer.GetObject(lessonName));
+            m_GlobalData.RequestChangeApplicationMode(ApplicationMode.Session3D);
         }
 
         public void Unload(Action callback)

@@ -3,32 +3,37 @@ using Lesson;
 using Lesson.Shapes.Datas;
 using Lesson.Shapes.Views;
 using Lesson.Stages;
+using Runtime.Core;
 using UniRx;
 using UnityEngine;
 using Util.EventBusSystem;
 
 namespace Runtime.Session
 {
-    public class LessonBrowser : CompositeDisposable, ILessonStageHandler
+    public class LessonBrowser : CompositeDisposable, ICurrentLessonStageNumberHandler
     {
         private readonly LessonStageFactory m_LessonStageFactory;
-        public LessonStageFactory LessonStageFactory => m_LessonStageFactory;
-
-        private bool m_DefaultActiveState = false;
+        
+        private bool m_DefaultActiveState;
         private HighlightType m_DefaultHighlightType = HighlightType.Normal;
 
         private readonly Stack<LessonStage> m_AppliedActions = new Stack<LessonStage>();
 
-        public LessonBrowser(LessonData lessonData)
+        public LessonBrowser(GlobalData globalData)
         {
+            LessonData lessonData = globalData.CurrentLessonData;
             m_LessonStageFactory = lessonData.LessonStageFactory;
 
             if (m_LessonStageFactory.LessonStages.Count > 0)
             {
-                LessonStage firstStage = m_LessonStageFactory.LessonStages[0];
+                m_DefaultActiveState = false;
                 ApplyDefaultState(lessonData.ShapeDataFactory);
+
+                LessonStage firstStage = m_LessonStageFactory.LessonStages[0];
                 m_AppliedActions.Push(firstStage);
                 firstStage.ApplyActions();
+                
+                HandleLessonStageNumberChanged(globalData.CurrentLessonStageNumber);
             }
             else
             {
@@ -48,11 +53,10 @@ namespace Runtime.Session
             }
         }
 
-        public void HandleGoToStage(int stageNumber)
+        public void HandleLessonStageNumberChanged(int stageNumber)
         {
             if (stageNumber < 0 || stageNumber >= m_LessonStageFactory.LessonStages.Count)
             {
-                Debug.LogError($"Stage number {stageNumber} is out of range");
                 return;
             }
 

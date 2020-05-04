@@ -19,7 +19,9 @@ namespace Runtime
         [SerializeField]
         private SceneReference m_ShapeViewFactoryScene;
         [SerializeField]
-        private SceneReference m_CameraScene;
+        private SceneReference m_CameraScene3D;
+        [SerializeField]
+        private SceneReference m_CameraSceneAR;
 
         public SceneReference MainMenuMechanicsScene => m_MainMenuMechanicsScene;
 
@@ -28,6 +30,7 @@ namespace Runtime
         public SceneReference SessionUIScene => m_SessionUIScene;
 
         public SceneReference ShapeViewFactoryScene => m_ShapeViewFactoryScene;
-        public SceneReference CameraScene => m_CameraScene;
+        public SceneReference CameraScene3D => m_CameraScene3D;
+        public SceneReference CameraSceneAR => m_CameraSceneAR;
     }
 }

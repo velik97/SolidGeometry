@@ -5,7 +5,7 @@ using Runtime.Core;
 using UnityEngine;
 using Util.UniRxExtensions;
 
-namespace Runtime.Session
+namespace Runtime.Session.Session3D
 {
     public class Session3DRunner : MonoBehaviourCompositeDisposable, ISceneRunner
     {
@@ -22,9 +22,8 @@ namespace Runtime.Session
 
         private GlobalData m_GlobalData;
         private LessonData LessonData => m_GlobalData.CurrentLessonData;
-
-
-        public void Initialize(GlobalData globalData)
+        
+        public virtual void Initialize(GlobalData globalData)
         {
             m_GlobalData = globalData;
             
@@ -35,7 +34,7 @@ namespace Runtime.Session
 
         private void InitializeShapeViewFactory()
         {
-            m_ShapesPivot.position = -LessonData.ShapeDataFactory.Origin;
+            m_ShapesPivot.localPosition = -LessonData.ShapeDataFactory.Origin;
             IShapeViewFactory shapeViewFactory = new ShapeViewFactoryProxy(ShapeViewFactory.Instance, m_ShapesPivot);
             LessonData.ShapeDataFactory.SetViewFactory(shapeViewFactory);
             Add(shapeViewFactory);
@@ -43,7 +42,7 @@ namespace Runtime.Session
 
         private void InitializeLessonBrowser()
         {
-            Add(m_LessonBrowser = new LessonBrowser(LessonData));
+            Add(m_LessonBrowser = new LessonBrowser(m_GlobalData));
         }
 
         private void InitializeLessonMovement()

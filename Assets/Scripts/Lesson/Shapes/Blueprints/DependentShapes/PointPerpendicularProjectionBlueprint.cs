@@ -143,8 +143,7 @@ namespace Lesson.Shapes.Blueprints.DependentShapes
             {
                 return;
             }
-            PointData.SetPosition(GeometryUtils.ProjectionOnLine(
-                m_ProjectedPoint.Position,
+            PointData.SetPosition(m_ProjectedPoint.Position.ProjectionOnLine(
                 m_FirstPointOnTargetLine.Position,
                 m_SecondPointOnTargetLine.Position));
         }

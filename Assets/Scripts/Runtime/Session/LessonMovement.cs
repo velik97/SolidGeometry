@@ -1,4 +1,5 @@
 ﻿using DG.Tweening;
+using Runtime.CameraManagement;
 using UniRx;
 using UnityEngine;
 using Util;
@@ -9,7 +10,6 @@ namespace Runtime.Session
     public class LessonMovement : CompositeDisposable, ILessonMovementHandler
     {
         private Transform m_ShapesAnchor;
-        private Transform m_MainCameraTransform;
 
         public LessonMovement(Transform shapesAnchor)
         {
@@ -17,25 +17,39 @@ namespace Runtime.Session
             Add(Disposable.Create(ResetTransform));
             
             m_ShapesAnchor = shapesAnchor;
-            m_MainCameraTransform = Camera.main.transform;
         }
 
         public void HandleRotateAroundXY(Vector3 deltaRotation)
         {
-            m_ShapesAnchor.Rotate(m_MainCameraTransform.up, -deltaRotation.x, Space.World);
-            m_ShapesAnchor.Rotate(m_MainCameraTransform.right, deltaRotation.y, Space.World);
+            if (!CameraOwner.Instance.HasCamera)
+            {
+                return;
+            }
+            
+            m_ShapesAnchor.Rotate(CameraOwner.Instance.CameraTransform.up, -deltaRotation.x, Space.World);
+            m_ShapesAnchor.Rotate(CameraOwner.Instance.CameraTransform.right, deltaRotation.y, Space.World);
         }
 
         public void HandleRotateAroundZ(float deltaRotation)
         {
-            m_ShapesAnchor.Rotate(m_MainCameraTransform.forward, deltaRotation, Space.World);
+            if (!CameraOwner.Instance.HasCamera)
+            {
+                return;
+            }
+            
+            m_ShapesAnchor.Rotate(CameraOwner.Instance.CameraTransform.forward, deltaRotation, Space.World);
         }
 
         public void HandleShift(Vector3 deltaDirection)
         {
+            if (!CameraOwner.Instance.HasCamera)
+            {
+                return;
+            }
+            
             Vector3 globalDirection =
-                m_MainCameraTransform.right * deltaDirection.x +
-                m_MainCameraTransform.up * deltaDirection.y;
+                CameraOwner.Instance.CameraTransform.right * deltaDirection.x +
+                CameraOwner.Instance.CameraTransform.up * deltaDirection.y;
 
             m_ShapesAnchor.Translate(globalDirection);
         }

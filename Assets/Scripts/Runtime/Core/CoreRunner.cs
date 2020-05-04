@@ -1,9 +1,4 @@
-﻿using System;
-using System.IO;
-using Lesson;
-using Serialization;
-using UnityEngine;
-using Util.EventBusSystem;
+﻿using UnityEngine;
 using Util.UniRxExtensions;
 
 namespace Runtime.Core
@@ -16,14 +11,12 @@ namespace Runtime.Core
 
         private void Awake()
         {
-            Initialize();
+            InitializeApplicationModeManager();
 
-            // Will be changed to main menu
-            EventBus.RaiseEvent<IApplicationModeHandler>(
-                h => h.HandleChangeApplicationMode(ApplicationMode.MainMenu));
+            m_ApplicationModeManager.GlobalData.RequestChangeApplicationMode(ApplicationMode.MainMenu);
         }
 
-        private void Initialize()
+        private void InitializeApplicationModeManager()
         {
             Add(m_ApplicationModeManager = new ApplicationModeManager(m_ApplicationConfig));
         }

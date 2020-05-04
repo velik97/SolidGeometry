@@ -13,9 +13,10 @@ namespace Lesson.Shapes.Views
         [SerializeField] private Material[] m_Materials = new Material[5];
         [SerializeField] private Renderer m_Renderer;
         
-        private bool m_IsInitialized = false;
         private HighlightType m_Highlight;
         
+        private bool m_IsInitialized = false;
+
         private void Awake()
         {
             Initialize();
@@ -27,10 +28,7 @@ namespace Lesson.Shapes.Views
             {
                 return;
             }
-            if (m_PolygonMesh == null)
-            {
-                m_PolygonMesh = new Mesh();
-            }
+            m_PolygonMesh = new Mesh();
             m_MeshFilter.mesh = m_PolygonMesh;
             m_IsInitialized = true;
         }
