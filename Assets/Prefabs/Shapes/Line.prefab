@@ -27,7 +27,7 @@ Transform:
   m_GameObject: {fileID: 4150909750243554143}
   m_LocalRotation: {x: 0.7071068, y: 0, z: 0, w: 0.7071068}
   m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 0.01, y: 0.1, z: 0.01}
+  m_LocalScale: {x: 0.03, y: 0.03, z: 0.03}
   m_Children: []
   m_Father: {fileID: 6053190227636214361}
   m_RootOrder: 0
@@ -157,7 +157,7 @@ MonoBehaviour:
   m_CylinderParent: {fileID: 6739730070864827517}
   m_Cylinder: {fileID: 4150909750243554143}
   m_Materials:
-  - {fileID: 2100000, guid: 9b423e8c7dd0f4e8c9d3948c3e31af12, type: 2}
+  - {fileID: 2100000, guid: 80f7227f78a57ca4ca3b531354d76a89, type: 2}
   - {fileID: 2100000, guid: b83a0c91e60534666b26401eedae0cb9, type: 2}
   - {fileID: 2100000, guid: 8046056fbf0f3412981ba275931f479b, type: 2}
   - {fileID: 2100000, guid: 3b0d0bd5136244d6a80902d49aa14ee4, type: 2}
