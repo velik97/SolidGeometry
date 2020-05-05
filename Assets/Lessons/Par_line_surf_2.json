@@ -1,0 +1,375 @@
+{
+  "m_ShapeDataFactory": {
+    "$id": "1",
+    "m_Origin": {
+      "x": 0.0,
+      "y": 0.0,
+      "z": 0.0
+    },
+    "m_PointDatas": [
+      {
+        "$id": "2",
+        "m_Position": {
+          "x": -1.0,
+          "y": 0.0,
+          "z": -1.0
+        },
+        "m_PointName": "a"
+      },
+      {
+        "$id": "3",
+        "m_Position": {
+          "x": -1.0,
+          "y": 0.0,
+          "z": 2.0
+        },
+        "m_PointName": "b"
+      },
+      {
+        "$id": "4",
+        "m_Position": {
+          "x": 3.0,
+          "y": 0.0,
+          "z": -2.0
+        },
+        "m_PointName": "c"
+      },
+      {
+        "$id": "5",
+        "m_Position": {
+          "x": 3.0,
+          "y": 0.0,
+          "z": 1.0
+        },
+        "m_PointName": "d"
+      },
+      {
+        "$id": "6",
+        "m_Position": {
+          "x": -0.5,
+          "y": 2.0,
+          "z": -2.0
+        },
+        "m_PointName": "x"
+      },
+      {
+        "$id": "7",
+        "m_Position": {
+          "x": 1.5,
+          "y": 2.0,
+          "z": 2.0
+        },
+        "m_PointName": "y"
+      },
+      {
+        "$id": "8",
+        "m_Position": {
+          "x": -0.5,
+          "y": -1.0,
+          "z": -1.0
+        },
+        "m_PointName": "w"
+      },
+      {
+        "$id": "9",
+        "m_Position": {
+          "x": 1.5,
+          "y": -1.0,
+          "z": 3.0
+        },
+        "m_PointName": "q"
+      },
+      {
+        "$id": "10",
+        "m_Position": {
+          "x": -0.099999994,
+          "y": 0.5,
+          "z": -0.700000048
+        },
+        "m_PointName": "A"
+      },
+      {
+        "$id": "11",
+        "m_Position": {
+          "x": 0.5,
+          "y": 0.5,
+          "z": 0.5
+        },
+        "m_PointName": "B"
+      }
+    ],
+    "m_LinetDatas": [
+      {
+        "$id": "12",
+        "m_StartPoint": {
+          "$ref": "10"
+        },
+        "m_EndPoint": {
+          "$ref": "11"
+        }
+      },
+      {
+        "$id": "13",
+        "m_StartPoint": {
+          "$ref": "6"
+        },
+        "m_EndPoint": {
+          "$ref": "8"
+        }
+      }
+    ],
+    "m_PolygonDatas": [
+      {
+        "$id": "14",
+        "m_Points": [
+          {
+            "$ref": "2"
+          },
+          {
+            "$ref": "3"
+          },
+          {
+            "$ref": "5"
+          },
+          {
+            "$ref": "4"
+          }
+        ]
+      },
+      {
+        "$id": "15",
+        "m_Points": [
+          {
+            "$ref": "6"
+          },
+          {
+            "$ref": "7"
+          },
+          {
+            "$ref": "9"
+          },
+          {
+            "$ref": "8"
+          }
+        ]
+      }
+    ],
+    "m_CompositeShapeDatas": []
+  },
+  "m_ShapeBlueprintFactory": {
+    "$id": "16",
+    "m_ShapeBlueprints": [
+      {
+        "$id": "17",
+        "$type": "Lesson.Shapes.Blueprints.BaseShapes.PointBlueprint, Assembly-CSharp",
+        "PointData": {
+          "$ref": "2"
+        },
+        "DependenciesOnOtherShapes": []
+      },
+      {
+        "$id": "18",
+        "$type": "Lesson.Shapes.Blueprints.BaseShapes.PointBlueprint, Assembly-CSharp",
+        "PointData": {
+          "$ref": "3"
+        },
+        "DependenciesOnOtherShapes": []
+      },
+      {
+        "$id": "19",
+        "$type": "Lesson.Shapes.Blueprints.BaseShapes.PointBlueprint, Assembly-CSharp",
+        "PointData": {
+          "$ref": "4"
+        },
+        "DependenciesOnOtherShapes": []
+      },
+      {
+        "$id": "20",
+        "$type": "Lesson.Shapes.Blueprints.BaseShapes.PointBlueprint, Assembly-CSharp",
+        "PointData": {
+          "$ref": "5"
+        },
+        "DependenciesOnOtherShapes": []
+      },
+      {
+        "$id": "21",
+        "$type": "Lesson.Shapes.Blueprints.BaseShapes.PolygonBlueprint, Assembly-CSharp",
+        "PolygonData": {
+          "$ref": "14"
+        },
+        "DependenciesOnOtherShapes": [
+          {
+            "$ref": "17"
+          },
+          {
+            "$ref": "18"
+          },
+          {
+            "$ref": "20"
+          },
+          {
+            "$ref": "19"
+          }
+        ]
+      },
+      {
+        "$id": "22",
+        "$type": "Lesson.Shapes.Blueprints.BaseShapes.PointBlueprint, Assembly-CSharp",
+        "PointData": {
+          "$ref": "6"
+        },
+        "DependenciesOnOtherShapes": []
+      },
+      {
+        "$id": "23",
+        "$type": "Lesson.Shapes.Blueprints.BaseShapes.PointBlueprint, Assembly-CSharp",
+        "PointData": {
+          "$ref": "7"
+        },
+        "DependenciesOnOtherShapes": []
+      },
+      {
+        "$id": "24",
+        "$type": "Lesson.Shapes.Blueprints.BaseShapes.PointBlueprint, Assembly-CSharp",
+        "PointData": {
+          "$ref": "8"
+        },
+        "DependenciesOnOtherShapes": []
+      },
+      {
+        "$id": "25",
+        "$type": "Lesson.Shapes.Blueprints.BaseShapes.PointBlueprint, Assembly-CSharp",
+        "PointData": {
+          "$ref": "9"
+        },
+        "DependenciesOnOtherShapes": []
+      },
+      {
+        "$id": "26",
+        "$type": "Lesson.Shapes.Blueprints.BaseShapes.PolygonBlueprint, Assembly-CSharp",
+        "PolygonData": {
+          "$ref": "15"
+        },
+        "DependenciesOnOtherShapes": [
+          {
+            "$ref": "22"
+          },
+          {
+            "$ref": "23"
+          },
+          {
+            "$ref": "25"
+          },
+          {
+            "$ref": "24"
+          }
+        ]
+      },
+      {
+        "$id": "27",
+        "$type": "Lesson.Shapes.Blueprints.DependentShapes.PointOnSurfaceBlueprint, Assembly-CSharp",
+        "PointData": {
+          "$ref": "10"
+        },
+        "m_ThirdPoint": {
+          "$ref": "8"
+        },
+        "m_SourcePoint": {
+          "$ref": "6"
+        },
+        "m_SecondPoint": {
+          "$ref": "7"
+        },
+        "m_Coefficient1": 0.2,
+        "m_Coefficient2": 0.5,
+        "DependenciesOnOtherShapes": [
+          {
+            "$ref": "22"
+          },
+          {
+            "$ref": "23"
+          },
+          {
+            "$ref": "24"
+          }
+        ]
+      },
+      {
+        "$id": "28",
+        "$type": "Lesson.Shapes.Blueprints.DependentShapes.PointOnSurfaceBlueprint, Assembly-CSharp",
+        "PointData": {
+          "$ref": "11"
+        },
+        "m_ThirdPoint": {
+          "$ref": "8"
+        },
+        "m_SourcePoint": {
+          "$ref": "6"
+        },
+        "m_SecondPoint": {
+          "$ref": "7"
+        },
+        "m_Coefficient1": 0.5,
+        "m_Coefficient2": 0.5,
+        "DependenciesOnOtherShapes": [
+          {
+            "$ref": "22"
+          },
+          {
+            "$ref": "23"
+          },
+          {
+            "$ref": "24"
+          }
+        ]
+      },
+      {
+        "$id": "29",
+        "$type": "Lesson.Shapes.Blueprints.BaseShapes.LineBlueprint, Assembly-CSharp",
+        "LineData": {
+          "$ref": "12"
+        },
+        "DependenciesOnOtherShapes": [
+          {
+            "$ref": "27"
+          },
+          {
+            "$ref": "28"
+          }
+        ]
+      },
+      {
+        "$id": "30",
+        "$type": "Lesson.Shapes.Blueprints.BaseShapes.LineBlueprint, Assembly-CSharp",
+        "LineData": {
+          "$ref": "13"
+        },
+        "DependenciesOnOtherShapes": [
+          {
+            "$ref": "22"
+          },
+          {
+            "$ref": "24"
+          }
+        ]
+      }
+    ]
+  },
+  "m_ShapeActionFactory": {
+    "m_ShapeActions": []
+  },
+  "m_LessonStageFactory": {
+    "m_LessonStages": [
+      {
+        "m_StageName": null,
+        "m_StageDescription": "Если плоскость проходит через прямую, параллельную другой плоскости, и пересекает эту плоскость",
+        "m_ShapeActions": []
+      },
+      {
+        "m_StageName": null,
+        "m_StageDescription": "то линия пересечения плоскостей параллельна данной прямой",
+        "m_ShapeActions": []
+      }
+    ]
+  }
+}
