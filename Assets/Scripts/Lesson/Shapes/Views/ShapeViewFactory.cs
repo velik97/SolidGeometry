@@ -74,7 +74,7 @@ namespace Lesson.Shapes.Views
         
         private PolygonView CreatePolygonView(PolygonData data)
         {
-            PolygonView polygonView = m_PointsPool.Count > 0
+            PolygonView polygonView = m_PolygonsPool.Count > 0
                 ? m_PolygonsPool.Pop()
                 : Instantiate(m_PolygonPrefab, transform, false);
             
