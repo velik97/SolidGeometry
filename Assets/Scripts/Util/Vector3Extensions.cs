@@ -42,5 +42,34 @@ namespace Util
             int div = (int) (value * INVERSE_EPSILON);
             return div * EPSILON;
         }
+
+        public static Vector3 ClampComponentWise(this Vector3 vector3, float clamp)
+        {
+            if (clamp <= 0f)
+            {
+                return Vector3.zero;
+            }
+            
+            return new Vector3(
+                Mathf.Clamp(vector3.x, -clamp, clamp),
+                Mathf.Clamp(vector3.y, -clamp, clamp),
+                Mathf.Clamp(vector3.z, -clamp, clamp)
+                );
+        }
+
+        public static Vector3 ClampMagnitude(this Vector3 vector3, float clamp)
+        {
+            if (clamp <= 0f)
+            {
+                return Vector3.zero;
+            }
+
+            if (vector3.sqrMagnitude <= clamp * clamp)
+            {
+                return vector3;
+            }
+
+            return vector3 * clamp / vector3.magnitude;
+        }
     }
 }
