@@ -33,7 +33,7 @@ namespace Runtime.Core
         {
             m_ApplicationConfig = applicationConfig;
             
-            m_GlobalData = new GlobalData(ChangeMode);
+            m_GlobalData = new GlobalData(ChangeMode, applicationConfig.RootFolder);
             
             m_ModeScenes = new Dictionary<ApplicationMode, List<SceneReference>>();
             m_RunningScenes = new List<SceneData>();

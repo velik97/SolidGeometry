@@ -4,21 +4,30 @@ using UniRx;
 using UnityEngine;
 using UnityEngine.UI;
 
-namespace UI.MainMenu
+namespace UI.MainMenu.FileSystem
 {
-    public class LessonListElementView : View<LessonListElementVM>
+    public class AssetListElementView : View<AssetListElementVM>
     {
         [SerializeField]
         private Button m_ChoseLessonButton;
 
         [SerializeField]
         private TextMeshProUGUI m_LessonNameLabel;
+        [SerializeField]
+        private TextMeshProUGUI m_DescriptionLabel;
 
-        public override void Bind(LessonListElementVM viewModel)
+        [SerializeField]
+        private Image m_FolderImage;
+
+        public override void Bind(AssetListElementVM viewModel)
         {
             base.Bind(viewModel);
 
             m_LessonNameLabel.text = ViewModel.LessonName;
+            m_DescriptionLabel.text = ViewModel.Description;
+
+            m_FolderImage.gameObject.SetActive(ViewModel.IsFolder);
+            
             Add(m_ChoseLessonButton.OnClickAsObservable().Subscribe(_ => ViewModel.ButtonPressed()));
         }
     }
