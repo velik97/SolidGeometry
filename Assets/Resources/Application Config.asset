@@ -19,14 +19,17 @@ MonoBehaviour:
     sceneAsset: {fileID: 102900000, guid: 90ef51829c97c3b4f9b7706c74273cbd, type: 3}
     scenePath: Assets/Scenes/Runtime/Session/Session3D.unity
   m_SessionARMechanicsScene:
-    sceneAsset: {fileID: 0}
-    scenePath: 
+    sceneAsset: {fileID: 102900000, guid: 023f0c18d3c7c6a4e960bc17d8aea951, type: 3}
+    scenePath: Assets/Scenes/Runtime/Session/SessionAR.unity
   m_SessionUIScene:
     sceneAsset: {fileID: 102900000, guid: f10b878ab27994e0f9b88a97d8ac8f29, type: 3}
     scenePath: Assets/Scenes/Runtime/Session/UI_Session.unity
   m_ShapeViewFactoryScene:
     sceneAsset: {fileID: 102900000, guid: 7608802f93bdc3e49bd2bfe13fe4504c, type: 3}
     scenePath: Assets/Scenes/Runtime/ShapViewFactoryScene.unity
-  m_CameraScene:
+  m_CameraScene3D:
     sceneAsset: {fileID: 102900000, guid: 37a1bec68c0942041a7c3d616decd6f4, type: 3}
-    scenePath: Assets/Scenes/Runtime/CameraScene.unity
+    scenePath: Assets/Scenes/Runtime/CameraScene3D.unity
+  m_CameraSceneAR:
+    sceneAsset: {fileID: 102900000, guid: 9475eb62feda60f4e84deff9e33ba31a, type: 3}
+    scenePath: Assets/Scenes/Runtime/CameraSceneAR.unity

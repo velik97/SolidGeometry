@@ -1,13 +1,13 @@
-﻿using System.Collections.Generic;
+﻿using System;
+using System.Collections.Generic;
 using System.Linq;
 using UniRx;
 using UnityEngine;
-using Util.EventBusSystem;
 using Util.SceneUtils;
 
 namespace Runtime.Core
 {
-    public class ApplicationModeManager : CompositeDisposable, IApplicationModeHandler
+    public class ApplicationModeManager : CompositeDisposable
     {
         private readonly ApplicationConfig m_ApplicationConfig;
         
@@ -24,18 +24,21 @@ namespace Runtime.Core
 
         private int m_ScenesToLoadCount;
 
+        private ApplicationMode m_NewApplicationMode;
+        private Action<ApplicationMode> m_ModeChangedCallback;
+
+        public GlobalData GlobalData => m_GlobalData;
+
         public ApplicationModeManager(ApplicationConfig applicationConfig)
         {
             m_ApplicationConfig = applicationConfig;
             
-            m_GlobalData = new GlobalData();
+            m_GlobalData = new GlobalData(ChangeMode);
             
             m_ModeScenes = new Dictionary<ApplicationMode, List<SceneReference>>();
             m_RunningScenes = new List<SceneData>();
             
             FillModeScenesDictionary();
-            
-            Add(EventBus.Subscribe(this));
         }
 
         private void FillModeScenesDictionary()
@@ -47,7 +50,8 @@ namespace Runtime.Core
             RegisterSceneReference(m_ApplicationConfig.SessionUIScene, ApplicationMode.Session3D, ApplicationMode.SessionAR);
             
             RegisterSceneReference(m_ApplicationConfig.ShapeViewFactoryScene, ApplicationMode.MainMenu, ApplicationMode.Session3D, ApplicationMode.SessionAR);
-            RegisterSceneReference(m_ApplicationConfig.CameraScene, ApplicationMode.MainMenu, ApplicationMode.Session3D, ApplicationMode.SessionAR);
+            RegisterSceneReference(m_ApplicationConfig.CameraScene3D, ApplicationMode.MainMenu, ApplicationMode.Session3D);
+            RegisterSceneReference(m_ApplicationConfig.CameraSceneAR, ApplicationMode.SessionAR);
         }
 
         private void RegisterSceneReference(SceneReference sceneReference, params ApplicationMode[] modes)
@@ -66,12 +70,7 @@ namespace Runtime.Core
             }
         }
 
-        public void HandleChangeApplicationMode(ApplicationMode mode)
-        {
-            ChangeMode(mode);
-        }
-
-        private void ChangeMode(ApplicationMode mode)
+        private void ChangeMode(ApplicationMode mode, Action<ApplicationMode> callback)
         {
             if (m_ChangingMode)
             {
@@ -79,6 +78,8 @@ namespace Runtime.Core
                 return;
             }
             m_ChangingMode = true;
+            m_NewApplicationMode = mode;
+            m_ModeChangedCallback = callback;
             
             List<SceneReference> sceneReferencesForMode = m_ModeScenes[mode];
 
@@ -120,6 +121,7 @@ namespace Runtime.Core
             }
 
             m_ChangingMode = false;
+            m_ModeChangedCallback?.Invoke(m_NewApplicationMode);
         }
     }
     

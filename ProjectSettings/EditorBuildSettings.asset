@@ -9,18 +9,24 @@ EditorBuildSettings:
     path: Assets/Scenes/Runtime/Start.unity
     guid: 60b9d5df16216d04a9eba615fe1ee681
   - enabled: 1
-    path: Assets/Scenes/Runtime/Session/UI_Session.unity
+    path: Assets/Scenes/Runtime/Session/UI_SessionScene.unity
     guid: f10b878ab27994e0f9b88a97d8ac8f29
   - enabled: 1
-    path: Assets/Scenes/Runtime/Session/Session3D.unity
+    path: Assets/Scenes/Runtime/Session/Session3DScene.unity
     guid: 90ef51829c97c3b4f9b7706c74273cbd
   - enabled: 1
     path: Assets/Scenes/Runtime/ShapViewFactoryScene.unity
     guid: 7608802f93bdc3e49bd2bfe13fe4504c
   - enabled: 1
-    path: Assets/Scenes/Runtime/CameraScene.unity
+    path: Assets/Scenes/Runtime/CameraScene3D.unity
     guid: 37a1bec68c0942041a7c3d616decd6f4
   - enabled: 1
     path: Assets/Scenes/Runtime/MainMenu/UI_MainMenu.unity
     guid: 8b1054dfaddc8d04bad55bb56309d867
+  - enabled: 1
+    path: Assets/Scenes/Runtime/Session/SessionARScene.unity
+    guid: 023f0c18d3c7c6a4e960bc17d8aea951
+  - enabled: 1
+    path: Assets/Scenes/Runtime/CameraSceneAR.unity
+    guid: 9475eb62feda60f4e84deff9e33ba31a
   m_configObjects: {}

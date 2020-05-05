@@ -1,3 +1,4 @@
+using System;
 using Lesson.Shapes.Datas;
 using UnityEngine;
 
@@ -12,12 +13,11 @@ namespace Lesson.Shapes.Views
         [SerializeField] private Renderer m_Renderer;
         private HighlightType m_Highlight;
         
+        private static readonly int LineDirectionShaderProperty = Shader.PropertyToID("_LineDirection");
+
         public override HighlightType Highlight 
         {
-            get
-            {
-                return m_Highlight;
-            }
+            get => m_Highlight;
             set
             {
                 m_Highlight = value;
@@ -28,6 +28,15 @@ namespace Lesson.Shapes.Views
         private void UpdateHighlight()
         {
             m_Renderer.material = m_Materials[(int)m_Highlight];
+        }
+
+        private void Update()
+        {
+            if (m_Renderer.material.HasProperty("_LineDirection"))
+            {
+                float scale = transform.lossyScale.x;
+                m_Renderer.material.SetVector(LineDirectionShaderProperty, m_Cylinder.transform.up / scale);
+            }
         }
 
         protected override void UpdateGeometry()

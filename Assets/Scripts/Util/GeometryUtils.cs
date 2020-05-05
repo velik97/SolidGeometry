@@ -52,7 +52,7 @@ namespace Util
         /// <summary>
         /// Return projection of source on line firstOnLine-secondOnLine
         /// </summary>
-        public static Vector3 ProjectionOnLine(Vector3 source, Vector3 firstOnLine, Vector3 secondOnLine)
+        public static Vector3 ProjectionOnLine(this Vector3 source, Vector3 firstOnLine, Vector3 secondOnLine)
         {
             if (firstOnLine == secondOnLine)
             {

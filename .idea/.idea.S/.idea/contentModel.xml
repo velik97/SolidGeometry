@@ -613,6 +613,11 @@
               <e p="VisualElementExtensions.cs" t="Include" />
             </e>
           </e>
+          <e p="FileSystem" t="Include">
+            <e p="BaseFileSystemAsset.cs" t="Include" />
+            <e p="FolderAsset.cs" t="Include" />
+            <e p="LessonAsset.cs" t="Include" />
+          </e>
           <e p="Lesson" t="Include">
             <e p="LessonData.cs" t="Include" />
             <e p="Shapes" t="Include">
