@@ -11,8 +11,9 @@ namespace Runtime.Session
     {
         private const float ROTATE_XY_COEFFICIENT = 2.4f;
         private const float SHIFT_COEFFICIENT = 0.0008f;
+        private const float MIN_SCALE = 0.5f;
         private const float MAX_SCALE = 10.0f;
-        private const float MAX_SHIFT = 2.0f;
+        private const float MAX_SHIFT = 2.5f;
 
         private Transform m_ShapesAnchor;
 
@@ -23,9 +24,15 @@ namespace Runtime.Session
             
             m_ShapesAnchor = shapesAnchor;
         }
-
+ 
         public void HandleRotateAroundXY(Vector3 deltaRotation)
         {
+            if (Application.isEditor && (Input.GetKey(KeyCode.LeftShift) || Input.GetKey(KeyCode.RightShift)))
+            {
+                HandleShift(deltaRotation);
+                return;
+            }
+            
             if (!CameraOwner.Instance.HasCamera)
             {
                 return;
@@ -77,7 +84,7 @@ namespace Runtime.Session
         public void HandleScale(float deltaScale)
         {
             Vector3 newScale = m_ShapesAnchor.localScale * deltaScale;
-            newScale = newScale.ClampComponentWise(MAX_SCALE);
+            newScale = newScale.ClampComponentWise(MIN_SCALE, MAX_SCALE);
             
             m_ShapesAnchor.localScale = newScale;
         }
