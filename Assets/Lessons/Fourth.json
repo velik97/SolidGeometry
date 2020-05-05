@@ -2423,7 +2423,7 @@
       {
         "$id": "67",
         "$type": "Lesson.Stages.Actions.SetHighlightShapeAction, Assembly-CSharp",
-        "m_Highlight": 2,
+        "m_Highlight": 3,
         "m_ShapeData": {
           "$ref": "30"
         },
@@ -2436,7 +2436,7 @@
       {
         "$id": "68",
         "$type": "Lesson.Stages.Actions.SetHighlightShapeAction, Assembly-CSharp",
-        "m_Highlight": 2,
+        "m_Highlight": 3,
         "m_ShapeData": {
           "$ref": "28"
         },
@@ -2575,6 +2575,110 @@
             "$ref": "46"
           }
         ]
+      },
+      {
+        "$id": "79",
+        "$type": "Lesson.Stages.Actions.SetHighlightShapeAction, Assembly-CSharp",
+        "m_Highlight": 4,
+        "m_ShapeData": {
+          "$ref": "8"
+        },
+        "DependenciesOnOtherShapes": [
+          {
+            "$ref": "39"
+          }
+        ]
+      },
+      {
+        "$id": "80",
+        "$type": "Lesson.Stages.Actions.SetHighlightShapeAction, Assembly-CSharp",
+        "m_Highlight": 4,
+        "m_ShapeData": {
+          "$ref": "9"
+        },
+        "DependenciesOnOtherShapes": [
+          {
+            "$ref": "40"
+          }
+        ]
+      },
+      {
+        "$id": "81",
+        "$type": "Lesson.Stages.Actions.SetHighlightShapeAction, Assembly-CSharp",
+        "m_Highlight": 4,
+        "m_ShapeData": {
+          "$ref": "10"
+        },
+        "DependenciesOnOtherShapes": [
+          {
+            "$ref": "41"
+          }
+        ]
+      },
+      {
+        "$id": "82",
+        "$type": "Lesson.Stages.Actions.SetHighlightShapeAction, Assembly-CSharp",
+        "m_Highlight": 4,
+        "m_ShapeData": {
+          "$ref": "23"
+        },
+        "DependenciesOnOtherShapes": [
+          {
+            "$ref": "42"
+          }
+        ]
+      },
+      {
+        "$id": "83",
+        "$type": "Lesson.Stages.Actions.SetHighlightShapeAction, Assembly-CSharp",
+        "m_Highlight": 4,
+        "m_ShapeData": {
+          "$ref": "28"
+        },
+        "DependenciesOnOtherShapes": [
+          {
+            "$ref": "50"
+          }
+        ]
+      },
+      {
+        "$id": "84",
+        "$type": "Lesson.Stages.Actions.SetHighlightShapeAction, Assembly-CSharp",
+        "m_Highlight": 4,
+        "m_ShapeData": {
+          "$ref": "29"
+        },
+        "DependenciesOnOtherShapes": [
+          {
+            "$ref": "51"
+          }
+        ]
+      },
+      {
+        "$id": "85",
+        "$type": "Lesson.Stages.Actions.SetHighlightShapeAction, Assembly-CSharp",
+        "m_Highlight": 4,
+        "m_ShapeData": {
+          "$ref": "30"
+        },
+        "DependenciesOnOtherShapes": [
+          {
+            "$ref": "53"
+          }
+        ]
+      },
+      {
+        "$id": "86",
+        "$type": "Lesson.Stages.Actions.SetHighlightShapeAction, Assembly-CSharp",
+        "m_Highlight": 4,
+        "m_ShapeData": {
+          "$ref": "27"
+        },
+        "DependenciesOnOtherShapes": [
+          {
+            "$ref": "48"
+          }
+        ]
       }
     ]
   },
@@ -2595,12 +2699,21 @@
           },
           {
             "$ref": "57"
+          },
+          {
+            "$ref": "79"
+          },
+          {
+            "$ref": "80"
+          },
+          {
+            "$ref": "81"
           }
         ]
       },
       {
         "m_StageName": "Сторона сечения",
-        "m_StageDescription": "Точки E и F лежат в одной грани, значит, мы можем их соединить. Прямая EF - сторона искомого сечения.",
+        "m_StageDescription": "Нам повезло! Точки E и F лежат в одной грани, значит, мы можем их соединить. Прямая EF - сторона искомого сечения.",
         "m_ShapeActions": [
           {
             "$ref": "58"
@@ -2633,7 +2746,7 @@
       },
       {
         "m_StageName": "Точка сечения",
-        "m_StageDescription": "Точка пересечения DG и AВ - точка H искомого сечения, а DH - сторона сечения",
+        "m_StageDescription": "Точка пересечения DG и AВ - точка H искомого сечения, а DH - сторона сечения.",
         "m_ShapeActions": [
           {
             "$ref": "63"
@@ -2706,6 +2819,21 @@
           },
           {
             "$ref": "74"
+          },
+          {
+            "$ref": "82"
+          },
+          {
+            "$ref": "83"
+          },
+          {
+            "$ref": "84"
+          },
+          {
+            "$ref": "85"
+          },
+          {
+            "$ref": "86"
           }
         ]
       }

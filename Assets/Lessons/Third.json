@@ -5128,6 +5128,110 @@
             "$ref": "62"
           }
         ]
+      },
+      {
+        "$id": "127",
+        "$type": "Lesson.Stages.Actions.SetHighlightShapeAction, Assembly-CSharp",
+        "m_Highlight": 4,
+        "m_ShapeData": {
+          "$ref": "8"
+        },
+        "DependenciesOnOtherShapes": [
+          {
+            "$ref": "51"
+          }
+        ]
+      },
+      {
+        "$id": "128",
+        "$type": "Lesson.Stages.Actions.SetHighlightShapeAction, Assembly-CSharp",
+        "m_Highlight": 4,
+        "m_ShapeData": {
+          "$ref": "9"
+        },
+        "DependenciesOnOtherShapes": [
+          {
+            "$ref": "52"
+          }
+        ]
+      },
+      {
+        "$id": "129",
+        "$type": "Lesson.Stages.Actions.SetHighlightShapeAction, Assembly-CSharp",
+        "m_Highlight": 4,
+        "m_ShapeData": {
+          "$ref": "10"
+        },
+        "DependenciesOnOtherShapes": [
+          {
+            "$ref": "53"
+          }
+        ]
+      },
+      {
+        "$id": "130",
+        "$type": "Lesson.Stages.Actions.SetHighlightShapeAction, Assembly-CSharp",
+        "m_Highlight": 4,
+        "m_ShapeData": {
+          "$ref": "42"
+        },
+        "DependenciesOnOtherShapes": [
+          {
+            "$ref": "77"
+          }
+        ]
+      },
+      {
+        "$id": "131",
+        "$type": "Lesson.Stages.Actions.SetHighlightShapeAction, Assembly-CSharp",
+        "m_Highlight": 4,
+        "m_ShapeData": {
+          "$ref": "39"
+        },
+        "DependenciesOnOtherShapes": [
+          {
+            "$ref": "72"
+          }
+        ]
+      },
+      {
+        "$id": "132",
+        "$type": "Lesson.Stages.Actions.SetHighlightShapeAction, Assembly-CSharp",
+        "m_Highlight": 4,
+        "m_ShapeData": {
+          "$ref": "40"
+        },
+        "DependenciesOnOtherShapes": [
+          {
+            "$ref": "74"
+          }
+        ]
+      },
+      {
+        "$id": "133",
+        "$type": "Lesson.Stages.Actions.SetHighlightShapeAction, Assembly-CSharp",
+        "m_Highlight": 4,
+        "m_ShapeData": {
+          "$ref": "41"
+        },
+        "DependenciesOnOtherShapes": [
+          {
+            "$ref": "75"
+          }
+        ]
+      },
+      {
+        "$id": "134",
+        "$type": "Lesson.Stages.Actions.SetHighlightShapeAction, Assembly-CSharp",
+        "m_Highlight": 4,
+        "m_ShapeData": {
+          "$ref": "38"
+        },
+        "DependenciesOnOtherShapes": [
+          {
+            "$ref": "70"
+          }
+        ]
       }
     ]
   },
@@ -5148,6 +5252,15 @@
           },
           {
             "$ref": "81"
+          },
+          {
+            "$ref": "127"
+          },
+          {
+            "$ref": "128"
+          },
+          {
+            "$ref": "129"
           }
         ]
       },
@@ -5355,6 +5468,21 @@
           },
           {
             "$ref": "113"
+          },
+          {
+            "$ref": "130"
+          },
+          {
+            "$ref": "131"
+          },
+          {
+            "$ref": "132"
+          },
+          {
+            "$ref": "133"
+          },
+          {
+            "$ref": "134"
           }
         ]
       }
