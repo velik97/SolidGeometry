@@ -17,6 +17,10 @@ namespace Serialization.LessonsFileSystem
 
         public LessonData GetLessonDataCashed()
         {
+            if (Application.isEditor)
+            {
+                return GetLessonData();
+            }
             return m_CashedLessonData ?? (m_CashedLessonData = GetLessonData());
         }
         
