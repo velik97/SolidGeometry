@@ -63,9 +63,17 @@ namespace Lesson.Shapes.Views
                 tr++;
             }
             
+            Vector3 up = Vector3.Cross(vertices[1] - vertices[0], vertices[2] - vertices[0]);
+            Vector3[] normals = new Vector3[vertices.Length];
+            for (var i = 0; i < normals.Length; i++)
+            {
+                normals[i] = up;
+            }
+
             m_PolygonMesh.Clear();
             m_PolygonMesh.vertices = vertices;
             m_PolygonMesh.triangles = triangles;
+            m_PolygonMesh.normals = normals;
         }
         
         public override HighlightType Highlight 
