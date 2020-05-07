@@ -12,6 +12,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 20004fa1ba8f54bfb8cb91c4d18b2f58, type: 3}
   m_Name: Lesson 7
   m_EditorClassIdentifier: 
-  m_AssetName: Lesson 7
-  m_Description: Lesson Description 7
-  m_LessonFile: {fileID: 4900000, guid: 807e20d4a713b4f198773e0c22054855, type: 3}
+  m_AssetName: Lesson 8
+  m_Description: Lesson Description 8
+  m_LessonFile: {fileID: 4900000, guid: 751b7431f3113364882d825c09012beb, type: 3}
