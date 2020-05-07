@@ -1,4 +1,5 @@
-﻿using UnityEngine;
+﻿using System;
+using UnityEngine;
 using Util.UniRxExtensions;
 
 namespace Runtime.Core
@@ -11,9 +12,19 @@ namespace Runtime.Core
 
         private void Awake()
         {
+            InitializeRootFolder();
             InitializeApplicationModeManager();
 
             m_ApplicationModeManager.GlobalData.RequestChangeApplicationMode(ApplicationMode.MainMenu);
+        }
+
+        private void InitializeRootFolder()
+        {
+            if (m_ApplicationConfig.RootFolder.HaveCycles())
+            {
+                throw new ArgumentException("Have cycles in folders!");
+            }
+            m_ApplicationConfig.RootFolder.AssignParentFolders();
         }
 
         private void InitializeApplicationModeManager()
@@ -26,6 +37,4 @@ namespace Runtime.Core
             Dispose();
         }
     }
-
-    
 }

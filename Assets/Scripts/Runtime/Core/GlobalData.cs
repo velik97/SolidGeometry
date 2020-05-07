@@ -1,5 +1,6 @@
 ﻿using System;
 using Lesson;
+using Serialization.LessonsFileSystem;
 using UnityEngine;
 using Util.EventBusSystem;
 
@@ -7,6 +8,11 @@ namespace Runtime.Core
 {
     public class GlobalData
     {
+        public readonly FolderAsset RootFolder;
+        
+        private LessonAsset m_CurrentLessonAsset;
+        public LessonAsset CurrentLessonAsset => m_CurrentLessonAsset;
+        
         private LessonData m_CurrentLessonData;
         public LessonData CurrentLessonData => m_CurrentLessonData;
 
@@ -18,15 +24,26 @@ namespace Runtime.Core
 
         private Action<ApplicationMode, Action<ApplicationMode>> m_RequestChangeModeAction;
 
-        public GlobalData(Action<ApplicationMode, Action<ApplicationMode>> requestChangeModeAction)
+        public GlobalData(Action<ApplicationMode, Action<ApplicationMode>> requestChangeModeAction, FolderAsset rootFolder)
         {
             m_RequestChangeModeAction = requestChangeModeAction;
+            RootFolder = rootFolder;
         }
 
-        public void SetCurrentLessonData(LessonData lessonData)
+        public void StartLesson(LessonAsset lessonAsset)
         {
+            LessonData lessonData = lessonAsset.GetLessonDataCashed();
+            if (lessonData == null)
+            {
+                // TODO dialog window
+                return;
+            }
+
+            m_CurrentLessonAsset = lessonAsset;
             m_CurrentLessonData = lessonData;
             EventBus.RaiseEvent<ICurrentLessonDataChangedHandler>(h => h.HandleCurrentLessonDataChanged(lessonData));
+            
+            RequestChangeApplicationMode(ApplicationMode.Session3D);
         }
 
         public void SetCurrentLessonStageNumber(int number)

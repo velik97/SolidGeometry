@@ -9,6 +9,12 @@ namespace Runtime.Session
 {
     public class LessonMovement : CompositeDisposable, ILessonMovementHandler
     {
+        private const float ROTATE_XY_COEFFICIENT = 2.4f;
+        private const float SHIFT_COEFFICIENT = 0.0008f;
+        private const float MIN_SCALE = 0.5f;
+        private const float MAX_SCALE = 10.0f;
+        private const float MAX_SHIFT = 2.5f;
+
         private Transform m_ShapesAnchor;
 
         public LessonMovement(Transform shapesAnchor)
@@ -18,13 +24,25 @@ namespace Runtime.Session
             
             m_ShapesAnchor = shapesAnchor;
         }
-
+ 
         public void HandleRotateAroundXY(Vector3 deltaRotation)
         {
+            if (Application.isEditor && (Input.GetKey(KeyCode.LeftShift) || Input.GetKey(KeyCode.RightShift)))
+            {
+                HandleShift(deltaRotation);
+                return;
+            }
+            
             if (!CameraOwner.Instance.HasCamera)
             {
                 return;
             }
+
+            float distanceToCamera = (CameraOwner.Instance.CameraTransform.position - m_ShapesAnchor.transform.position).magnitude;
+            distanceToCamera = Mathf.Max(distanceToCamera, 0.1f);
+
+            deltaRotation /= distanceToCamera;
+            deltaRotation *= ROTATE_XY_COEFFICIENT;
             
             m_ShapesAnchor.Rotate(CameraOwner.Instance.CameraTransform.up, -deltaRotation.x, Space.World);
             m_ShapesAnchor.Rotate(CameraOwner.Instance.CameraTransform.right, deltaRotation.y, Space.World);
@@ -47,16 +65,28 @@ namespace Runtime.Session
                 return;
             }
             
+            float distanceToCamera = (CameraOwner.Instance.CameraTransform.position - m_ShapesAnchor.transform.position).magnitude;
+            distanceToCamera = Mathf.Max(distanceToCamera, 0.01f);
+
+            deltaDirection *= distanceToCamera;
+            deltaDirection *= SHIFT_COEFFICIENT;
+            
             Vector3 globalDirection =
                 CameraOwner.Instance.CameraTransform.right * deltaDirection.x +
                 CameraOwner.Instance.CameraTransform.up * deltaDirection.y;
 
-            m_ShapesAnchor.Translate(globalDirection);
+            Vector3 newPosition = m_ShapesAnchor.localPosition + globalDirection;
+            newPosition = newPosition.ClampMagnitude(MAX_SHIFT);
+
+            m_ShapesAnchor.position = newPosition;
         }
 
         public void HandleScale(float deltaScale)
         {
-            m_ShapesAnchor.localScale *= deltaScale;
+            Vector3 newScale = m_ShapesAnchor.localScale * deltaScale;
+            newScale = newScale.ClampComponentWise(MIN_SCALE, MAX_SCALE);
+            
+            m_ShapesAnchor.localScale = newScale;
         }
 
         public void HandleReset()

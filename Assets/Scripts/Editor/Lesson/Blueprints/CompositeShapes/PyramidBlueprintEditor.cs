@@ -73,10 +73,13 @@ namespace Editor.Lesson.Blueprints.CompositeShapes
         {
             m_PointsPositionsField.Clear();
 
-            for (var i = 0; i < Blueprint.PointsPositions.Count; i++)
+            for (int i = 0; i < Blueprint.PointsPositions.Count; i++)
             {
                 int pointNum = i;
-                Vector2Field positionField = new Vector2Field((pointNum + 1).GetOrdinalForm() + " Position: ");
+                Vector2Field positionField = new Vector2Field((pointNum + 1).GetOrdinalForm() + " Position: ")
+                {
+                    value = new Vector3(Blueprint.PointsPositions[i].x, Blueprint.PointsPositions[i].z)
+                };
                 positionField.RegisterCallback<ChangeEvent<Vector2>>(evt => 
                     Blueprint.SetPointPosition(pointNum, new Vector3(evt.newValue.x, 0, evt.newValue.y)));
                 m_PointsPositionsField.Add(positionField);
