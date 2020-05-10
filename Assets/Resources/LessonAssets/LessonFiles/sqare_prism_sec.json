@@ -549,6 +549,7 @@
     "$id": "46",
     "m_ShapeBlueprints": [
       {
+        "$id": "47",
         "$type": "Lesson.Shapes.Blueprints.CompositeShapes.PrismBlueprint, Assembly-CSharp",
         "m_VerticesAtTheBaseCount": 4,
         "m_Origin": {
@@ -673,7 +674,7 @@
         "DependenciesOnOtherShapes": []
       },
       {
-        "$id": "47",
+        "$id": "48",
         "$type": "Lesson.Shapes.Blueprints.DependentShapes.PointOnLineBlueprint, Assembly-CSharp",
         "PointData": {
           "$ref": "10"
@@ -687,257 +688,12 @@
         "m_Coefficient": 0.65,
         "DependenciesOnOtherShapes": [
           {
-            "$type": "Lesson.Shapes.Blueprints.CompositeShapes.PrismBlueprint, Assembly-CSharp",
-            "m_VerticesAtTheBaseCount": 4,
-            "m_Origin": {
-              "x": 0.0,
-              "y": 0.0,
-              "z": 0.0
-            },
-            "m_Offset": {
-              "x": 0.0,
-              "y": 3.0,
-              "z": 0.0
-            },
-            "m_PointsPositions": [
-              {
-                "x": 2.0,
-                "y": 0.0,
-                "z": 0.0
-              },
-              {
-                "x": 3.0,
-                "y": 0.0,
-                "z": 2.0
-              },
-              {
-                "x": -1.0,
-                "y": 0.0,
-                "z": 3.0
-              },
-              {
-                "x": 0.0,
-                "y": 0.0,
-                "z": 0.0
-              }
-            ],
-            "m_CompositeShapeData": {
-              "$ref": "45"
-            },
-            "m_Points": [
-              {
-                "$ref": "2"
-              },
-              {
-                "$ref": "3"
-              },
-              {
-                "$ref": "4"
-              },
-              {
-                "$ref": "5"
-              },
-              {
-                "$ref": "6"
-              },
-              {
-                "$ref": "7"
-              },
-              {
-                "$ref": "8"
-              },
-              {
-                "$ref": "9"
-              }
-            ],
-            "m_Lines": [
-              {
-                "$ref": "17"
-              },
-              {
-                "$ref": "18"
-              },
-              {
-                "$ref": "19"
-              },
-              {
-                "$ref": "20"
-              },
-              {
-                "$ref": "21"
-              },
-              {
-                "$ref": "22"
-              },
-              {
-                "$ref": "23"
-              },
-              {
-                "$ref": "24"
-              },
-              {
-                "$ref": "25"
-              },
-              {
-                "$ref": "26"
-              },
-              {
-                "$ref": "27"
-              },
-              {
-                "$ref": "28"
-              }
-            ],
-            "m_Polygons": [
-              {
-                "$ref": "38"
-              },
-              {
-                "$ref": "39"
-              },
-              {
-                "$ref": "40"
-              },
-              {
-                "$ref": "41"
-              },
-              {
-                "$ref": "42"
-              },
-              {
-                "$ref": "43"
-              }
-            ],
-            "DependenciesOnOtherShapes": []
-          },
-          {
-            "$type": "Lesson.Shapes.Blueprints.CompositeShapes.PrismBlueprint, Assembly-CSharp",
-            "m_VerticesAtTheBaseCount": 4,
-            "m_Origin": {
-              "x": 0.0,
-              "y": 0.0,
-              "z": 0.0
-            },
-            "m_Offset": {
-              "x": 0.0,
-              "y": 3.0,
-              "z": 0.0
-            },
-            "m_PointsPositions": [
-              {
-                "x": 2.0,
-                "y": 0.0,
-                "z": 0.0
-              },
-              {
-                "x": 3.0,
-                "y": 0.0,
-                "z": 2.0
-              },
-              {
-                "x": -1.0,
-                "y": 0.0,
-                "z": 3.0
-              },
-              {
-                "x": 0.0,
-                "y": 0.0,
-                "z": 0.0
-              }
-            ],
-            "m_CompositeShapeData": {
-              "$ref": "45"
-            },
-            "m_Points": [
-              {
-                "$ref": "2"
-              },
-              {
-                "$ref": "3"
-              },
-              {
-                "$ref": "4"
-              },
-              {
-                "$ref": "5"
-              },
-              {
-                "$ref": "6"
-              },
-              {
-                "$ref": "7"
-              },
-              {
-                "$ref": "8"
-              },
-              {
-                "$ref": "9"
-              }
-            ],
-            "m_Lines": [
-              {
-                "$ref": "17"
-              },
-              {
-                "$ref": "18"
-              },
-              {
-                "$ref": "19"
-              },
-              {
-                "$ref": "20"
-              },
-              {
-                "$ref": "21"
-              },
-              {
-                "$ref": "22"
-              },
-              {
-                "$ref": "23"
-              },
-              {
-                "$ref": "24"
-              },
-              {
-                "$ref": "25"
-              },
-              {
-                "$ref": "26"
-              },
-              {
-                "$ref": "27"
-              },
-              {
-                "$ref": "28"
-              }
-            ],
-            "m_Polygons": [
-              {
-                "$ref": "38"
-              },
-              {
-                "$ref": "39"
-              },
-              {
-                "$ref": "40"
-              },
-              {
-                "$ref": "41"
-              },
-              {
-                "$ref": "42"
-              },
-              {
-                "$ref": "43"
-              }
-            ],
-            "DependenciesOnOtherShapes": []
+            "$ref": "47"
           }
         ]
       },
       {
-        "$id": "48",
+        "$id": "49",
         "$type": "Lesson.Shapes.Blueprints.DependentShapes.PointOnLineBlueprint, Assembly-CSharp",
         "PointData": {
           "$ref": "11"
@@ -951,257 +707,12 @@
         "m_Coefficient": 0.3,
         "DependenciesOnOtherShapes": [
           {
-            "$type": "Lesson.Shapes.Blueprints.CompositeShapes.PrismBlueprint, Assembly-CSharp",
-            "m_VerticesAtTheBaseCount": 4,
-            "m_Origin": {
-              "x": 0.0,
-              "y": 0.0,
-              "z": 0.0
-            },
-            "m_Offset": {
-              "x": 0.0,
-              "y": 3.0,
-              "z": 0.0
-            },
-            "m_PointsPositions": [
-              {
-                "x": 2.0,
-                "y": 0.0,
-                "z": 0.0
-              },
-              {
-                "x": 3.0,
-                "y": 0.0,
-                "z": 2.0
-              },
-              {
-                "x": -1.0,
-                "y": 0.0,
-                "z": 3.0
-              },
-              {
-                "x": 0.0,
-                "y": 0.0,
-                "z": 0.0
-              }
-            ],
-            "m_CompositeShapeData": {
-              "$ref": "45"
-            },
-            "m_Points": [
-              {
-                "$ref": "2"
-              },
-              {
-                "$ref": "3"
-              },
-              {
-                "$ref": "4"
-              },
-              {
-                "$ref": "5"
-              },
-              {
-                "$ref": "6"
-              },
-              {
-                "$ref": "7"
-              },
-              {
-                "$ref": "8"
-              },
-              {
-                "$ref": "9"
-              }
-            ],
-            "m_Lines": [
-              {
-                "$ref": "17"
-              },
-              {
-                "$ref": "18"
-              },
-              {
-                "$ref": "19"
-              },
-              {
-                "$ref": "20"
-              },
-              {
-                "$ref": "21"
-              },
-              {
-                "$ref": "22"
-              },
-              {
-                "$ref": "23"
-              },
-              {
-                "$ref": "24"
-              },
-              {
-                "$ref": "25"
-              },
-              {
-                "$ref": "26"
-              },
-              {
-                "$ref": "27"
-              },
-              {
-                "$ref": "28"
-              }
-            ],
-            "m_Polygons": [
-              {
-                "$ref": "38"
-              },
-              {
-                "$ref": "39"
-              },
-              {
-                "$ref": "40"
-              },
-              {
-                "$ref": "41"
-              },
-              {
-                "$ref": "42"
-              },
-              {
-                "$ref": "43"
-              }
-            ],
-            "DependenciesOnOtherShapes": []
-          },
-          {
-            "$type": "Lesson.Shapes.Blueprints.CompositeShapes.PrismBlueprint, Assembly-CSharp",
-            "m_VerticesAtTheBaseCount": 4,
-            "m_Origin": {
-              "x": 0.0,
-              "y": 0.0,
-              "z": 0.0
-            },
-            "m_Offset": {
-              "x": 0.0,
-              "y": 3.0,
-              "z": 0.0
-            },
-            "m_PointsPositions": [
-              {
-                "x": 2.0,
-                "y": 0.0,
-                "z": 0.0
-              },
-              {
-                "x": 3.0,
-                "y": 0.0,
-                "z": 2.0
-              },
-              {
-                "x": -1.0,
-                "y": 0.0,
-                "z": 3.0
-              },
-              {
-                "x": 0.0,
-                "y": 0.0,
-                "z": 0.0
-              }
-            ],
-            "m_CompositeShapeData": {
-              "$ref": "45"
-            },
-            "m_Points": [
-              {
-                "$ref": "2"
-              },
-              {
-                "$ref": "3"
-              },
-              {
-                "$ref": "4"
-              },
-              {
-                "$ref": "5"
-              },
-              {
-                "$ref": "6"
-              },
-              {
-                "$ref": "7"
-              },
-              {
-                "$ref": "8"
-              },
-              {
-                "$ref": "9"
-              }
-            ],
-            "m_Lines": [
-              {
-                "$ref": "17"
-              },
-              {
-                "$ref": "18"
-              },
-              {
-                "$ref": "19"
-              },
-              {
-                "$ref": "20"
-              },
-              {
-                "$ref": "21"
-              },
-              {
-                "$ref": "22"
-              },
-              {
-                "$ref": "23"
-              },
-              {
-                "$ref": "24"
-              },
-              {
-                "$ref": "25"
-              },
-              {
-                "$ref": "26"
-              },
-              {
-                "$ref": "27"
-              },
-              {
-                "$ref": "28"
-              }
-            ],
-            "m_Polygons": [
-              {
-                "$ref": "38"
-              },
-              {
-                "$ref": "39"
-              },
-              {
-                "$ref": "40"
-              },
-              {
-                "$ref": "41"
-              },
-              {
-                "$ref": "42"
-              },
-              {
-                "$ref": "43"
-              }
-            ],
-            "DependenciesOnOtherShapes": []
+            "$ref": "47"
           }
         ]
       },
       {
-        "$id": "49",
+        "$id": "50",
         "$type": "Lesson.Shapes.Blueprints.DependentShapes.PointOnLineBlueprint, Assembly-CSharp",
         "PointData": {
           "$ref": "12"
@@ -1215,267 +726,7 @@
         "m_Coefficient": 0.67,
         "DependenciesOnOtherShapes": [
           {
-            "$type": "Lesson.Shapes.Blueprints.CompositeShapes.PrismBlueprint, Assembly-CSharp",
-            "m_VerticesAtTheBaseCount": 4,
-            "m_Origin": {
-              "x": 0.0,
-              "y": 0.0,
-              "z": 0.0
-            },
-            "m_Offset": {
-              "x": 0.0,
-              "y": 3.0,
-              "z": 0.0
-            },
-            "m_PointsPositions": [
-              {
-                "x": 2.0,
-                "y": 0.0,
-                "z": 0.0
-              },
-              {
-                "x": 3.0,
-                "y": 0.0,
-                "z": 2.0
-              },
-              {
-                "x": -1.0,
-                "y": 0.0,
-                "z": 3.0
-              },
-              {
-                "x": 0.0,
-                "y": 0.0,
-                "z": 0.0
-              }
-            ],
-            "m_CompositeShapeData": {
-              "$ref": "45"
-            },
-            "m_Points": [
-              {
-                "$ref": "2"
-              },
-              {
-                "$ref": "3"
-              },
-              {
-                "$ref": "4"
-              },
-              {
-                "$ref": "5"
-              },
-              {
-                "$ref": "6"
-              },
-              {
-                "$ref": "7"
-              },
-              {
-                "$ref": "8"
-              },
-              {
-                "$ref": "9"
-              }
-            ],
-            "m_Lines": [
-              {
-                "$ref": "17"
-              },
-              {
-                "$ref": "18"
-              },
-              {
-                "$ref": "19"
-              },
-              {
-                "$ref": "20"
-              },
-              {
-                "$ref": "21"
-              },
-              {
-                "$ref": "22"
-              },
-              {
-                "$ref": "23"
-              },
-              {
-                "$ref": "24"
-              },
-              {
-                "$ref": "25"
-              },
-              {
-                "$ref": "26"
-              },
-              {
-                "$ref": "27"
-              },
-              {
-                "$ref": "28"
-              }
-            ],
-            "m_Polygons": [
-              {
-                "$ref": "38"
-              },
-              {
-                "$ref": "39"
-              },
-              {
-                "$ref": "40"
-              },
-              {
-                "$ref": "41"
-              },
-              {
-                "$ref": "42"
-              },
-              {
-                "$ref": "43"
-              }
-            ],
-            "DependenciesOnOtherShapes": []
-          },
-          {
-            "$type": "Lesson.Shapes.Blueprints.CompositeShapes.PrismBlueprint, Assembly-CSharp",
-            "m_VerticesAtTheBaseCount": 4,
-            "m_Origin": {
-              "x": 0.0,
-              "y": 0.0,
-              "z": 0.0
-            },
-            "m_Offset": {
-              "x": 0.0,
-              "y": 3.0,
-              "z": 0.0
-            },
-            "m_PointsPositions": [
-              {
-                "x": 2.0,
-                "y": 0.0,
-                "z": 0.0
-              },
-              {
-                "x": 3.0,
-                "y": 0.0,
-                "z": 2.0
-              },
-              {
-                "x": -1.0,
-                "y": 0.0,
-                "z": 3.0
-              },
-              {
-                "x": 0.0,
-                "y": 0.0,
-                "z": 0.0
-              }
-            ],
-            "m_CompositeShapeData": {
-              "$ref": "45"
-            },
-            "m_Points": [
-              {
-                "$ref": "2"
-              },
-              {
-                "$ref": "3"
-              },
-              {
-                "$ref": "4"
-              },
-              {
-                "$ref": "5"
-              },
-              {
-                "$ref": "6"
-              },
-              {
-                "$ref": "7"
-              },
-              {
-                "$ref": "8"
-              },
-              {
-                "$ref": "9"
-              }
-            ],
-            "m_Lines": [
-              {
-                "$ref": "17"
-              },
-              {
-                "$ref": "18"
-              },
-              {
-                "$ref": "19"
-              },
-              {
-                "$ref": "20"
-              },
-              {
-                "$ref": "21"
-              },
-              {
-                "$ref": "22"
-              },
-              {
-                "$ref": "23"
-              },
-              {
-                "$ref": "24"
-              },
-              {
-                "$ref": "25"
-              },
-              {
-                "$ref": "26"
-              },
-              {
-                "$ref": "27"
-              },
-              {
-                "$ref": "28"
-              }
-            ],
-            "m_Polygons": [
-              {
-                "$ref": "38"
-              },
-              {
-                "$ref": "39"
-              },
-              {
-                "$ref": "40"
-              },
-              {
-                "$ref": "41"
-              },
-              {
-                "$ref": "42"
-              },
-              {
-                "$ref": "43"
-              }
-            ],
-            "DependenciesOnOtherShapes": []
-          }
-        ]
-      },
-      {
-        "$id": "50",
-        "$type": "Lesson.Shapes.Blueprints.BaseShapes.LineBlueprint, Assembly-CSharp",
-        "LineData": {
-          "$ref": "29"
-        },
-        "DependenciesOnOtherShapes": [
-          {
             "$ref": "47"
-          },
-          {
-            "$ref": "48"
           }
         ]
       },
@@ -1483,14 +734,14 @@
         "$id": "51",
         "$type": "Lesson.Shapes.Blueprints.BaseShapes.LineBlueprint, Assembly-CSharp",
         "LineData": {
-          "$ref": "30"
+          "$ref": "29"
         },
         "DependenciesOnOtherShapes": [
           {
-            "$ref": "49"
+            "$ref": "48"
           },
           {
-            "$ref": "48"
+            "$ref": "49"
           }
         ]
       },
@@ -1498,14 +749,14 @@
         "$id": "52",
         "$type": "Lesson.Shapes.Blueprints.BaseShapes.LineBlueprint, Assembly-CSharp",
         "LineData": {
-          "$ref": "31"
+          "$ref": "30"
         },
         "DependenciesOnOtherShapes": [
           {
-            "$ref": "49"
+            "$ref": "50"
           },
           {
-            "$ref": "47"
+            "$ref": "49"
           }
         ]
       },
@@ -1513,256 +764,14 @@
         "$id": "53",
         "$type": "Lesson.Shapes.Blueprints.BaseShapes.LineBlueprint, Assembly-CSharp",
         "LineData": {
-          "$ref": "32"
+          "$ref": "31"
         },
         "DependenciesOnOtherShapes": [
           {
-            "$type": "Lesson.Shapes.Blueprints.CompositeShapes.PrismBlueprint, Assembly-CSharp",
-            "m_VerticesAtTheBaseCount": 4,
-            "m_Origin": {
-              "x": 0.0,
-              "y": 0.0,
-              "z": 0.0
-            },
-            "m_Offset": {
-              "x": 0.0,
-              "y": 3.0,
-              "z": 0.0
-            },
-            "m_PointsPositions": [
-              {
-                "x": 2.0,
-                "y": 0.0,
-                "z": 0.0
-              },
-              {
-                "x": 3.0,
-                "y": 0.0,
-                "z": 2.0
-              },
-              {
-                "x": -1.0,
-                "y": 0.0,
-                "z": 3.0
-              },
-              {
-                "x": 0.0,
-                "y": 0.0,
-                "z": 0.0
-              }
-            ],
-            "m_CompositeShapeData": {
-              "$ref": "45"
-            },
-            "m_Points": [
-              {
-                "$ref": "2"
-              },
-              {
-                "$ref": "3"
-              },
-              {
-                "$ref": "4"
-              },
-              {
-                "$ref": "5"
-              },
-              {
-                "$ref": "6"
-              },
-              {
-                "$ref": "7"
-              },
-              {
-                "$ref": "8"
-              },
-              {
-                "$ref": "9"
-              }
-            ],
-            "m_Lines": [
-              {
-                "$ref": "17"
-              },
-              {
-                "$ref": "18"
-              },
-              {
-                "$ref": "19"
-              },
-              {
-                "$ref": "20"
-              },
-              {
-                "$ref": "21"
-              },
-              {
-                "$ref": "22"
-              },
-              {
-                "$ref": "23"
-              },
-              {
-                "$ref": "24"
-              },
-              {
-                "$ref": "25"
-              },
-              {
-                "$ref": "26"
-              },
-              {
-                "$ref": "27"
-              },
-              {
-                "$ref": "28"
-              }
-            ],
-            "m_Polygons": [
-              {
-                "$ref": "38"
-              },
-              {
-                "$ref": "39"
-              },
-              {
-                "$ref": "40"
-              },
-              {
-                "$ref": "41"
-              },
-              {
-                "$ref": "42"
-              },
-              {
-                "$ref": "43"
-              }
-            ],
-            "DependenciesOnOtherShapes": []
+            "$ref": "50"
           },
           {
-            "$type": "Lesson.Shapes.Blueprints.CompositeShapes.PrismBlueprint, Assembly-CSharp",
-            "m_VerticesAtTheBaseCount": 4,
-            "m_Origin": {
-              "x": 0.0,
-              "y": 0.0,
-              "z": 0.0
-            },
-            "m_Offset": {
-              "x": 0.0,
-              "y": 3.0,
-              "z": 0.0
-            },
-            "m_PointsPositions": [
-              {
-                "x": 2.0,
-                "y": 0.0,
-                "z": 0.0
-              },
-              {
-                "x": 3.0,
-                "y": 0.0,
-                "z": 2.0
-              },
-              {
-                "x": -1.0,
-                "y": 0.0,
-                "z": 3.0
-              },
-              {
-                "x": 0.0,
-                "y": 0.0,
-                "z": 0.0
-              }
-            ],
-            "m_CompositeShapeData": {
-              "$ref": "45"
-            },
-            "m_Points": [
-              {
-                "$ref": "2"
-              },
-              {
-                "$ref": "3"
-              },
-              {
-                "$ref": "4"
-              },
-              {
-                "$ref": "5"
-              },
-              {
-                "$ref": "6"
-              },
-              {
-                "$ref": "7"
-              },
-              {
-                "$ref": "8"
-              },
-              {
-                "$ref": "9"
-              }
-            ],
-            "m_Lines": [
-              {
-                "$ref": "17"
-              },
-              {
-                "$ref": "18"
-              },
-              {
-                "$ref": "19"
-              },
-              {
-                "$ref": "20"
-              },
-              {
-                "$ref": "21"
-              },
-              {
-                "$ref": "22"
-              },
-              {
-                "$ref": "23"
-              },
-              {
-                "$ref": "24"
-              },
-              {
-                "$ref": "25"
-              },
-              {
-                "$ref": "26"
-              },
-              {
-                "$ref": "27"
-              },
-              {
-                "$ref": "28"
-              }
-            ],
-            "m_Polygons": [
-              {
-                "$ref": "38"
-              },
-              {
-                "$ref": "39"
-              },
-              {
-                "$ref": "40"
-              },
-              {
-                "$ref": "41"
-              },
-              {
-                "$ref": "42"
-              },
-              {
-                "$ref": "43"
-              }
-            ],
-            "DependenciesOnOtherShapes": []
+            "$ref": "48"
           }
         ]
       },
@@ -1770,261 +779,28 @@
         "$id": "54",
         "$type": "Lesson.Shapes.Blueprints.BaseShapes.LineBlueprint, Assembly-CSharp",
         "LineData": {
-          "$ref": "33"
+          "$ref": "32"
         },
         "DependenciesOnOtherShapes": [
           {
-            "$type": "Lesson.Shapes.Blueprints.CompositeShapes.PrismBlueprint, Assembly-CSharp",
-            "m_VerticesAtTheBaseCount": 4,
-            "m_Origin": {
-              "x": 0.0,
-              "y": 0.0,
-              "z": 0.0
-            },
-            "m_Offset": {
-              "x": 0.0,
-              "y": 3.0,
-              "z": 0.0
-            },
-            "m_PointsPositions": [
-              {
-                "x": 2.0,
-                "y": 0.0,
-                "z": 0.0
-              },
-              {
-                "x": 3.0,
-                "y": 0.0,
-                "z": 2.0
-              },
-              {
-                "x": -1.0,
-                "y": 0.0,
-                "z": 3.0
-              },
-              {
-                "x": 0.0,
-                "y": 0.0,
-                "z": 0.0
-              }
-            ],
-            "m_CompositeShapeData": {
-              "$ref": "45"
-            },
-            "m_Points": [
-              {
-                "$ref": "2"
-              },
-              {
-                "$ref": "3"
-              },
-              {
-                "$ref": "4"
-              },
-              {
-                "$ref": "5"
-              },
-              {
-                "$ref": "6"
-              },
-              {
-                "$ref": "7"
-              },
-              {
-                "$ref": "8"
-              },
-              {
-                "$ref": "9"
-              }
-            ],
-            "m_Lines": [
-              {
-                "$ref": "17"
-              },
-              {
-                "$ref": "18"
-              },
-              {
-                "$ref": "19"
-              },
-              {
-                "$ref": "20"
-              },
-              {
-                "$ref": "21"
-              },
-              {
-                "$ref": "22"
-              },
-              {
-                "$ref": "23"
-              },
-              {
-                "$ref": "24"
-              },
-              {
-                "$ref": "25"
-              },
-              {
-                "$ref": "26"
-              },
-              {
-                "$ref": "27"
-              },
-              {
-                "$ref": "28"
-              }
-            ],
-            "m_Polygons": [
-              {
-                "$ref": "38"
-              },
-              {
-                "$ref": "39"
-              },
-              {
-                "$ref": "40"
-              },
-              {
-                "$ref": "41"
-              },
-              {
-                "$ref": "42"
-              },
-              {
-                "$ref": "43"
-              }
-            ],
-            "DependenciesOnOtherShapes": []
-          },
-          {
-            "$type": "Lesson.Shapes.Blueprints.CompositeShapes.PrismBlueprint, Assembly-CSharp",
-            "m_VerticesAtTheBaseCount": 4,
-            "m_Origin": {
-              "x": 0.0,
-              "y": 0.0,
-              "z": 0.0
-            },
-            "m_Offset": {
-              "x": 0.0,
-              "y": 3.0,
-              "z": 0.0
-            },
-            "m_PointsPositions": [
-              {
-                "x": 2.0,
-                "y": 0.0,
-                "z": 0.0
-              },
-              {
-                "x": 3.0,
-                "y": 0.0,
-                "z": 2.0
-              },
-              {
-                "x": -1.0,
-                "y": 0.0,
-                "z": 3.0
-              },
-              {
-                "x": 0.0,
-                "y": 0.0,
-                "z": 0.0
-              }
-            ],
-            "m_CompositeShapeData": {
-              "$ref": "45"
-            },
-            "m_Points": [
-              {
-                "$ref": "2"
-              },
-              {
-                "$ref": "3"
-              },
-              {
-                "$ref": "4"
-              },
-              {
-                "$ref": "5"
-              },
-              {
-                "$ref": "6"
-              },
-              {
-                "$ref": "7"
-              },
-              {
-                "$ref": "8"
-              },
-              {
-                "$ref": "9"
-              }
-            ],
-            "m_Lines": [
-              {
-                "$ref": "17"
-              },
-              {
-                "$ref": "18"
-              },
-              {
-                "$ref": "19"
-              },
-              {
-                "$ref": "20"
-              },
-              {
-                "$ref": "21"
-              },
-              {
-                "$ref": "22"
-              },
-              {
-                "$ref": "23"
-              },
-              {
-                "$ref": "24"
-              },
-              {
-                "$ref": "25"
-              },
-              {
-                "$ref": "26"
-              },
-              {
-                "$ref": "27"
-              },
-              {
-                "$ref": "28"
-              }
-            ],
-            "m_Polygons": [
-              {
-                "$ref": "38"
-              },
-              {
-                "$ref": "39"
-              },
-              {
-                "$ref": "40"
-              },
-              {
-                "$ref": "41"
-              },
-              {
-                "$ref": "42"
-              },
-              {
-                "$ref": "43"
-              }
-            ],
-            "DependenciesOnOtherShapes": []
+            "$ref": "47"
           }
         ]
       },
       {
         "$id": "55",
+        "$type": "Lesson.Shapes.Blueprints.BaseShapes.LineBlueprint, Assembly-CSharp",
+        "LineData": {
+          "$ref": "33"
+        },
+        "DependenciesOnOtherShapes": [
+          {
+            "$ref": "47"
+          }
+        ]
+      },
+      {
+        "$id": "56",
         "$type": "Lesson.Shapes.Blueprints.DependentShapes.PointOfIntersectionBlueprint, Assembly-CSharp",
         "PointData": {
           "$ref": "13"
@@ -2049,505 +825,12 @@
         ],
         "DependenciesOnOtherShapes": [
           {
-            "$type": "Lesson.Shapes.Blueprints.CompositeShapes.PrismBlueprint, Assembly-CSharp",
-            "m_VerticesAtTheBaseCount": 4,
-            "m_Origin": {
-              "x": 0.0,
-              "y": 0.0,
-              "z": 0.0
-            },
-            "m_Offset": {
-              "x": 0.0,
-              "y": 3.0,
-              "z": 0.0
-            },
-            "m_PointsPositions": [
-              {
-                "x": 2.0,
-                "y": 0.0,
-                "z": 0.0
-              },
-              {
-                "x": 3.0,
-                "y": 0.0,
-                "z": 2.0
-              },
-              {
-                "x": -1.0,
-                "y": 0.0,
-                "z": 3.0
-              },
-              {
-                "x": 0.0,
-                "y": 0.0,
-                "z": 0.0
-              }
-            ],
-            "m_CompositeShapeData": {
-              "$ref": "45"
-            },
-            "m_Points": [
-              {
-                "$ref": "2"
-              },
-              {
-                "$ref": "3"
-              },
-              {
-                "$ref": "4"
-              },
-              {
-                "$ref": "5"
-              },
-              {
-                "$ref": "6"
-              },
-              {
-                "$ref": "7"
-              },
-              {
-                "$ref": "8"
-              },
-              {
-                "$ref": "9"
-              }
-            ],
-            "m_Lines": [
-              {
-                "$ref": "17"
-              },
-              {
-                "$ref": "18"
-              },
-              {
-                "$ref": "19"
-              },
-              {
-                "$ref": "20"
-              },
-              {
-                "$ref": "21"
-              },
-              {
-                "$ref": "22"
-              },
-              {
-                "$ref": "23"
-              },
-              {
-                "$ref": "24"
-              },
-              {
-                "$ref": "25"
-              },
-              {
-                "$ref": "26"
-              },
-              {
-                "$ref": "27"
-              },
-              {
-                "$ref": "28"
-              }
-            ],
-            "m_Polygons": [
-              {
-                "$ref": "38"
-              },
-              {
-                "$ref": "39"
-              },
-              {
-                "$ref": "40"
-              },
-              {
-                "$ref": "41"
-              },
-              {
-                "$ref": "42"
-              },
-              {
-                "$ref": "43"
-              }
-            ],
-            "DependenciesOnOtherShapes": []
-          },
-          {
-            "$type": "Lesson.Shapes.Blueprints.CompositeShapes.PrismBlueprint, Assembly-CSharp",
-            "m_VerticesAtTheBaseCount": 4,
-            "m_Origin": {
-              "x": 0.0,
-              "y": 0.0,
-              "z": 0.0
-            },
-            "m_Offset": {
-              "x": 0.0,
-              "y": 3.0,
-              "z": 0.0
-            },
-            "m_PointsPositions": [
-              {
-                "x": 2.0,
-                "y": 0.0,
-                "z": 0.0
-              },
-              {
-                "x": 3.0,
-                "y": 0.0,
-                "z": 2.0
-              },
-              {
-                "x": -1.0,
-                "y": 0.0,
-                "z": 3.0
-              },
-              {
-                "x": 0.0,
-                "y": 0.0,
-                "z": 0.0
-              }
-            ],
-            "m_CompositeShapeData": {
-              "$ref": "45"
-            },
-            "m_Points": [
-              {
-                "$ref": "2"
-              },
-              {
-                "$ref": "3"
-              },
-              {
-                "$ref": "4"
-              },
-              {
-                "$ref": "5"
-              },
-              {
-                "$ref": "6"
-              },
-              {
-                "$ref": "7"
-              },
-              {
-                "$ref": "8"
-              },
-              {
-                "$ref": "9"
-              }
-            ],
-            "m_Lines": [
-              {
-                "$ref": "17"
-              },
-              {
-                "$ref": "18"
-              },
-              {
-                "$ref": "19"
-              },
-              {
-                "$ref": "20"
-              },
-              {
-                "$ref": "21"
-              },
-              {
-                "$ref": "22"
-              },
-              {
-                "$ref": "23"
-              },
-              {
-                "$ref": "24"
-              },
-              {
-                "$ref": "25"
-              },
-              {
-                "$ref": "26"
-              },
-              {
-                "$ref": "27"
-              },
-              {
-                "$ref": "28"
-              }
-            ],
-            "m_Polygons": [
-              {
-                "$ref": "38"
-              },
-              {
-                "$ref": "39"
-              },
-              {
-                "$ref": "40"
-              },
-              {
-                "$ref": "41"
-              },
-              {
-                "$ref": "42"
-              },
-              {
-                "$ref": "43"
-              }
-            ],
-            "DependenciesOnOtherShapes": []
-          },
-          {
-            "$type": "Lesson.Shapes.Blueprints.CompositeShapes.PrismBlueprint, Assembly-CSharp",
-            "m_VerticesAtTheBaseCount": 4,
-            "m_Origin": {
-              "x": 0.0,
-              "y": 0.0,
-              "z": 0.0
-            },
-            "m_Offset": {
-              "x": 0.0,
-              "y": 3.0,
-              "z": 0.0
-            },
-            "m_PointsPositions": [
-              {
-                "x": 2.0,
-                "y": 0.0,
-                "z": 0.0
-              },
-              {
-                "x": 3.0,
-                "y": 0.0,
-                "z": 2.0
-              },
-              {
-                "x": -1.0,
-                "y": 0.0,
-                "z": 3.0
-              },
-              {
-                "x": 0.0,
-                "y": 0.0,
-                "z": 0.0
-              }
-            ],
-            "m_CompositeShapeData": {
-              "$ref": "45"
-            },
-            "m_Points": [
-              {
-                "$ref": "2"
-              },
-              {
-                "$ref": "3"
-              },
-              {
-                "$ref": "4"
-              },
-              {
-                "$ref": "5"
-              },
-              {
-                "$ref": "6"
-              },
-              {
-                "$ref": "7"
-              },
-              {
-                "$ref": "8"
-              },
-              {
-                "$ref": "9"
-              }
-            ],
-            "m_Lines": [
-              {
-                "$ref": "17"
-              },
-              {
-                "$ref": "18"
-              },
-              {
-                "$ref": "19"
-              },
-              {
-                "$ref": "20"
-              },
-              {
-                "$ref": "21"
-              },
-              {
-                "$ref": "22"
-              },
-              {
-                "$ref": "23"
-              },
-              {
-                "$ref": "24"
-              },
-              {
-                "$ref": "25"
-              },
-              {
-                "$ref": "26"
-              },
-              {
-                "$ref": "27"
-              },
-              {
-                "$ref": "28"
-              }
-            ],
-            "m_Polygons": [
-              {
-                "$ref": "38"
-              },
-              {
-                "$ref": "39"
-              },
-              {
-                "$ref": "40"
-              },
-              {
-                "$ref": "41"
-              },
-              {
-                "$ref": "42"
-              },
-              {
-                "$ref": "43"
-              }
-            ],
-            "DependenciesOnOtherShapes": []
-          },
-          {
-            "$type": "Lesson.Shapes.Blueprints.CompositeShapes.PrismBlueprint, Assembly-CSharp",
-            "m_VerticesAtTheBaseCount": 4,
-            "m_Origin": {
-              "x": 0.0,
-              "y": 0.0,
-              "z": 0.0
-            },
-            "m_Offset": {
-              "x": 0.0,
-              "y": 3.0,
-              "z": 0.0
-            },
-            "m_PointsPositions": [
-              {
-                "x": 2.0,
-                "y": 0.0,
-                "z": 0.0
-              },
-              {
-                "x": 3.0,
-                "y": 0.0,
-                "z": 2.0
-              },
-              {
-                "x": -1.0,
-                "y": 0.0,
-                "z": 3.0
-              },
-              {
-                "x": 0.0,
-                "y": 0.0,
-                "z": 0.0
-              }
-            ],
-            "m_CompositeShapeData": {
-              "$ref": "45"
-            },
-            "m_Points": [
-              {
-                "$ref": "2"
-              },
-              {
-                "$ref": "3"
-              },
-              {
-                "$ref": "4"
-              },
-              {
-                "$ref": "5"
-              },
-              {
-                "$ref": "6"
-              },
-              {
-                "$ref": "7"
-              },
-              {
-                "$ref": "8"
-              },
-              {
-                "$ref": "9"
-              }
-            ],
-            "m_Lines": [
-              {
-                "$ref": "17"
-              },
-              {
-                "$ref": "18"
-              },
-              {
-                "$ref": "19"
-              },
-              {
-                "$ref": "20"
-              },
-              {
-                "$ref": "21"
-              },
-              {
-                "$ref": "22"
-              },
-              {
-                "$ref": "23"
-              },
-              {
-                "$ref": "24"
-              },
-              {
-                "$ref": "25"
-              },
-              {
-                "$ref": "26"
-              },
-              {
-                "$ref": "27"
-              },
-              {
-                "$ref": "28"
-              }
-            ],
-            "m_Polygons": [
-              {
-                "$ref": "38"
-              },
-              {
-                "$ref": "39"
-              },
-              {
-                "$ref": "40"
-              },
-              {
-                "$ref": "41"
-              },
-              {
-                "$ref": "42"
-              },
-              {
-                "$ref": "43"
-              }
-            ],
-            "DependenciesOnOtherShapes": []
+            "$ref": "47"
           }
         ]
       },
       {
-        "$id": "56",
+        "$id": "57",
         "$type": "Lesson.Shapes.Blueprints.DependentShapes.PointPerpendicularProjectionBlueprint, Assembly-CSharp",
         "PointData": {
           "$ref": "14"
@@ -2563,260 +846,15 @@
         },
         "DependenciesOnOtherShapes": [
           {
-            "$ref": "55"
+            "$ref": "56"
           },
           {
-            "$type": "Lesson.Shapes.Blueprints.CompositeShapes.PrismBlueprint, Assembly-CSharp",
-            "m_VerticesAtTheBaseCount": 4,
-            "m_Origin": {
-              "x": 0.0,
-              "y": 0.0,
-              "z": 0.0
-            },
-            "m_Offset": {
-              "x": 0.0,
-              "y": 3.0,
-              "z": 0.0
-            },
-            "m_PointsPositions": [
-              {
-                "x": 2.0,
-                "y": 0.0,
-                "z": 0.0
-              },
-              {
-                "x": 3.0,
-                "y": 0.0,
-                "z": 2.0
-              },
-              {
-                "x": -1.0,
-                "y": 0.0,
-                "z": 3.0
-              },
-              {
-                "x": 0.0,
-                "y": 0.0,
-                "z": 0.0
-              }
-            ],
-            "m_CompositeShapeData": {
-              "$ref": "45"
-            },
-            "m_Points": [
-              {
-                "$ref": "2"
-              },
-              {
-                "$ref": "3"
-              },
-              {
-                "$ref": "4"
-              },
-              {
-                "$ref": "5"
-              },
-              {
-                "$ref": "6"
-              },
-              {
-                "$ref": "7"
-              },
-              {
-                "$ref": "8"
-              },
-              {
-                "$ref": "9"
-              }
-            ],
-            "m_Lines": [
-              {
-                "$ref": "17"
-              },
-              {
-                "$ref": "18"
-              },
-              {
-                "$ref": "19"
-              },
-              {
-                "$ref": "20"
-              },
-              {
-                "$ref": "21"
-              },
-              {
-                "$ref": "22"
-              },
-              {
-                "$ref": "23"
-              },
-              {
-                "$ref": "24"
-              },
-              {
-                "$ref": "25"
-              },
-              {
-                "$ref": "26"
-              },
-              {
-                "$ref": "27"
-              },
-              {
-                "$ref": "28"
-              }
-            ],
-            "m_Polygons": [
-              {
-                "$ref": "38"
-              },
-              {
-                "$ref": "39"
-              },
-              {
-                "$ref": "40"
-              },
-              {
-                "$ref": "41"
-              },
-              {
-                "$ref": "42"
-              },
-              {
-                "$ref": "43"
-              }
-            ],
-            "DependenciesOnOtherShapes": []
-          },
-          {
-            "$type": "Lesson.Shapes.Blueprints.CompositeShapes.PrismBlueprint, Assembly-CSharp",
-            "m_VerticesAtTheBaseCount": 4,
-            "m_Origin": {
-              "x": 0.0,
-              "y": 0.0,
-              "z": 0.0
-            },
-            "m_Offset": {
-              "x": 0.0,
-              "y": 3.0,
-              "z": 0.0
-            },
-            "m_PointsPositions": [
-              {
-                "x": 2.0,
-                "y": 0.0,
-                "z": 0.0
-              },
-              {
-                "x": 3.0,
-                "y": 0.0,
-                "z": 2.0
-              },
-              {
-                "x": -1.0,
-                "y": 0.0,
-                "z": 3.0
-              },
-              {
-                "x": 0.0,
-                "y": 0.0,
-                "z": 0.0
-              }
-            ],
-            "m_CompositeShapeData": {
-              "$ref": "45"
-            },
-            "m_Points": [
-              {
-                "$ref": "2"
-              },
-              {
-                "$ref": "3"
-              },
-              {
-                "$ref": "4"
-              },
-              {
-                "$ref": "5"
-              },
-              {
-                "$ref": "6"
-              },
-              {
-                "$ref": "7"
-              },
-              {
-                "$ref": "8"
-              },
-              {
-                "$ref": "9"
-              }
-            ],
-            "m_Lines": [
-              {
-                "$ref": "17"
-              },
-              {
-                "$ref": "18"
-              },
-              {
-                "$ref": "19"
-              },
-              {
-                "$ref": "20"
-              },
-              {
-                "$ref": "21"
-              },
-              {
-                "$ref": "22"
-              },
-              {
-                "$ref": "23"
-              },
-              {
-                "$ref": "24"
-              },
-              {
-                "$ref": "25"
-              },
-              {
-                "$ref": "26"
-              },
-              {
-                "$ref": "27"
-              },
-              {
-                "$ref": "28"
-              }
-            ],
-            "m_Polygons": [
-              {
-                "$ref": "38"
-              },
-              {
-                "$ref": "39"
-              },
-              {
-                "$ref": "40"
-              },
-              {
-                "$ref": "41"
-              },
-              {
-                "$ref": "42"
-              },
-              {
-                "$ref": "43"
-              }
-            ],
-            "DependenciesOnOtherShapes": []
+            "$ref": "47"
           }
         ]
       },
       {
-        "$id": "57",
+        "$id": "58",
         "$type": "Lesson.Shapes.Blueprints.DependentShapes.PointOfIntersectionBlueprint, Assembly-CSharp",
         "PointData": {
           "$ref": "15"
@@ -2841,36 +879,36 @@
         ],
         "DependenciesOnOtherShapes": [
           {
+            "$ref": "57"
+          },
+          {
             "$ref": "56"
           },
           {
-            "$ref": "55"
+            "$ref": "48"
           },
           {
-            "$ref": "47"
-          },
-          {
-            "$ref": "49"
+            "$ref": "50"
           }
         ]
       },
       {
-        "$id": "58",
+        "$id": "59",
         "$type": "Lesson.Shapes.Blueprints.BaseShapes.LineBlueprint, Assembly-CSharp",
         "LineData": {
           "$ref": "34"
         },
         "DependenciesOnOtherShapes": [
           {
-            "$ref": "55"
+            "$ref": "56"
           },
           {
-            "$ref": "56"
+            "$ref": "57"
           }
         ]
       },
       {
-        "$id": "59",
+        "$id": "60",
         "$type": "Lesson.Shapes.Blueprints.DependentShapes.PointOfIntersectionBlueprint, Assembly-CSharp",
         "PointData": {
           "$ref": "16"
@@ -2895,270 +933,10 @@
         ],
         "DependenciesOnOtherShapes": [
           {
-            "$ref": "48"
+            "$ref": "49"
           },
           {
-            "$ref": "57"
-          },
-          {
-            "$type": "Lesson.Shapes.Blueprints.CompositeShapes.PrismBlueprint, Assembly-CSharp",
-            "m_VerticesAtTheBaseCount": 4,
-            "m_Origin": {
-              "x": 0.0,
-              "y": 0.0,
-              "z": 0.0
-            },
-            "m_Offset": {
-              "x": 0.0,
-              "y": 3.0,
-              "z": 0.0
-            },
-            "m_PointsPositions": [
-              {
-                "x": 2.0,
-                "y": 0.0,
-                "z": 0.0
-              },
-              {
-                "x": 3.0,
-                "y": 0.0,
-                "z": 2.0
-              },
-              {
-                "x": -1.0,
-                "y": 0.0,
-                "z": 3.0
-              },
-              {
-                "x": 0.0,
-                "y": 0.0,
-                "z": 0.0
-              }
-            ],
-            "m_CompositeShapeData": {
-              "$ref": "45"
-            },
-            "m_Points": [
-              {
-                "$ref": "2"
-              },
-              {
-                "$ref": "3"
-              },
-              {
-                "$ref": "4"
-              },
-              {
-                "$ref": "5"
-              },
-              {
-                "$ref": "6"
-              },
-              {
-                "$ref": "7"
-              },
-              {
-                "$ref": "8"
-              },
-              {
-                "$ref": "9"
-              }
-            ],
-            "m_Lines": [
-              {
-                "$ref": "17"
-              },
-              {
-                "$ref": "18"
-              },
-              {
-                "$ref": "19"
-              },
-              {
-                "$ref": "20"
-              },
-              {
-                "$ref": "21"
-              },
-              {
-                "$ref": "22"
-              },
-              {
-                "$ref": "23"
-              },
-              {
-                "$ref": "24"
-              },
-              {
-                "$ref": "25"
-              },
-              {
-                "$ref": "26"
-              },
-              {
-                "$ref": "27"
-              },
-              {
-                "$ref": "28"
-              }
-            ],
-            "m_Polygons": [
-              {
-                "$ref": "38"
-              },
-              {
-                "$ref": "39"
-              },
-              {
-                "$ref": "40"
-              },
-              {
-                "$ref": "41"
-              },
-              {
-                "$ref": "42"
-              },
-              {
-                "$ref": "43"
-              }
-            ],
-            "DependenciesOnOtherShapes": []
-          },
-          {
-            "$type": "Lesson.Shapes.Blueprints.CompositeShapes.PrismBlueprint, Assembly-CSharp",
-            "m_VerticesAtTheBaseCount": 4,
-            "m_Origin": {
-              "x": 0.0,
-              "y": 0.0,
-              "z": 0.0
-            },
-            "m_Offset": {
-              "x": 0.0,
-              "y": 3.0,
-              "z": 0.0
-            },
-            "m_PointsPositions": [
-              {
-                "x": 2.0,
-                "y": 0.0,
-                "z": 0.0
-              },
-              {
-                "x": 3.0,
-                "y": 0.0,
-                "z": 2.0
-              },
-              {
-                "x": -1.0,
-                "y": 0.0,
-                "z": 3.0
-              },
-              {
-                "x": 0.0,
-                "y": 0.0,
-                "z": 0.0
-              }
-            ],
-            "m_CompositeShapeData": {
-              "$ref": "45"
-            },
-            "m_Points": [
-              {
-                "$ref": "2"
-              },
-              {
-                "$ref": "3"
-              },
-              {
-                "$ref": "4"
-              },
-              {
-                "$ref": "5"
-              },
-              {
-                "$ref": "6"
-              },
-              {
-                "$ref": "7"
-              },
-              {
-                "$ref": "8"
-              },
-              {
-                "$ref": "9"
-              }
-            ],
-            "m_Lines": [
-              {
-                "$ref": "17"
-              },
-              {
-                "$ref": "18"
-              },
-              {
-                "$ref": "19"
-              },
-              {
-                "$ref": "20"
-              },
-              {
-                "$ref": "21"
-              },
-              {
-                "$ref": "22"
-              },
-              {
-                "$ref": "23"
-              },
-              {
-                "$ref": "24"
-              },
-              {
-                "$ref": "25"
-              },
-              {
-                "$ref": "26"
-              },
-              {
-                "$ref": "27"
-              },
-              {
-                "$ref": "28"
-              }
-            ],
-            "m_Polygons": [
-              {
-                "$ref": "38"
-              },
-              {
-                "$ref": "39"
-              },
-              {
-                "$ref": "40"
-              },
-              {
-                "$ref": "41"
-              },
-              {
-                "$ref": "42"
-              },
-              {
-                "$ref": "43"
-              }
-            ],
-            "DependenciesOnOtherShapes": []
-          }
-        ]
-      },
-      {
-        "$id": "60",
-        "$type": "Lesson.Shapes.Blueprints.BaseShapes.LineBlueprint, Assembly-CSharp",
-        "LineData": {
-          "$ref": "35"
-        },
-        "DependenciesOnOtherShapes": [
-          {
-            "$ref": "59"
+            "$ref": "58"
           },
           {
             "$ref": "47"
@@ -3169,50 +947,65 @@
         "$id": "61",
         "$type": "Lesson.Shapes.Blueprints.BaseShapes.LineBlueprint, Assembly-CSharp",
         "LineData": {
-          "$ref": "36"
+          "$ref": "35"
         },
         "DependenciesOnOtherShapes": [
           {
-            "$ref": "49"
+            "$ref": "60"
           },
           {
-            "$ref": "59"
+            "$ref": "48"
           }
         ]
       },
       {
         "$id": "62",
+        "$type": "Lesson.Shapes.Blueprints.BaseShapes.LineBlueprint, Assembly-CSharp",
+        "LineData": {
+          "$ref": "36"
+        },
+        "DependenciesOnOtherShapes": [
+          {
+            "$ref": "50"
+          },
+          {
+            "$ref": "60"
+          }
+        ]
+      },
+      {
+        "$id": "63",
         "$type": "Lesson.Shapes.Blueprints.BaseShapes.PolygonBlueprint, Assembly-CSharp",
         "PolygonData": {
           "$ref": "44"
         },
         "DependenciesOnOtherShapes": [
           {
-            "$ref": "47"
-          },
-          {
             "$ref": "48"
           },
           {
             "$ref": "49"
           },
           {
-            "$ref": "59"
+            "$ref": "50"
+          },
+          {
+            "$ref": "60"
           }
         ]
       },
       {
-        "$id": "63",
+        "$id": "64",
         "$type": "Lesson.Shapes.Blueprints.BaseShapes.LineBlueprint, Assembly-CSharp",
         "LineData": {
           "$ref": "37"
         },
         "DependenciesOnOtherShapes": [
           {
-            "$ref": "48"
+            "$ref": "49"
           },
           {
-            "$ref": "59"
+            "$ref": "60"
           }
         ]
       }
@@ -3221,145 +1014,11 @@
   "m_ShapeActionFactory": {
     "m_ShapeActions": [
       {
-        "$id": "64",
-        "$type": "Lesson.Stages.Actions.SetActiveShapeAction, Assembly-CSharp",
-        "m_Active": true,
-        "m_ShapeData": {
-          "$ref": "45"
-        },
-        "DependenciesOnOtherShapes": [
-          {
-            "$type": "Lesson.Shapes.Blueprints.CompositeShapes.PrismBlueprint, Assembly-CSharp",
-            "m_VerticesAtTheBaseCount": 4,
-            "m_Origin": {
-              "x": 0.0,
-              "y": 0.0,
-              "z": 0.0
-            },
-            "m_Offset": {
-              "x": 0.0,
-              "y": 3.0,
-              "z": 0.0
-            },
-            "m_PointsPositions": [
-              {
-                "x": 2.0,
-                "y": 0.0,
-                "z": 0.0
-              },
-              {
-                "x": 3.0,
-                "y": 0.0,
-                "z": 2.0
-              },
-              {
-                "x": -1.0,
-                "y": 0.0,
-                "z": 3.0
-              },
-              {
-                "x": 0.0,
-                "y": 0.0,
-                "z": 0.0
-              }
-            ],
-            "m_CompositeShapeData": {
-              "$ref": "45"
-            },
-            "m_Points": [
-              {
-                "$ref": "2"
-              },
-              {
-                "$ref": "3"
-              },
-              {
-                "$ref": "4"
-              },
-              {
-                "$ref": "5"
-              },
-              {
-                "$ref": "6"
-              },
-              {
-                "$ref": "7"
-              },
-              {
-                "$ref": "8"
-              },
-              {
-                "$ref": "9"
-              }
-            ],
-            "m_Lines": [
-              {
-                "$ref": "17"
-              },
-              {
-                "$ref": "18"
-              },
-              {
-                "$ref": "19"
-              },
-              {
-                "$ref": "20"
-              },
-              {
-                "$ref": "21"
-              },
-              {
-                "$ref": "22"
-              },
-              {
-                "$ref": "23"
-              },
-              {
-                "$ref": "24"
-              },
-              {
-                "$ref": "25"
-              },
-              {
-                "$ref": "26"
-              },
-              {
-                "$ref": "27"
-              },
-              {
-                "$ref": "28"
-              }
-            ],
-            "m_Polygons": [
-              {
-                "$ref": "38"
-              },
-              {
-                "$ref": "39"
-              },
-              {
-                "$ref": "40"
-              },
-              {
-                "$ref": "41"
-              },
-              {
-                "$ref": "42"
-              },
-              {
-                "$ref": "43"
-              }
-            ],
-            "DependenciesOnOtherShapes": []
-          }
-        ]
-      },
-      {
         "$id": "65",
         "$type": "Lesson.Stages.Actions.SetActiveShapeAction, Assembly-CSharp",
         "m_Active": true,
         "m_ShapeData": {
-          "$ref": "10"
+          "$ref": "45"
         },
         "DependenciesOnOtherShapes": [
           {
@@ -3372,7 +1031,7 @@
         "$type": "Lesson.Stages.Actions.SetActiveShapeAction, Assembly-CSharp",
         "m_Active": true,
         "m_ShapeData": {
-          "$ref": "11"
+          "$ref": "10"
         },
         "DependenciesOnOtherShapes": [
           {
@@ -3385,7 +1044,7 @@
         "$type": "Lesson.Stages.Actions.SetActiveShapeAction, Assembly-CSharp",
         "m_Active": true,
         "m_ShapeData": {
-          "$ref": "12"
+          "$ref": "11"
         },
         "DependenciesOnOtherShapes": [
           {
@@ -3395,14 +1054,14 @@
       },
       {
         "$id": "68",
-        "$type": "Lesson.Stages.Actions.SetHighlightShapeAction, Assembly-CSharp",
-        "m_Highlight": 4,
+        "$type": "Lesson.Stages.Actions.SetActiveShapeAction, Assembly-CSharp",
+        "m_Active": true,
         "m_ShapeData": {
-          "$ref": "10"
+          "$ref": "12"
         },
         "DependenciesOnOtherShapes": [
           {
-            "$ref": "47"
+            "$ref": "50"
           }
         ]
       },
@@ -3411,7 +1070,7 @@
         "$type": "Lesson.Stages.Actions.SetHighlightShapeAction, Assembly-CSharp",
         "m_Highlight": 4,
         "m_ShapeData": {
-          "$ref": "11"
+          "$ref": "10"
         },
         "DependenciesOnOtherShapes": [
           {
@@ -3424,7 +1083,7 @@
         "$type": "Lesson.Stages.Actions.SetHighlightShapeAction, Assembly-CSharp",
         "m_Highlight": 4,
         "m_ShapeData": {
-          "$ref": "12"
+          "$ref": "11"
         },
         "DependenciesOnOtherShapes": [
           {
@@ -3434,10 +1093,10 @@
       },
       {
         "$id": "71",
-        "$type": "Lesson.Stages.Actions.SetActiveShapeAction, Assembly-CSharp",
-        "m_Active": true,
+        "$type": "Lesson.Stages.Actions.SetHighlightShapeAction, Assembly-CSharp",
+        "m_Highlight": 4,
         "m_ShapeData": {
-          "$ref": "29"
+          "$ref": "12"
         },
         "DependenciesOnOtherShapes": [
           {
@@ -3450,7 +1109,7 @@
         "$type": "Lesson.Stages.Actions.SetActiveShapeAction, Assembly-CSharp",
         "m_Active": true,
         "m_ShapeData": {
-          "$ref": "30"
+          "$ref": "29"
         },
         "DependenciesOnOtherShapes": [
           {
@@ -3463,7 +1122,7 @@
         "$type": "Lesson.Stages.Actions.SetActiveShapeAction, Assembly-CSharp",
         "m_Active": true,
         "m_ShapeData": {
-          "$ref": "31"
+          "$ref": "30"
         },
         "DependenciesOnOtherShapes": [
           {
@@ -3473,23 +1132,23 @@
       },
       {
         "$id": "74",
-        "$type": "Lesson.Stages.Actions.SetHighlightShapeAction, Assembly-CSharp",
-        "m_Highlight": 0,
+        "$type": "Lesson.Stages.Actions.SetActiveShapeAction, Assembly-CSharp",
+        "m_Active": true,
         "m_ShapeData": {
           "$ref": "31"
         },
         "DependenciesOnOtherShapes": [
           {
-            "$ref": "52"
+            "$ref": "53"
           }
         ]
       },
       {
         "$id": "75",
-        "$type": "Lesson.Stages.Actions.SetActiveShapeAction, Assembly-CSharp",
-        "m_Active": true,
+        "$type": "Lesson.Stages.Actions.SetHighlightShapeAction, Assembly-CSharp",
+        "m_Highlight": 0,
         "m_ShapeData": {
-          "$ref": "32"
+          "$ref": "31"
         },
         "DependenciesOnOtherShapes": [
           {
@@ -3499,23 +1158,23 @@
       },
       {
         "$id": "76",
-        "$type": "Lesson.Stages.Actions.SetHighlightShapeAction, Assembly-CSharp",
-        "m_Highlight": 0,
+        "$type": "Lesson.Stages.Actions.SetActiveShapeAction, Assembly-CSharp",
+        "m_Active": true,
         "m_ShapeData": {
           "$ref": "32"
         },
         "DependenciesOnOtherShapes": [
           {
-            "$ref": "53"
+            "$ref": "54"
           }
         ]
       },
       {
         "$id": "77",
-        "$type": "Lesson.Stages.Actions.SetActiveShapeAction, Assembly-CSharp",
-        "m_Active": true,
+        "$type": "Lesson.Stages.Actions.SetHighlightShapeAction, Assembly-CSharp",
+        "m_Highlight": 0,
         "m_ShapeData": {
-          "$ref": "33"
+          "$ref": "32"
         },
         "DependenciesOnOtherShapes": [
           {
@@ -3525,23 +1184,23 @@
       },
       {
         "$id": "78",
-        "$type": "Lesson.Stages.Actions.SetHighlightShapeAction, Assembly-CSharp",
-        "m_Highlight": 0,
+        "$type": "Lesson.Stages.Actions.SetActiveShapeAction, Assembly-CSharp",
+        "m_Active": true,
         "m_ShapeData": {
           "$ref": "33"
         },
         "DependenciesOnOtherShapes": [
           {
-            "$ref": "54"
+            "$ref": "55"
           }
         ]
       },
       {
         "$id": "79",
-        "$type": "Lesson.Stages.Actions.SetActiveShapeAction, Assembly-CSharp",
-        "m_Active": true,
+        "$type": "Lesson.Stages.Actions.SetHighlightShapeAction, Assembly-CSharp",
+        "m_Highlight": 0,
         "m_ShapeData": {
-          "$ref": "13"
+          "$ref": "33"
         },
         "DependenciesOnOtherShapes": [
           {
@@ -3554,66 +1213,20 @@
         "$type": "Lesson.Stages.Actions.SetActiveShapeAction, Assembly-CSharp",
         "m_Active": true,
         "m_ShapeData": {
-          "$ref": "34"
+          "$ref": "13"
         },
         "DependenciesOnOtherShapes": [
           {
-            "$ref": "58"
+            "$ref": "56"
           }
         ]
       },
       {
         "$id": "81",
-        "$type": "Lesson.Stages.Actions.SetHighlightShapeAction, Assembly-CSharp",
-        "m_Highlight": 0,
-        "m_ShapeData": null,
-        "DependenciesOnOtherShapes": []
-      },
-      {
-        "$id": "82",
         "$type": "Lesson.Stages.Actions.SetActiveShapeAction, Assembly-CSharp",
         "m_Active": true,
         "m_ShapeData": {
-          "$ref": "15"
-        },
-        "DependenciesOnOtherShapes": [
-          {
-            "$ref": "57"
-          }
-        ]
-      },
-      {
-        "$id": "83",
-        "$type": "Lesson.Stages.Actions.SetActiveShapeAction, Assembly-CSharp",
-        "m_Active": true,
-        "m_ShapeData": {
-          "$ref": "37"
-        },
-        "DependenciesOnOtherShapes": [
-          {
-            "$ref": "63"
-          }
-        ]
-      },
-      {
-        "$id": "84",
-        "$type": "Lesson.Stages.Actions.SetHighlightShapeAction, Assembly-CSharp",
-        "m_Highlight": 0,
-        "m_ShapeData": {
-          "$ref": "37"
-        },
-        "DependenciesOnOtherShapes": [
-          {
-            "$ref": "63"
-          }
-        ]
-      },
-      {
-        "$id": "85",
-        "$type": "Lesson.Stages.Actions.SetActiveShapeAction, Assembly-CSharp",
-        "m_Active": true,
-        "m_ShapeData": {
-          "$ref": "16"
+          "$ref": "34"
         },
         "DependenciesOnOtherShapes": [
           {
@@ -3622,11 +1235,57 @@
         ]
       },
       {
+        "$id": "82",
+        "$type": "Lesson.Stages.Actions.SetHighlightShapeAction, Assembly-CSharp",
+        "m_Highlight": 0,
+        "m_ShapeData": null,
+        "DependenciesOnOtherShapes": []
+      },
+      {
+        "$id": "83",
+        "$type": "Lesson.Stages.Actions.SetActiveShapeAction, Assembly-CSharp",
+        "m_Active": true,
+        "m_ShapeData": {
+          "$ref": "15"
+        },
+        "DependenciesOnOtherShapes": [
+          {
+            "$ref": "58"
+          }
+        ]
+      },
+      {
+        "$id": "84",
+        "$type": "Lesson.Stages.Actions.SetActiveShapeAction, Assembly-CSharp",
+        "m_Active": true,
+        "m_ShapeData": {
+          "$ref": "37"
+        },
+        "DependenciesOnOtherShapes": [
+          {
+            "$ref": "64"
+          }
+        ]
+      },
+      {
+        "$id": "85",
+        "$type": "Lesson.Stages.Actions.SetHighlightShapeAction, Assembly-CSharp",
+        "m_Highlight": 0,
+        "m_ShapeData": {
+          "$ref": "37"
+        },
+        "DependenciesOnOtherShapes": [
+          {
+            "$ref": "64"
+          }
+        ]
+      },
+      {
         "$id": "86",
         "$type": "Lesson.Stages.Actions.SetActiveShapeAction, Assembly-CSharp",
         "m_Active": true,
         "m_ShapeData": {
-          "$ref": "35"
+          "$ref": "16"
         },
         "DependenciesOnOtherShapes": [
           {
@@ -3637,13 +1296,13 @@
       {
         "$id": "87",
         "$type": "Lesson.Stages.Actions.SetActiveShapeAction, Assembly-CSharp",
-        "m_Active": false,
+        "m_Active": true,
         "m_ShapeData": {
-          "$ref": "32"
+          "$ref": "35"
         },
         "DependenciesOnOtherShapes": [
           {
-            "$ref": "53"
+            "$ref": "61"
           }
         ]
       },
@@ -3652,7 +1311,7 @@
         "$type": "Lesson.Stages.Actions.SetActiveShapeAction, Assembly-CSharp",
         "m_Active": false,
         "m_ShapeData": {
-          "$ref": "33"
+          "$ref": "32"
         },
         "DependenciesOnOtherShapes": [
           {
@@ -3665,20 +1324,7 @@
         "$type": "Lesson.Stages.Actions.SetActiveShapeAction, Assembly-CSharp",
         "m_Active": false,
         "m_ShapeData": {
-          "$ref": "34"
-        },
-        "DependenciesOnOtherShapes": [
-          {
-            "$ref": "58"
-          }
-        ]
-      },
-      {
-        "$id": "90",
-        "$type": "Lesson.Stages.Actions.SetActiveShapeAction, Assembly-CSharp",
-        "m_Active": false,
-        "m_ShapeData": {
-          "$ref": "13"
+          "$ref": "33"
         },
         "DependenciesOnOtherShapes": [
           {
@@ -3687,15 +1333,28 @@
         ]
       },
       {
+        "$id": "90",
+        "$type": "Lesson.Stages.Actions.SetActiveShapeAction, Assembly-CSharp",
+        "m_Active": false,
+        "m_ShapeData": {
+          "$ref": "34"
+        },
+        "DependenciesOnOtherShapes": [
+          {
+            "$ref": "59"
+          }
+        ]
+      },
+      {
         "$id": "91",
         "$type": "Lesson.Stages.Actions.SetActiveShapeAction, Assembly-CSharp",
         "m_Active": false,
         "m_ShapeData": {
-          "$ref": "31"
+          "$ref": "13"
         },
         "DependenciesOnOtherShapes": [
           {
-            "$ref": "52"
+            "$ref": "56"
           }
         ]
       },
@@ -3704,11 +1363,11 @@
         "$type": "Lesson.Stages.Actions.SetActiveShapeAction, Assembly-CSharp",
         "m_Active": false,
         "m_ShapeData": {
-          "$ref": "37"
+          "$ref": "31"
         },
         "DependenciesOnOtherShapes": [
           {
-            "$ref": "63"
+            "$ref": "53"
           }
         ]
       },
@@ -3717,24 +1376,24 @@
         "$type": "Lesson.Stages.Actions.SetActiveShapeAction, Assembly-CSharp",
         "m_Active": false,
         "m_ShapeData": {
-          "$ref": "15"
+          "$ref": "37"
         },
         "DependenciesOnOtherShapes": [
           {
-            "$ref": "57"
+            "$ref": "64"
           }
         ]
       },
       {
         "$id": "94",
         "$type": "Lesson.Stages.Actions.SetActiveShapeAction, Assembly-CSharp",
-        "m_Active": true,
+        "m_Active": false,
         "m_ShapeData": {
-          "$ref": "36"
+          "$ref": "15"
         },
         "DependenciesOnOtherShapes": [
           {
-            "$ref": "61"
+            "$ref": "58"
           }
         ]
       },
@@ -3743,7 +1402,7 @@
         "$type": "Lesson.Stages.Actions.SetActiveShapeAction, Assembly-CSharp",
         "m_Active": true,
         "m_ShapeData": {
-          "$ref": "44"
+          "$ref": "36"
         },
         "DependenciesOnOtherShapes": [
           {
@@ -3753,14 +1412,14 @@
       },
       {
         "$id": "96",
-        "$type": "Lesson.Stages.Actions.SetHighlightShapeAction, Assembly-CSharp",
-        "m_Highlight": 4,
+        "$type": "Lesson.Stages.Actions.SetActiveShapeAction, Assembly-CSharp",
+        "m_Active": true,
         "m_ShapeData": {
           "$ref": "44"
         },
         "DependenciesOnOtherShapes": [
           {
-            "$ref": "62"
+            "$ref": "63"
           }
         ]
       },
@@ -3769,11 +1428,11 @@
         "$type": "Lesson.Stages.Actions.SetHighlightShapeAction, Assembly-CSharp",
         "m_Highlight": 4,
         "m_ShapeData": {
-          "$ref": "35"
+          "$ref": "44"
         },
         "DependenciesOnOtherShapes": [
           {
-            "$ref": "60"
+            "$ref": "63"
           }
         ]
       },
@@ -3782,7 +1441,7 @@
         "$type": "Lesson.Stages.Actions.SetHighlightShapeAction, Assembly-CSharp",
         "m_Highlight": 4,
         "m_ShapeData": {
-          "$ref": "36"
+          "$ref": "35"
         },
         "DependenciesOnOtherShapes": [
           {
@@ -3795,11 +1454,11 @@
         "$type": "Lesson.Stages.Actions.SetHighlightShapeAction, Assembly-CSharp",
         "m_Highlight": 4,
         "m_ShapeData": {
-          "$ref": "30"
+          "$ref": "36"
         },
         "DependenciesOnOtherShapes": [
           {
-            "$ref": "51"
+            "$ref": "62"
           }
         ]
       },
@@ -3808,11 +1467,24 @@
         "$type": "Lesson.Stages.Actions.SetHighlightShapeAction, Assembly-CSharp",
         "m_Highlight": 4,
         "m_ShapeData": {
+          "$ref": "30"
+        },
+        "DependenciesOnOtherShapes": [
+          {
+            "$ref": "52"
+          }
+        ]
+      },
+      {
+        "$id": "101",
+        "$type": "Lesson.Stages.Actions.SetHighlightShapeAction, Assembly-CSharp",
+        "m_Highlight": 4,
+        "m_ShapeData": {
           "$ref": "29"
         },
         "DependenciesOnOtherShapes": [
           {
-            "$ref": "50"
+            "$ref": "51"
           }
         ]
       }
@@ -3824,9 +1496,6 @@
         "m_StageName": "Условие",
         "m_StageDescription": "Построим сечение прямой четырехугольной призмы ABCDA'B'C'D' плоскостью, проходящей через точки M, K и L.",
         "m_ShapeActions": [
-          {
-            "$ref": "64"
-          },
           {
             "$ref": "65"
           },
@@ -3844,6 +1513,9 @@
           },
           {
             "$ref": "70"
+          },
+          {
+            "$ref": "71"
           }
         ]
       },
@@ -3852,7 +1524,7 @@
         "m_StageDescription": "Нам повезло! Точки М и К искомого сечения принадлежат одной грани, поэтому мы можем их соединить. Прямая МК - сторона искомого сечения.",
         "m_ShapeActions": [
           {
-            "$ref": "71"
+            "$ref": "72"
           }
         ]
       },
@@ -3861,7 +1533,7 @@
         "m_StageDescription": "И снова удача! Точки L и К искомого сечения принадлежат одной грани, поэтому мы можем их соединить. Прямая LК - сторона искомого сечения.",
         "m_ShapeActions": [
           {
-            "$ref": "72"
+            "$ref": "73"
           }
         ]
       },
@@ -3870,10 +1542,10 @@
         "m_StageDescription": "Проведем вспомогательную прямую МL.",
         "m_ShapeActions": [
           {
-            "$ref": "73"
+            "$ref": "74"
           },
           {
-            "$ref": "74"
+            "$ref": "75"
           }
         ]
       },
@@ -3882,10 +1554,10 @@
         "m_StageDescription": "В плоскости основания призмы проведем проекцию АС вспомогательной прямой МK.",
         "m_ShapeActions": [
           {
-            "$ref": "75"
+            "$ref": "76"
           },
           {
-            "$ref": "76"
+            "$ref": "77"
           }
         ]
       },
@@ -3894,13 +1566,13 @@
         "m_StageDescription": "Проведем прямую BD. Это проекция прямой искомого сечения в плоскости основания. Прямые AC и BD пересекаются в точке Т.",
         "m_ShapeActions": [
           {
-            "$ref": "77"
-          },
-          {
             "$ref": "78"
           },
           {
             "$ref": "79"
+          },
+          {
+            "$ref": "80"
           }
         ]
       },
@@ -3909,13 +1581,13 @@
         "m_StageDescription": "Построим проекцию точки Т на верхнее основание призмы. Для этого опустим перпендикуляр на верхнее основание. Точка Н пересечения вспомогательной прямой ML и перпендикуляра принадлежит искомому сечению.  ",
         "m_ShapeActions": [
           {
-            "$ref": "80"
-          },
-          {
             "$ref": "81"
           },
           {
             "$ref": "82"
+          },
+          {
+            "$ref": "83"
           }
         ]
       },
@@ -3924,13 +1596,13 @@
         "m_StageDescription": "Прямая КН пересекает ребро DD' призмы в точке Е. Точка Е принадлежит искомому сечению.",
         "m_ShapeActions": [
           {
-            "$ref": "83"
-          },
-          {
             "$ref": "84"
           },
           {
             "$ref": "85"
+          },
+          {
+            "$ref": "86"
           }
         ]
       },
@@ -3938,9 +1610,6 @@
         "m_StageName": "Прямая МЕ",
         "m_StageDescription": "Точки М и Е искомого сечения лежат в одной грани призмы, поэтому мы можем их соединить. Прямая МЕ - сторона искомого сечения.",
         "m_ShapeActions": [
-          {
-            "$ref": "86"
-          },
           {
             "$ref": "87"
           },
@@ -3961,6 +1630,9 @@
           },
           {
             "$ref": "93"
+          },
+          {
+            "$ref": "94"
           }
         ]
       },
@@ -3969,7 +1641,7 @@
         "m_StageDescription": "Точки L и Е искомого сечения лежат в одной грани призмы, поэтому мы можем их соединить. Прямая LЕ - сторона искомого сечения.",
         "m_ShapeActions": [
           {
-            "$ref": "94"
+            "$ref": "95"
           }
         ]
       },
@@ -3977,9 +1649,6 @@
         "m_StageName": "Сечение",
         "m_StageDescription": "Многоугольник MKLE - искомое сечение.",
         "m_ShapeActions": [
-          {
-            "$ref": "95"
-          },
           {
             "$ref": "96"
           },
@@ -3994,6 +1663,9 @@
           },
           {
             "$ref": "100"
+          },
+          {
+            "$ref": "101"
           }
         ]
       }

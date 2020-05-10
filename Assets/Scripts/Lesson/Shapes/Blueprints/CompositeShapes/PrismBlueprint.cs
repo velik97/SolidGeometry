@@ -8,6 +8,7 @@ using UnityEngine;
 
 namespace Lesson.Shapes.Blueprints.CompositeShapes
 {
+    [JsonObject(IsReference = true, MemberSerialization = MemberSerialization.OptIn)]
     public class PrismBlueprint : ShapeBlueprint
     {
         [JsonProperty]
