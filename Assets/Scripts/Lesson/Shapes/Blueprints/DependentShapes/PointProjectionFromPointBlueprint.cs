@@ -5,11 +5,7 @@ using Lesson.Shapes.Datas;
 using Lesson.Validators;
 using Newtonsoft.Json;
 using Serialization;
-using UnityEngine;
 using Util;
-
-    //public class PointProjectionContinuationOfPointBlueprint
-
 
 namespace Lesson.Shapes.Blueprints.DependentShapes
 {

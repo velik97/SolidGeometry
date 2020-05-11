@@ -1,5 +1,7 @@
 ﻿using System;
 using Runtime.Core;
+using Runtime.Global;
+using Runtime.Global.ApplicationModeManagement;
 using UI.MVVM;
 using UniRx;
 using UnityEngine;
@@ -9,14 +11,20 @@ namespace UI.Session.CloseLesson
 {
     public class TopPanelVM : ViewModel, IApplicationModeHandler
     {
-        private GlobalData m_GlobalData;
-        
-        private StringReactiveProperty m_FunctionalButtonName = new StringReactiveProperty(string.Empty);
-        public IReadOnlyReactiveProperty<string> FunctionalButtonName => m_FunctionalButtonName;
+        private readonly StringReactiveProperty m_ChangeModeButtonName = new StringReactiveProperty(string.Empty);
+        public IReadOnlyReactiveProperty<string> ChangeModeButtonName => m_ChangeModeButtonName;
 
-        public TopPanelVM(GlobalData globalData)
+        public readonly IReadOnlyReactiveProperty<bool> CanChangeMode;
+
+        private Action m_GoBackAction;
+        private Action m_ChangeModeAction;
+        
+        public TopPanelVM(Action goBackAction, Action changeModeAction, IReadOnlyReactiveProperty<bool> canChangeMode)
         {
-            m_GlobalData = globalData;
+            m_GoBackAction = goBackAction;
+            m_ChangeModeAction = changeModeAction;
+
+            CanChangeMode = canChangeMode;
             
             Add(EventBus.Subscribe(this));
         }
@@ -26,38 +34,26 @@ namespace UI.Session.CloseLesson
             switch (mode)
             {
                 case ApplicationMode.Session3D:
-                    m_FunctionalButtonName.Value = "AR";
+                    m_ChangeModeButtonName.Value = "AR";
                     break;
                 case ApplicationMode.SessionAR:
-                    m_FunctionalButtonName.Value = "Reset";
+                    m_ChangeModeButtonName.Value = "3D";
                     break;
             }
         }
 
         public void OnBackPressed()
         {
-            switch (m_GlobalData.CurrentApplicationMode)
-            {
-                case ApplicationMode.Session3D:
-                    m_GlobalData.RequestChangeApplicationMode(ApplicationMode.MainMenu);
-                    break;
-                case ApplicationMode.SessionAR:
-                    m_GlobalData.RequestChangeApplicationMode(ApplicationMode.Session3D);
-                    break;
-            }
+            m_GoBackAction?.Invoke();
         }
 
-        public void OnFunctionalPressed()
+        public void OnChangeModePressed()
         {
-            switch (m_GlobalData.CurrentApplicationMode)
+            if (!CanChangeMode.Value)
             {
-                case ApplicationMode.Session3D:
-                    m_GlobalData.RequestChangeApplicationMode(ApplicationMode.SessionAR);
-                    break;
-                case ApplicationMode.SessionAR:
-                    Debug.Log("Reset lesson position");
-                    break;
+                return;
             }
+            m_ChangeModeAction?.Invoke();
         }
     }
 }

@@ -1,21 +1,21 @@
-﻿using System;
-using System.Collections.Generic;
+﻿using System.Collections.Generic;
 using System.Linq;
 using UniRx;
 using UnityEngine;
+using Util.EventBusSystem;
 using Util.SceneUtils;
 
-namespace Runtime.Core
+namespace Runtime.Global.ApplicationModeManagement
 {
-    public class ApplicationModeManager : CompositeDisposable
+    public class ApplicationModeAccess : CompositeDisposable
     {
+        public static ApplicationModeAccess Instance => GlobalAccess.Instance.ApplicationModeAccess;
+        
         private readonly ApplicationConfig m_ApplicationConfig;
         
         private readonly Dictionary<ApplicationMode, List<SceneReference>> m_ModeScenes;
         private readonly List<SceneData> m_RunningScenes;
-
-        private readonly GlobalData m_GlobalData;
-
+        
         private List<SceneReference> m_SceneReferencesToLoad;
         private List<SceneData> m_SceneDatasToInitialize;
         private List<SceneData> m_SceneDatasToUnload;
@@ -25,16 +25,56 @@ namespace Runtime.Core
         private int m_ScenesToLoadCount;
 
         private ApplicationMode m_NewApplicationMode;
-        private Action<ApplicationMode> m_ModeChangedCallback;
-
-        public GlobalData GlobalData => m_GlobalData;
-
-        public ApplicationModeManager(ApplicationConfig applicationConfig)
+        
+        private ReactiveProperty<ApplicationMode> m_CurrentApplicationModeProperty = new ReactiveProperty<ApplicationMode>();
+        public IReadOnlyReactiveProperty<ApplicationMode> CurrentApplicationModeProperty => m_CurrentApplicationModeProperty;
+        public ApplicationMode CurrentApplicationMode => m_CurrentApplicationModeProperty.Value;
+        
+        private const string LAST_SESSION_MODE_KEY = "LAST_SESSION_MODE";
+        private ApplicationMode m_LastSessionMode = ApplicationMode.None;
+        private ApplicationMode LastSessionMode
+        {
+            get
+            {
+                if (m_LastSessionMode != ApplicationMode.Session3D &&
+                    m_LastSessionMode != ApplicationMode.SessionAR)
+                {
+                    if (PlayerPrefs.HasKey(LAST_SESSION_MODE_KEY))
+                    {
+                        m_LastSessionMode = (ApplicationMode)PlayerPrefs.GetInt(LAST_SESSION_MODE_KEY);
+                        if (m_LastSessionMode != ApplicationMode.Session3D &&
+                            m_LastSessionMode != ApplicationMode.SessionAR)
+                        {
+                            m_LastSessionMode = ApplicationMode.Session3D;
+                        }
+                    }
+                    else
+                    {
+                        LastSessionMode = ApplicationMode.Session3D;
+                    }
+                }
+                
+                return m_LastSessionMode;
+            }
+            set
+            {
+                if (value != ApplicationMode.Session3D &&
+                    value != ApplicationMode.SessionAR)
+                {
+                    return;
+                }
+                if (m_LastSessionMode == value)
+                {
+                    return;
+                }
+                PlayerPrefs.SetInt(LAST_SESSION_MODE_KEY, (int)value);
+                m_LastSessionMode = value;
+            }
+        }
+        
+        public ApplicationModeAccess(ApplicationConfig applicationConfig)
         {
             m_ApplicationConfig = applicationConfig;
-            
-            m_GlobalData = new GlobalData(ChangeMode, applicationConfig.RootFolder);
-            
             m_ModeScenes = new Dictionary<ApplicationMode, List<SceneReference>>();
             m_RunningScenes = new List<SceneData>();
             
@@ -69,8 +109,13 @@ namespace Runtime.Core
                 m_ModeScenes[mode].Add(sceneReference);
             }
         }
+        
+        public void GoToLessonMode()
+        {
+            RequestChangeApplicationMode(LastSessionMode);
+        }
 
-        private void ChangeMode(ApplicationMode mode, Action<ApplicationMode> callback)
+        public void RequestChangeApplicationMode(ApplicationMode mode)
         {
             if (m_ChangingMode)
             {
@@ -79,7 +124,6 @@ namespace Runtime.Core
             }
             m_ChangingMode = true;
             m_NewApplicationMode = mode;
-            m_ModeChangedCallback = callback;
             
             List<SceneReference> sceneReferencesForMode = m_ModeScenes[mode];
 
@@ -116,17 +160,30 @@ namespace Runtime.Core
             
             foreach (SceneData data in m_SceneDatasToInitialize)
             {
-                data.Initialize(m_GlobalData);
+                data.Initialize();
                 m_RunningScenes.Add(data);
             }
 
             m_ChangingMode = false;
-            m_ModeChangedCallback?.Invoke(m_NewApplicationMode);
+            OnApplicationModeChanged(m_NewApplicationMode);
+        }
+        
+        private void OnApplicationModeChanged(ApplicationMode mode)
+        {
+            if (CurrentApplicationMode == ApplicationMode.Session3D ||
+                CurrentApplicationMode == ApplicationMode.SessionAR)
+            {
+                LastSessionMode = CurrentApplicationMode;
+            }
+            
+            m_CurrentApplicationModeProperty.Value = mode;
+            EventBus.RaiseEvent<IApplicationModeHandler>(h => h.HandleApplicationModeChanged(mode));
         }
     }
     
     public enum ApplicationMode
     {
+        None,
         MainMenu,
         Session3D,
         SessionAR

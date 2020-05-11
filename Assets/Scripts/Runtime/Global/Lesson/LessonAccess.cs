@@ -1,13 +1,16 @@
 ﻿using System;
 using Lesson;
+using Runtime.Global.ApplicationModeManagement;
 using Serialization.LessonsFileSystem;
-using UnityEngine;
+using UniRx;
 using Util.EventBusSystem;
 
-namespace Runtime.Core
+namespace Runtime.Global.LessonManagement
 {
-    public class GlobalData
+    public class LessonAccess : CompositeDisposable, IApplicationModeHandler
     {
+        public static LessonAccess Instance => GlobalAccess.Instance.LessonAccess;
+        
         public readonly FolderAsset RootFolder;
         
         private LessonAsset m_CurrentLessonAsset;
@@ -19,17 +22,14 @@ namespace Runtime.Core
         private int m_CurrentLessonStageNumber;
         public int CurrentLessonStageNumber => m_CurrentLessonStageNumber;
 
-        private ApplicationMode m_CurrentApplicationMode;
-        public ApplicationMode CurrentApplicationMode => m_CurrentApplicationMode;
+        private Action m_RequestApplicationModeForLessonAction;
 
-        private Action<ApplicationMode, Action<ApplicationMode>> m_RequestChangeModeAction;
-
-        public GlobalData(Action<ApplicationMode, Action<ApplicationMode>> requestChangeModeAction, FolderAsset rootFolder)
+        public LessonAccess(FolderAsset rootFolder, Action requestApplicationModeForLessonAction)
         {
-            m_RequestChangeModeAction = requestChangeModeAction;
             RootFolder = rootFolder;
+            m_RequestApplicationModeForLessonAction = requestApplicationModeForLessonAction;
         }
-
+        
         public void StartLesson(LessonAsset lessonAsset)
         {
             LessonData lessonData = lessonAsset.GetLessonDataCashed();
@@ -43,7 +43,7 @@ namespace Runtime.Core
             m_CurrentLessonData = lessonData;
             EventBus.RaiseEvent<ICurrentLessonDataChangedHandler>(h => h.HandleCurrentLessonDataChanged(lessonData));
             
-            RequestChangeApplicationMode(ApplicationMode.Session3D);
+            m_RequestApplicationModeForLessonAction.Invoke();
         }
 
         public void SetCurrentLessonStageNumber(int number)
@@ -52,16 +52,8 @@ namespace Runtime.Core
             EventBus.RaiseEvent<ICurrentLessonStageNumberHandler>(h => h.HandleLessonStageNumberChanged(number));
         }
 
-        public void RequestChangeApplicationMode(ApplicationMode mode)
+        public void HandleApplicationModeChanged(ApplicationMode mode)
         {
-            m_RequestChangeModeAction.Invoke(mode, SetCurrentApplicationMode);
-        }
-
-        private void SetCurrentApplicationMode(ApplicationMode mode)
-        {
-            m_CurrentApplicationMode = mode;
-            EventBus.RaiseEvent<IApplicationModeHandler>(h => h.HandleApplicationModeChanged(mode));
-
             if (mode == ApplicationMode.MainMenu)
             {
                 SetCurrentLessonStageNumber(-1);

@@ -1,7 +1,7 @@
 ﻿using Lesson;
 using Util.EventBusSystem;
 
-namespace Runtime.Core
+namespace Runtime.Global.LessonManagement
 {
     public interface ICurrentLessonDataChangedHandler : IGlobalSubscriber
     {

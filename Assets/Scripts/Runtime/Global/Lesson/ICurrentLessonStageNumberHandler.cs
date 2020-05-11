@@ -1,6 +1,6 @@
 ﻿using Util.EventBusSystem;
 
-namespace Runtime.Core
+namespace Runtime.Global.LessonManagement
 {
     public interface ICurrentLessonStageNumberHandler : IGlobalSubscriber
     {

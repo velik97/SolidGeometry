@@ -8,7 +8,7 @@
 // using UnityEngine.XR.ARSubsystems;
 // using Util;
 // using Util.EventBusSystem;
-// using Util.UniRxExtensions;
+// using Util.ObservableExtensions;
 //
 // namespace ARSpawn
 // {

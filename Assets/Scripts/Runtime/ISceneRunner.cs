@@ -1,11 +1,12 @@
 ﻿using System;
 using Runtime.Core;
+using Runtime.Global;
 
 namespace Runtime
 {
     public interface ISceneRunner
     {
-        void Initialize(GlobalData globalData);
+        void Initialize();
         void Unload(Action callback);
     }
 }

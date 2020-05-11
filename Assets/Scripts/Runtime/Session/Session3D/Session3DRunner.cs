@@ -2,6 +2,8 @@ using System;
 using Lesson;
 using Lesson.Shapes.Views;
 using Runtime.Core;
+using Runtime.Global;
+using Runtime.Global.LessonManagement;
 using UnityEngine;
 using Util.UniRxExtensions;
 
@@ -20,13 +22,8 @@ namespace Runtime.Session.Session3D
         private LessonMovement m_LessonMovement;
         public LessonMovement LessonMovement => m_LessonMovement;
 
-        private GlobalData m_GlobalData;
-        private LessonData LessonData => m_GlobalData.CurrentLessonData;
-        
-        public virtual void Initialize(GlobalData globalData)
+        public virtual void Initialize()
         {
-            m_GlobalData = globalData;
-            
             InitializeShapeViewFactory();
             InitializeLessonBrowser();
             InitializeLessonMovement();
@@ -34,15 +31,15 @@ namespace Runtime.Session.Session3D
 
         private void InitializeShapeViewFactory()
         {
-            m_ShapesPivot.localPosition = -LessonData.ShapeDataFactory.Origin;
+            m_ShapesPivot.localPosition = -LessonAccess.Instance.CurrentLessonData.ShapeDataFactory.Origin;
             IShapeViewFactory shapeViewFactory = new ShapeViewFactoryProxy(ShapeViewFactory.Instance, m_ShapesPivot);
-            LessonData.ShapeDataFactory.SetViewFactory(shapeViewFactory);
+            LessonAccess.Instance.CurrentLessonData.ShapeDataFactory.SetViewFactory(shapeViewFactory);
             Add(shapeViewFactory);
         } 
 
         private void InitializeLessonBrowser()
         {
-            Add(m_LessonBrowser = new LessonBrowser(m_GlobalData));
+            Add(m_LessonBrowser = new LessonBrowser());
         }
 
         private void InitializeLessonMovement()

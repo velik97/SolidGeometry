@@ -12,24 +12,27 @@ namespace UI.Session.CloseLesson
         private Button m_BackButton;
 
         [SerializeField]
-        private Button m_FunctionalButton;
+        private GameObject m_ChangeButtonGameObject;
+        [SerializeField]
+        private Button m_ChangeModeButton;
 
         [SerializeField]
-        private TextMeshProUGUI m_FunctionalButtonLabel;
+        private TextMeshProUGUI m_ChangeModeButtonLabel;
 
         public override void Bind(TopPanelVM viewModel)
         {
             base.Bind(viewModel);
 
             Add(m_BackButton.OnClickAsObservable().Subscribe(_ => ViewModel.OnBackPressed()));
-            Add(m_FunctionalButton.OnClickAsObservable().Subscribe(_ => ViewModel.OnFunctionalPressed()));
+            Add(m_ChangeModeButton.OnClickAsObservable().Subscribe(_ => ViewModel.OnChangeModePressed()));
             
-            Add(ViewModel.FunctionalButtonName.Subscribe(SetFunctionalButtonName));
+            Add(ViewModel.ChangeModeButtonName.Subscribe(SetFunctionalButtonName));
+            Add(ViewModel.CanChangeMode.Subscribe(m_ChangeButtonGameObject.SetActive));
         }
 
         private void SetFunctionalButtonName(string buttonName)
         {
-            m_FunctionalButtonLabel.text = buttonName;
+            m_ChangeModeButtonLabel.text = buttonName;
         }
     }
 }

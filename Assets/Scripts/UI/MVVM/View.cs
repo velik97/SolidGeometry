@@ -29,13 +29,16 @@ namespace UI.MVVM
 
         private void Unbind()
         {
-            ViewModel.Remove(this);
+            ViewModel?.Remove(this);
             Remove(m_UnbindDisposable);
+            UnbindViewAction();
         }
 
         private void OnDestroy()
         {
             Dispose();
         }
+
+        protected virtual void UnbindViewAction() { }
     }
 }

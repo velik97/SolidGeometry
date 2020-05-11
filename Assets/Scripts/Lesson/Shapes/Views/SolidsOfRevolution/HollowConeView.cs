@@ -1,4 +1,4 @@
-﻿using Lesson.Shapes.Datas.ShapesOfRevolution;
+﻿using Lesson.Shapes.Datas.SolidsOfRevolution;
 using MeshGeneration;
 using UnityEngine;
 

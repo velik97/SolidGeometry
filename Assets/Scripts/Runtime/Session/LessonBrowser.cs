@@ -4,6 +4,8 @@ using Lesson.Shapes.Datas;
 using Lesson.Shapes.Views;
 using Lesson.Stages;
 using Runtime.Core;
+using Runtime.Global;
+using Runtime.Global.LessonManagement;
 using UniRx;
 using UnityEngine;
 using Util.EventBusSystem;
@@ -19,9 +21,9 @@ namespace Runtime.Session
 
         private readonly Stack<LessonStage> m_AppliedActions = new Stack<LessonStage>();
 
-        public LessonBrowser(GlobalData globalData)
+        public LessonBrowser()
         {
-            LessonData lessonData = globalData.CurrentLessonData;
+            LessonData lessonData = LessonAccess.Instance.CurrentLessonData;
             m_LessonStageFactory = lessonData.LessonStageFactory;
 
             if (m_LessonStageFactory.LessonStages.Count > 0)
@@ -33,7 +35,7 @@ namespace Runtime.Session
                 m_AppliedActions.Push(firstStage);
                 firstStage.ApplyActions();
                 
-                HandleLessonStageNumberChanged(globalData.CurrentLessonStageNumber);
+                HandleLessonStageNumberChanged(LessonAccess.Instance.CurrentLessonStageNumber);
             }
             else
             {

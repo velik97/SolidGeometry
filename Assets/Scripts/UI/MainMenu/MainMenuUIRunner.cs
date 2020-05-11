@@ -1,6 +1,8 @@
 ﻿using System;
 using Runtime;
 using Runtime.Core;
+using Runtime.Global;
+using Runtime.Global.LessonManagement;
 using Serialization.LessonsFileSystem;
 using UI.MainMenu.FileSystem;
 using UI.MainMenu.Header;
@@ -19,13 +21,10 @@ namespace UI.MainMenu
         private MainMenuHeaderView m_HeaderView;
         private MainMenuHeaderVM m_HeaderVM;
         
-        private GlobalData m_GlobalData;
         private FolderAsset m_CurrentFolder;
 
-        public void Initialize(GlobalData globalData)
+        public void Initialize()
         {
-            m_GlobalData = globalData;
-            
             InitializeLessonsList();
             InitializeHeader();
             
@@ -48,10 +47,10 @@ namespace UI.MainMenu
 
         private void SetInitialFolder()
         {
-            FolderAsset folderAsset = m_GlobalData.RootFolder;
-            if (m_GlobalData.CurrentLessonAsset?.ParentFolder != null)
+            FolderAsset folderAsset = LessonAccess.Instance.RootFolder;
+            if (LessonAccess.Instance.CurrentLessonAsset?.ParentFolder != null)
             {
-                folderAsset = m_GlobalData.CurrentLessonAsset.ParentFolder;
+                folderAsset = LessonAccess.Instance.CurrentLessonAsset.ParentFolder;
             }
 
             SetFolder(folderAsset);
@@ -72,7 +71,7 @@ namespace UI.MainMenu
             }
             else if (asset is LessonAsset lessonAsset)
             {
-                m_GlobalData.StartLesson(lessonAsset);
+                LessonAccess.Instance.StartLesson(lessonAsset);
             }
         }
 

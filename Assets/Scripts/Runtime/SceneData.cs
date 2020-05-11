@@ -1,5 +1,6 @@
 ﻿using System;
 using Runtime.Core;
+using Runtime.Global;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 using Util.SceneUtils;
@@ -49,9 +50,9 @@ namespace Runtime
             return sceneReference == m_SceneReference;
         }
 
-        public void Initialize(GlobalData globalData)
+        public void Initialize()
         {
-            m_Runner?.Initialize(globalData);
+            m_Runner?.Initialize();
         }
 
         public void Unload()

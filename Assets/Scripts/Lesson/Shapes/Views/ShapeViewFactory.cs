@@ -4,6 +4,7 @@ using System.Linq;
 using Lesson.Shapes.Datas;
 using Runtime;
 using Runtime.Core;
+using Runtime.Global;
 using UnityEngine;
 using Util;
 
@@ -23,7 +24,7 @@ namespace Lesson.Shapes.Views
         
         private readonly List<IShapeView> m_ViewsInUse = new List<IShapeView>();
 
-        public void Initialize(GlobalData globalData)
+        public void Initialize()
         {
         }
 

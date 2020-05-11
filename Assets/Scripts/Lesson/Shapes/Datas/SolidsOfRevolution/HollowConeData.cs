@@ -4,7 +4,7 @@ using Newtonsoft.Json;
 using Serialization;
 using UnityEngine;
 
-namespace Lesson.Shapes.Datas.ShapesOfRevolution
+namespace Lesson.Shapes.Datas.SolidsOfRevolution
 {
     [JsonObject(IsReference = true, MemberSerialization = MemberSerialization.OptIn)]
     public class HollowConeData : ShapeData

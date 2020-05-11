@@ -1,6 +1,6 @@
-﻿﻿using Util.EventBusSystem;
+﻿using Util.EventBusSystem;
 
-namespace Runtime.Core
+namespace Runtime.Global.ApplicationModeManagement
 {
     public interface IApplicationModeHandler : IGlobalSubscriber
     {
