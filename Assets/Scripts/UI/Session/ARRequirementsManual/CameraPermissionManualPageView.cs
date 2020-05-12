@@ -1,4 +1,6 @@
-﻿using UniRx;
+﻿using System;
+using System.Collections.Generic;
+using UniRx;
 using UnityEngine;
 using UnityEngine.UI;
 
@@ -17,7 +19,6 @@ namespace UI.Session.ARRequirementsManual
         public override void Bind(CameraPermissionManualPageVM viewModel)
         {
             base.Bind(viewModel);
-            Add(m_GoToSettingsButton.OnClickAsObservable().Subscribe(_ => ViewModel.GoToPermissionSettings()));
 
             if (ViewModel.RunningPlatform == RuntimePlatform.Android)
             {
@@ -29,6 +30,15 @@ namespace UI.Session.ARRequirementsManual
                 m_IOSPermissionSettingsManualImage.gameObject.SetActive(true);
                 m_AndroidPermissionSettingsManualImage.gameObject.SetActive(false);
             }
+        }
+        
+        protected override IEnumerable<IDisposable> GetButtonsBindings()
+        {
+            foreach (IDisposable binding in base.GetButtonsBindings())
+            {
+                yield return binding;
+            }
+            yield return m_GoToSettingsButton.OnClickAsObservable().Subscribe(_ => ViewModel.GoToPermissionSettings());
         }
 
         protected override string GetNotCompletedString()

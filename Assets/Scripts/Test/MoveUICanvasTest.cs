@@ -53,11 +53,13 @@ namespace Test
 
         private void SetPositionCenter()
         {
+            float previousWidth = m_RectTransform.rect.width;
+            
             m_RectTransform.anchorMin = new Vector2(0,0);
-            m_RectTransform.anchorMax = new Vector2(1,1);
-            m_RectTransform.pivot = new Vector2(0.5f, 0.5f);
+            m_RectTransform.anchorMax = new Vector2(0,1);
+            m_RectTransform.pivot = new Vector2(0f, 0.5f);
             m_RectTransform.offsetMin = Vector2.zero;
-            m_RectTransform.offsetMax = Vector2.zero;
+            m_RectTransform.offsetMax = new Vector2(previousWidth, 0);
         }
     }
 }

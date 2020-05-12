@@ -1,5 +1,6 @@
 ﻿using System.Collections.Generic;
 using System.Linq;
+using Runtime.Global.DeviceARRequirements;
 using UniRx;
 using UnityEngine;
 using Util.EventBusSystem;
@@ -112,6 +113,10 @@ namespace Runtime.Global.ApplicationModeManagement
         
         public void GoToLessonMode()
         {
+            if (LastSessionMode == ApplicationMode.SessionAR && !DeviceARRequirementsAccess.Instance.ReadyForAR())
+            {
+                LastSessionMode = ApplicationMode.Session3D;
+            }
             RequestChangeApplicationMode(LastSessionMode);
         }
 

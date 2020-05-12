@@ -1,4 +1,6 @@
-﻿using UniRx;
+﻿using System;
+using System.Collections.Generic;
+using UniRx;
 using UnityEngine;
 using UnityEngine.UI;
 
@@ -23,8 +25,15 @@ namespace UI.Session.ARRequirementsManual
             Add(ViewModel.NeedInstall.Subscribe(m_NeedInstallGameObject.SetActive));
             Add(ViewModel.IsInstalling.Subscribe(m_InstallingGameObject.SetActive));
             Add(ViewModel.ManualIsCompleted.Subscribe(m_InstallCompletedGameObject.SetActive));
-            
-            Add(m_InstallButton.OnClickAsObservable().Subscribe(_ => ViewModel.Install()));
+        }
+
+        protected override IEnumerable<IDisposable> GetButtonsBindings()
+        {
+            foreach (IDisposable binding in base.GetButtonsBindings())
+            {
+                yield return binding;
+            }
+            yield return m_InstallButton.OnClickAsObservable().Subscribe(_ => ViewModel.Install());
         }
 
         protected override string GetNotCompletedString()

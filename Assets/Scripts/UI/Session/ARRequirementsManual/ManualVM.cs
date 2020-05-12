@@ -1,6 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
-using Runtime.Global.DeviceEssentials;
+using Runtime.Global.DeviceARRequirements;
 using UI.MVVM;
 using UniRx;
 
@@ -8,7 +8,7 @@ namespace UI.Session.ARRequirementsManual
 {
     public class ManualVM : ViewModel
     {
-        private readonly ReactiveProperty<int> m_CurrentPageNumber;
+        private readonly ReactiveProperty<int> m_CurrentPageNumber = new ReactiveProperty<int>();
         public IReadOnlyReactiveProperty<int> CurrentPageNumber => m_CurrentPageNumber;
         
         private readonly Action m_SucceededAction;
@@ -16,12 +16,12 @@ namespace UI.Session.ARRequirementsManual
         private List<ManualPageVM> m_ManualPageVMs;
         public IList<ManualPageVM> ManualPageVMs => m_ManualPageVMs;
 
-        public ManualVM(Action succeededAction, Action closeAction, DeviceEssentialsAccess deviceEssentialsAccess)
+        public ManualVM(Action succeededAction, Action closeAction, DeviceARRequirementsAccess deviceARRequirementsAccess)
         {
             m_SucceededAction = succeededAction;
 
-            bool needCameraAccess = !deviceEssentialsAccess.CameraPermissionProvider.HaveCameraPermission();
-            bool needInstall = deviceEssentialsAccess.DeviceARSupportManager.NeedARInstall.Value;
+            bool needCameraAccess = !deviceARRequirementsAccess.CameraPermissionProvider.HaveCameraPermission();
+            bool needInstall = deviceARRequirementsAccess.ARSupportProvider.NeedARInstall.Value;
 
             int count = (needCameraAccess ? 1 : 0) + (needInstall ? 1 : 0);
             m_ManualPageVMs = new List<ManualPageVM>(count);
@@ -30,7 +30,7 @@ namespace UI.Session.ARRequirementsManual
             if (needCameraAccess)
             {
                 ManualPageVM pageVM = new CameraPermissionManualPageVM(num, count,
-                    closeAction, GoToNextPage, deviceEssentialsAccess.CameraPermissionProvider);
+                    closeAction, GoToNextPage, deviceARRequirementsAccess.CameraPermissionProvider);
                 Add(pageVM);
                 m_ManualPageVMs.Add(pageVM);
                 num++;
@@ -39,7 +39,7 @@ namespace UI.Session.ARRequirementsManual
             if (needInstall)
             {
                 ManualPageVM pageVM = new InstallARSoftwareManualPageVM(num, count,
-                    closeAction, GoToNextPage, deviceEssentialsAccess.DeviceARSupportManager);
+                    closeAction, GoToNextPage, deviceARRequirementsAccess.ARSupportProvider);
                 Add(pageVM);
                 m_ManualPageVMs.Add(pageVM);
             }
@@ -50,6 +50,7 @@ namespace UI.Session.ARRequirementsManual
             if (m_CurrentPageNumber.Value == m_ManualPageVMs.Count - 1)
             {
                 m_SucceededAction?.Invoke();
+                return;
             }
 
             m_CurrentPageNumber.Value++;

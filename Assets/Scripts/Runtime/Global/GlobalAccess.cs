@@ -1,7 +1,7 @@
 ﻿using System;
 using Runtime.Core;
 using Runtime.Global.ApplicationModeManagement;
-using Runtime.Global.DeviceEssentials;
+using Runtime.Global.DeviceARRequirements;
 using Runtime.Global.LessonManagement;
 using UniRx;
 
@@ -14,7 +14,7 @@ namespace Runtime.Global
 
         public readonly LessonAccess LessonAccess;
         public readonly ApplicationModeAccess ApplicationModeAccess;
-        public readonly DeviceEssentialsAccess DeviceEssentialsAccess;
+        public readonly DeviceARRequirementsAccess DeviceARRequirementsAccess;
 
         public static IDisposable Create(ApplicationConfig applicationConfig)
         {
@@ -26,7 +26,7 @@ namespace Runtime.Global
         {
             Add(ApplicationModeAccess = new ApplicationModeAccess(applicationConfig));
             Add(LessonAccess = new LessonAccess(applicationConfig.RootFolder, ApplicationModeAccess.GoToLessonMode));
-            Add(DeviceEssentialsAccess = new DeviceEssentialsAccess());
+            Add(DeviceARRequirementsAccess = new DeviceARRequirementsAccess());
 
             s_Instance = this;
         }

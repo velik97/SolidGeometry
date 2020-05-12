@@ -4,7 +4,7 @@ using Runtime;
 using Runtime.Core;
 using Runtime.Global;
 using Runtime.Global.ApplicationModeManagement;
-using Runtime.Global.DeviceEssentials;
+using Runtime.Global.DeviceARRequirements;
 using Runtime.Session;
 using UI.Session.ARRequirementsManual;
 using UI.Session.CloseLesson;
@@ -57,7 +57,7 @@ namespace UI.Session
         private void InitializeTopPanel()
         {
             IReadOnlyReactiveProperty<bool> canChangeMode =
-                DeviceEssentialsAccess.Instance.DeviceARSupportManager.ARIsCheckedAndSupported
+                DeviceARRequirementsAccess.Instance.ARSupportProvider.ARIsCheckedAndSupported
                 .Or(ApplicationModeAccess.Instance.CurrentApplicationModeProperty.Select(mode => mode == ApplicationMode.SessionAR))
                 .ToReadOnlyReactiveProperty();
             TopPanelVM topPanelVM = new TopPanelVM(GoBack, ChangeMode, canChangeMode);
@@ -90,10 +90,10 @@ namespace UI.Session
 
         private void RequestGoToAR()
         {
-            bool haveCameraAccess = DeviceEssentialsAccess.Instance.CameraPermissionProvider.HaveCameraPermission();
+            bool haveCameraAccess = DeviceARRequirementsAccess.Instance.CameraPermissionProvider.HaveCameraPermission();
             if (!haveCameraAccess)
             {
-                DeviceEssentialsAccess.Instance.CameraPermissionProvider.RequestCameraPermission(CheckRequirementsAndTryGoToAR);
+                DeviceARRequirementsAccess.Instance.CameraPermissionProvider.RequestCameraPermission(CheckRequirementsAndTryGoToAR);
                 return;
             }
             CheckRequirementsAndTryGoToAR();
@@ -101,8 +101,8 @@ namespace UI.Session
 
         private void CheckRequirementsAndTryGoToAR()
         {
-            bool haveCameraAccess = DeviceEssentialsAccess.Instance.CameraPermissionProvider.HaveCameraPermission();
-            bool arIsReady = DeviceEssentialsAccess.Instance.DeviceARSupportManager.ARIsReady.Value;
+            bool haveCameraAccess = DeviceARRequirementsAccess.Instance.CameraPermissionProvider.HaveCameraPermission();
+            bool arIsReady = DeviceARRequirementsAccess.Instance.ARSupportProvider.ARIsReady.Value;
 
             if (haveCameraAccess && arIsReady)
             {
@@ -115,7 +115,7 @@ namespace UI.Session
 
         private void StartARRequirementsManual()
         {
-            m_ManualVM = new ManualVM(StartARAfterManual, CloseARManual, DeviceEssentialsAccess.Instance);
+            m_ManualVM = new ManualVM(StartARAfterManual, CloseARManual, DeviceARRequirementsAccess.Instance);
             m_ManualView.Bind(m_ManualVM);
         }
 

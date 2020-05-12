@@ -2809,7 +2809,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!224 &1176245086
 RectTransform:
   m_ObjectHideFlags: 0
@@ -2845,7 +2845,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   m_CanvasGroup: {fileID: 1176245089}
   m_CameraPermissionManualView: {fileID: 1809045481}
-  m_InstallARSoftwareManualView: {fileID: 0}
+  m_InstallARSoftwareManualView: {fileID: 1399540207}
 --- !u!114 &1176245088
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -2910,7 +2910,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!224 &1399540206
 RectTransform:
   m_ObjectHideFlags: 0
@@ -3840,10 +3840,10 @@ MonoBehaviour:
   m_margin: {x: 0, y: 0, z: 0, w: 0}
   m_textInfo:
     textComponent: {fileID: 1860753091}
-    characterCount: 5
+    characterCount: 3
     spriteCount: 0
     spaceCount: 0
-    wordCount: 1
+    wordCount: 2
     linkCount: 0
     lineCount: 1
     pageCount: 1

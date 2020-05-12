@@ -2,52 +2,43 @@
 using UnityEngine.XR.ARFoundation;
 using Util;
 
-namespace Runtime.Global.DeviceEssentials
+namespace Runtime.Global.DeviceARRequirements.ARSupport
 {
-    public class DeviceARSupportManager : CompositeDisposable
+    public class MobileARSupportProvider : CompositeDisposable, IARSupportProvider
     {
-        public readonly ReadOnlyReactiveProperty<ARSessionState> CurrentARSessionState;
-
-        public readonly ReadOnlyReactiveProperty<bool> ARIsCheckedAndSupported;
-
-        public readonly ReadOnlyReactiveProperty<bool> ARIsReady;
-
-        public readonly ReadOnlyReactiveProperty<bool> NeedARInstall;
-
-        public readonly ReadOnlyReactiveProperty<bool> IsInstalling;
+        public IReadOnlyReactiveProperty<bool> ARIsCheckedAndSupported { get; }
+        public IReadOnlyReactiveProperty<bool> ARIsReady { get; }
+        public IReadOnlyReactiveProperty<bool> NeedARInstall { get; }
+        public IReadOnlyReactiveProperty<bool> IsInstalling { get; }
         
-        public DeviceARSupportManager()
+        public MobileARSupportProvider()
         {
-            CurrentARSessionState = Observable
+            var currentARSessionState = Observable
                 .FromEvent<ARSessionStateChangedEventArgs>(
                     h => ARSession.stateChanged += h,
                     h => ARSession.stateChanged -= h)
                 .Select(args => args.state)
                 .ToReadOnlyReactiveProperty(ARSession.state);
 
-            ARIsCheckedAndSupported = CurrentARSessionState
+            ARIsCheckedAndSupported = currentARSessionState
                 .Select(state =>
                     !(state == ARSessionState.None || state == ARSessionState.CheckingAvailability || state == ARSessionState.Unsupported))
                 .ToReadOnlyReactiveProperty();
 
-            ARIsReady = CurrentARSessionState
+            ARIsReady = currentARSessionState
                 .Select(state =>
                     state == ARSessionState.Ready || state == ARSessionState.SessionInitializing || state == ARSessionState.SessionTracking)
                 .ToReadOnlyReactiveProperty();
 
-            NeedARInstall = CurrentARSessionState
+            NeedARInstall = currentARSessionState
                 .Select(state => state == ARSessionState.NeedsInstall)
                 .ToReadOnlyReactiveProperty();
             
-            IsInstalling = CurrentARSessionState
+            IsInstalling = currentARSessionState
                 .Select(state => state == ARSessionState.Installing)
                 .ToReadOnlyReactiveProperty();
             
-            Add(ARIsCheckedAndSupported);
-            Add(ARIsReady);
-            Add(NeedARInstall);
-            Add(IsInstalling);
-            Add(CurrentARSessionState);
+            Add(currentARSessionState);
 
             CoroutineRunner.Run(ARSession.CheckAvailability());
         }

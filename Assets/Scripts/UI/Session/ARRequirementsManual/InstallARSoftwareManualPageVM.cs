@@ -1,27 +1,28 @@
 ﻿using System;
-using Runtime.Global.DeviceEssentials;
+using Runtime.Global.DeviceARRequirements;
+using Runtime.Global.DeviceARRequirements.ARSupport;
 using UniRx;
 
 namespace UI.Session.ARRequirementsManual
 {
     public class InstallARSoftwareManualPageVM : ManualPageVM
     {
-        private readonly DeviceARSupportManager m_DeviceARSupportManager;
+        private readonly IARSupportProvider m_ARSupportProvider;
         
-        public override IReadOnlyReactiveProperty<bool> ManualIsCompleted => m_DeviceARSupportManager.ARIsReady;
-        public IReadOnlyReactiveProperty<bool> NeedInstall => m_DeviceARSupportManager.NeedARInstall;
-        public IReadOnlyReactiveProperty<bool> IsInstalling => m_DeviceARSupportManager.IsInstalling;
+        public override IReadOnlyReactiveProperty<bool> ManualIsCompleted => m_ARSupportProvider.ARIsReady;
+        public IReadOnlyReactiveProperty<bool> NeedInstall => m_ARSupportProvider.NeedARInstall;
+        public IReadOnlyReactiveProperty<bool> IsInstalling => m_ARSupportProvider.IsInstalling;
 
         public InstallARSoftwareManualPageVM(int pageNumber, int pagesCount, Action closeAction, Action goFurtherAction,
-            DeviceARSupportManager deviceARSupportManager)
+            IARSupportProvider arSupportProvider)
             : base(pageNumber, pagesCount, closeAction, goFurtherAction)
         {
-            m_DeviceARSupportManager = deviceARSupportManager;
+            m_ARSupportProvider = arSupportProvider;
         }
 
         public void Install()
         {
-            m_DeviceARSupportManager.InstallARSoftware();
+            m_ARSupportProvider.InstallARSoftware();
         }
     }
 }

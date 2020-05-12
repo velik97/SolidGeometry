@@ -67,16 +67,20 @@ namespace UI.Session.ARRequirementsManual
 
         private void Disappear()
         {
-            m_ManualPageViews[m_ManualPageViews.Count - 1].UnbindButtons();
+            foreach (IManualPageView pageView in m_ManualPageViews)
+            {
+                pageView.UnbindButtons();
+            }
 
             Sequence sequence = DOTween.Sequence();
+            sequence.AppendInterval(UIConsts.InteractionTimeShort);
             sequence.Append(m_CanvasGroup.DOFade(0f, UIConsts.InteractionTime));
             sequence.AppendCallback(() => gameObject.SetActive(false));
         }
 
         private void SetCurrentPageIndex(int index)
         {
-            if (index < 0 || index > m_ManualPageViews.Count)
+            if (index < 0 || index >= m_ManualPageViews.Count)
             {
                 return;
             }
@@ -86,14 +90,14 @@ namespace UI.Session.ARRequirementsManual
                 Appear();
                 return;
             }
-            if (index == m_ManualPageViews.Count)
-            {
-                Disappear();
-                return;
-            }
 
             m_ManualPageViews[index - 1].Disappear();
             m_ManualPageViews[index].Appear();
+        }
+
+        protected override void UnbindViewAction()
+        {
+            Disappear();
         }
     }
 }

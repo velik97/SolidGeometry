@@ -5,7 +5,7 @@ using Plugins.IOSNativePlugins;
 using UnityEngine;
 using Util;
 
-namespace Runtime.AccessManagement
+namespace Runtime.Global.DeviceARRequirements.CameraPermission
 {
     public class IOSCameraPermissionProvider : ICameraPermissionProvider
     {

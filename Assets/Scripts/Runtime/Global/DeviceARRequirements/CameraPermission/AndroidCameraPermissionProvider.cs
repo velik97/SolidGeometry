@@ -1,10 +1,9 @@
-﻿// #if UNITY_ANDROID && !UNITY_EDITOR
-
+﻿#if UNITY_ANDROID && !UNITY_EDITOR
 using System;
 using UnityEngine;
 using UnityEngine.Android;
 
-namespace Runtime.Global.DeviceEssentials
+namespace Runtime.Global.DeviceARRequirements.CameraPermission
 {
     public class AndroidCameraPermissionProvider : ICameraPermissionProvider
     {
@@ -45,4 +44,4 @@ namespace Runtime.Global.DeviceEssentials
         }
     }
 }
-// #endif
+#endif

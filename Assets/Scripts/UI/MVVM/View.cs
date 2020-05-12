@@ -31,7 +31,9 @@ namespace UI.MVVM
         {
             ViewModel?.Remove(this);
             Remove(m_UnbindDisposable);
+            ViewModel = null;
             UnbindViewAction();
+            Recover();
         }
 
         private void OnDestroy()

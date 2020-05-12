@@ -1,6 +1,6 @@
 ﻿using System;
 
-namespace Runtime.Global.DeviceEssentials
+namespace Runtime.Global.DeviceARRequirements.CameraPermission
 {
     public interface ICameraPermissionProvider
     {

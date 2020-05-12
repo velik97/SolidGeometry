@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Collections.Generic;
 using DG.Tweening;
 using Runtime.Global.UI;
 using TMPro;
@@ -6,6 +7,7 @@ using UI.MVVM;
 using UniRx;
 using UnityEngine;
 using UnityEngine.UI;
+using Util.UniRxExtensions;
 
 namespace UI.Session.ARRequirementsManual
 {
@@ -44,8 +46,13 @@ namespace UI.Session.ARRequirementsManual
                 return;
             }
             m_ButtonsBindings = new CompositeDisposable();
-            m_ButtonsBindings.Add(m_CompletedButton.OnClickAsObservable().Subscribe(_ => ViewModel.GoFurther()));
-            m_ButtonsBindings.Add(m_CloseButton.OnClickAsObservable().Subscribe(_ => ViewModel.Close()));
+            m_ButtonsBindings.AddRange(GetButtonsBindings());
+        }
+
+        protected virtual IEnumerable<IDisposable> GetButtonsBindings()
+        {
+            yield return m_CompletedButton.OnClickAsObservable().Subscribe(_ => ViewModel.GoFurther());
+            yield return m_CloseButton.OnClickAsObservable().Subscribe(_ => ViewModel.Close());
         }
 
         public void UnbindButtons()
@@ -61,7 +68,6 @@ namespace UI.Session.ARRequirementsManual
         public void AppearImmediate()
         {
             SetPositionCenter();
-            BindButtons();
         }
 
         public void Appear()
@@ -85,18 +91,20 @@ namespace UI.Session.ARRequirementsManual
             Sequence sequence = DOTween.Sequence();
             
             sequence.AppendCallback(SetPositionCenter);
-            sequence.Append(m_RectTransform.DOPivotX(0f, UIConsts.InteractionTime));
+            sequence.Append(m_RectTransform.DOPivotX(1f, UIConsts.InteractionTime));
             sequence.AppendCallback(UnbindButtons);
             sequence.AppendCallback(SetPositionHiddenLeft);
         }
         
         private void SetPositionCenter()
         {
+            float previousWidth = m_RectTransform.rect.width;
+            
             m_RectTransform.anchorMin = new Vector2(0,0);
-            m_RectTransform.anchorMax = new Vector2(1,1);
-            m_RectTransform.pivot = new Vector2(0.5f, 0.5f);
+            m_RectTransform.anchorMax = new Vector2(0,1);
+            m_RectTransform.pivot = new Vector2(0f, 0.5f);
             m_RectTransform.offsetMin = Vector2.zero;
-            m_RectTransform.offsetMax = Vector2.zero;
+            m_RectTransform.offsetMax = new Vector2(previousWidth, 0);
         }
 
         private void SetPositionHiddenLeft()

@@ -221,6 +221,11 @@ namespace Util.UniRxExtensions
             return GetEnumerator();
         }
 
+        public void Recover()
+        {
+            _disposed = false;
+        }
+
         /// <summary>
         /// Gets a value that indicates whether the object is disposed.
         /// </summary>

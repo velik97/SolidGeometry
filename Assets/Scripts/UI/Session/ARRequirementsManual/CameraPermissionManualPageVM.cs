@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections;
-using Runtime.Global.DeviceEssentials;
+using Runtime.Global.DeviceARRequirements;
+using Runtime.Global.DeviceARRequirements.CameraPermission;
 using UniRx;
 using UnityEngine;
 using Util;

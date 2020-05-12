@@ -1,6 +1,6 @@
 ﻿using System;
 
-namespace Runtime.Global.DeviceEssentials
+namespace Runtime.Global.DeviceARRequirements.CameraPermission
 {
     public class CrossPlatformCameraPermissionProvider : ICameraPermissionProvider
     {
@@ -9,7 +9,7 @@ namespace Runtime.Global.DeviceEssentials
         public CrossPlatformCameraPermissionProvider()
         {
 #if UNITY_EDITOR
-            m_InnerCameraPermissionProvider = new EditorCameraPermissionProvider();
+            m_InnerCameraPermissionProvider = new TestCameraPermissionProvider();
 #elif UNITY_IOS && !UNITY_EDITOR
             m_InnerCameraPermissionProvider = new IOSCameraPermissionProvider();
 #elif UNITY_ANDROID && !UNITY_EDITOR
