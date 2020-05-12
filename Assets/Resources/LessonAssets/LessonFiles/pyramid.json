@@ -10,75 +10,75 @@
       {
         "$id": "2",
         "m_Position": {
-          "x": 0.0,
+          "x": 4.0,
           "y": 0.0,
           "z": 0.0
         },
-        "m_PointName": ""
+        "m_PointName": "A"
       },
       {
         "$id": "3",
         "m_Position": {
-          "x": 3.0,
+          "x": 1.99999988,
           "y": 0.0,
-          "z": 0.0
+          "z": 3.46410179
         },
-        "m_PointName": ""
+        "m_PointName": "B"
       },
       {
         "$id": "4",
         "m_Position": {
-          "x": 0.0,
+          "x": -2.00000024,
           "y": 0.0,
-          "z": -2.0
+          "z": 3.46410155
         },
-        "m_PointName": ""
+        "m_PointName": "C"
       },
       {
         "$id": "5",
         "m_Position": {
-          "x": 1.0,
-          "y": 3.0,
-          "z": -1.0
+          "x": -4.0,
+          "y": 0.0,
+          "z": -3.496911E-07
         },
-        "m_PointName": ""
-      }
-    ],
-    "m_LinetDatas": [
+        "m_PointName": "D"
+      },
       {
         "$id": "6",
-        "m_StartPoint": {
-          "$ref": "2"
+        "m_Position": {
+          "x": -1.99999964,
+          "y": 0.0,
+          "z": -3.46410179
         },
-        "m_EndPoint": {
-          "$ref": "3"
-        }
+        "m_PointName": "E"
       },
       {
         "$id": "7",
-        "m_StartPoint": {
-          "$ref": "3"
+        "m_Position": {
+          "x": 1.99999964,
+          "y": 0.0,
+          "z": -3.46410179
         },
-        "m_EndPoint": {
-          "$ref": "4"
-        }
+        "m_PointName": "F"
       },
       {
         "$id": "8",
-        "m_StartPoint": {
-          "$ref": "4"
+        "m_Position": {
+          "x": 0.0,
+          "y": 0.0,
+          "z": 0.0
         },
-        "m_EndPoint": {
-          "$ref": "2"
-        }
-      },
+        "m_PointName": "G"
+      }
+    ],
+    "m_LinetDatas": [
       {
         "$id": "9",
         "m_StartPoint": {
           "$ref": "2"
         },
         "m_EndPoint": {
-          "$ref": "5"
+          "$ref": "3"
         }
       },
       {
@@ -87,7 +87,7 @@
           "$ref": "3"
         },
         "m_EndPoint": {
-          "$ref": "5"
+          "$ref": "4"
         }
       },
       {
@@ -98,11 +98,176 @@
         "m_EndPoint": {
           "$ref": "5"
         }
+      },
+      {
+        "$id": "12",
+        "m_StartPoint": {
+          "$ref": "5"
+        },
+        "m_EndPoint": {
+          "$ref": "6"
+        }
+      },
+      {
+        "$id": "13",
+        "m_StartPoint": {
+          "$ref": "6"
+        },
+        "m_EndPoint": {
+          "$ref": "7"
+        }
+      },
+      {
+        "$id": "14",
+        "m_StartPoint": {
+          "$ref": "7"
+        },
+        "m_EndPoint": {
+          "$ref": "2"
+        }
+      },
+      {
+        "$id": "15",
+        "m_StartPoint": {
+          "$ref": "2"
+        },
+        "m_EndPoint": {
+          "$ref": "8"
+        }
+      },
+      {
+        "$id": "16",
+        "m_StartPoint": {
+          "$ref": "3"
+        },
+        "m_EndPoint": {
+          "$ref": "8"
+        }
+      },
+      {
+        "$id": "17",
+        "m_StartPoint": {
+          "$ref": "4"
+        },
+        "m_EndPoint": {
+          "$ref": "8"
+        }
+      },
+      {
+        "$id": "18",
+        "m_StartPoint": {
+          "$ref": "5"
+        },
+        "m_EndPoint": {
+          "$ref": "8"
+        }
+      },
+      {
+        "$id": "19",
+        "m_StartPoint": {
+          "$ref": "6"
+        },
+        "m_EndPoint": {
+          "$ref": "8"
+        }
+      },
+      {
+        "$id": "20",
+        "m_StartPoint": {
+          "$ref": "7"
+        },
+        "m_EndPoint": {
+          "$ref": "8"
+        }
       }
     ],
     "m_PolygonDatas": [
       {
-        "$id": "12",
+        "$id": "21",
+        "m_Points": [
+          {
+            "$ref": "2"
+          },
+          {
+            "$ref": "3"
+          },
+          {
+            "$ref": "8"
+          }
+        ]
+      },
+      {
+        "$id": "22",
+        "m_Points": [
+          {
+            "$ref": "3"
+          },
+          {
+            "$ref": "4"
+          },
+          {
+            "$ref": "8"
+          }
+        ]
+      },
+      {
+        "$id": "23",
+        "m_Points": [
+          {
+            "$ref": "4"
+          },
+          {
+            "$ref": "5"
+          },
+          {
+            "$ref": "8"
+          }
+        ]
+      },
+      {
+        "$id": "24",
+        "m_Points": [
+          {
+            "$ref": "5"
+          },
+          {
+            "$ref": "6"
+          },
+          {
+            "$ref": "8"
+          }
+        ]
+      },
+      {
+        "$id": "25",
+        "m_Points": [
+          {
+            "$ref": "6"
+          },
+          {
+            "$ref": "7"
+          },
+          {
+            "$ref": "8"
+          }
+        ]
+      },
+      {
+        "$id": "26",
+        "m_Points": [
+          {
+            "$ref": "7"
+          },
+          {
+            "$ref": "2"
+          },
+          {
+            "$ref": "8"
+          }
+        ]
+      },
+      {
+        "$id": "27",
         "m_Points": [
           {
             "$ref": "2"
@@ -112,55 +277,22 @@
           },
           {
             "$ref": "4"
-          }
-        ]
-      },
-      {
-        "$id": "13",
-        "m_Points": [
-          {
-            "$ref": "2"
-          },
-          {
-            "$ref": "3"
           },
           {
             "$ref": "5"
-          }
-        ]
-      },
-      {
-        "$id": "14",
-        "m_Points": [
-          {
-            "$ref": "3"
           },
           {
-            "$ref": "4"
+            "$ref": "6"
           },
           {
-            "$ref": "5"
-          }
-        ]
-      },
-      {
-        "$id": "15",
-        "m_Points": [
-          {
-            "$ref": "2"
-          },
-          {
-            "$ref": "4"
-          },
-          {
-            "$ref": "5"
+            "$ref": "7"
           }
         ]
       }
     ],
     "m_CompositeShapeDatas": [
       {
-        "$id": "16",
+        "$id": "28",
         "m_Points": [
           {
             "$ref": "2"
@@ -173,9 +305,7 @@
           },
           {
             "$ref": "5"
-          }
-        ],
-        "m_Lines": [
+          },
           {
             "$ref": "6"
           },
@@ -184,7 +314,9 @@
           },
           {
             "$ref": "8"
-          },
+          }
+        ],
+        "m_Lines": [
           {
             "$ref": "9"
           },
@@ -193,9 +325,7 @@
           },
           {
             "$ref": "11"
-          }
-        ],
-        "m_Polygons": [
+          },
           {
             "$ref": "12"
           },
@@ -207,39 +337,68 @@
           },
           {
             "$ref": "15"
+          },
+          {
+            "$ref": "16"
+          },
+          {
+            "$ref": "17"
+          },
+          {
+            "$ref": "18"
+          },
+          {
+            "$ref": "19"
+          },
+          {
+            "$ref": "20"
+          }
+        ],
+        "m_Polygons": [
+          {
+            "$ref": "21"
+          },
+          {
+            "$ref": "22"
+          },
+          {
+            "$ref": "23"
+          },
+          {
+            "$ref": "24"
+          },
+          {
+            "$ref": "25"
+          },
+          {
+            "$ref": "26"
+          },
+          {
+            "$ref": "27"
           }
         ]
       }
     ]
   },
   "m_ShapeBlueprintFactory": {
-    "$id": "17",
+    "$id": "29",
     "m_ShapeBlueprints": [
       {
-        "$id": "18",
-        "$type": "Lesson.Shapes.Blueprints.CompositeShapes.PyramidBlueprint, Assembly-CSharp",
+        "$id": "30",
+        "$type": "Lesson.Shapes.Blueprints.CompositeShapes.RegularPyramidBlueprint, Assembly-CSharp",
         "m_Origin": {
           "x": 0.0,
           "y": 0.0,
           "z": 0.0
         },
-        "m_Axes": [
-          {
-            "x": 3.0,
-            "y": 0.0,
-            "z": 0.0
-          },
-          {
-            "x": 0.0,
-            "y": 0.0,
-            "z": -2.0
-          },
-          {
-            "x": 1.0,
-            "y": 3.0,
-            "z": -1.0
-          }
-        ],
+        "m_Offset": {
+          "x": 0.0,
+          "y": 0.0,
+          "z": 0.0
+        },
+        "m_Radius": 4.0,
+        "m_IsSideEqual": true,
+        "m_VerticesAtTheBaseCount": 6,
         "m_Points": [
           {
             "$ref": "2"
@@ -252,9 +411,7 @@
           },
           {
             "$ref": "5"
-          }
-        ],
-        "m_Lines": [
+          },
           {
             "$ref": "6"
           },
@@ -263,7 +420,9 @@
           },
           {
             "$ref": "8"
-          },
+          }
+        ],
+        "m_Lines": [
           {
             "$ref": "9"
           },
@@ -272,9 +431,7 @@
           },
           {
             "$ref": "11"
-          }
-        ],
-        "m_Polygons": [
+          },
           {
             "$ref": "12"
           },
@@ -286,10 +443,48 @@
           },
           {
             "$ref": "15"
+          },
+          {
+            "$ref": "16"
+          },
+          {
+            "$ref": "17"
+          },
+          {
+            "$ref": "18"
+          },
+          {
+            "$ref": "19"
+          },
+          {
+            "$ref": "20"
+          }
+        ],
+        "m_Polygons": [
+          {
+            "$ref": "21"
+          },
+          {
+            "$ref": "22"
+          },
+          {
+            "$ref": "23"
+          },
+          {
+            "$ref": "24"
+          },
+          {
+            "$ref": "25"
+          },
+          {
+            "$ref": "26"
+          },
+          {
+            "$ref": "27"
           }
         ],
         "m_CompositeShapeData": {
-          "$ref": "16"
+          "$ref": "28"
         },
         "DependenciesOnOtherShapes": []
       }

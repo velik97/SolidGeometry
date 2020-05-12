@@ -10,8 +10,8 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 20004fa1ba8f54bfb8cb91c4d18b2f58, type: 3}
-  m_Name: New Lesson Asset
+  m_Name: Lesson 10
   m_EditorClassIdentifier: 
-  m_AssetName: 
+  m_AssetName: Lesson 10
   m_Description: 
-  m_LessonFile: {fileID: 0}
+  m_LessonFile: {fileID: 4900000, guid: 6caa51c167a3f455baa3f54775622312, type: 3}
