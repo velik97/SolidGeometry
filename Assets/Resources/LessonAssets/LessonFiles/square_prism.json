@@ -3610,6 +3610,84 @@
             "$ref": "119"
           }
         ]
+      },
+      {
+        "$id": "235",
+        "$type": "Lesson.Stages.Actions.SetActiveShapeAction, Assembly-CSharp",
+        "m_Active": false,
+        "m_ShapeData": {
+          "$ref": "19"
+        },
+        "DependenciesOnOtherShapes": [
+          {
+            "$ref": "104"
+          }
+        ]
+      },
+      {
+        "$id": "236",
+        "$type": "Lesson.Stages.Actions.SetActiveShapeAction, Assembly-CSharp",
+        "m_Active": false,
+        "m_ShapeData": {
+          "$ref": "21"
+        },
+        "DependenciesOnOtherShapes": [
+          {
+            "$ref": "107"
+          }
+        ]
+      },
+      {
+        "$id": "237",
+        "$type": "Lesson.Stages.Actions.SetActiveShapeAction, Assembly-CSharp",
+        "m_Active": false,
+        "m_ShapeData": {
+          "$ref": "25"
+        },
+        "DependenciesOnOtherShapes": [
+          {
+            "$ref": "113"
+          }
+        ]
+      },
+      {
+        "$id": "238",
+        "$type": "Lesson.Stages.Actions.SetActiveShapeAction, Assembly-CSharp",
+        "m_Active": false,
+        "m_ShapeData": {
+          "$ref": "27"
+        },
+        "DependenciesOnOtherShapes": [
+          {
+            "$ref": "116"
+          }
+        ]
+      },
+      {
+        "$id": "239",
+        "$type": "Lesson.Stages.Actions.SetActiveShapeAction, Assembly-CSharp",
+        "m_Active": false,
+        "m_ShapeData": {
+          "$ref": "30"
+        },
+        "DependenciesOnOtherShapes": [
+          {
+            "$ref": "121"
+          }
+        ]
+      },
+      {
+        "$id": "240",
+        "$type": "Lesson.Stages.Actions.SetActiveShapeAction, Assembly-CSharp",
+        "m_Active": false,
+        "m_ShapeData": {
+          "$ref": "33"
+        },
+        "DependenciesOnOtherShapes": [
+          {
+            "$ref": "125"
+          }
+        ]
       }
     ]
   },
@@ -3972,6 +4050,24 @@
           },
           {
             "$ref": "225"
+          },
+          {
+            "$ref": "235"
+          },
+          {
+            "$ref": "236"
+          },
+          {
+            "$ref": "237"
+          },
+          {
+            "$ref": "238"
+          },
+          {
+            "$ref": "239"
+          },
+          {
+            "$ref": "240"
           }
         ]
       },
