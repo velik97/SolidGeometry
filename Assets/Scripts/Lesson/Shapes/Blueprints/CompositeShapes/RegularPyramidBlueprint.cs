@@ -19,8 +19,6 @@ namespace Lesson.Shapes.Blueprints.CompositeShapes
         private Vector3 m_Offset;
         [JsonProperty]
         private float m_Radius;
-        [JsonProperty] 
-        private bool m_IsSideEqual;
         
         [JsonProperty]
         private int m_VerticesAtTheBaseCount = 3;
@@ -39,7 +37,6 @@ namespace Lesson.Shapes.Blueprints.CompositeShapes
         public Vector3 Origin => m_Origin;
         public Vector3 Offset => m_Offset;
         public float Radius => m_Radius;
-        public bool IsSideEqual => m_IsSideEqual;
 
 
         [JsonProperty]
@@ -222,12 +219,6 @@ namespace Lesson.Shapes.Blueprints.CompositeShapes
             UpdatePointsPositions();
         }
 
-        public void SetIsSideEqual(bool state)
-        {
-            m_IsSideEqual = state;
-            UpdatePointsPositions();
-        }
-
         public void SetOrigin(Vector3 origin)
         {
             m_Origin = origin;
@@ -253,13 +244,7 @@ namespace Lesson.Shapes.Blueprints.CompositeShapes
         
         private void UpdatePointsPositions()
         {
-            //some stuff 
             var side = 2 * m_Radius * Mathf.Sin(Mathf.PI / m_VerticesAtTheBaseCount);
-
-            Vector3 height;
-            if (m_IsSideEqual == true)
-                m_Offset = new Vector3(0, Mathf.Sqrt(side * side - m_Radius * m_Radius), 0);
-
 
             for (int i = 0; i < m_VerticesAtTheBaseCount; i++)
             {
@@ -273,7 +258,6 @@ namespace Lesson.Shapes.Blueprints.CompositeShapes
                 m_Points[i].SetPosition(position);
             }
             m_Points[m_VerticesAtTheBaseCount].SetPosition(m_Offset);
-
         }
     }
 }

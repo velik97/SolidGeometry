@@ -38,10 +38,6 @@ namespace Editor.Lesson.Blueprints.CompositeShapes
             FloatField radiusField = new FloatField("Radius: ") {value = Blueprint.Radius};
             radiusField.RegisterCallback<ChangeEvent<float>>(evt => Blueprint.SetRadius(evt.newValue));
             visualElement.Add(radiusField);
-            
-            Toggle isSideEqual = new Toggle("isSideEqual: ") {value = Blueprint.IsSideEqual};
-            isSideEqual.RegisterCallback<ChangeEvent<bool>>(evt => Blueprint.SetIsSideEqual(evt.newValue)); 
-            visualElement.Add(isSideEqual);
             // visualElement.Add(new ValidatorField(Blueprint.NonZeroVolumeValidator));
             
             Label namesLabel = new Label("Points Names");

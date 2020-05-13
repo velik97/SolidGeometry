@@ -47,7 +47,7 @@ namespace Editor.Lesson.Blueprints
 
         private void OnSelected()
         {
-            Blueprint.MainShapeData.View?.SelectInEditor();
+            // Blueprint.MainShapeData.View?.SelectInEditor();
         }
 
         private void UpdateName()
