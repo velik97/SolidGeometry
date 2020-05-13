@@ -6,6 +6,7 @@ using Lesson.Shapes.Datas;
 using Lesson.Validators.VolumeShape;
 using Newtonsoft.Json;
 using UnityEngine;
+using Util;
 
 namespace Lesson.Shapes.Blueprints.CompositeShapes
 {
@@ -162,20 +163,15 @@ namespace Lesson.Shapes.Blueprints.CompositeShapes
         }
         private void UpdatePointsPositions()
         {
-            var v1 = new Vector3(m_Length, 0, 0);
-            var v2 = new Vector3(m_Length*1/2,m_Length*Mathf.Sqrt(3)/2, 0);
-            var v3 = ((v1 + v2) / 3);
+            Vector3 v1 = new Vector3(-m_Length * 0.5f, 0, -m_Length * GeometryConsts.Sqrt3Inverted * 0.5f);
+            Vector3 v2 = new Vector3(m_Length * 0.5f, 0, -m_Length * GeometryConsts.Sqrt3Inverted * 0.5f);
+            Vector3 v3 = new Vector3(0, 0, m_Length * GeometryConsts.Sqrt3Inverted);
+            Vector3 v4 = new Vector3(0, m_Length * GeometryConsts.Sqrt2 * GeometryConsts.Sqrt3Inverted, 0);
             
-            Vector3 height;
-            height = new Vector3(0, 0, Mathf.Sqrt(m_Length*m_Length - v3.sqrMagnitude));
-
-
-
-            m_Points[0].SetPosition(m_Origin);
-            m_Points[1].SetPosition(m_Origin + v1);
-            m_Points[2].SetPosition(m_Origin + v2);
-            m_Points[3].SetPosition(m_Origin + v3 + height);
-
+            m_Points[0].SetPosition(m_Origin + v1);
+            m_Points[1].SetPosition(m_Origin + v2);
+            m_Points[2].SetPosition(m_Origin + v3);
+            m_Points[3].SetPosition(m_Origin + v4);
         }
     }
 }
