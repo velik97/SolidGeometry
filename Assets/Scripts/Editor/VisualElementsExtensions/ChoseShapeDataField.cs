@@ -22,6 +22,9 @@ namespace Editor.VisualElementsExtensions
         private readonly Label m_Label;
         private readonly ToolbarMenu m_ToolbarMenu;
 
+        private IVisualElementScheduledItem m_AutoSaveScheduler;
+        private bool m_NeedUpdate = false;
+
         private Action m_UpdateValidatorAction;
 
         public ChoseShapeDataField(ShapeDataFactory shapeDataFactory, CanDependOnShapeBlueprint dependent,
@@ -49,7 +52,9 @@ namespace Editor.VisualElementsExtensions
             VisualElement validatorField = new ValidatorField(pointNotEmptyValidator);
             Add(validatorField);
 
-            m_DataFactory.BecameDirty += UpdateList;
+            m_DataFactory.BecameDirty += BecameDirty;
+            m_AutoSaveScheduler = schedule.Execute(Update);
+            m_AutoSaveScheduler.Every(200);
 
             UpdateList();
             UpdateName();
@@ -59,6 +64,21 @@ namespace Editor.VisualElementsExtensions
         private void UpdateName()
         {
             m_Label.text = m_FieldName + " " + m_GetShapeDataFunc()?.ToString();;
+        }
+
+        private void BecameDirty()
+        {
+            m_NeedUpdate = true;
+        }
+
+        private void Update()
+        {
+            if (!m_NeedUpdate)
+            {
+                return;
+            }
+            m_NeedUpdate = false;
+            UpdateList();
         }
 
         private void UpdateList()
