@@ -23,5 +23,7 @@ namespace Serialization.LessonsFileSystem
         {
             m_ParentFolder = folderAsset;
         }
+
+        public abstract void ValidateNullReferences(ref bool valid);
     }
 }

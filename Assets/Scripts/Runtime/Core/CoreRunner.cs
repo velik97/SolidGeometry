@@ -25,6 +25,12 @@ namespace Runtime.Core
             {
                 throw new ArgumentException("Have cycles in folders!");
             }
+            bool valid = true;
+            m_ApplicationConfig.RootFolder.ValidateNullReferences(ref valid);
+            if (!valid)
+            {
+                throw new ArgumentException("Have null references in assets!");
+            }
             m_ApplicationConfig.RootFolder.AssignParentFolders();
         }
 

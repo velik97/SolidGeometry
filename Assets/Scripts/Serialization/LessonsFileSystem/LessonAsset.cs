@@ -15,6 +15,15 @@ namespace Serialization.LessonsFileSystem
 
         private LessonData m_CashedLessonData;
 
+        public override void ValidateNullReferences(ref bool valid)
+        {
+            if (m_LessonFile == null)
+            {
+                valid = false;
+                Debug.LogError($"Have null at lesson \"{name}\"");
+            }
+        }
+
         public LessonData GetLessonDataCashed()
         {
             if (Application.isEditor)

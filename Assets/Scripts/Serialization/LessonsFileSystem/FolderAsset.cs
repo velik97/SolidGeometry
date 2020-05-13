@@ -11,6 +11,23 @@ namespace Serialization.LessonsFileSystem
 
         public List<FileSystemAsset> AssetsList => m_AssetsList;
 
+        public override void ValidateNullReferences(ref bool valid)
+        {
+            for (int i = 0; i < m_AssetsList.Count; i++)
+            {
+                FileSystemAsset asset = m_AssetsList[i];
+                if (asset == null)
+                {
+                    valid = false;
+                    Debug.LogError($"Have null at folder \"{name}\" at number {i}");
+                }
+                else
+                {
+                    asset.ValidateNullReferences(ref valid);
+                }
+            }
+        }
+
         public bool HaveCycles()
         {
             HashSet<FolderAsset> visitedFolders = new HashSet<FolderAsset>();
@@ -22,9 +39,13 @@ namespace Serialization.LessonsFileSystem
             while (foldersToVisit.Count > 0)
             {
                 FolderAsset current = foldersToVisit.Dequeue();
-                
+
                 foreach (FolderAsset folderAsset in current.AssetsList.OfType<FolderAsset>())
                 {
+                    if (folderAsset == null)
+                    {
+                        continue;
+                    }
                     if (visitedFolders.Contains(folderAsset))
                     {
                         return true;
