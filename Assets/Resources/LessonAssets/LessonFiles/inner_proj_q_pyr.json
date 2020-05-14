@@ -1,0 +1,1953 @@
+{
+  "m_ShapeDataFactory": {
+    "$id": "1",
+    "m_Origin": {
+      "x": 0.0,
+      "y": 0.5,
+      "z": 0.0
+    },
+    "m_PointDatas": [
+      {
+        "$id": "2",
+        "m_Position": {
+          "x": 1.0,
+          "y": 0.0,
+          "z": 0.0
+        },
+        "m_PointName": "A"
+      },
+      {
+        "$id": "3",
+        "m_Position": {
+          "x": -4.371139E-08,
+          "y": 0.0,
+          "z": 1.0
+        },
+        "m_PointName": "B"
+      },
+      {
+        "$id": "4",
+        "m_Position": {
+          "x": -1.0,
+          "y": 0.0,
+          "z": -8.742278E-08
+        },
+        "m_PointName": "C"
+      },
+      {
+        "$id": "5",
+        "m_Position": {
+          "x": 1.19248806E-08,
+          "y": 0.0,
+          "z": -1.0
+        },
+        "m_PointName": "D"
+      },
+      {
+        "$id": "6",
+        "m_Position": {
+          "x": 0.0,
+          "y": 1.0,
+          "z": 0.0
+        },
+        "m_PointName": "S"
+      },
+      {
+        "$id": "7",
+        "m_Position": {
+          "x": 0.199999988,
+          "y": 0.5,
+          "z": -0.3
+        },
+        "m_PointName": "N"
+      },
+      {
+        "$id": "8",
+        "m_Position": {
+          "x": -2.18556941E-08,
+          "y": 0.5,
+          "z": 0.5
+        },
+        "m_PointName": "M"
+      },
+      {
+        "$id": "9",
+        "m_Position": {
+          "x": -0.100000024,
+          "y": 0.5,
+          "z": -0.400000036
+        },
+        "m_PointName": "K"
+      },
+      {
+        "$id": "10",
+        "m_Position": {
+          "x": -0.200000033,
+          "y": 5.96046448E-08,
+          "z": -0.8
+        },
+        "m_PointName": "W"
+      },
+      {
+        "$id": "11",
+        "m_Position": {
+          "x": 0.399999976,
+          "y": 0.0,
+          "z": -0.6
+        },
+        "m_PointName": "V"
+      },
+      {
+        "$id": "12",
+        "m_Position": {
+          "x": 4.50670967E-09,
+          "y": 0.0,
+          "z": -0.73333323
+        },
+        "m_PointName": "L"
+      },
+      {
+        "$id": "13",
+        "m_Position": {
+          "x": 2.23517418E-08,
+          "y": 0.5,
+          "z": -0.366666675
+        },
+        "m_PointName": "Q"
+      },
+      {
+        "$id": "14",
+        "m_Position": {
+          "x": 1.457046E-08,
+          "y": 0.5,
+          "z": -0.5
+        },
+        "m_PointName": "T"
+      },
+      {
+        "$id": "15",
+        "m_Position": {
+          "x": -0.5,
+          "y": 0.5,
+          "z": -4.37113741E-08
+        },
+        "m_PointName": "G"
+      },
+      {
+        "$id": "16",
+        "m_Position": {
+          "x": 0.5,
+          "y": 0.5,
+          "z": 0.0
+        },
+        "m_PointName": "H"
+      }
+    ],
+    "m_LinetDatas": [
+      {
+        "$id": "17",
+        "m_StartPoint": {
+          "$ref": "2"
+        },
+        "m_EndPoint": {
+          "$ref": "3"
+        }
+      },
+      {
+        "$id": "18",
+        "m_StartPoint": {
+          "$ref": "3"
+        },
+        "m_EndPoint": {
+          "$ref": "4"
+        }
+      },
+      {
+        "$id": "19",
+        "m_StartPoint": {
+          "$ref": "4"
+        },
+        "m_EndPoint": {
+          "$ref": "5"
+        }
+      },
+      {
+        "$id": "20",
+        "m_StartPoint": {
+          "$ref": "5"
+        },
+        "m_EndPoint": {
+          "$ref": "2"
+        }
+      },
+      {
+        "$id": "21",
+        "m_StartPoint": {
+          "$ref": "2"
+        },
+        "m_EndPoint": {
+          "$ref": "6"
+        }
+      },
+      {
+        "$id": "22",
+        "m_StartPoint": {
+          "$ref": "3"
+        },
+        "m_EndPoint": {
+          "$ref": "6"
+        }
+      },
+      {
+        "$id": "23",
+        "m_StartPoint": {
+          "$ref": "4"
+        },
+        "m_EndPoint": {
+          "$ref": "6"
+        }
+      },
+      {
+        "$id": "24",
+        "m_StartPoint": {
+          "$ref": "5"
+        },
+        "m_EndPoint": {
+          "$ref": "6"
+        }
+      },
+      {
+        "$id": "25",
+        "m_StartPoint": {
+          "$ref": "6"
+        },
+        "m_EndPoint": {
+          "$ref": "10"
+        }
+      },
+      {
+        "$id": "26",
+        "m_StartPoint": {
+          "$ref": "6"
+        },
+        "m_EndPoint": {
+          "$ref": "11"
+        }
+      },
+      {
+        "$id": "27",
+        "m_StartPoint": {
+          "$ref": "7"
+        },
+        "m_EndPoint": {
+          "$ref": "9"
+        }
+      },
+      {
+        "$id": "28",
+        "m_StartPoint": {
+          "$ref": "10"
+        },
+        "m_EndPoint": {
+          "$ref": "11"
+        }
+      },
+      {
+        "$id": "29",
+        "m_StartPoint": {
+          "$ref": "3"
+        },
+        "m_EndPoint": {
+          "$ref": "5"
+        }
+      },
+      {
+        "$id": "30",
+        "m_StartPoint": {
+          "$ref": "6"
+        },
+        "m_EndPoint": {
+          "$ref": "12"
+        }
+      },
+      {
+        "$id": "31",
+        "m_StartPoint": {
+          "$ref": "8"
+        },
+        "m_EndPoint": {
+          "$ref": "14"
+        }
+      },
+      {
+        "$id": "32",
+        "m_StartPoint": {
+          "$ref": "14"
+        },
+        "m_EndPoint": {
+          "$ref": "15"
+        }
+      },
+      {
+        "$id": "33",
+        "m_StartPoint": {
+          "$ref": "8"
+        },
+        "m_EndPoint": {
+          "$ref": "15"
+        }
+      },
+      {
+        "$id": "34",
+        "m_StartPoint": {
+          "$ref": "14"
+        },
+        "m_EndPoint": {
+          "$ref": "16"
+        }
+      },
+      {
+        "$id": "35",
+        "m_StartPoint": {
+          "$ref": "8"
+        },
+        "m_EndPoint": {
+          "$ref": "16"
+        }
+      }
+    ],
+    "m_PolygonDatas": [
+      {
+        "$id": "36",
+        "m_Points": [
+          {
+            "$ref": "2"
+          },
+          {
+            "$ref": "3"
+          },
+          {
+            "$ref": "6"
+          }
+        ]
+      },
+      {
+        "$id": "37",
+        "m_Points": [
+          {
+            "$ref": "3"
+          },
+          {
+            "$ref": "4"
+          },
+          {
+            "$ref": "6"
+          }
+        ]
+      },
+      {
+        "$id": "38",
+        "m_Points": [
+          {
+            "$ref": "4"
+          },
+          {
+            "$ref": "5"
+          },
+          {
+            "$ref": "6"
+          }
+        ]
+      },
+      {
+        "$id": "39",
+        "m_Points": [
+          {
+            "$ref": "5"
+          },
+          {
+            "$ref": "2"
+          },
+          {
+            "$ref": "6"
+          }
+        ]
+      },
+      {
+        "$id": "40",
+        "m_Points": [
+          {
+            "$ref": "2"
+          },
+          {
+            "$ref": "3"
+          },
+          {
+            "$ref": "4"
+          },
+          {
+            "$ref": "5"
+          }
+        ]
+      },
+      {
+        "$id": "41",
+        "m_Points": [
+          {
+            "$ref": "8"
+          },
+          {
+            "$ref": "16"
+          },
+          {
+            "$ref": "14"
+          },
+          {
+            "$ref": "15"
+          }
+        ]
+      }
+    ],
+    "m_CompositeShapeDatas": [
+      {
+        "$id": "42",
+        "m_Points": [
+          {
+            "$ref": "2"
+          },
+          {
+            "$ref": "3"
+          },
+          {
+            "$ref": "4"
+          },
+          {
+            "$ref": "5"
+          },
+          {
+            "$ref": "6"
+          }
+        ],
+        "m_Lines": [
+          {
+            "$ref": "17"
+          },
+          {
+            "$ref": "18"
+          },
+          {
+            "$ref": "19"
+          },
+          {
+            "$ref": "20"
+          },
+          {
+            "$ref": "21"
+          },
+          {
+            "$ref": "22"
+          },
+          {
+            "$ref": "23"
+          },
+          {
+            "$ref": "24"
+          }
+        ],
+        "m_Polygons": [
+          {
+            "$ref": "36"
+          },
+          {
+            "$ref": "37"
+          },
+          {
+            "$ref": "38"
+          },
+          {
+            "$ref": "39"
+          },
+          {
+            "$ref": "40"
+          }
+        ]
+      }
+    ]
+  },
+  "m_ShapeBlueprintFactory": {
+    "$id": "43",
+    "m_ShapeBlueprints": [
+      {
+        "$id": "44",
+        "$type": "Lesson.Shapes.Blueprints.CompositeShapes.RegularPyramidBlueprint, Assembly-CSharp",
+        "m_Origin": {
+          "x": 0.0,
+          "y": 0.0,
+          "z": 0.0
+        },
+        "m_Offset": {
+          "x": 0.0,
+          "y": 1.0,
+          "z": 0.0
+        },
+        "m_Radius": 1.0,
+        "m_VerticesAtTheBaseCount": 4,
+        "m_Points": [
+          {
+            "$ref": "2"
+          },
+          {
+            "$ref": "3"
+          },
+          {
+            "$ref": "4"
+          },
+          {
+            "$ref": "5"
+          },
+          {
+            "$ref": "6"
+          }
+        ],
+        "m_Lines": [
+          {
+            "$ref": "17"
+          },
+          {
+            "$ref": "18"
+          },
+          {
+            "$ref": "19"
+          },
+          {
+            "$ref": "20"
+          },
+          {
+            "$ref": "21"
+          },
+          {
+            "$ref": "22"
+          },
+          {
+            "$ref": "23"
+          },
+          {
+            "$ref": "24"
+          }
+        ],
+        "m_Polygons": [
+          {
+            "$ref": "36"
+          },
+          {
+            "$ref": "37"
+          },
+          {
+            "$ref": "38"
+          },
+          {
+            "$ref": "39"
+          },
+          {
+            "$ref": "40"
+          }
+        ],
+        "m_CompositeShapeData": {
+          "$ref": "42"
+        },
+        "DependenciesOnOtherShapes": []
+      },
+      {
+        "$id": "45",
+        "$type": "Lesson.Shapes.Blueprints.DependentShapes.PointOnSurfaceBlueprint, Assembly-CSharp",
+        "PointData": {
+          "$ref": "7"
+        },
+        "m_ThirdPoint": {
+          "$ref": "6"
+        },
+        "m_SourcePoint": {
+          "$ref": "2"
+        },
+        "m_SecondPoint": {
+          "$ref": "5"
+        },
+        "m_Coefficient1": 0.3,
+        "m_Coefficient2": 0.5,
+        "DependenciesOnOtherShapes": [
+          {
+            "$ref": "44"
+          },
+          {
+            "$ref": "44"
+          },
+          {
+            "$ref": "44"
+          }
+        ]
+      },
+      {
+        "$id": "46",
+        "$type": "Lesson.Shapes.Blueprints.DependentShapes.PointOnLineBlueprint, Assembly-CSharp",
+        "PointData": {
+          "$ref": "8"
+        },
+        "m_FirstPoint": {
+          "$ref": "3"
+        },
+        "m_SecondPoint": {
+          "$ref": "6"
+        },
+        "m_Coefficient": 0.5,
+        "DependenciesOnOtherShapes": [
+          {
+            "$ref": "44"
+          },
+          {
+            "$ref": "44"
+          }
+        ]
+      },
+      {
+        "$id": "47",
+        "$type": "Lesson.Shapes.Blueprints.DependentShapes.PointOnSurfaceBlueprint, Assembly-CSharp",
+        "PointData": {
+          "$ref": "9"
+        },
+        "m_ThirdPoint": {
+          "$ref": "6"
+        },
+        "m_SourcePoint": {
+          "$ref": "4"
+        },
+        "m_SecondPoint": {
+          "$ref": "5"
+        },
+        "m_Coefficient1": 0.4,
+        "m_Coefficient2": 0.5,
+        "DependenciesOnOtherShapes": [
+          {
+            "$ref": "44"
+          },
+          {
+            "$ref": "44"
+          },
+          {
+            "$ref": "44"
+          }
+        ]
+      },
+      {
+        "$id": "48",
+        "$type": "Lesson.Shapes.Blueprints.DependentShapes.PointProjectionFromPointBlueprint, Assembly-CSharp",
+        "PointData": {
+          "$ref": "10"
+        },
+        "m_ProjectedPoint": {
+          "$ref": "9"
+        },
+        "m_SourcePoint": {
+          "$ref": "6"
+        },
+        "m_FirstPointOnTargetLine": {
+          "$ref": "4"
+        },
+        "m_SecondPointOnTargetLine": {
+          "$ref": "5"
+        },
+        "DependenciesOnOtherShapes": [
+          {
+            "$ref": "47"
+          },
+          {
+            "$ref": "44"
+          },
+          {
+            "$ref": "44"
+          },
+          {
+            "$ref": "44"
+          }
+        ]
+      },
+      {
+        "$id": "49",
+        "$type": "Lesson.Shapes.Blueprints.BaseShapes.LineBlueprint, Assembly-CSharp",
+        "LineData": {
+          "$ref": "25"
+        },
+        "DependenciesOnOtherShapes": [
+          {
+            "$ref": "44"
+          },
+          {
+            "$ref": "48"
+          }
+        ]
+      },
+      {
+        "$id": "50",
+        "$type": "Lesson.Shapes.Blueprints.DependentShapes.PointProjectionFromPointBlueprint, Assembly-CSharp",
+        "PointData": {
+          "$ref": "11"
+        },
+        "m_ProjectedPoint": {
+          "$ref": "7"
+        },
+        "m_SourcePoint": {
+          "$ref": "6"
+        },
+        "m_FirstPointOnTargetLine": {
+          "$ref": "2"
+        },
+        "m_SecondPointOnTargetLine": {
+          "$ref": "5"
+        },
+        "DependenciesOnOtherShapes": [
+          {
+            "$ref": "45"
+          },
+          {
+            "$ref": "44"
+          },
+          {
+            "$ref": "44"
+          },
+          {
+            "$ref": "44"
+          }
+        ]
+      },
+      {
+        "$id": "51",
+        "$type": "Lesson.Shapes.Blueprints.BaseShapes.LineBlueprint, Assembly-CSharp",
+        "LineData": {
+          "$ref": "26"
+        },
+        "DependenciesOnOtherShapes": [
+          {
+            "$ref": "44"
+          },
+          {
+            "$ref": "50"
+          }
+        ]
+      },
+      {
+        "$id": "52",
+        "$type": "Lesson.Shapes.Blueprints.BaseShapes.LineBlueprint, Assembly-CSharp",
+        "LineData": {
+          "$ref": "27"
+        },
+        "DependenciesOnOtherShapes": [
+          {
+            "$ref": "45"
+          },
+          {
+            "$ref": "47"
+          }
+        ]
+      },
+      {
+        "$id": "53",
+        "$type": "Lesson.Shapes.Blueprints.BaseShapes.LineBlueprint, Assembly-CSharp",
+        "LineData": {
+          "$ref": "28"
+        },
+        "DependenciesOnOtherShapes": [
+          {
+            "$ref": "48"
+          },
+          {
+            "$ref": "50"
+          }
+        ]
+      },
+      {
+        "$id": "54",
+        "$type": "Lesson.Shapes.Blueprints.BaseShapes.LineBlueprint, Assembly-CSharp",
+        "LineData": {
+          "$ref": "29"
+        },
+        "DependenciesOnOtherShapes": [
+          {
+            "$ref": "44"
+          },
+          {
+            "$ref": "44"
+          }
+        ]
+      },
+      {
+        "$id": "55",
+        "$type": "Lesson.Shapes.Blueprints.DependentShapes.PointOfIntersectionBlueprint, Assembly-CSharp",
+        "PointData": {
+          "$ref": "12"
+        },
+        "m_PointsOnLines": [
+          [
+            {
+              "$ref": "3"
+            },
+            {
+              "$ref": "5"
+            }
+          ],
+          [
+            {
+              "$ref": "10"
+            },
+            {
+              "$ref": "11"
+            }
+          ]
+        ],
+        "DependenciesOnOtherShapes": [
+          {
+            "$ref": "44"
+          },
+          {
+            "$ref": "44"
+          },
+          {
+            "$ref": "48"
+          },
+          {
+            "$ref": "50"
+          }
+        ]
+      },
+      {
+        "$id": "56",
+        "$type": "Lesson.Shapes.Blueprints.DependentShapes.PointOfIntersectionBlueprint, Assembly-CSharp",
+        "PointData": {
+          "$ref": "13"
+        },
+        "m_PointsOnLines": [
+          [
+            {
+              "$ref": "9"
+            },
+            {
+              "$ref": "7"
+            }
+          ],
+          [
+            {
+              "$ref": "6"
+            },
+            {
+              "$ref": "12"
+            }
+          ]
+        ],
+        "DependenciesOnOtherShapes": [
+          {
+            "$ref": "47"
+          },
+          {
+            "$ref": "45"
+          },
+          {
+            "$ref": "44"
+          },
+          {
+            "$ref": "55"
+          }
+        ]
+      },
+      {
+        "$id": "57",
+        "$type": "Lesson.Shapes.Blueprints.BaseShapes.LineBlueprint, Assembly-CSharp",
+        "LineData": {
+          "$ref": "30"
+        },
+        "DependenciesOnOtherShapes": [
+          {
+            "$ref": "44"
+          },
+          {
+            "$ref": "55"
+          }
+        ]
+      },
+      {
+        "$id": "58",
+        "$type": "Lesson.Shapes.Blueprints.DependentShapes.PointOfIntersectionBlueprint, Assembly-CSharp",
+        "PointData": {
+          "$ref": "14"
+        },
+        "m_PointsOnLines": [
+          [
+            {
+              "$ref": "8"
+            },
+            {
+              "$ref": "13"
+            }
+          ],
+          [
+            {
+              "$ref": "5"
+            },
+            {
+              "$ref": "6"
+            }
+          ]
+        ],
+        "DependenciesOnOtherShapes": [
+          {
+            "$ref": "46"
+          },
+          {
+            "$ref": "56"
+          },
+          {
+            "$ref": "44"
+          },
+          {
+            "$ref": "44"
+          }
+        ]
+      },
+      {
+        "$id": "59",
+        "$type": "Lesson.Shapes.Blueprints.BaseShapes.LineBlueprint, Assembly-CSharp",
+        "LineData": {
+          "$ref": "31"
+        },
+        "DependenciesOnOtherShapes": [
+          {
+            "$ref": "46"
+          },
+          {
+            "$ref": "58"
+          }
+        ]
+      },
+      {
+        "$id": "60",
+        "$type": "Lesson.Shapes.Blueprints.DependentShapes.PointOfIntersectionBlueprint, Assembly-CSharp",
+        "PointData": {
+          "$ref": "15"
+        },
+        "m_PointsOnLines": [
+          [
+            {
+              "$ref": "14"
+            },
+            {
+              "$ref": "9"
+            }
+          ],
+          [
+            {
+              "$ref": "4"
+            },
+            {
+              "$ref": "6"
+            }
+          ]
+        ],
+        "DependenciesOnOtherShapes": [
+          {
+            "$ref": "58"
+          },
+          {
+            "$ref": "47"
+          },
+          {
+            "$ref": "44"
+          },
+          {
+            "$ref": "44"
+          }
+        ]
+      },
+      {
+        "$id": "61",
+        "$type": "Lesson.Shapes.Blueprints.BaseShapes.LineBlueprint, Assembly-CSharp",
+        "LineData": {
+          "$ref": "32"
+        },
+        "DependenciesOnOtherShapes": [
+          {
+            "$ref": "58"
+          },
+          {
+            "$ref": "60"
+          }
+        ]
+      },
+      {
+        "$id": "62",
+        "$type": "Lesson.Shapes.Blueprints.BaseShapes.LineBlueprint, Assembly-CSharp",
+        "LineData": {
+          "$ref": "33"
+        },
+        "DependenciesOnOtherShapes": [
+          {
+            "$ref": "46"
+          },
+          {
+            "$ref": "60"
+          }
+        ]
+      },
+      {
+        "$id": "63",
+        "$type": "Lesson.Shapes.Blueprints.DependentShapes.PointOfIntersectionBlueprint, Assembly-CSharp",
+        "PointData": {
+          "$ref": "16"
+        },
+        "m_PointsOnLines": [
+          [
+            {
+              "$ref": "14"
+            },
+            {
+              "$ref": "7"
+            }
+          ],
+          [
+            {
+              "$ref": "2"
+            },
+            {
+              "$ref": "6"
+            }
+          ]
+        ],
+        "DependenciesOnOtherShapes": [
+          {
+            "$ref": "58"
+          },
+          {
+            "$ref": "45"
+          },
+          {
+            "$ref": "44"
+          },
+          {
+            "$ref": "44"
+          }
+        ]
+      },
+      {
+        "$id": "64",
+        "$type": "Lesson.Shapes.Blueprints.BaseShapes.LineBlueprint, Assembly-CSharp",
+        "LineData": {
+          "$ref": "34"
+        },
+        "DependenciesOnOtherShapes": [
+          {
+            "$ref": "58"
+          },
+          {
+            "$ref": "63"
+          }
+        ]
+      },
+      {
+        "$id": "65",
+        "$type": "Lesson.Shapes.Blueprints.BaseShapes.LineBlueprint, Assembly-CSharp",
+        "LineData": {
+          "$ref": "35"
+        },
+        "DependenciesOnOtherShapes": [
+          {
+            "$ref": "46"
+          },
+          {
+            "$ref": "63"
+          }
+        ]
+      },
+      {
+        "$id": "66",
+        "$type": "Lesson.Shapes.Blueprints.BaseShapes.PolygonBlueprint, Assembly-CSharp",
+        "PolygonData": {
+          "$ref": "41"
+        },
+        "DependenciesOnOtherShapes": [
+          {
+            "$ref": "46"
+          },
+          {
+            "$ref": "63"
+          },
+          {
+            "$ref": "58"
+          },
+          {
+            "$ref": "60"
+          }
+        ]
+      }
+    ]
+  },
+  "m_ShapeActionFactory": {
+    "m_ShapeActions": [
+      {
+        "$id": "67",
+        "$type": "Lesson.Stages.Actions.SetActiveShapeAction, Assembly-CSharp",
+        "m_Active": true,
+        "m_ShapeData": {
+          "$ref": "42"
+        },
+        "DependenciesOnOtherShapes": [
+          {
+            "$ref": "44"
+          }
+        ]
+      },
+      {
+        "$id": "68",
+        "$type": "Lesson.Stages.Actions.SetActiveShapeAction, Assembly-CSharp",
+        "m_Active": true,
+        "m_ShapeData": {
+          "$ref": "7"
+        },
+        "DependenciesOnOtherShapes": [
+          {
+            "$ref": "45"
+          }
+        ]
+      },
+      {
+        "$id": "69",
+        "$type": "Lesson.Stages.Actions.SetActiveShapeAction, Assembly-CSharp",
+        "m_Active": true,
+        "m_ShapeData": {
+          "$ref": "8"
+        },
+        "DependenciesOnOtherShapes": [
+          {
+            "$ref": "46"
+          }
+        ]
+      },
+      {
+        "$id": "70",
+        "$type": "Lesson.Stages.Actions.SetActiveShapeAction, Assembly-CSharp",
+        "m_Active": true,
+        "m_ShapeData": {
+          "$ref": "9"
+        },
+        "DependenciesOnOtherShapes": [
+          {
+            "$ref": "47"
+          }
+        ]
+      },
+      {
+        "$id": "71",
+        "$type": "Lesson.Stages.Actions.SetHighlightShapeAction, Assembly-CSharp",
+        "m_Highlight": 4,
+        "m_ShapeData": {
+          "$ref": "7"
+        },
+        "DependenciesOnOtherShapes": [
+          {
+            "$ref": "45"
+          }
+        ]
+      },
+      {
+        "$id": "72",
+        "$type": "Lesson.Stages.Actions.SetHighlightShapeAction, Assembly-CSharp",
+        "m_Highlight": 4,
+        "m_ShapeData": {
+          "$ref": "8"
+        },
+        "DependenciesOnOtherShapes": [
+          {
+            "$ref": "46"
+          }
+        ]
+      },
+      {
+        "$id": "73",
+        "$type": "Lesson.Stages.Actions.SetHighlightShapeAction, Assembly-CSharp",
+        "m_Highlight": 4,
+        "m_ShapeData": {
+          "$ref": "9"
+        },
+        "DependenciesOnOtherShapes": [
+          {
+            "$ref": "47"
+          }
+        ]
+      },
+      {
+        "$id": "74",
+        "$type": "Lesson.Stages.Actions.SetActiveShapeAction, Assembly-CSharp",
+        "m_Active": true,
+        "m_ShapeData": {
+          "$ref": "25"
+        },
+        "DependenciesOnOtherShapes": [
+          {
+            "$ref": "49"
+          }
+        ]
+      },
+      {
+        "$id": "75",
+        "$type": "Lesson.Stages.Actions.SetActiveShapeAction, Assembly-CSharp",
+        "m_Active": true,
+        "m_ShapeData": {
+          "$ref": "26"
+        },
+        "DependenciesOnOtherShapes": [
+          {
+            "$ref": "51"
+          }
+        ]
+      },
+      {
+        "$id": "76",
+        "$type": "Lesson.Stages.Actions.SetActiveShapeAction, Assembly-CSharp",
+        "m_Active": true,
+        "m_ShapeData": {
+          "$ref": "10"
+        },
+        "DependenciesOnOtherShapes": [
+          {
+            "$ref": "48"
+          }
+        ]
+      },
+      {
+        "$id": "77",
+        "$type": "Lesson.Stages.Actions.SetActiveShapeAction, Assembly-CSharp",
+        "m_Active": true,
+        "m_ShapeData": {
+          "$ref": "11"
+        },
+        "DependenciesOnOtherShapes": [
+          {
+            "$ref": "50"
+          }
+        ]
+      },
+      {
+        "$id": "78",
+        "$type": "Lesson.Stages.Actions.SetHighlightShapeAction, Assembly-CSharp",
+        "m_Highlight": 0,
+        "m_ShapeData": {
+          "$ref": "25"
+        },
+        "DependenciesOnOtherShapes": [
+          {
+            "$ref": "49"
+          }
+        ]
+      },
+      {
+        "$id": "79",
+        "$type": "Lesson.Stages.Actions.SetHighlightShapeAction, Assembly-CSharp",
+        "m_Highlight": 0,
+        "m_ShapeData": {
+          "$ref": "26"
+        },
+        "DependenciesOnOtherShapes": [
+          {
+            "$ref": "51"
+          }
+        ]
+      },
+      {
+        "$id": "80",
+        "$type": "Lesson.Stages.Actions.SetActiveShapeAction, Assembly-CSharp",
+        "m_Active": true,
+        "m_ShapeData": {
+          "$ref": "27"
+        },
+        "DependenciesOnOtherShapes": [
+          {
+            "$ref": "52"
+          }
+        ]
+      },
+      {
+        "$id": "81",
+        "$type": "Lesson.Stages.Actions.SetHighlightShapeAction, Assembly-CSharp",
+        "m_Highlight": 0,
+        "m_ShapeData": {
+          "$ref": "27"
+        },
+        "DependenciesOnOtherShapes": [
+          {
+            "$ref": "52"
+          }
+        ]
+      },
+      {
+        "$id": "82",
+        "$type": "Lesson.Stages.Actions.SetActiveShapeAction, Assembly-CSharp",
+        "m_Active": true,
+        "m_ShapeData": {
+          "$ref": "28"
+        },
+        "DependenciesOnOtherShapes": [
+          {
+            "$ref": "53"
+          }
+        ]
+      },
+      {
+        "$id": "83",
+        "$type": "Lesson.Stages.Actions.SetHighlightShapeAction, Assembly-CSharp",
+        "m_Highlight": 0,
+        "m_ShapeData": {
+          "$ref": "28"
+        },
+        "DependenciesOnOtherShapes": [
+          {
+            "$ref": "53"
+          }
+        ]
+      },
+      {
+        "$id": "84",
+        "$type": "Lesson.Stages.Actions.SetActiveShapeAction, Assembly-CSharp",
+        "m_Active": true,
+        "m_ShapeData": {
+          "$ref": "29"
+        },
+        "DependenciesOnOtherShapes": [
+          {
+            "$ref": "54"
+          }
+        ]
+      },
+      {
+        "$id": "85",
+        "$type": "Lesson.Stages.Actions.SetActiveShapeAction, Assembly-CSharp",
+        "m_Active": true,
+        "m_ShapeData": {
+          "$ref": "12"
+        },
+        "DependenciesOnOtherShapes": [
+          {
+            "$ref": "55"
+          }
+        ]
+      },
+      {
+        "$id": "86",
+        "$type": "Lesson.Stages.Actions.SetHighlightShapeAction, Assembly-CSharp",
+        "m_Highlight": 0,
+        "m_ShapeData": {
+          "$ref": "29"
+        },
+        "DependenciesOnOtherShapes": [
+          {
+            "$ref": "54"
+          }
+        ]
+      },
+      {
+        "$id": "87",
+        "$type": "Lesson.Stages.Actions.SetActiveShapeAction, Assembly-CSharp",
+        "m_Active": true,
+        "m_ShapeData": {
+          "$ref": "13"
+        },
+        "DependenciesOnOtherShapes": [
+          {
+            "$ref": "56"
+          }
+        ]
+      },
+      {
+        "$id": "88",
+        "$type": "Lesson.Stages.Actions.SetActiveShapeAction, Assembly-CSharp",
+        "m_Active": true,
+        "m_ShapeData": {
+          "$ref": "30"
+        },
+        "DependenciesOnOtherShapes": [
+          {
+            "$ref": "57"
+          }
+        ]
+      },
+      {
+        "$id": "89",
+        "$type": "Lesson.Stages.Actions.SetHighlightShapeAction, Assembly-CSharp",
+        "m_Highlight": 0,
+        "m_ShapeData": {
+          "$ref": "30"
+        },
+        "DependenciesOnOtherShapes": [
+          {
+            "$ref": "57"
+          }
+        ]
+      },
+      {
+        "$id": "90",
+        "$type": "Lesson.Stages.Actions.SetActiveShapeAction, Assembly-CSharp",
+        "m_Active": true,
+        "m_ShapeData": {
+          "$ref": "14"
+        },
+        "DependenciesOnOtherShapes": [
+          {
+            "$ref": "58"
+          }
+        ]
+      },
+      {
+        "$id": "91",
+        "$type": "Lesson.Stages.Actions.SetActiveShapeAction, Assembly-CSharp",
+        "m_Active": true,
+        "m_ShapeData": {
+          "$ref": "31"
+        },
+        "DependenciesOnOtherShapes": [
+          {
+            "$ref": "59"
+          }
+        ]
+      },
+      {
+        "$id": "92",
+        "$type": "Lesson.Stages.Actions.SetHighlightShapeAction, Assembly-CSharp",
+        "m_Highlight": 0,
+        "m_ShapeData": {
+          "$ref": "31"
+        },
+        "DependenciesOnOtherShapes": [
+          {
+            "$ref": "59"
+          }
+        ]
+      },
+      {
+        "$id": "93",
+        "$type": "Lesson.Stages.Actions.SetActiveShapeAction, Assembly-CSharp",
+        "m_Active": true,
+        "m_ShapeData": {
+          "$ref": "34"
+        },
+        "DependenciesOnOtherShapes": [
+          {
+            "$ref": "64"
+          }
+        ]
+      },
+      {
+        "$id": "94",
+        "$type": "Lesson.Stages.Actions.SetActiveShapeAction, Assembly-CSharp",
+        "m_Active": true,
+        "m_ShapeData": {
+          "$ref": "16"
+        },
+        "DependenciesOnOtherShapes": [
+          {
+            "$ref": "63"
+          }
+        ]
+      },
+      {
+        "$id": "95",
+        "$type": "Lesson.Stages.Actions.SetActiveShapeAction, Assembly-CSharp",
+        "m_Active": true,
+        "m_ShapeData": {
+          "$ref": "15"
+        },
+        "DependenciesOnOtherShapes": [
+          {
+            "$ref": "60"
+          }
+        ]
+      },
+      {
+        "$id": "96",
+        "$type": "Lesson.Stages.Actions.SetActiveShapeAction, Assembly-CSharp",
+        "m_Active": true,
+        "m_ShapeData": {
+          "$ref": "32"
+        },
+        "DependenciesOnOtherShapes": [
+          {
+            "$ref": "61"
+          }
+        ]
+      },
+      {
+        "$id": "97",
+        "$type": "Lesson.Stages.Actions.SetActiveShapeAction, Assembly-CSharp",
+        "m_Active": true,
+        "m_ShapeData": {
+          "$ref": "33"
+        },
+        "DependenciesOnOtherShapes": [
+          {
+            "$ref": "62"
+          }
+        ]
+      },
+      {
+        "$id": "98",
+        "$type": "Lesson.Stages.Actions.SetActiveShapeAction, Assembly-CSharp",
+        "m_Active": true,
+        "m_ShapeData": {
+          "$ref": "35"
+        },
+        "DependenciesOnOtherShapes": [
+          {
+            "$ref": "65"
+          }
+        ]
+      },
+      {
+        "$id": "99",
+        "$type": "Lesson.Stages.Actions.SetActiveShapeAction, Assembly-CSharp",
+        "m_Active": true,
+        "m_ShapeData": {
+          "$ref": "41"
+        },
+        "DependenciesOnOtherShapes": [
+          {
+            "$ref": "66"
+          }
+        ]
+      },
+      {
+        "$id": "100",
+        "$type": "Lesson.Stages.Actions.SetHighlightShapeAction, Assembly-CSharp",
+        "m_Highlight": 1,
+        "m_ShapeData": {
+          "$ref": "41"
+        },
+        "DependenciesOnOtherShapes": [
+          {
+            "$ref": "66"
+          }
+        ]
+      },
+      {
+        "$id": "101",
+        "$type": "Lesson.Stages.Actions.SetHighlightShapeAction, Assembly-CSharp",
+        "m_Highlight": 4,
+        "m_ShapeData": {
+          "$ref": "32"
+        },
+        "DependenciesOnOtherShapes": [
+          {
+            "$ref": "61"
+          }
+        ]
+      },
+      {
+        "$id": "102",
+        "$type": "Lesson.Stages.Actions.SetHighlightShapeAction, Assembly-CSharp",
+        "m_Highlight": 4,
+        "m_ShapeData": {
+          "$ref": "35"
+        },
+        "DependenciesOnOtherShapes": [
+          {
+            "$ref": "65"
+          }
+        ]
+      },
+      {
+        "$id": "103",
+        "$type": "Lesson.Stages.Actions.SetHighlightShapeAction, Assembly-CSharp",
+        "m_Highlight": 4,
+        "m_ShapeData": {
+          "$ref": "34"
+        },
+        "DependenciesOnOtherShapes": [
+          {
+            "$ref": "64"
+          }
+        ]
+      },
+      {
+        "$id": "104",
+        "$type": "Lesson.Stages.Actions.SetHighlightShapeAction, Assembly-CSharp",
+        "m_Highlight": 4,
+        "m_ShapeData": {
+          "$ref": "33"
+        },
+        "DependenciesOnOtherShapes": [
+          {
+            "$ref": "62"
+          }
+        ]
+      },
+      {
+        "$id": "105",
+        "$type": "Lesson.Stages.Actions.SetActiveShapeAction, Assembly-CSharp",
+        "m_Active": false,
+        "m_ShapeData": {
+          "$ref": "10"
+        },
+        "DependenciesOnOtherShapes": [
+          {
+            "$ref": "48"
+          }
+        ]
+      },
+      {
+        "$id": "106",
+        "$type": "Lesson.Stages.Actions.SetActiveShapeAction, Assembly-CSharp",
+        "m_Active": false,
+        "m_ShapeData": {
+          "$ref": "11"
+        },
+        "DependenciesOnOtherShapes": [
+          {
+            "$ref": "50"
+          }
+        ]
+      },
+      {
+        "$id": "107",
+        "$type": "Lesson.Stages.Actions.SetActiveShapeAction, Assembly-CSharp",
+        "m_Active": false,
+        "m_ShapeData": {
+          "$ref": "12"
+        },
+        "DependenciesOnOtherShapes": [
+          {
+            "$ref": "55"
+          }
+        ]
+      },
+      {
+        "$id": "108",
+        "$type": "Lesson.Stages.Actions.SetActiveShapeAction, Assembly-CSharp",
+        "m_Active": false,
+        "m_ShapeData": {
+          "$ref": "13"
+        },
+        "DependenciesOnOtherShapes": [
+          {
+            "$ref": "56"
+          }
+        ]
+      },
+      {
+        "$id": "109",
+        "$type": "Lesson.Stages.Actions.SetActiveShapeAction, Assembly-CSharp",
+        "m_Active": false,
+        "m_ShapeData": {
+          "$ref": "28"
+        },
+        "DependenciesOnOtherShapes": [
+          {
+            "$ref": "53"
+          }
+        ]
+      },
+      {
+        "$id": "110",
+        "$type": "Lesson.Stages.Actions.SetActiveShapeAction, Assembly-CSharp",
+        "m_Active": false,
+        "m_ShapeData": {
+          "$ref": "27"
+        },
+        "DependenciesOnOtherShapes": [
+          {
+            "$ref": "52"
+          }
+        ]
+      },
+      {
+        "$id": "111",
+        "$type": "Lesson.Stages.Actions.SetActiveShapeAction, Assembly-CSharp",
+        "m_Active": false,
+        "m_ShapeData": {
+          "$ref": "30"
+        },
+        "DependenciesOnOtherShapes": [
+          {
+            "$ref": "57"
+          }
+        ]
+      },
+      {
+        "$id": "112",
+        "$type": "Lesson.Stages.Actions.SetActiveShapeAction, Assembly-CSharp",
+        "m_Active": false,
+        "m_ShapeData": {
+          "$ref": "25"
+        },
+        "DependenciesOnOtherShapes": [
+          {
+            "$ref": "49"
+          }
+        ]
+      },
+      {
+        "$id": "113",
+        "$type": "Lesson.Stages.Actions.SetActiveShapeAction, Assembly-CSharp",
+        "m_Active": false,
+        "m_ShapeData": {
+          "$ref": "26"
+        },
+        "DependenciesOnOtherShapes": [
+          {
+            "$ref": "51"
+          }
+        ]
+      },
+      {
+        "$id": "114",
+        "$type": "Lesson.Stages.Actions.SetActiveShapeAction, Assembly-CSharp",
+        "m_Active": false,
+        "m_ShapeData": {
+          "$ref": "31"
+        },
+        "DependenciesOnOtherShapes": [
+          {
+            "$ref": "59"
+          }
+        ]
+      },
+      {
+        "$id": "115",
+        "$type": "Lesson.Stages.Actions.SetActiveShapeAction, Assembly-CSharp",
+        "m_Active": false,
+        "m_ShapeData": {
+          "$ref": "29"
+        },
+        "DependenciesOnOtherShapes": [
+          {
+            "$ref": "54"
+          }
+        ]
+      }
+    ]
+  },
+  "m_LessonStageFactory": {
+    "m_LessonStages": [
+      {
+        "m_StageName": "Условие",
+        "m_StageDescription": "Построить сечение правильной четырехугольной пирамиды ABCDS, проходящее через точки K, N и M.",
+        "m_ShapeActions": [
+          {
+            "$ref": "67"
+          },
+          {
+            "$ref": "68"
+          },
+          {
+            "$ref": "69"
+          },
+          {
+            "$ref": "70"
+          },
+          {
+            "$ref": "71"
+          },
+          {
+            "$ref": "72"
+          },
+          {
+            "$ref": "73"
+          }
+        ]
+      },
+      {
+        "m_StageName": "Вспомогательные прямые",
+        "m_StageDescription": "Проведем вспомогательные прямые SK и SN . Они пересекают стороны CD и AD в точках W и V.",
+        "m_ShapeActions": [
+          {
+            "$ref": "74"
+          },
+          {
+            "$ref": "75"
+          },
+          {
+            "$ref": "76"
+          },
+          {
+            "$ref": "77"
+          },
+          {
+            "$ref": "78"
+          },
+          {
+            "$ref": "79"
+          }
+        ]
+      },
+      {
+        "m_StageName": "Вспомогательная прямая",
+        "m_StageDescription": "Проведем вспомогательную прямую NK. Она принадлежит плоскости сечения.",
+        "m_ShapeActions": [
+          {
+            "$ref": "80"
+          },
+          {
+            "$ref": "81"
+          }
+        ]
+      },
+      {
+        "m_StageName": "Проекция прямой секущей плоскости",
+        "m_StageDescription": "Проведем вспомогательную прямую WV. Эта прямая - проекция прямой NK.",
+        "m_ShapeActions": [
+          {
+            "$ref": "82"
+          },
+          {
+            "$ref": "83"
+          }
+        ]
+      },
+      {
+        "m_StageName": "Проекция прямой секущей плоскости",
+        "m_StageDescription": "Проведем вспомогательную прямую BD. Эта прямая - проекция прямой секущей плоскости. Проекции BD и WV пересекаются в точке L .",
+        "m_ShapeActions": [
+          {
+            "$ref": "84"
+          },
+          {
+            "$ref": "85"
+          },
+          {
+            "$ref": "86"
+          }
+        ]
+      },
+      {
+        "m_StageName": "Вспомогательная точка",
+        "m_StageDescription": "Проведем прямую SL. Она пересечет прямую NK, принадлежащую плоскости сечения в точке Q.",
+        "m_ShapeActions": [
+          {
+            "$ref": "87"
+          },
+          {
+            "$ref": "88"
+          },
+          {
+            "$ref": "89"
+          }
+        ]
+      },
+      {
+        "m_StageName": "Точка сечения",
+        "m_StageDescription": "Проведем вспомогательную прямую через точки M и Q, принадлежащие сечению. Она пересечет ребро в точке T. Точка T принадлежит искомому сечению. ",
+        "m_ShapeActions": [
+          {
+            "$ref": "90"
+          },
+          {
+            "$ref": "91"
+          },
+          {
+            "$ref": "92"
+          }
+        ]
+      },
+      {
+        "m_StageName": "Сторона сечения",
+        "m_StageDescription": "Проведем прямую TN. Она пересекает ребро SA в точке H. TH - сторона искомого сечения.",
+        "m_ShapeActions": [
+          {
+            "$ref": "93"
+          },
+          {
+            "$ref": "94"
+          }
+        ]
+      },
+      {
+        "m_StageName": "Сторона сечения",
+        "m_StageDescription": "Проведем прямую TK. Она пересекает ребро SC в точке G. TG - сторона искомого сечения.",
+        "m_ShapeActions": [
+          {
+            "$ref": "95"
+          },
+          {
+            "$ref": "96"
+          }
+        ]
+      },
+      {
+        "m_StageName": "Сторона сечения",
+        "m_StageDescription": "Точки M и G принадлежат искомому сечению. Соединим их. MG - сторона искомого сечения.",
+        "m_ShapeActions": [
+          {
+            "$ref": "97"
+          },
+          {
+            "$ref": "105"
+          },
+          {
+            "$ref": "106"
+          },
+          {
+            "$ref": "107"
+          },
+          {
+            "$ref": "108"
+          },
+          {
+            "$ref": "109"
+          },
+          {
+            "$ref": "110"
+          },
+          {
+            "$ref": "111"
+          },
+          {
+            "$ref": "112"
+          },
+          {
+            "$ref": "113"
+          },
+          {
+            "$ref": "114"
+          },
+          {
+            "$ref": "115"
+          }
+        ]
+      },
+      {
+        "m_StageName": "Сторона сечения",
+        "m_StageDescription": "Точки M и H принадлежат искомому сечению. Соединим их. MH - сторона искомого сечения.",
+        "m_ShapeActions": [
+          {
+            "$ref": "98"
+          }
+        ]
+      },
+      {
+        "m_StageName": "Сечение",
+        "m_StageDescription": "Четырехугольник MHTG - искомое сечение.",
+        "m_ShapeActions": [
+          {
+            "$ref": "99"
+          },
+          {
+            "$ref": "100"
+          },
+          {
+            "$ref": "101"
+          },
+          {
+            "$ref": "102"
+          },
+          {
+            "$ref": "103"
+          },
+          {
+            "$ref": "104"
+          }
+        ]
+      }
+    ]
+  }
+}
