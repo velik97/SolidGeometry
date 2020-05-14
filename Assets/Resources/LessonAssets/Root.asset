@@ -16,11 +16,5 @@ MonoBehaviour:
   m_Description: Root
   m_AssetsList:
   - {fileID: 11400000, guid: f7ae0fc69adfd414ea5f1f6fa12a38de, type: 2}
-  - {fileID: 11400000, guid: bdcbf7fdbd37aff4a95baa5fca52775d, type: 2}
-  - {fileID: 11400000, guid: f7479f38427da924fb99e204f65d46a0, type: 2}
-  - {fileID: 11400000, guid: e11b50364871e3a4992a4346b569124a, type: 2}
-  - {fileID: 11400000, guid: 3e642deba9e1f44e984e6b81d1159e2d, type: 2}
-  - {fileID: 11400000, guid: 731c9a6082a0a44e88c8ce71451bf027, type: 2}
-  - {fileID: 11400000, guid: 5f91b5515c11e41e98f902334a12d525, type: 2}
-  - {fileID: 11400000, guid: 1822a72dadd4942769ff21cf98154b7f, type: 2}
-  - {fileID: 11400000, guid: c39d9467754e249a0aadf884050ccb60, type: 2}
+  - {fileID: 11400000, guid: e32935464644544118cc82f7fbeb08d9, type: 2}
+  - {fileID: 11400000, guid: 359fce672955347338932932771b9153, type: 2}

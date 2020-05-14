@@ -12,11 +12,12 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 25a1a112ac8743e7a4c1ba37db8b93cf, type: 3}
   m_Name: Folder 1
   m_EditorClassIdentifier: 
-  m_AssetName: Folder 1
+  m_AssetName: "\u0410\u043A\u0441\u0438\u043E\u043C\u0430\u0442\u0438\u0447\u0435\u0441\u043A\u0438\u0439
+    \u043C\u0435\u0442\u043E\u0434"
   m_Description: Folder Description 1
   m_AssetsList:
-  - {fileID: 11400000, guid: 6cb4117a5132fa149aef1ece625e69de, type: 2}
-  - {fileID: 11400000, guid: fea9c6aedf2067249944bf48aa32c816, type: 2}
-  - {fileID: 11400000, guid: a26d913ccd2ae4548bd09a5f295c7729, type: 2}
-  - {fileID: 11400000, guid: 74f5295770d80974f8a489c1064a631c, type: 2}
+  - {fileID: 11400000, guid: b87ef4afc4ec641fa80938911fde43fc, type: 2}
+  - {fileID: 11400000, guid: 1822a72dadd4942769ff21cf98154b7f, type: 2}
+  - {fileID: 11400000, guid: 5f91b5515c11e41e98f902334a12d525, type: 2}
+  - {fileID: 11400000, guid: 731c9a6082a0a44e88c8ce71451bf027, type: 2}
   - {fileID: 11400000, guid: d7b675072d523ac41a3867846837a442, type: 2}
