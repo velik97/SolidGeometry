@@ -2356,6 +2356,32 @@
             "$ref": "96"
           }
         ]
+      },
+      {
+        "$id": "159",
+        "$type": "Lesson.Stages.Actions.SetActiveShapeAction, Assembly-CSharp",
+        "m_Active": false,
+        "m_ShapeData": {
+          "$ref": "13"
+        },
+        "DependenciesOnOtherShapes": [
+          {
+            "$ref": "67"
+          }
+        ]
+      },
+      {
+        "$id": "160",
+        "$type": "Lesson.Stages.Actions.SetActiveShapeAction, Assembly-CSharp",
+        "m_Active": false,
+        "m_ShapeData": {
+          "$ref": "14"
+        },
+        "DependenciesOnOtherShapes": [
+          {
+            "$ref": "68"
+          }
+        ]
       }
     ]
   },
@@ -2511,6 +2537,12 @@
           },
           {
             "$ref": "147"
+          },
+          {
+            "$ref": "159"
+          },
+          {
+            "$ref": "160"
           }
         ]
       },

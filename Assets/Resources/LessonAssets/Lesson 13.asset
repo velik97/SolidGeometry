@@ -12,6 +12,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 20004fa1ba8f54bfb8cb91c4d18b2f58, type: 3}
   m_Name: Lesson 13
   m_EditorClassIdentifier: 
-  m_AssetName: 
-  m_Description: 
+  m_AssetName: "\u0423\u0440\u043E\u043A 2"
+  m_Description: " \u041F\u0440\u044F\u043C\u0430\u044F \u0447\u0435\u0442\u044B\u0440\u0435\u0445\u0443\u0433\u043E\u043B\u044C\u043D\u0430\u044F
+    \u043F\u0440\u0438\u0437\u043C\u0430"
   m_LessonFile: {fileID: 4900000, guid: 66e1fdd96d47e44eab3798361e8ba5ee, type: 3}

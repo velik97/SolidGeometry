@@ -2,15 +2,15 @@
   "m_ShapeDataFactory": {
     "$id": "1",
     "m_Origin": {
-      "x": 0.0,
-      "y": 0.0,
-      "z": 0.0
+      "x": 0.25,
+      "y": 0.5,
+      "z": -0.25
     },
     "m_PointDatas": [
       {
         "$id": "2",
         "m_Position": {
-          "x": 1.0,
+          "x": 0.5,
           "y": 0.0,
           "z": 0.0
         },
@@ -19,18 +19,18 @@
       {
         "$id": "3",
         "m_Position": {
-          "x": 2.0,
+          "x": 1.0,
           "y": 0.0,
-          "z": -1.0
+          "z": -0.5
         },
         "m_PointName": "B"
       },
       {
         "$id": "4",
         "m_Position": {
-          "x": 1.0,
+          "x": 0.5,
           "y": 0.0,
-          "z": -2.0
+          "z": -1.0
         },
         "m_PointName": "C"
       },
@@ -39,16 +39,16 @@
         "m_Position": {
           "x": 0.0,
           "y": 0.0,
-          "z": -2.0
+          "z": -1.0
         },
         "m_PointName": "D"
       },
       {
         "$id": "6",
         "m_Position": {
-          "x": -1.0,
+          "x": -0.5,
           "y": 0.0,
-          "z": -1.0
+          "z": -0.5
         },
         "m_PointName": "E"
       },
@@ -64,8 +64,8 @@
       {
         "$id": "8",
         "m_Position": {
-          "x": 1.0,
-          "y": 3.0,
+          "x": 0.5,
+          "y": 1.0,
           "z": 0.0
         },
         "m_PointName": "A'"
@@ -73,18 +73,18 @@
       {
         "$id": "9",
         "m_Position": {
-          "x": 2.0,
-          "y": 3.0,
-          "z": -1.0
+          "x": 1.0,
+          "y": 1.0,
+          "z": -0.5
         },
         "m_PointName": "B'"
       },
       {
         "$id": "10",
         "m_Position": {
-          "x": 1.0,
-          "y": 3.0,
-          "z": -2.0
+          "x": 0.5,
+          "y": 1.0,
+          "z": -1.0
         },
         "m_PointName": "C'"
       },
@@ -92,17 +92,17 @@
         "$id": "11",
         "m_Position": {
           "x": 0.0,
-          "y": 3.0,
-          "z": -2.0
+          "y": 1.0,
+          "z": -1.0
         },
         "m_PointName": "D'"
       },
       {
         "$id": "12",
         "m_Position": {
-          "x": -1.0,
-          "y": 3.0,
-          "z": -1.0
+          "x": -0.5,
+          "y": 1.0,
+          "z": -0.5
         },
         "m_PointName": "E'"
       },
@@ -110,7 +110,7 @@
         "$id": "13",
         "m_Position": {
           "x": 0.0,
-          "y": 3.0,
+          "y": 1.0,
           "z": 0.0
         },
         "m_PointName": "F'"
@@ -118,8 +118,8 @@
       {
         "$id": "14",
         "m_Position": {
-          "x": 1.0,
-          "y": 2.1,
+          "x": 0.5,
+          "y": 0.7,
           "z": 0.0
         },
         "m_PointName": "M"
@@ -127,126 +127,126 @@
       {
         "$id": "15",
         "m_Position": {
-          "x": 1.0,
-          "y": 1.80000007,
-          "z": -2.0
+          "x": 0.5,
+          "y": 0.6,
+          "z": -1.0
         },
         "m_PointName": "N"
       },
       {
         "$id": "16",
         "m_Position": {
-          "x": -1.0,
-          "y": 1.71,
-          "z": -1.0
+          "x": -0.5,
+          "y": 0.57,
+          "z": -0.5
         },
         "m_PointName": "K"
       },
       {
         "$id": "17",
         "m_Position": {
-          "x": 0.5,
+          "x": 0.25,
           "y": 0.0,
-          "z": -0.25
+          "z": -0.125
         },
         "m_PointName": "P"
       },
       {
         "$id": "18",
         "m_Position": {
-          "x": 1.0,
+          "x": 0.5,
           "y": 0.0,
-          "z": -0.5
+          "z": -0.25
         },
         "m_PointName": "Q"
       },
       {
         "$id": "19",
         "m_Position": {
-          "x": 0.5,
-          "y": 3.0,
-          "z": -0.25
+          "x": 0.25,
+          "y": 1.0,
+          "z": -0.125
         },
         "m_PointName": "x"
       },
       {
         "$id": "20",
         "m_Position": {
-          "x": 0.5,
-          "y": 2.0025003,
-          "z": -0.25
+          "x": 0.25,
+          "y": 0.6675,
+          "z": -0.125
         },
         "m_PointName": "W"
       },
       {
         "$id": "21",
         "m_Position": {
-          "x": 1.0,
-          "y": 3.0,
-          "z": -0.5
+          "x": 0.5,
+          "y": 1.0,
+          "z": -0.25
         },
         "m_PointName": "x'"
       },
       {
         "$id": "22",
         "m_Position": {
-          "x": 1.0,
-          "y": 2.02499986,
-          "z": -0.5
+          "x": 0.5,
+          "y": 0.675,
+          "z": -0.25
         },
         "m_PointName": "V"
       },
       {
         "$id": "23",
         "m_Position": {
-          "x": 1.0,
+          "x": 0.5,
           "y": 0.0,
-          "z": -1.5
+          "z": -0.75
         },
         "m_PointName": "R"
       },
       {
         "$id": "24",
         "m_Position": {
-          "x": 0.5,
+          "x": 0.25,
           "y": 0.0,
-          "z": -1.75
+          "z": -0.875
         },
         "m_PointName": "S"
       },
       {
         "$id": "25",
         "m_Position": {
-          "x": 1.0,
-          "y": 3.0,
-          "z": -1.5
+          "x": 0.5,
+          "y": 1.0,
+          "z": -0.75
         },
         "m_PointName": "x'''"
       },
       {
         "$id": "26",
         "m_Position": {
-          "x": 1.0,
-          "y": 1.875,
-          "z": -1.5
+          "x": 0.5,
+          "y": 0.625,
+          "z": -0.75
         },
         "m_PointName": "U"
       },
       {
         "$id": "27",
         "m_Position": {
-          "x": 0.5,
-          "y": 3.0,
-          "z": -1.75
+          "x": 0.25,
+          "y": 1.0,
+          "z": -0.875
         },
         "m_PointName": "x''''"
       },
       {
         "$id": "28",
         "m_Position": {
-          "x": 0.5,
-          "y": 1.77750015,
-          "z": -1.75
+          "x": 0.25,
+          "y": 0.592500031,
+          "z": -0.875
         },
         "m_PointName": "O"
       },
@@ -255,7 +255,7 @@
         "m_Position": {
           "x": 0.0,
           "y": 0.0,
-          "z": -1.5
+          "z": -0.75
         },
         "m_PointName": "T"
       },
@@ -263,8 +263,8 @@
         "$id": "30",
         "m_Position": {
           "x": 0.0,
-          "y": 3.0,
-          "z": -1.5
+          "y": 1.0,
+          "z": -0.75
         },
         "m_PointName": "x'''''"
       },
@@ -272,8 +272,8 @@
         "$id": "31",
         "m_Position": {
           "x": 0.0,
-          "y": 1.75500011,
-          "z": -1.5
+          "y": 0.585000038,
+          "z": -0.75
         },
         "m_PointName": "Y"
       },
@@ -282,7 +282,7 @@
         "m_Position": {
           "x": 0.0,
           "y": 0.0,
-          "z": -0.5
+          "z": -0.25
         },
         "m_PointName": "I"
       },
@@ -290,8 +290,8 @@
         "$id": "33",
         "m_Position": {
           "x": 0.0,
-          "y": 3.0,
-          "z": -0.5
+          "y": 1.0,
+          "z": -0.25
         },
         "m_PointName": "x''''''"
       },
@@ -299,8 +299,8 @@
         "$id": "34",
         "m_Position": {
           "x": 0.0,
-          "y": 1.905,
-          "z": -0.5
+          "y": 0.635,
+          "z": -0.25
         },
         "m_PointName": "Z"
       },
@@ -308,7 +308,7 @@
         "$id": "35",
         "m_Position": {
           "x": 0.0,
-          "y": 1.98000073,
+          "y": 0.66,
           "z": 0.0
         },
         "m_PointName": "G"
@@ -316,9 +316,9 @@
       {
         "$id": "36",
         "m_Position": {
-          "x": 2.0,
-          "y": 2.069999,
-          "z": -1.0
+          "x": 1.0,
+          "y": 0.69,
+          "z": -0.5
         },
         "m_PointName": "H"
       },
@@ -326,8 +326,8 @@
         "$id": "37",
         "m_Position": {
           "x": 0.0,
-          "y": 1.68000031,
-          "z": -2.0
+          "y": 0.560000062,
+          "z": -1.0
         },
         "m_PointName": "J"
       }
@@ -1025,34 +1025,34 @@
         },
         "m_Offset": {
           "x": 0.0,
-          "y": 3.0,
+          "y": 1.0,
           "z": 0.0
         },
         "m_PointsPositions": [
           {
-            "x": 1.0,
+            "x": 0.5,
             "y": 0.0,
             "z": 0.0
           },
           {
-            "x": 2.0,
-            "y": 0.0,
-            "z": -1.0
-          },
-          {
             "x": 1.0,
             "y": 0.0,
-            "z": -2.0
+            "z": -0.5
+          },
+          {
+            "x": 0.5,
+            "y": 0.0,
+            "z": -1.0
           },
           {
             "x": 0.0,
             "y": 0.0,
-            "z": -2.0
+            "z": -1.0
           },
           {
-            "x": -1.0,
+            "x": -0.5,
             "y": 0.0,
-            "z": -1.0
+            "z": -0.5
           },
           {
             "x": 0.0,
@@ -3688,6 +3688,84 @@
             "$ref": "125"
           }
         ]
+      },
+      {
+        "$id": "241",
+        "$type": "Lesson.Stages.Actions.SetActiveShapeAction, Assembly-CSharp",
+        "m_Active": false,
+        "m_ShapeData": {
+          "$ref": "34"
+        },
+        "DependenciesOnOtherShapes": [
+          {
+            "$ref": "127"
+          }
+        ]
+      },
+      {
+        "$id": "242",
+        "$type": "Lesson.Stages.Actions.SetActiveShapeAction, Assembly-CSharp",
+        "m_Active": false,
+        "m_ShapeData": {
+          "$ref": "31"
+        },
+        "DependenciesOnOtherShapes": [
+          {
+            "$ref": "123"
+          }
+        ]
+      },
+      {
+        "$id": "243",
+        "$type": "Lesson.Stages.Actions.SetActiveShapeAction, Assembly-CSharp",
+        "m_Active": false,
+        "m_ShapeData": {
+          "$ref": "26"
+        },
+        "DependenciesOnOtherShapes": [
+          {
+            "$ref": "115"
+          }
+        ]
+      },
+      {
+        "$id": "244",
+        "$type": "Lesson.Stages.Actions.SetActiveShapeAction, Assembly-CSharp",
+        "m_Active": false,
+        "m_ShapeData": {
+          "$ref": "28"
+        },
+        "DependenciesOnOtherShapes": [
+          {
+            "$ref": "118"
+          }
+        ]
+      },
+      {
+        "$id": "245",
+        "$type": "Lesson.Stages.Actions.SetActiveShapeAction, Assembly-CSharp",
+        "m_Active": false,
+        "m_ShapeData": {
+          "$ref": "22"
+        },
+        "DependenciesOnOtherShapes": [
+          {
+            "$ref": "109"
+          }
+        ]
+      },
+      {
+        "$id": "246",
+        "$type": "Lesson.Stages.Actions.SetActiveShapeAction, Assembly-CSharp",
+        "m_Active": false,
+        "m_ShapeData": {
+          "$ref": "20"
+        },
+        "DependenciesOnOtherShapes": [
+          {
+            "$ref": "106"
+          }
+        ]
       }
     ]
   },
@@ -4068,6 +4146,24 @@
           },
           {
             "$ref": "240"
+          },
+          {
+            "$ref": "241"
+          },
+          {
+            "$ref": "242"
+          },
+          {
+            "$ref": "243"
+          },
+          {
+            "$ref": "244"
+          },
+          {
+            "$ref": "245"
+          },
+          {
+            "$ref": "246"
           }
         ]
       },
