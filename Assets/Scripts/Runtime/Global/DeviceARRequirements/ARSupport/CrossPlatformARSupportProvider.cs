@@ -4,13 +4,13 @@ namespace Runtime.Global.DeviceARRequirements.ARSupport
 {
     public class CrossPlatformARSupportProvider : IARSupportProvider
     {
-        private IARSupportProvider m_InnerARSupportProvider;
+        private readonly IARSupportProvider m_InnerARSupportProvider;
 
         public CrossPlatformARSupportProvider()
         {
 #if UNITY_EDITOR
             m_InnerARSupportProvider = TestARSupportProvider.Instance;
-#elif UNITY_IOS || UNITY_ANDROID
+#elif PLATFORM_IOS || UNITY_ANDROID
             m_InnerARSupportProvider = new MobileARSupportProvider();
 #else
             m_InnerARSupportProvider = new UnsupportedARSupportProvider();

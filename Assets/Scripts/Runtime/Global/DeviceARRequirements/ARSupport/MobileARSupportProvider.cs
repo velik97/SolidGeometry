@@ -1,4 +1,7 @@
-﻿using UniRx;
+﻿using System.Collections;
+using System.Collections.Generic;
+using UniRx;
+using UnityEngine;
 using UnityEngine.XR.ARFoundation;
 using Util;
 
@@ -40,7 +43,21 @@ namespace Runtime.Global.DeviceARRequirements.ARSupport
             
             Add(currentARSessionState);
 
-            CoroutineRunner.Run(ARSession.CheckAvailability());
+            CoroutineRunner.Run(CheckAvailability());
+        }
+        
+        private IEnumerator CheckAvailability()
+        {
+            ARSession arSession = Object.FindObjectOfType<ARSession>();
+            if (arSession == null)
+            {
+                arSession = new GameObject(typeof(ARSession).ToString()).AddComponent<ARSession>();
+            }
+            arSession.enabled = false;
+            
+            yield return new WaitForSeconds(.5f);
+
+            yield return ARSession.CheckAvailability();
         }
 
         public void InstallARSoftware()
