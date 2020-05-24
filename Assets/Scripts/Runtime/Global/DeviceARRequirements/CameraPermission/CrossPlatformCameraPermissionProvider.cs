@@ -4,16 +4,16 @@ namespace Runtime.Global.DeviceARRequirements.CameraPermission
 {
     public class CrossPlatformCameraPermissionProvider : ICameraPermissionProvider
     {
-        private ICameraPermissionProvider m_InnerCameraPermissionProvider;
+        private readonly ICameraPermissionProvider m_InnerCameraPermissionProvider;
 
         public CrossPlatformCameraPermissionProvider()
         {
 #if UNITY_EDITOR
             m_InnerCameraPermissionProvider = new TestCameraPermissionProvider();
-#elif UNITY_IOS && !UNITY_EDITOR
-            m_InnerCameraPermissionProvider = new IOSCameraPermissionProvider();
-#elif UNITY_ANDROID && !UNITY_EDITOR
-            m_InnerCameraPermissionProvider = new AndroidCameraPermissionProvider();
+#elif UNITY_IOS || UNITY_ANDROID
+            m_InnerCameraPermissionProvider = new MobileCameraPermissionProvider();
+#else
+            m_InnerCameraPermissionProvider = new UnsupportedCameraPermissionProvider();
 #endif
         }
 

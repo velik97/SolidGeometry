@@ -20,6 +20,8 @@ namespace UI.Session.ARRequirementsManual
             RuntimePlatform.IPhonePlayer;
 #elif UNITY_ANDROID
             RuntimePlatform.Android;
+#else
+            RuntimePlatform.IPhonePlayer;
 #endif
 
         public CameraPermissionManualPageVM(int pageNumber, int pagesCount, Action closeAction, Action goFurtherAction,
