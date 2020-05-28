@@ -50,17 +50,17 @@ namespace Lesson.Shapes.Blueprints.DependentShapes
         {
             if (m_ThirdPoint != null)
             {
-                m_ThirdPoint.GeometryUpdated += UpdatePosition;
+                m_ThirdPoint.GeometryUpdated.Subscribe(GeometryUpdated);
             }
 
             if (m_SourcePoint != null)
             {
-                m_SourcePoint.GeometryUpdated += UpdatePosition;
+                m_SourcePoint.GeometryUpdated.Subscribe(GeometryUpdated);
             }
 
             if (m_SecondPoint != null)
             {
-                m_SecondPoint.GeometryUpdated += UpdatePosition;
+                m_SecondPoint.GeometryUpdated.Subscribe(GeometryUpdated);
             }
 
             RestoreDependencies();
@@ -69,13 +69,13 @@ namespace Lesson.Shapes.Blueprints.DependentShapes
 
         private void OnDeserialized()
         {
-            PointData.SourceBlueprint = this;
-            MyShapeDatas.Add(PointData);
+            AddToMyShapeDatas(PointData);
+
 
             PointsNotSameValidator = new PointsNotSameValidator(EnumeratePoints());
-            PointData.NameUpdated += OnNameUpdated;
+            PointData.NameUpdated.Subscribe(NameUpdated);
 
-            UpdatePosition();
+            GeometryUpdated.Invoke();
         }
 
         private IEnumerable<PointData> EnumeratePoints()
@@ -94,16 +94,16 @@ namespace Lesson.Shapes.Blueprints.DependentShapes
 
             if (m_SourcePoint != null)
             {
-                m_SourcePoint.GeometryUpdated -= UpdatePosition;
+                m_SourcePoint.GeometryUpdated.Unsubscribe(GeometryUpdated);
             }
 
             m_SourcePoint = pointData;
             if (m_SourcePoint != null)
             {
-                m_SourcePoint.GeometryUpdated += UpdatePosition;
+                m_SourcePoint.GeometryUpdated.Subscribe(GeometryUpdated);
             }
 
-            UpdatePosition();
+            GeometryUpdated.Invoke();
         }
 
         public void SetSecondPoint(PointData pointData)
@@ -115,16 +115,16 @@ namespace Lesson.Shapes.Blueprints.DependentShapes
 
             if (m_SecondPoint != null)
             {
-                m_SecondPoint.GeometryUpdated -= UpdatePosition;
+                m_SecondPoint.GeometryUpdated.Unsubscribe(GeometryUpdated);
             }
 
             m_SecondPoint = pointData;
             if (m_SecondPoint != null)
             {
-                m_SecondPoint.GeometryUpdated += UpdatePosition;
+                m_SecondPoint.GeometryUpdated.Subscribe(GeometryUpdated);
             }
 
-            UpdatePosition();
+            GeometryUpdated.Invoke();
         }
 
         public void SetThirdPoint(PointData pointData)
@@ -136,16 +136,16 @@ namespace Lesson.Shapes.Blueprints.DependentShapes
 
             if (m_ThirdPoint != null)
             {
-                m_ThirdPoint.GeometryUpdated -= UpdatePosition;
+                m_ThirdPoint.GeometryUpdated.Unsubscribe(GeometryUpdated);
             }
 
             m_ThirdPoint = pointData;
             if (m_ThirdPoint != null)
             {
-                m_ThirdPoint.GeometryUpdated += UpdatePosition;
+                m_ThirdPoint.GeometryUpdated.Subscribe(GeometryUpdated);
             }
 
-            UpdatePosition();
+            GeometryUpdated.Invoke();
         }
         
         public void SetCoefficient1(float kof)
@@ -156,8 +156,7 @@ namespace Lesson.Shapes.Blueprints.DependentShapes
             }
 
             m_Coefficient1 = kof;
-            //NonZeroVolumeValidator.Update();
-            UpdatePosition();
+            GeometryUpdated.Invoke();
         }
         
         public void SetCoefficient2(float kof)
@@ -168,11 +167,10 @@ namespace Lesson.Shapes.Blueprints.DependentShapes
             }
 
             m_Coefficient2 = kof;
-            //NonZeroVolumeValidator.Update();
-            UpdatePosition();
+            GeometryUpdated.Invoke();
         }
 
-        private void UpdatePosition()
+        protected override void UpdateGeometry()
         {
             PointsNotSameValidator.Update();
             if (!PointsNotSameValidator.IsValid())

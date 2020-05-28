@@ -44,7 +44,7 @@ namespace Lesson.Shapes.Blueprints.CompositeShapes
             for (int i = 0; i < m_Points.Length; i++)
             {
                 m_Points[i] = dataFactory.CreatePointData();
-                m_Points[i].NameUpdated += OnNameUpdated;
+                m_Points[i].NameUpdated.Subscribe(NameUpdated);
             }
             for (int i = 0; i < m_Lines.Length; i++)
             {
@@ -83,7 +83,7 @@ namespace Lesson.Shapes.Blueprints.CompositeShapes
         {
             NonZeroVolumeValidator = new NonZeroVolumeValidator(m_Axes);
             NonZeroVolumeValidator.Update();
-            UpdatePointsPositions();
+            GeometryUpdated.Invoke();
 
             foreach (var shapeData in 
                 new [] {m_CompositeShapeData}.Cast<ShapeData>()
@@ -91,8 +91,7 @@ namespace Lesson.Shapes.Blueprints.CompositeShapes
                 .Concat(m_Lines)
                 .Concat(m_Polygons))
             {
-                MyShapeDatas.Add(shapeData);
-                shapeData.SourceBlueprint = this;
+                AddToMyShapeDatas(shapeData);
             }
             
             m_CompositeShapeData.SetShapeName("Parallelepiped");
@@ -159,7 +158,7 @@ namespace Lesson.Shapes.Blueprints.CompositeShapes
             }
 
             m_Origin = origin;
-            UpdatePointsPositions();
+            GeometryUpdated.Invoke();
         }
 
         public void SetAxis(int axisNum, Vector3 axis)
@@ -171,10 +170,10 @@ namespace Lesson.Shapes.Blueprints.CompositeShapes
 
             m_Axes[axisNum] = axis;
             NonZeroVolumeValidator.Update();
-            UpdatePointsPositions();
+            GeometryUpdated.Invoke();
         }
 
-        private void UpdatePointsPositions()
+        protected override void UpdateGeometry()
         {
             m_Points[0].SetPosition(m_Origin);
             m_Points[1].SetPosition(m_Origin + m_Axes[0]);

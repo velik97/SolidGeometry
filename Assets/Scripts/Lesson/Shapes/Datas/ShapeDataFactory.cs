@@ -7,13 +7,14 @@ using Lesson.Shapes.Views;
 using Lesson.Validators.Uniqueness;
 using Newtonsoft.Json;
 using UnityEngine;
+using Util.CascadeUpdate;
 
 namespace Lesson.Shapes.Datas
 {
     [JsonObject(IsReference = true, MemberSerialization = MemberSerialization.OptIn)]
     public class ShapeDataFactory
     {
-        public event Action BecameDirty;
+        public CascadeUpdateEvent BecameDirty = new CascadeUpdateEvent();
 
         [JsonProperty]
         private Vector3 m_Origin;
@@ -115,8 +116,8 @@ namespace Lesson.Shapes.Datas
         private void ProcessNewShapeData(ShapeData shapeData)
         {
             OnBecameDirty();
-            shapeData.NameUpdated += OnBecameDirty;
-            shapeData.GeometryUpdated += OnBecameDirty;
+            shapeData.NameUpdated.Subscribe(OnBecameDirty);
+            shapeData.GeometryUpdated.Subscribe(OnBecameDirty);
             m_UniquenessValidators.AddShapeData(shapeData);
             IShapeView view = m_ShapeViewFactory?.RequestShapeView(shapeData);
             if (view != null)

@@ -11,7 +11,7 @@ namespace Lesson.Validators.Point
         public PointPositionUniquenessValidator(PointData pointData)
         {
             m_PointData = pointData;
-            m_PointData.GeometryUpdated += OnUniqueDeterminingPropertyUpdated;
+            m_PointData.GeometryUpdated.Subscribe(OnUniqueDeterminingPropertyUpdated);
         }
         
         public override string GetNotValidMessage()

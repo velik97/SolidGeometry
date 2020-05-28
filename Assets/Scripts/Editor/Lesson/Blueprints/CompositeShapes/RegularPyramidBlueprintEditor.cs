@@ -47,20 +47,9 @@ namespace Editor.Lesson.Blueprints.CompositeShapes
             m_PointNameFields = new VisualElement();
             visualElement.Add(m_PointNameFields);
 
-            Blueprint.DependenciesUpdated += UpdateVerticesCountFieldAvailability;
+            Blueprint.DependenciesUpdated.Subscribe(UpdateVerticesCountFieldAvailability);
             UpdateVerticesCountFieldAvailability();
             UpdatePointNameFields();
-            // for (int i = 0; i < Blueprint.Points.Count; i++)
-            // {
-            //     int pointNum = i;
-            //     TextField nameField = new TextField((pointNum + 1).GetOrdinalForm() + " Point name: ")
-            //         {value = Blueprint.Points[i].PointName};
-            //     nameField.RegisterCallback<ChangeEvent<string>>(evt => Blueprint.SetPointName(pointNum, evt.newValue));
-            //     visualElement.Add(nameField);
-            //     visualElement.Add(new ValidatorField(Blueprint.Points[i].NameNotEmptyValidator));
-            //     visualElement.Add(new ValidatorField(Blueprint.Points[i].NameUniquenessValidator));
-            //     visualElement.Add(new ValidatorField(Blueprint.Points[i].PositionUniquenessValidator));
-            // }
         }
         
         private void UpdateVerticesCountFieldAvailability()

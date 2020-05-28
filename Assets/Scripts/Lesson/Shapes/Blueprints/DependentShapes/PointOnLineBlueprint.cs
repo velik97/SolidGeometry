@@ -45,12 +45,12 @@ namespace Lesson.Shapes.Blueprints.DependentShapes
         {
             if (m_FirstPoint != null)
             {
-                m_FirstPoint.GeometryUpdated += UpdatePosition;
+                m_FirstPoint.GeometryUpdated.Subscribe(GeometryUpdated);
             }
 
             if (m_SecondPoint != null)
             {
-                m_SecondPoint.GeometryUpdated += UpdatePosition;
+                m_SecondPoint.GeometryUpdated.Subscribe(GeometryUpdated);
             }
 
             RestoreDependencies();
@@ -59,13 +59,13 @@ namespace Lesson.Shapes.Blueprints.DependentShapes
 
         private void OnDeserialized()
         {
-            PointData.SourceBlueprint = this;
-            MyShapeDatas.Add(PointData);
+            AddToMyShapeDatas(PointData);
+
 
             PointsNotSameValidator = new PointsNotSameValidator(EnumeratePoints());
-            PointData.NameUpdated += OnNameUpdated;
+            PointData.NameUpdated.Subscribe(NameUpdated);
 
-            UpdatePosition();
+            GeometryUpdated.Invoke();
         }
 
         private IEnumerable<PointData> EnumeratePoints()
@@ -83,16 +83,16 @@ namespace Lesson.Shapes.Blueprints.DependentShapes
 
             if (m_FirstPoint != null)
             {
-                m_FirstPoint.GeometryUpdated -= UpdatePosition;
+                m_FirstPoint.GeometryUpdated.Unsubscribe(GeometryUpdated);
             }
 
             m_FirstPoint = pointData;
             if (m_FirstPoint != null)
             {
-                m_FirstPoint.GeometryUpdated += UpdatePosition;
+                m_FirstPoint.GeometryUpdated.Subscribe(GeometryUpdated);
             }
 
-            UpdatePosition();
+            GeometryUpdated.Invoke();
         }
 
         public void SetSecondPoint(PointData pointData)
@@ -104,16 +104,16 @@ namespace Lesson.Shapes.Blueprints.DependentShapes
 
             if (m_SecondPoint != null)
             {
-                m_SecondPoint.GeometryUpdated -= UpdatePosition;
+                m_SecondPoint.GeometryUpdated.Unsubscribe(GeometryUpdated);
             }
 
             m_SecondPoint = pointData;
             if (m_SecondPoint != null)
             {
-                m_SecondPoint.GeometryUpdated += UpdatePosition;
+                m_SecondPoint.GeometryUpdated.Subscribe(GeometryUpdated);
             }
 
-            UpdatePosition();
+            GeometryUpdated.Invoke();
         }
         
         public void SetCoefficient(float coef)
@@ -124,10 +124,10 @@ namespace Lesson.Shapes.Blueprints.DependentShapes
             }
 
             m_Coefficient = coef;
-            UpdatePosition();
+            GeometryUpdated.Invoke();
         }
         
-        private void UpdatePosition()
+        protected override void UpdateGeometry()
         {
             PointsNotSameValidator.Update();
             if (!PointsNotSameValidator.IsValid())

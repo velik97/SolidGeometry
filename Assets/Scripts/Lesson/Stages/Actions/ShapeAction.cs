@@ -30,10 +30,6 @@ namespace Lesson.Stages.Actions
         protected void OnDeserialized()
         {
             RestoreDependencies();
-            if (m_ShapeData != null)
-            {
-                m_ShapeData.NameUpdated += OnBecameDirty;
-            }
         }
 
         public abstract void PreservePreviousState();
@@ -53,15 +49,7 @@ namespace Lesson.Stages.Actions
             {
                 return;
             }
-            if (m_ShapeData != null)
-            {
-                m_ShapeData.NameUpdated -= OnBecameDirty;
-            }
             m_ShapeData = shapeData;
-            if (m_ShapeData != null)
-            {
-                m_ShapeData.NameUpdated += OnBecameDirty;
-            }
             OnBecameDirty();
         }
 

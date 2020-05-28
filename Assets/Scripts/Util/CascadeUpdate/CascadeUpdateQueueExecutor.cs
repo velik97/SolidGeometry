@@ -1,23 +1,22 @@
 ﻿using System;
 using System.Collections;
 using System.Collections.Generic;
-using UniRx;
-using UnityEditor;
 using UnityEngine;
 
 namespace Util.CascadeUpdate
 {
     public class CascadeUpdateQueueExecutor
     {
-        private Queue<Action> m_ActionsQueue = new Queue<Action>();
-        private int m_MaxActionsPerFrame = 100;
+        private List<Action> m_ActionsQueue = new List<Action>();
+        private int m_MaxActionsPerFrame = 200;
 
+        
         public CascadeUpdateQueueExecutor()
         {
 #if UNITY_EDITOR
             if (!Application.isPlaying)
             {
-                EditorApplication.update += Tick;
+                EditorUpdateInvokerBridge.Update += Tick;
                 return;
             }
 #endif
@@ -28,7 +27,12 @@ namespace Util.CascadeUpdate
         {
             foreach (Action action in actions)
             {
-                m_ActionsQueue.Enqueue(action);
+                if (m_ActionsQueue.Contains(action))
+                {
+                    m_ActionsQueue.Remove(action);
+                }
+
+                m_ActionsQueue.Add(action);
             }
         }
 
@@ -57,7 +61,15 @@ namespace Util.CascadeUpdate
                     
                 using (CascadeUpdateEvent.SuppressCascadeInvokeScope())
                 {
-                    m_ActionsQueue.Dequeue()?.Invoke();
+                    try
+                    {
+                        m_ActionsQueue[0]?.Invoke();
+                    }
+                    catch (Exception e)
+                    {
+                        Debug.LogError("Error in cascade action: " + e);
+                    }
+                    m_ActionsQueue.RemoveAt(0);
                 }
             }
         }

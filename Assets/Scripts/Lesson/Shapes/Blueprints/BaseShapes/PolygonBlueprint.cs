@@ -33,10 +33,9 @@ namespace Lesson.Shapes.Blueprints.BaseShapes
 
         private void OnDeserialized()
         {
-            PolygonData.SourceBlueprint = this;
-            MyShapeDatas.Add(PolygonData);
-
-            PolygonData.NameUpdated += OnNameUpdated;
+            AddToMyShapeDatas(PolygonData);
+            
+            PolygonData.NameUpdated.Subscribe(NameUpdated);
         }
     }
 }

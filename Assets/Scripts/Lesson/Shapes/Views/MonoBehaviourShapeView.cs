@@ -15,16 +15,16 @@ namespace Lesson.Shapes.Views
         {
             if (ShapeData != null)
             {
-                ShapeData.NameUpdated -= UpdateName;
-                ShapeData.GeometryUpdated -= UpdateGeometry;
+                ShapeData.NameUpdated.Subscribe(UpdateName);
+                ShapeData.GeometryUpdated.Subscribe(UpdateGeometry);
             }
             
             ShapeData = shapeData;
             
             if (ShapeData != null)
             {
-                ShapeData.NameUpdated += UpdateName;
-                ShapeData.GeometryUpdated += UpdateGeometry;
+                ShapeData.NameUpdated.Subscribe(UpdateName);
+                ShapeData.GeometryUpdated.Subscribe(UpdateGeometry);
                 
                 UpdateName();
                 UpdateGeometry();

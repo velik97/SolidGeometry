@@ -45,7 +45,7 @@
 //         public void SetShapeName(string shapeName)
 //         {
 //             m_ShapeName = shapeName;
-//             OnNameUpdated();
+//             NameUpdated();
 //         }
 //
 //         public void SetPoints(PointData[] points)
@@ -58,7 +58,7 @@
 //                 }
 //             }
 //             m_Points = points;
-//             OnNameUpdated();
+//             NameUpdated();
 //             if (m_Points != null && m_Points.Length > 0)
 //             {
 //                 foreach (PointData pointData in m_Points)

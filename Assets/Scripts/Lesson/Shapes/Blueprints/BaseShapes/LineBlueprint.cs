@@ -33,10 +33,9 @@ namespace Lesson.Shapes.Blueprints.BaseShapes
 
         private void OnDeserialized()
         {
-            LineData.SourceBlueprint = this;
-            MyShapeDatas.Add(LineData);
+            AddToMyShapeDatas(LineData);
 
-            LineData.NameUpdated += OnNameUpdated;
+            LineData.NameUpdated.Subscribe(NameUpdated);
         }
     }
 }

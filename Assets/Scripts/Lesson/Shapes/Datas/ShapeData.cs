@@ -2,14 +2,15 @@ using System;
 using Lesson.Shapes.Blueprints;
 using Lesson.Shapes.Views;
 using Newtonsoft.Json;
+using Util.CascadeUpdate;
 
 namespace Lesson.Shapes.Datas
 {
     [JsonObject(IsReference = true, MemberSerialization = MemberSerialization.OptIn)]
     public abstract class ShapeData
     {
-        public event Action NameUpdated;
-        public event Action GeometryUpdated;
+        public CascadeUpdateEvent NameUpdated = new CascadeUpdateEvent();
+        public CascadeUpdateEvent GeometryUpdated = new CascadeUpdateEvent();
         
         public IShapeView View { get; private set; }
         
@@ -24,8 +25,8 @@ namespace Lesson.Shapes.Datas
         {
             if (pointData != null)
             {
-                pointData.NameUpdated += OnNameUpdated;
-                pointData.GeometryUpdated += OnGeometryUpdated;
+                pointData.NameUpdated.Subscribe(NameUpdated);
+                pointData.GeometryUpdated.Subscribe(GeometryUpdated);
             }
             OnNameUpdated();
             OnGeometryUpdated();
@@ -35,28 +36,16 @@ namespace Lesson.Shapes.Datas
         {
             if (pointData != null)
             {
-                pointData.NameUpdated -= OnNameUpdated;
-                pointData.GeometryUpdated -= OnGeometryUpdated;
+                pointData.NameUpdated.Unsubscribe(NameUpdated);
+                pointData.GeometryUpdated.Unsubscribe(GeometryUpdated);
             }
         }
 
         public void DestroyData()
         {
             View = null;
-            if (NameUpdated != null)
-            {
-                foreach (var d in NameUpdated.GetInvocationList())
-                {
-                    NameUpdated -= (d as Action);
-                }
-            }
-            if (GeometryUpdated != null)
-            {
-                foreach (var d in GeometryUpdated.GetInvocationList())
-                {
-                    GeometryUpdated -= (d as Action);
-                }
-            }
+            NameUpdated?.Clear();
+            GeometryUpdated.Clear();
         }
 
         protected void OnNameUpdated()

@@ -30,7 +30,7 @@ namespace Lesson.Shapes.Datas
             UniquenessValidator = new LineUniquenessValidator(this);
             PointsNotSameValidator = new PointsNotSameValidator(EnumeratePoints());
             
-            NameUpdated += PointsNotSameValidator.Update;
+            NameUpdated.Subscribe(PointsNotSameValidator.Update);
         }
 
         [JsonConstructor]
@@ -50,7 +50,7 @@ namespace Lesson.Shapes.Datas
             UniquenessValidator = new LineUniquenessValidator(this);
             PointsNotSameValidator = new PointsNotSameValidator(EnumeratePoints());
             
-            NameUpdated += PointsNotSameValidator.Update;
+            NameUpdated.Subscribe(PointsNotSameValidator.Update);
             PointsNotSameValidator.Update();
         }
 

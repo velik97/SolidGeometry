@@ -9,7 +9,7 @@ namespace Lesson.Validators.Point
         public PointNameNotEmptyValidator(PointData pointData)
         {
             m_PointData = pointData;
-            m_PointData.NameUpdated += Update;
+            m_PointData.NameUpdated.Subscribe(Update);
             Update();
         }
 

@@ -5,13 +5,14 @@ using JetBrains.Annotations;
 using Lesson.Stages.Actions;
 using Newtonsoft.Json;
 using Serialization;
+using Util.CascadeUpdate;
 
 namespace Lesson.Stages
 {
     [JsonObject(MemberSerialization.OptIn)]
     public class LessonStageFactory
     {
-        public event Action BecameDirty;
+        public CascadeUpdateEvent BecameDirty = new CascadeUpdateEvent();
 
         [JsonProperty]
         private readonly List<LessonStage> m_LessonStages;

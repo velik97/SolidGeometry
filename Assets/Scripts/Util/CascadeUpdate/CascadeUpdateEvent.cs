@@ -42,6 +42,12 @@ namespace Util.CascadeUpdate
             m_UpdateActions.Remove(updateAction);
         }
 
+        public void Clear()
+        {
+            m_UpdateActions.Clear();
+            m_Subscribers.Clear();
+        }
+
         public void Invoke()
         {
             if (s_SuppressCascadeInvoke)
@@ -61,31 +67,43 @@ namespace Util.CascadeUpdate
 
         private static IEnumerable<Action> ConstructActionsQueue(CascadeUpdateEvent cascadeUpdateEvent)
         {
-            Queue<Action> actionsQueue = new Queue<Action>();
+            List<CascadeUpdateEvent> eventsQueue = new List<CascadeUpdateEvent>();
             Queue<CascadeUpdateEvent> eventsToVisit = new Queue<CascadeUpdateEvent>();
-            HashSet<CascadeUpdateEvent> visitedEvents = new HashSet<CascadeUpdateEvent>();
 
             eventsToVisit.Enqueue(cascadeUpdateEvent);
 
             while (eventsToVisit.Count > 0)
             {
                 CascadeUpdateEvent evt = eventsToVisit.Dequeue();
-                if (visitedEvents.Contains(evt))
+                if (eventsQueue.Contains(evt))
+                {
+                    eventsQueue.Remove(evt);
+                }
+                eventsQueue.Add(evt);
+                
+                foreach (CascadeUpdateEvent subscriber in evt.m_Subscribers)
+                {
+                    eventsToVisit.Enqueue(subscriber);
+                }
+            }
+            
+            List<Action> actionsQueue = new List<Action>();
+            
+            foreach (CascadeUpdateEvent updateEvent in eventsQueue)
+            {
+                if (updateEvent.m_UpdateActions == null || updateEvent.m_UpdateActions.Count == 0)
                 {
                     continue;
                 }
 
-                visitedEvents.Add(evt);
-                if (evt.m_UpdateActions != null)
+                foreach (Action action in updateEvent.m_UpdateActions)
                 {
-                    foreach (Action action in evt.m_UpdateActions)
+                    if (actionsQueue.Contains(action))
                     {
-                        actionsQueue.Enqueue(action);
+                        actionsQueue.Remove(action);
                     }
-                }
-                foreach (CascadeUpdateEvent subscriber in evt.m_Subscribers)
-                {
-                    eventsToVisit.Enqueue(subscriber);
+
+                    actionsQueue.Add(action);
                 }
             }
 

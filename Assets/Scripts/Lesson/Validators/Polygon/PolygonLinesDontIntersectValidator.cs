@@ -12,7 +12,7 @@ namespace Lesson.Validators.Polygon
         public PolygonLinesDontIntersectValidator(PolygonData polygonData)
         {
             m_PolygonData = polygonData;
-            m_PolygonData.GeometryUpdated += base.Update;
+            m_PolygonData.GeometryUpdated.Subscribe(base.Update);
         }
 
         protected override bool CheckIsValid()

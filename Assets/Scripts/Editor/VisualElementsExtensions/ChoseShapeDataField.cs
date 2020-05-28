@@ -52,7 +52,7 @@ namespace Editor.VisualElementsExtensions
             VisualElement validatorField = new ValidatorField(pointNotEmptyValidator);
             Add(validatorField);
 
-            m_DataFactory.BecameDirty += BecameDirty;
+            m_DataFactory.BecameDirty.Subscribe(BecameDirty);
             m_AutoSaveScheduler = schedule.Execute(Update);
             m_AutoSaveScheduler.Every(200);
 

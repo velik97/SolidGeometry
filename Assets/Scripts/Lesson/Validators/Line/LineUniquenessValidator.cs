@@ -10,7 +10,7 @@ namespace Lesson.Validators.Line
         public LineUniquenessValidator(LineData lineData)
         {
             m_LineData = lineData;
-            m_LineData.NameUpdated += OnUniqueDeterminingPropertyUpdated;
+            m_LineData.NameUpdated.Subscribe(OnUniqueDeterminingPropertyUpdated);
         }
 
         public override string GetNotValidMessage()

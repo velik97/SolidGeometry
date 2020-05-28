@@ -68,8 +68,7 @@ namespace Lesson.Shapes.Blueprints.CompositeShapes
                     .Concat(m_Lines)
                     .Concat(m_Polygons))
             {
-                MyShapeDatas.Add(shapeData);
-                shapeData.SourceBlueprint = this;
+                AddToMyShapeDatas(shapeData);
             }
             OnDeserialized();
         }
@@ -78,7 +77,7 @@ namespace Lesson.Shapes.Blueprints.CompositeShapes
         {
             //NonZeroVolumeValidator = new NonZeroVolumeValidator(m_Axes);
             //NonZeroVolumeValidator.Update();
-            UpdatePointsPositions();
+            GeometryUpdated.Invoke();
             m_CompositeShapeData.SetShapeName("Pyramid");
         }
 
@@ -89,7 +88,7 @@ namespace Lesson.Shapes.Blueprints.CompositeShapes
             for (int i = 0; i < m_VerticesAtTheBaseCount + 1; i++)
             {
                 m_Points.Add(ShapeDataFactory.CreatePointData());
-                m_Points[i].NameUpdated += OnNameUpdated;
+                m_Points[i].NameUpdated.Subscribe(NameUpdated);
             }
 
             for (int i = 0; i < 2 * m_VerticesAtTheBaseCount; i++)
@@ -125,8 +124,7 @@ namespace Lesson.Shapes.Blueprints.CompositeShapes
                     .Concat(m_Lines)
                     .Concat(m_Polygons))
             {
-                MyShapeDatas.Add(shapeData);
-                shapeData.SourceBlueprint = this;
+                AddToMyShapeDatas(shapeData);
             }
         }
 
@@ -179,15 +177,11 @@ namespace Lesson.Shapes.Blueprints.CompositeShapes
 
         private void Clear()
         {
-            foreach (ShapeData shapeData in MyShapeDatas)
-            {
-                shapeData.SourceBlueprint = null;
-            }
-            MyShapeDatas.Clear();
-            
+            ClearMyShapeDatas();
+
             foreach (PointData pointData in m_Points)
             {
-                pointData.NameUpdated -= OnNameUpdated;
+                pointData.NameUpdated.Unsubscribe(NameUpdated);
                 ShapeDataFactory.RemoveShapeData(pointData);
             }
             m_Points.Clear();
@@ -227,12 +221,12 @@ namespace Lesson.Shapes.Blueprints.CompositeShapes
             Clear();
             ConstructPyramid();
             
-            UpdatePointsPositions();
+            GeometryUpdated.Invoke();
         }
         public void SetOffset(Vector3 offset)
         {
             m_TopVertex = offset;
-            UpdatePointsPositions();
+            GeometryUpdated.Invoke();
         }
 
         public void SetOrigin(Vector3 origin)
@@ -243,7 +237,7 @@ namespace Lesson.Shapes.Blueprints.CompositeShapes
             }
 
             m_Origin = origin;
-            UpdatePointsPositions();
+            GeometryUpdated.Invoke();
         }
 
         public void SetPointPosition(int pointIndex, Vector3 position)
@@ -254,10 +248,10 @@ namespace Lesson.Shapes.Blueprints.CompositeShapes
             }
 
             m_PointsPositions[pointIndex] = position;
-            UpdatePointsPositions();
+            GeometryUpdated.Invoke();
         }
 
-        private void UpdatePointsPositions()
+        protected override void UpdateGeometry()
         {
             for (int i = 0; i < m_PointsPositions.Count; i++)
             {

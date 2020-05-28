@@ -50,7 +50,7 @@ namespace Editor.Lesson.Blueprints.CompositeShapes
             m_PointNameFields = new VisualElement();
             visualElement.Add(m_PointNameFields);
 
-            Blueprint.DependenciesUpdated += UpdateVerticesCountFieldAvailability;
+            Blueprint.DependenciesUpdated.Subscribe(UpdateVerticesCountFieldAvailability);
             UpdateVerticesCountFieldAvailability();
             UpdatePointNameFields();
             UpdatePointPositionsField();

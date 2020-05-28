@@ -12,7 +12,7 @@ namespace Lesson.Validators.Polygon
         public PolygonUniquenessValidator(PolygonData polygonData)
         {
             m_PolygonData = polygonData;
-            m_PolygonData.NameUpdated += OnUniqueDeterminingPropertyUpdated;
+            m_PolygonData.NameUpdated.Subscribe(OnUniqueDeterminingPropertyUpdated);
         }
 
         public override string GetNotValidMessage()

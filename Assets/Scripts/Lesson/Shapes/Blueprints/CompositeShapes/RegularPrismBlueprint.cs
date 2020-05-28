@@ -64,15 +64,14 @@ namespace Lesson.Shapes.Blueprints.CompositeShapes
                     .Concat(m_Lines)
                     .Concat(m_Polygons))
             {
-                MyShapeDatas.Add(shapeData);
-                shapeData.SourceBlueprint = this;
+                AddToMyShapeDatas(shapeData);
             }
             OnDeserialized();
         }
 
         private void OnDeserialized()
         {
-            UpdatePointsPositions();
+            GeometryUpdated.Invoke();
 
             m_CompositeShapeData.SetShapeName("Regular Prism");
         }
@@ -82,7 +81,7 @@ namespace Lesson.Shapes.Blueprints.CompositeShapes
             for (int i = 0; i < 2 * m_VerticesAtTheBaseCount; i++)
             {
                 m_Points.Add(ShapeDataFactory.CreatePointData());
-                m_Points[i].NameUpdated += OnNameUpdated;
+                m_Points[i].NameUpdated.Subscribe(NameUpdated);
             }
 
             for (int i = 0; i < 3 * m_VerticesAtTheBaseCount; i++)
@@ -118,8 +117,7 @@ namespace Lesson.Shapes.Blueprints.CompositeShapes
                     .Concat(m_Lines)
                     .Concat(m_Polygons))
             {
-                MyShapeDatas.Add(shapeData);
-                shapeData.SourceBlueprint = this;
+                AddToMyShapeDatas(shapeData);
             }
         }
 
@@ -176,15 +174,11 @@ namespace Lesson.Shapes.Blueprints.CompositeShapes
 
         private void Clear()
         {
-            foreach (ShapeData shapeData in MyShapeDatas)
-            {
-                shapeData.SourceBlueprint = null;
-            }
-            MyShapeDatas.Clear();
+            ClearMyShapeDatas();
             
             foreach (PointData pointData in m_Points)
             {
-                pointData.NameUpdated -= OnNameUpdated;
+                pointData.NameUpdated.Unsubscribe(NameUpdated);
                 ShapeDataFactory.RemoveShapeData(pointData);
             }
             m_Points.Clear();
@@ -223,7 +217,7 @@ namespace Lesson.Shapes.Blueprints.CompositeShapes
             Clear();
             ConstructPrism();
             
-            UpdatePointsPositions();
+            GeometryUpdated.Invoke();
         }
 
         public void SetOrigin(Vector3 origin)
@@ -234,13 +228,13 @@ namespace Lesson.Shapes.Blueprints.CompositeShapes
             }
 
             m_Origin = origin;
-            UpdatePointsPositions();
+            GeometryUpdated.Invoke();
         }
 
         public void SetOffset(Vector3 offset)
         {
             m_Offset = offset;
-            UpdatePointsPositions();
+            GeometryUpdated.Invoke();
         }
         
         public void SetRadius(float radius)
@@ -252,10 +246,10 @@ namespace Lesson.Shapes.Blueprints.CompositeShapes
 
             m_Radius = radius;
             
-            UpdatePointsPositions();
+            GeometryUpdated.Invoke();
         }
 
-        private void UpdatePointsPositions()
+        protected override void UpdateGeometry()
         {
             for (int i = 0; i < m_VerticesAtTheBaseCount; i++)
             {

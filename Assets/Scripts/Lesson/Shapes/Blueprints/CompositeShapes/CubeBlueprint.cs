@@ -43,7 +43,7 @@ namespace Lesson.Shapes.Blueprints.CompositeShapes
             for (int i = 0; i < m_Points.Length; i++)
             {
                 m_Points[i] = dataFactory.CreatePointData();
-                m_Points[i].NameUpdated += OnNameUpdated;
+                m_Points[i].NameUpdated.Subscribe(NameUpdated);
             }
             for (int i = 0; i < m_Lines.Length; i++)
             {
@@ -82,7 +82,7 @@ namespace Lesson.Shapes.Blueprints.CompositeShapes
         {
             //NonZeroVolumeValidator = new NonZeroVolumeValidator(m_Axes);
             //NonZeroVolumeValidator.Update();
-            UpdatePointsPositions();
+            GeometryUpdated.Invoke();
 
             foreach (var shapeData in 
                 new [] {m_CompositeShapeData}.Cast<ShapeData>()
@@ -90,8 +90,7 @@ namespace Lesson.Shapes.Blueprints.CompositeShapes
                     .Concat(m_Lines)
                     .Concat(m_Polygons))
             {
-                MyShapeDatas.Add(shapeData);
-                shapeData.SourceBlueprint = this;
+                AddToMyShapeDatas(shapeData);
             }
             
             m_CompositeShapeData.SetShapeName("Cube");
@@ -158,7 +157,7 @@ namespace Lesson.Shapes.Blueprints.CompositeShapes
             }
 
             m_Origin = origin;
-            UpdatePointsPositions();
+            GeometryUpdated.Invoke();
         }
 
         public void SetLength(float length)
@@ -170,10 +169,10 @@ namespace Lesson.Shapes.Blueprints.CompositeShapes
 
             m_Length = length;
             //NonZeroVolumeValidator.Update();
-            UpdatePointsPositions();
+            GeometryUpdated.Invoke();
         }
         
-        private void UpdatePointsPositions()
+        protected override void UpdateGeometry()
         {
             var v1 = new Vector3(m_Length, 0, 0);
             var v2 = new Vector3(0, m_Length, 0);

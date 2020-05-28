@@ -49,7 +49,7 @@ namespace Lesson.Shapes.Blueprints.DependentShapes
                 for (int j = 0; j < m_PointsOnLines[i].Length; j++)
                 {
                     if (m_PointsOnLines[i][j] == null) continue;
-                    m_PointsOnLines[i][j].GeometryUpdated += UpdatePosition;
+                    m_PointsOnLines[i][j].GeometryUpdated.Subscribe(GeometryUpdated);
                 }
             }
             RestoreDependencies();
@@ -58,14 +58,13 @@ namespace Lesson.Shapes.Blueprints.DependentShapes
 
         private void OnDeserialized()
         {
-            PointData.SourceBlueprint = this;
-            MyShapeDatas.Add(PointData);
+            AddToMyShapeDatas(PointData);
 
             PointsNotSameValidator = new PointsNotSameValidator(EnumeratePoints());
             LinesIntersectValidator = new LinesIntersectValidator(this);
-            PointData.NameUpdated += OnNameUpdated;
+            PointData.NameUpdated.Subscribe(NameUpdated);
 
-            UpdatePosition();
+            GeometryUpdated.Invoke();
         }
 
         private IEnumerable<PointData> EnumeratePoints()
@@ -85,19 +84,20 @@ namespace Lesson.Shapes.Blueprints.DependentShapes
 
             if (m_PointsOnLines[lineNum][pointNum] != null)
             {
-                m_PointsOnLines[lineNum][pointNum].GeometryUpdated -= UpdatePosition;
+                m_PointsOnLines[lineNum][pointNum].GeometryUpdated.Unsubscribe(GeometryUpdated);
+
             }
 
             m_PointsOnLines[lineNum][pointNum] = pointData;
             if (m_PointsOnLines[lineNum][pointNum] != null)
             {
-                m_PointsOnLines[lineNum][pointNum].GeometryUpdated += UpdatePosition;
+                m_PointsOnLines[lineNum][pointNum].GeometryUpdated.Subscribe(GeometryUpdated);
             }
 
-            UpdatePosition();
+            GeometryUpdated.Invoke();
         }
 
-        private void UpdatePosition()
+        protected override void UpdateGeometry()
         {
             PointsNotSameValidator.Update();
             if (!PointsNotSameValidator.IsValid())

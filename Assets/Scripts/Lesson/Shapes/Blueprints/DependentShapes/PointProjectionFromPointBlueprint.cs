@@ -52,22 +52,22 @@ namespace Lesson.Shapes.Blueprints.DependentShapes
         {
             if (m_FirstPointOnTargetLine != null)
             {
-                m_FirstPointOnTargetLine.GeometryUpdated += UpdatePosition;
+                m_FirstPointOnTargetLine.GeometryUpdated.Subscribe(GeometryUpdated);
             }
 
             if (m_SecondPointOnTargetLine != null)
             {
-                m_SecondPointOnTargetLine.GeometryUpdated += UpdatePosition;
+                m_SecondPointOnTargetLine.GeometryUpdated.Subscribe(GeometryUpdated);
             }
             
             if (m_ProjectedPoint != null)
             {
-                m_ProjectedPoint.GeometryUpdated += UpdatePosition;
+                m_ProjectedPoint.GeometryUpdated.Subscribe(GeometryUpdated);
             }
 
             if (m_SourcePoint != null)
             {
-                m_SourcePoint.GeometryUpdated += UpdatePosition;
+                m_SourcePoint.GeometryUpdated.Subscribe(GeometryUpdated);
             }
             
             RestoreDependencies();
@@ -76,13 +76,12 @@ namespace Lesson.Shapes.Blueprints.DependentShapes
 
         private void OnDeserialized()
         {
-            PointData.SourceBlueprint = this;
-            MyShapeDatas.Add(PointData);
+            AddToMyShapeDatas(PointData);
 
             PointsNotSameValidator = new PointsNotSameValidator(EnumeratePoints());
-            PointData.NameUpdated += OnNameUpdated;
+            PointData.NameUpdated.Subscribe(NameUpdated);
 
-            UpdatePosition();
+            GeometryUpdated.Invoke();
         }
 
         private IEnumerable<PointData> EnumeratePoints()
@@ -102,16 +101,16 @@ namespace Lesson.Shapes.Blueprints.DependentShapes
 
             if (m_ProjectedPoint != null)
             {
-                m_ProjectedPoint.GeometryUpdated -= UpdatePosition;
+                m_ProjectedPoint.GeometryUpdated.Unsubscribe(GeometryUpdated);
             }
 
             m_ProjectedPoint = pointData;
             if (m_ProjectedPoint != null)
             {
-                m_ProjectedPoint.GeometryUpdated += UpdatePosition;
+                m_ProjectedPoint.GeometryUpdated.Subscribe(GeometryUpdated);
             }
 
-            UpdatePosition();
+            GeometryUpdated.Invoke();
         }
         
         public void SetSourcePoint(PointData pointData)
@@ -123,16 +122,16 @@ namespace Lesson.Shapes.Blueprints.DependentShapes
 
             if (m_SourcePoint != null)
             {
-                m_SourcePoint.GeometryUpdated -= UpdatePosition;
+                m_SourcePoint.GeometryUpdated.Unsubscribe(GeometryUpdated);
             }
 
             m_SourcePoint = pointData;
             if (m_SourcePoint != null)
             {
-                m_SourcePoint.GeometryUpdated += UpdatePosition;
+                m_SourcePoint.GeometryUpdated.Subscribe(GeometryUpdated);
             }
 
-            UpdatePosition();
+            GeometryUpdated.Invoke();
         }
         
         public void SetFirstPointOnTargetLine(PointData pointData)
@@ -144,16 +143,16 @@ namespace Lesson.Shapes.Blueprints.DependentShapes
 
             if (m_FirstPointOnTargetLine != null)
             {
-                m_FirstPointOnTargetLine.GeometryUpdated -= UpdatePosition;
+                m_FirstPointOnTargetLine.GeometryUpdated.Unsubscribe(GeometryUpdated);
             }
 
             m_FirstPointOnTargetLine = pointData;
             if (m_FirstPointOnTargetLine != null)
             {
-                m_FirstPointOnTargetLine.GeometryUpdated += UpdatePosition;
+                m_FirstPointOnTargetLine.GeometryUpdated.Subscribe(GeometryUpdated);
             }
 
-            UpdatePosition();
+            GeometryUpdated.Invoke();
         }
 
         public void SetSecondPointOnTargetLine(PointData pointData)
@@ -165,19 +164,19 @@ namespace Lesson.Shapes.Blueprints.DependentShapes
 
             if (m_SecondPointOnTargetLine != null)
             {
-                m_SecondPointOnTargetLine.GeometryUpdated -= UpdatePosition;
+                m_SecondPointOnTargetLine.GeometryUpdated.Unsubscribe(GeometryUpdated);
             }
 
             m_SecondPointOnTargetLine = pointData;
             if (m_SecondPointOnTargetLine != null)
             {
-                m_SecondPointOnTargetLine.GeometryUpdated += UpdatePosition;
+                m_SecondPointOnTargetLine.GeometryUpdated.Subscribe(GeometryUpdated);
             }
 
-            UpdatePosition();
+            GeometryUpdated.Invoke();
         }
 
-        private void UpdatePosition()
+        protected override void UpdateGeometry()
         {
             PointsNotSameValidator.Update();
             if (!PointsNotSameValidator.IsValid())

@@ -63,7 +63,7 @@ namespace Lesson.Shapes.Datas
             PolygonUniquenessValidator = new PolygonUniquenessValidator(this);
             
             PointsNotSameValidator = new PointsNotSameValidator(EnumeratePoints());
-            NameUpdated += PointsNotSameValidator.Update;
+            NameUpdated.Subscribe(PointsNotSameValidator.Update);
             
             PointsAreInOnePlaneValidator.Update();
             PointsAreOnSameLineValidator.Update();

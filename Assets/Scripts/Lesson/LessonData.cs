@@ -60,8 +60,8 @@ namespace Lesson
 
         private void OnDeserialized()
         {
-            m_ShapeDataFactory.BecameDirty += OnBecameDirty;
-            m_LessonStageFactory.BecameDirty += OnBecameDirty;
+            m_ShapeDataFactory.BecameDirty.Subscribe(OnBecameDirty);
+            m_LessonStageFactory.BecameDirty.Subscribe(OnBecameDirty);
         }
 
         private void OnBecameDirty()

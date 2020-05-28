@@ -10,7 +10,7 @@ namespace Lesson.Validators.Point
         public PointNameUniquenessValidator(PointData pointData)
         {
             m_PointData = pointData;
-            m_PointData.NameUpdated += OnUniqueDeterminingPropertyUpdated;
+            m_PointData.NameUpdated.Subscribe(OnUniqueDeterminingPropertyUpdated);
         }
 
         public override string GetNotValidMessage()

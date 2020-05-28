@@ -2,6 +2,7 @@ using System;
 using ConstructorVisualization;
 using Editor.Lesson.Blueprints;
 using Editor.Lesson.Stages;
+using Editor.VisualElementsExtensions;
 using Lesson;
 using UnityEditor;
 using UnityEngine;
@@ -59,10 +60,10 @@ namespace Editor.Lesson
 
             StyleSheet styleSheet = AssetDatabase.LoadAssetAtPath<StyleSheet>("Assets/Scripts/Editor/Styles/lesson_editor_styles.uss");
             rootVisualElement.styleSheets.Add(styleSheet);
+            
+            rootVisualElement.Add(new VisualElementUpdateInInvoker());
         }
         
-        
-
         public LessonData GetLessonData()
         {
             return m_LessonData;

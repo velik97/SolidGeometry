@@ -20,8 +20,8 @@ namespace Editor.Lesson.Blueprints
             Blueprint = blueprint;
             m_DeleteAction = deleteAction;
 
-            Blueprint.NameUpdated += UpdateName;
-            Blueprint.DependenciesUpdated += UpdateDeleteButton;
+            Blueprint.NameUpdated.Subscribe(UpdateName);
+            Blueprint.DependenciesUpdated.Subscribe(UpdateDeleteButton);
         }
 
         public VisualElement GetVisualElement()
