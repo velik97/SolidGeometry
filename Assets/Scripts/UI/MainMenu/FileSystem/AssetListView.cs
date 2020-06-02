@@ -20,7 +20,7 @@ namespace UI.MainMenu.FileSystem
             base.Bind(viewModel);
 
             m_AssetElementViews = new List<AssetListElementView>();
-            Add(ViewModel.OnListUpdated.Subscribe(_ => UpdateList()));
+            AddDisposable(ViewModel.OnListUpdated.Subscribe(_ => UpdateList()));
             UpdateList();
         }
 

@@ -15,11 +15,11 @@ MonoBehaviour:
   m_MainMenuMechanicsScene:
     sceneAsset: {fileID: 102900000, guid: 8b1054dfaddc8d04bad55bb56309d867, type: 3}
     scenePath: Assets/Scenes/Runtime/MainMenu/UI_MainMenu.unity
-  m_Session3DMechanicsScene:
+  m_Session3DScene:
     sceneAsset: {fileID: 102900000, guid: 90ef51829c97c3b4f9b7706c74273cbd, type: 3}
     scenePath: Assets/Scenes/Runtime/Session/Session3DScene.unity
-  m_SessionARMechanicsScene:
-    sceneAsset: {fileID: 102900000, guid: 023f0c18d3c7c6a4e960bc17d8aea951, type: 3}
+  m_SessionARScene:
+    sceneAsset: {fileID: 102900000, guid: c7532ae210dcbd143b7af625a6225f30, type: 3}
     scenePath: Assets/Scenes/Runtime/Session/SessionARScene.unity
   m_SessionUIScene:
     sceneAsset: {fileID: 102900000, guid: f10b878ab27994e0f9b88a97d8ac8f29, type: 3}
@@ -30,7 +30,4 @@ MonoBehaviour:
   m_CameraScene3D:
     sceneAsset: {fileID: 102900000, guid: 37a1bec68c0942041a7c3d616decd6f4, type: 3}
     scenePath: Assets/Scenes/Runtime/CameraScene3D.unity
-  m_CameraSceneAR:
-    sceneAsset: {fileID: 102900000, guid: 9475eb62feda60f4e84deff9e33ba31a, type: 3}
-    scenePath: Assets/Scenes/Runtime/CameraSceneAR.unity
   m_RootFolder: {fileID: 11400000, guid: ce6ee06cf21914e49bdbee42685ae705, type: 2}

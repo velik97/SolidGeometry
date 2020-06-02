@@ -28,7 +28,7 @@ namespace UI.MainMenu.FileSystem
 
             m_FolderImage.gameObject.SetActive(ViewModel.IsFolder);
             
-            Add(m_ChoseLessonButton.OnClickAsObservable().Subscribe(_ => ViewModel.ButtonPressed()));
+            AddDisposable(m_ChoseLessonButton.OnClickAsObservable().Subscribe(_ => ViewModel.ButtonPressed()));
         }
     }
 }

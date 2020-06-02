@@ -1,8 +1,6 @@
 ﻿using System;
 using Runtime;
-using Runtime.Core;
-using Runtime.Global;
-using Runtime.Global.LessonManagement;
+using Runtime.Access.Lesson;
 using Serialization.LessonsFileSystem;
 using UI.MainMenu.FileSystem;
 using UI.MainMenu.Header;
@@ -11,7 +9,7 @@ using Util.UniRxExtensions;
 
 namespace UI.MainMenu
 {
-    public class MainMenuUIRunner : MonoBehaviourCompositeDisposable, ISceneRunner
+    public class MainMenuUIRunner : MonoBehaviourMultipleDisposable, ISceneRunner
     {
         [SerializeField]
         private AssetListView m_AssetListView;
@@ -34,14 +32,14 @@ namespace UI.MainMenu
         private void InitializeLessonsList()
         {
             m_AssetListVM = new AssetListVM(OnLessonChosen);
-            Add(m_AssetListVM);
+            AddDisposable(m_AssetListVM);
             m_AssetListView.Bind(m_AssetListVM);
         }
 
         private void InitializeHeader()
         {
             m_HeaderVM = new MainMenuHeaderVM(GoToPreviousFolder);
-            Add(m_HeaderVM);
+            AddDisposable(m_HeaderVM);
             m_HeaderView.Bind(m_HeaderVM);
         }
 
@@ -71,7 +69,7 @@ namespace UI.MainMenu
             }
             else if (asset is LessonAsset lessonAsset)
             {
-                LessonAccess.Instance.StartLesson(lessonAsset);
+                LessonAccess.Instance.RequestStartLesson(lessonAsset);
             }
         }
 

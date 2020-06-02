@@ -34,9 +34,9 @@ namespace ConstructorVisualization
                 return;
             }
 
-            if (m_ShapeDataFactory.Origin != m_LastOrigin)
+            if (m_ShapeDataFactory.Center != m_LastOrigin)
             {
-                m_LastOrigin = m_ShapeDataFactory.Origin;
+                m_LastOrigin = m_ShapeDataFactory.Center;
                 m_LastTimeOriginChanged = Time.realtimeSinceStartup;
             }
 

@@ -1,6 +1,4 @@
 ﻿using System;
-using Runtime.Core;
-using Runtime.Global;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 using Util.SceneUtils;
@@ -25,12 +23,12 @@ namespace Runtime
         {
             Scene scene = SceneManager.GetSceneByPath(sceneReference);
             
-            var sceneRoot = scene.GetRootGameObjects();
+            var rootGameObjects = scene.GetRootGameObjects();
             ISceneRunner runner = null;
 
-            for (int i = 0, iEnd = sceneRoot.Length; i < iEnd; i++)
+            for (int i = 0; i < rootGameObjects.Length; i++)
             {
-                runner = sceneRoot[i].GetComponent<ISceneRunner>();
+                runner = rootGameObjects[i].GetComponent<ISceneRunner>();
                 if (runner != null)
                     break;
             }

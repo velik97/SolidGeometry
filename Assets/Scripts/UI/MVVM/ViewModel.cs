@@ -1,12 +1,8 @@
-using System;
-using System.Collections.Generic;
-using UniRx;
-using UnityEngine;
-using Util;
+using Util.UniRxExtensions;
 
 namespace UI.MVVM
 {
-    public abstract class ViewModel : CompositeDisposable
+    public abstract class ViewModel : MultipleDisposable
     {
     }
 }

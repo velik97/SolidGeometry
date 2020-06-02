@@ -33,7 +33,7 @@ namespace Lesson.Shapes.Datas
         private IShapeViewFactory m_ShapeViewFactory;
         public IReadOnlyCollection<PointData> PointDatas => m_PointDatas;
 
-        public Vector3 Origin => m_Origin;
+        public Vector3 Center => m_Origin;
 
         public IReadOnlyCollection<ShapeData> AllDatas =>
             m_PointDatas.Cast<ShapeData>()

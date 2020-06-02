@@ -27,7 +27,7 @@ namespace UI.MainMenu.FileSystem
             foreach (FileSystemAsset asset in folderAsset.AssetsList)
             {
                 AssetListElementVM elementVM = new AssetListElementVM(asset, m_OnAssetChosen);
-                Add(elementVM);
+                AddDisposable(elementVM);
                 m_ElementVMs.Add(elementVM);
             }
 

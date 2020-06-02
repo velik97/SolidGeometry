@@ -3,8 +3,6 @@ using System.Collections.Generic;
 using System.Linq;
 using Lesson.Shapes.Datas;
 using Runtime;
-using Runtime.Core;
-using Runtime.Global;
 using UnityEngine;
 using Util;
 

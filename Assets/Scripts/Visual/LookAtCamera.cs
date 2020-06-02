@@ -1,4 +1,4 @@
-﻿using Runtime.CameraManagement;
+﻿using Runtime.Access.Camera;
 using UnityEngine;
 
 namespace Visual
@@ -7,12 +7,12 @@ namespace Visual
     {
         private void LateUpdate()
         {
-            if (!CameraOwner.Instance.HasCamera)
+            if (!CameraAccess.Instance.HasCamera)
             {
                 return;
             }
 
-            transform.forward = CameraOwner.Instance.CameraTransform.forward;
+            transform.forward = CameraAccess.Instance.CameraTransform.forward;
         }
     }
 }

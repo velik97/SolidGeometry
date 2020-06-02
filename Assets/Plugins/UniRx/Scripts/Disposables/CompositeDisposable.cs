@@ -279,5 +279,10 @@ namespace UniRx
         {
             get { return _disposed; }
         }
+
+        public void Recover()
+        {
+            _disposed = false;
+        }
     }
 }

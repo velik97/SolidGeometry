@@ -54,7 +54,7 @@ namespace Editor.Lesson.Blueprints
             originField.RegisterCallback<ChangeEvent<Vector3>>(evt =>
                 m_ShapeBlueprintFactory.ShapeDataFactory.SetOrigin(evt.newValue));
 
-            originField.value = m_ShapeBlueprintFactory.ShapeDataFactory.Origin;
+            originField.value = m_ShapeBlueprintFactory.ShapeDataFactory.Center;
             
             return originField;
         }

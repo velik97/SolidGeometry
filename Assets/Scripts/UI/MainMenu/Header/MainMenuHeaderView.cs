@@ -18,10 +18,10 @@ namespace UI.MainMenu.Header
         {
             base.Bind(viewModel);
             
-            Add(ViewModel.HeaderName.Subscribe(text => m_HeaderLabel.text = text));
-            Add(ViewModel.CanGoBack.Subscribe(value => m_Button.gameObject.SetActive(value)));
+            AddDisposable(ViewModel.HeaderName.Subscribe(text => m_HeaderLabel.text = text));
+            AddDisposable(ViewModel.CanGoBack.Subscribe(value => m_Button.gameObject.SetActive(value)));
 
-            Add(m_Button.OnClickAsObservable().Subscribe(_ => ViewModel.GoBack()));
+            AddDisposable(m_Button.OnClickAsObservable().Subscribe(_ => ViewModel.GoBack()));
         }
     }
 }

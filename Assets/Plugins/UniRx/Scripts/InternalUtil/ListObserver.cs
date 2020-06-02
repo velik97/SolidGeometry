@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Text;
+using UnityEngine;
 
 namespace UniRx.InternalUtil
 {
@@ -36,7 +37,14 @@ namespace UniRx.InternalUtil
             var targetObservers = _observers.Data;
             for (int i = 0; i < targetObservers.Length; i++)
             {
-                targetObservers[i].OnNext(value);
+                try
+                {
+                    targetObservers[i].OnNext(value);
+                }
+                catch (Exception e)
+                {
+                    Debug.LogError("Error in observer: " + e);
+                }
             }
         }
 
