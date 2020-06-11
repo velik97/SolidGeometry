@@ -56,6 +56,7 @@ namespace Util.CascadeUpdate
             }
 
             IEnumerable<Action> actionsQueue = ConstructActionsQueue(this);
+            s_Executor.UpdateTickSource();
             s_Executor.AddActions(actionsQueue);
         }
 

@@ -10,17 +10,26 @@ namespace Util.CascadeUpdate
         private List<Action> m_ActionsQueue = new List<Action>();
         private int m_MaxActionsPerFrame = 200;
 
+        private IDisposable m_RuntimeUpdateDisposable;
         
         public CascadeUpdateQueueExecutor()
         {
-#if UNITY_EDITOR
-            if (!Application.isPlaying)
+            UpdateTickSource();
+        }
+
+        public void UpdateTickSource()
+        {
+            m_RuntimeUpdateDisposable?.Dispose();
+            EditorUpdateInvokerBridge.Update -= Tick;
+            
+            if (Application.isPlaying)
+            {
+                m_RuntimeUpdateDisposable = CoroutineRunner.Run(UpdateCoroutine());
+            }
+            else
             {
                 EditorUpdateInvokerBridge.Update += Tick;
-                return;
             }
-#endif
-            CoroutineRunner.Run(UpdateCoroutine());
         }
 
         public void AddActions(IEnumerable<Action> actions)
