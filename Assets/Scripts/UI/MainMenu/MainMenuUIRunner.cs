@@ -31,7 +31,7 @@ namespace UI.MainMenu
 
         private void InitializeLessonsList()
         {
-            m_AssetListVM = new AssetListVM(OnLessonChosen);
+            m_AssetListVM = new AssetListVM(OnAssetChosen);
             AddDisposable(m_AssetListVM);
             m_AssetListView.Bind(m_AssetListVM);
         }
@@ -61,7 +61,7 @@ namespace UI.MainMenu
             m_HeaderVM.SetFolder(folderAsset);
         }
 
-        private void OnLessonChosen(FileSystemAsset asset)
+        private void OnAssetChosen(FileSystemAsset asset)
         {
             if (asset is FolderAsset folderAsset)
             {

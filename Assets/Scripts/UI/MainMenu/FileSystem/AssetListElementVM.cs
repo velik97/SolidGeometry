@@ -1,6 +1,7 @@
 ﻿using System;
 using Serialization.LessonsFileSystem;
 using UI.MVVM;
+using UnityEngine;
 
 namespace UI.MainMenu.FileSystem
 {
@@ -11,10 +12,12 @@ namespace UI.MainMenu.FileSystem
         public string LessonName => m_FileSystemAsset.AssetName;
         public string Description => m_FileSystemAsset.Description;
         
+        public Color Color => m_FileSystemAsset.Color;
+
         private readonly Action<FileSystemAsset> m_OnAssetChosen;
 
         public readonly bool IsFolder;
-
+        
         public AssetListElementVM(FileSystemAsset fileSystemAsset, Action<FileSystemAsset> onAssetChosen)
         {
             m_FileSystemAsset = fileSystemAsset;

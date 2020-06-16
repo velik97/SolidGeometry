@@ -18,6 +18,8 @@ namespace Serialization.LessonsFileSystem
 
         [CanBeNull]
         public FolderAsset ParentFolder => m_ParentFolder;
+        
+        public abstract Color Color { get; }
 
         public void SetParentFolder(FolderAsset folderAsset)
         {

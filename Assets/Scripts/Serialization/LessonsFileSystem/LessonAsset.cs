@@ -15,6 +15,8 @@ namespace Serialization.LessonsFileSystem
 
         private LessonData m_CashedLessonData;
 
+        public override Color Color => ParentFolder?.Color ?? Color.clear;
+
         public override void ValidateNullReferences(ref bool valid)
         {
             if (m_LessonFile == null)

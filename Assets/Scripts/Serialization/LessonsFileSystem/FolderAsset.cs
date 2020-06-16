@@ -7,9 +7,13 @@ namespace Serialization.LessonsFileSystem
     [CreateAssetMenu]
     public class FolderAsset : FileSystemAsset
     {
+        [SerializeField]
+        private Color m_Color;
         [SerializeField] private List<FileSystemAsset> m_AssetsList;
 
         public List<FileSystemAsset> AssetsList => m_AssetsList;
+
+        public override Color Color => m_Color;
 
         public override void ValidateNullReferences(ref bool valid)
         {
