@@ -8,7 +8,7 @@ namespace Serialization.LessonsFileSystem
     public class FolderAsset : FileSystemAsset
     {
         [SerializeField]
-        private Color m_Color;
+        private Color m_Color = Color.black;
         [SerializeField] private List<FileSystemAsset> m_AssetsList;
 
         public List<FileSystemAsset> AssetsList => m_AssetsList;
