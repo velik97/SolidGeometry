@@ -19,10 +19,15 @@ MonoBehaviour:
     \u0442\u0440\u0435\u043C\u044F \u0442\u043E\u0447\u043A\u0430\u043C\u0438, \u0442\u043E\u0447\u043A\u043E\u0439
     \u0438 \u043F\u0440\u044F\u043C\u043E\u0439 \u0438\u043B\u0438 \u043F\u0435\u0440\u0435\u0441\u0435\u043A\u0430\u044E\u0449\u0438\u043C\u0438\u0441\u044F
     \u043F\u0440\u044F\u043C\u044B\u043C\u0438."
+  m_isBlocked: 0
+  m_isUnlockLibraryButton: 0
+  m_complexityValue: 0
+  m_Color: {r: 1, g: 0, b: 1, a: 1}
   m_AssetsList:
   - {fileID: 11400000, guid: cb7246d334667e7498b2b1a0ffc2150e, type: 2}
   - {fileID: 11400000, guid: 74f5295770d80974f8a489c1064a631c, type: 2}
   - {fileID: 11400000, guid: a26d913ccd2ae4548bd09a5f295c7729, type: 2}
+  - {fileID: 11400000, guid: e81b5ed87294f974cb218ebdb5e9ab9b, type: 2}
   - {fileID: 11400000, guid: fea9c6aedf2067249944bf48aa32c816, type: 2}
   - {fileID: 11400000, guid: 6cb4117a5132fa149aef1ece625e69de, type: 2}
   - {fileID: 11400000, guid: bdcbf7fdbd37aff4a95baa5fca52775d, type: 2}

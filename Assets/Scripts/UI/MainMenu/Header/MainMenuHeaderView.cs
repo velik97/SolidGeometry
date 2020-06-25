@@ -22,6 +22,8 @@ namespace UI.MainMenu.Header
             AddDisposable(ViewModel.CanGoBack.Subscribe(value => m_Button.gameObject.SetActive(value)));
 
             AddDisposable(m_Button.OnClickAsObservable().Subscribe(_ => ViewModel.GoBack()));
+
+         //   m_Button viewModel.CanGoBack();
         }
     }
 }

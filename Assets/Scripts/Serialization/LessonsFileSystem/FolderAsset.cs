@@ -8,12 +8,16 @@ namespace Serialization.LessonsFileSystem
     public class FolderAsset : FileSystemAsset
     {
         [SerializeField]
-        private Color m_Color = Color.black;
+        private Color m_Color = Color.magenta;
         [SerializeField] private List<FileSystemAsset> m_AssetsList;
 
         public List<FileSystemAsset> AssetsList => m_AssetsList;
 
-        public override Color Color => m_Color;
+        private Color customGreen = new Color(0.184f, 0.490f, 0.263f, 1.000f);
+        private Color customRed = new Color(0.890f, 0.286f, 0.137f, 1.000f);
+        private Color customBlue = new Color(0.027f, 0.349f, 0.816f, 1.000f);
+
+        public override Color Color => (this.name == "Folder 1" ? customBlue : (this.name == "Folder 2" ? customGreen : (this.name == "Folder 3" ? customRed : Color.grey)));
 
         public override void ValidateNullReferences(ref bool valid)
         {

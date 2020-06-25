@@ -12,8 +12,12 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 25a1a112ac8743e7a4c1ba37db8b93cf, type: 3}
   m_Name: Root
   m_EditorClassIdentifier: 
-  m_AssetName: Root
+  m_AssetName: "\u0412\u044B\u0431\u0435\u0440\u0438\u0442\u0435 \u043C\u0435\u0442\u043E\u0434
+    \u043F\u043E\u0441\u0442\u0440\u043E\u0435\u043D\u0438\u044F"
   m_Description: Root
+  m_isBlocked: 0
+  m_complexityValue: 0
+  m_Color: {r: 1, g: 0, b: 1, a: 1}
   m_AssetsList:
   - {fileID: 11400000, guid: f7ae0fc69adfd414ea5f1f6fa12a38de, type: 2}
   - {fileID: 11400000, guid: e32935464644544118cc82f7fbeb08d9, type: 2}

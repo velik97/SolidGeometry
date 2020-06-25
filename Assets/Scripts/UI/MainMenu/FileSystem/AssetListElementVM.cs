@@ -11,7 +11,11 @@ namespace UI.MainMenu.FileSystem
         
         public string LessonName => m_FileSystemAsset.AssetName;
         public string Description => m_FileSystemAsset.Description;
+        public bool isBlocked => m_FileSystemAsset.isBlocked;
         
+        public bool isUnlockLibraryButton => m_FileSystemAsset.isUnlockLibraryButton;
+        public int complexityValue => m_FileSystemAsset.complexityValue;
+
         public Color Color => m_FileSystemAsset.Color;
 
         private readonly Action<FileSystemAsset> m_OnAssetChosen;

@@ -9,6 +9,8 @@ namespace Serialization.LessonsFileSystem
     public class LessonAsset : FileSystemAsset
     {
         [SerializeField] private TextAsset m_LessonFile;
+
+        [SerializeField] private int complexityValue;
         
         private static JsonSerializerSettings s_SerializerSettings
             = new JsonSerializerSettings {TypeNameHandling = TypeNameHandling.Auto};
@@ -16,6 +18,7 @@ namespace Serialization.LessonsFileSystem
         private LessonData m_CashedLessonData;
 
         public override Color Color => ParentFolder?.Color ?? Color.clear;
+
 
         public override void ValidateNullReferences(ref bool valid)
         {
@@ -48,5 +51,10 @@ namespace Serialization.LessonsFileSystem
                 return null;
             }
         }
+
+      //  public void SetColour(Color col)
+      //  {
+      //      m_Color = col;
+      //  }
     }
 }
