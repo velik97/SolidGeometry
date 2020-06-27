@@ -17,7 +17,6 @@ MonoBehaviour:
     \u0432 \u0433\u0440\u0430\u043D\u044F\u0445 "
   m_isBlocked: 1
   m_isUnlockLibraryButton: 0
-  m_complexityValue: 0
+  m_complexityValue: 3
   m_LessonFile: {fileID: 4900000, guid: f09c3745d72204de6997cbc52ad23349, type: 3}
-  complexityValue: 0
-  m_isUnlockLibraryButton: 0
+  complexityValue: 3
