@@ -25,6 +25,6 @@ MonoBehaviour:
   m_Color: {r: 1, g: 0, b: 1, a: 1}
   m_AssetsList:
   - {fileID: 11400000, guid: e11b50364871e3a4992a4346b569124a, type: 2}
-  - {fileID: 11400000, guid: c39d9467754e249a0aadf884050ccb60, type: 2}
   - {fileID: 11400000, guid: 0aab57fef4bd5a14ea196b8aa88899d9, type: 2}
+  - {fileID: 11400000, guid: c39d9467754e249a0aadf884050ccb60, type: 2}
   - {fileID: 11400000, guid: 3e642deba9e1f44e984e6b81d1159e2d, type: 2}

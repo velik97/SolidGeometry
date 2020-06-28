@@ -15,7 +15,7 @@ MonoBehaviour:
   m_AssetName: "\u0423\u0440\u043E\u043A 3"
   m_Description: "\u0422\u0440\u0435\u0443\u0433\u043E\u043B\u044C\u043D\u0430\u044F
     \u043F\u0440\u0438\u0437\u043C\u0430, \u0442\u043E\u0447\u043A\u0438 \u0432 \u0433\u0440\u0430\u043D\u044F\u0445  "
-  m_isBlocked: 0
+  m_isBlocked: 1
   m_isUnlockLibraryButton: 0
   m_complexityValue: 3
   m_LessonFile: {fileID: 4900000, guid: 7af0abc8e17a641b8a70d0b1a0ee46c2, type: 3}
