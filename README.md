@@ -5,7 +5,9 @@ Was made as part of a master's degree at MIPT.
 
 
 Application has to important parts: editor and visulizer
+
 In editor you can create new lessons, create figures at different steps, add descriptions and highlight parts
+
 In visualizer you can view the result of your figures
 
 ## How to use editor
